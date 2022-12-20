@@ -49,10 +49,9 @@ extra:
 
 # [Navigtion]
 nav:
-  - obsidian: 
-    - study: 
-      - python基础:
-        - Day01 python基础: obsidian/04study/python/python基础/Day01 python基础.md
+  - obsidian:  
+    - python基础:
+      - Day01 python基础: obsidian/04study/python/python基础/Day01 python基础.md
   - 讲稿: 
     - LECTURE/index.md 
     - Linux: 
