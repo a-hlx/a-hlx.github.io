@@ -48,10 +48,11 @@ extra:
       name: GitHub | a-hlx
 
 # [Navigtion]
-nav:
-  - obsidian:  
-    - python基础:
-      - Day01 python基础: obsidian/04study/python/python基础/Day01 python基础.md
+nav:  
+  - Foundation Course:
+    - python: 
+      - python基础: 
+        - 绪论: Foundation Course/Python/python基础/Day01 python基础.md
   - 讲稿: 
     - LECTURE/index.md 
     - Linux: 
