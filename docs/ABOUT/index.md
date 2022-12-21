@@ -4,7 +4,7 @@ title: 你好
 
 # 你好
 
-这里是杨希杰的个人网站 <https://yang-xijie.github.io>
+这里是hlx的个人网站 <https://a-hlx.github.io>
 
 - 通过主题和目录以打开文章
     - PC端 在上方标签栏选择主题 在左侧目录选择文章
