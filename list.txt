@@ -1,12 +1,3 @@
-- 1 基本操作: Foundation Course/Git\1 基本操作.md
-- 10 个节省时间和改善工作流的 Git 技巧: Foundation Course/Git\10 个节省时间和改善工作流的 Git 技巧.md
-- 10 标签管理: Foundation Course/Git\10 标签管理.md
-- 4 版本回退: Foundation Course/Git\4 版本回退.md
-- 7 远程操作: Foundation Course/Git\7 远程操作.md
-- 8 分支管理: Foundation Course/Git\8 分支管理.md
-- 9 多人协作: Foundation Course/Git\9 多人协作.md
-- github: Foundation Course/Git\github.md
-- ge\2021-06-15-11-04-57.png: Foundation Course/Git\image\2021-06-15-11-04-57.png
-- 202749bd52950c0c839d73190cd2fd9d.png: Foundation Course/Git\media\202749bd52950c0c839d73190cd2fd9d.png
-- README: Foundation Course/Git\README.md
-- 获取路径.py: Foundation Course/Git\获取路径.py
+- 10 个节省时间和改善工作流的 Git 技巧: Foundation Course/Git/10 个节省时间和改善工作流的 Git 技巧.md
+- README: Foundation Course/Git/README.md
+- 获取路径.py: Foundation Course/Git/获取路径.py

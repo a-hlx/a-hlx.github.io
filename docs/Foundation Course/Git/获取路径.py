@@ -18,4 +18,4 @@ with open('./list.txt','w') as f:     #要存入的txt
     write=''
     for i in list_name:
         write=write + '- ' + str(i).lstrip('E:/my_site/mkdocs-site/docs/Foundation Course/Git\\').rstrip('.md') + ': ' + str(i).replace('E:/my_site/mkdocs-site/docs/','') +'\n'
-    f.write(write)
+    f.write(write.replace('\\','/'))
