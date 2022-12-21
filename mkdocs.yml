@@ -49,54 +49,55 @@ extra:
 
 # [Navigtion]
 nav:  
-  # - Foundation Course:
-  #   - python: 
-  #     - python基础: 
-  #     - 01 绪论: Foundation Course/Python/python基础/Day01 python基础.md
-  #     - 02 if判断与循环: Foundation Course/Python/python基础/Day02 if判断与循环.md
-  #     - 03 容器: Foundation Course/Python/python基础/Day03 容器.md
-  #     - 04 字典与函数: Foundation Course/Python/python基础/Day04 字典与函数.md
-  #     - 05 函数: Foundation Course/Python/python基础/Day05 函数.md
-  #     - 06 函数与文件: Foundation Course/Python/python基础/Day06 函数与文件.md
-  #     - 07 文件: Foundation Course/Python/python基础/Day07 文件.md
-  #     - 08 面向对象_封装: Foundation Course/Python/python基础/Day08 面向对象_封装.md
-  #     - 09 面向对象: Foundation Course/Python/python基础/Day09 面向对象.md
-  #     - 10 异常与模块: Foundation Course/Python/python基础/Day10 异常与模块.md
-  #   - MATLAB: 
-  #     - 02Array_Operation: Foundation Course/MATLAB/02Array_Operation.md
-  #     - 03Structured_Programming_&_Function: Foundation Course/MATLAB/03Structured_Programming_&_Function.md
-  #     - 04Data_Structure_&_File_Access: Foundation Course/MATLAB/04Data_Structure_&_File_Access.md
-  #     - 05Basic_Plotting: Foundation Course/MATLAB/05Basic_Plotting.md
-  #     - 06Advanced_Plotting: Foundation Course/MATLAB/06Advanced_Plotting.md
-  #     - 08Image_Processing I: Foundation Course/MATLAB/08Image_Processing I.md
-  #     - 09Image_Processing II: Foundation Course/MATLAB/09Image_Processing II.md
-  #     - 10Integration_&_Differentiation: Foundation Course/MATLAB/10Integration_&_Differentiation.md
-  #     - 11Root_Finding: Foundation Course/MATLAB/11Root_Finding.md
-  #     - 12Linear_Equations: Foundation Course/MATLAB/12Linear_Equations.md
-  #     - 13Statistics_&_Data_Analysis: Foundation Course/MATLAB/13Statistics_&_Data_Analysis.md
-  #     - 14Curve_Fitting_&_Interpolation: Foundation Course/MATLAB/14Curve_Fitting_&_Interpolation.md
-  #     - 微分方程数值解: Foundation Course/MATLAB/微分方程数值解.md
-  #   - MYSQL:
-  #     - 01.mysql安装: Foundation Course/MYSQL/01.mysql安装.md
-  #     - 02.数据类型: Foundation Course/MYSQL/02.数据类型.md
-  #     - 03.库和数据表: Foundation Course/MYSQL/03.库和数据表.md
-  #     - 04.表的增删改查: Foundation Course/MYSQL/04.表的增删改查.md
-  #     - 05.表的综合查询: Foundation Course/MYSQL/05.表的综合查询.md
-  #     - 06.索引: Foundation Course/MYSQL/06.索引.md
-  #     - 07.事务: Foundation Course/MYSQL/07.事务.md
-  #     - 08.mysql用户与权限管理: Foundation Course/MYSQL/08.mysql用户与权限管理.md
-  #     - 09.mysql优化: Foundation Course/MYSQL/09.mysql优化.md
-  #     - 10.mysql优化分析: Foundation Course/MYSQL/10.mysql优化分析.md
-  #     - 11.表分区: Foundation Course/MYSQL/11.表分区.md
-  #     - 12.mysql集群: Foundation Course/MYSQL/12.mysql集群.md
-  #     - 13.开发中比较少用的功能: Foundation Course/MYSQL/13.开发中比较少用的功能.md
-  #     - 14.数据库导入导出: Foundation Course/MYSQL/14.数据库导入导出.md
-  #     - 15.客户端和服务端安全传输数据: Foundation Course/MYSQL/15.客户端和服务端安全传输数据.md
-  #     - README: Foundation Course/MYSQL/README.md
-  #     - 常见问题: Foundation Course/MYSQL/常见问题.md
-  #   - Git:
-  #     - 10 个节省时间和改善工作流的 Git 技巧: Foundation Course/Git/10 个节省时间和改善工作流的 Git 技巧.md
-  #     - README: Foundation Course/Git/README.md
+  - Foundation Course:
+    - Foundation Course/index.md
+    - python: 
+      - python基础: 
+      - 01 绪论: Foundation Course/Python/python基础/Day01 python基础.md
+      - 02 if判断与循环: Foundation Course/Python/python基础/Day02 if判断与循环.md
+      - 03 容器: Foundation Course/Python/python基础/Day03 容器.md
+      - 04 字典与函数: Foundation Course/Python/python基础/Day04 字典与函数.md
+      - 05 函数: Foundation Course/Python/python基础/Day05 函数.md
+      - 06 函数与文件: Foundation Course/Python/python基础/Day06 函数与文件.md
+      - 07 文件: Foundation Course/Python/python基础/Day07 文件.md
+      - 08 面向对象_封装: Foundation Course/Python/python基础/Day08 面向对象_封装.md
+      - 09 面向对象: Foundation Course/Python/python基础/Day09 面向对象.md
+      - 10 异常与模块: Foundation Course/Python/python基础/Day10 异常与模块.md
+    - MATLAB: 
+      - 02Array_Operation: Foundation Course/MATLAB/02Array_Operation.md
+      - 03Structured_Programming_&_Function: Foundation Course/MATLAB/03Structured_Programming_&_Function.md
+      - 04Data_Structure_&_File_Access: Foundation Course/MATLAB/04Data_Structure_&_File_Access.md
+      - 05Basic_Plotting: Foundation Course/MATLAB/05Basic_Plotting.md
+      - 06Advanced_Plotting: Foundation Course/MATLAB/06Advanced_Plotting.md
+      - 08Image_Processing I: Foundation Course/MATLAB/08Image_Processing I.md
+      - 09Image_Processing II: Foundation Course/MATLAB/09Image_Processing II.md
+      - 10Integration_&_Differentiation: Foundation Course/MATLAB/10Integration_&_Differentiation.md
+      - 11Root_Finding: Foundation Course/MATLAB/11Root_Finding.md
+      - 12Linear_Equations: Foundation Course/MATLAB/12Linear_Equations.md
+      - 13Statistics_&_Data_Analysis: Foundation Course/MATLAB/13Statistics_&_Data_Analysis.md
+      - 14Curve_Fitting_&_Interpolation: Foundation Course/MATLAB/14Curve_Fitting_&_Interpolation.md
+      - 微分方程数值解: Foundation Course/MATLAB/微分方程数值解.md
+    - MYSQL:
+      - 01.mysql安装: Foundation Course/MYSQL/01.mysql安装.md
+      - 02.数据类型: Foundation Course/MYSQL/02.数据类型.md
+      - 03.库和数据表: Foundation Course/MYSQL/03.库和数据表.md
+      - 04.表的增删改查: Foundation Course/MYSQL/04.表的增删改查.md
+      - 05.表的综合查询: Foundation Course/MYSQL/05.表的综合查询.md
+      - 06.索引: Foundation Course/MYSQL/06.索引.md
+      - 07.事务: Foundation Course/MYSQL/07.事务.md
+      - 08.mysql用户与权限管理: Foundation Course/MYSQL/08.mysql用户与权限管理.md
+      - 09.mysql优化: Foundation Course/MYSQL/09.mysql优化.md
+      - 10.mysql优化分析: Foundation Course/MYSQL/10.mysql优化分析.md
+      - 11.表分区: Foundation Course/MYSQL/11.表分区.md
+      - 12.mysql集群: Foundation Course/MYSQL/12.mysql集群.md
+      - 13.开发中比较少用的功能: Foundation Course/MYSQL/13.开发中比较少用的功能.md
+      - 14.数据库导入导出: Foundation Course/MYSQL/14.数据库导入导出.md
+      - 15.客户端和服务端安全传输数据: Foundation Course/MYSQL/15.客户端和服务端安全传输数据.md
+      - README: Foundation Course/MYSQL/README.md
+      - 常见问题: Foundation Course/MYSQL/常见问题.md
+    - Git:
+      - 10 个节省时间和改善工作流的 Git 技巧: Foundation Course/Git/10 个节省时间和改善工作流的 Git 技巧.md
+      - README: Foundation Course/Git/README.md
 
 
   - 讲稿: 
