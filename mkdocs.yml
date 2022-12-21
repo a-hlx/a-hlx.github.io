@@ -143,8 +143,8 @@ nav:
     #   - 极速版: LECTURE/vscode-cpp/10_极速版.md
     #   - 补充: LECTURE/vscode-cpp/11_补充.md
     # - 在macOS上用VSCode写Python: LECTURE/vscode-python/vscode-python.md
- - curriculum: 
-    - curriculum/index.md
+#  - curriculum: 
+#     - curriculum/index.md
     # - 英语音标教学: LECTURE/English/phonetic-symbol.md
   # - 博客:
   #   - BLOG/index.md
