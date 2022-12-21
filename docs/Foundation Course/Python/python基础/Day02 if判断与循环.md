@@ -1,4 +1,4 @@
-# if
+## if
 
 ```python
 age=int(input("请输入年龄:"))
@@ -7,7 +7,7 @@ if age>=18:
 print("if 结构结束")
 ```
 
-# if else
+## if else
 
 ```python
 age=int(input("请输入年龄:"))
@@ -17,7 +17,7 @@ else:
     print("sad")
 ```
 
-# if elif
+## if elif
 ```python
 if 	判断条件1:
     判断条件1成立,执行的代码
@@ -51,7 +51,7 @@ else:
 print("程序结束")
 ```
 
-# if 嵌套
+## if 嵌套
 ```
 if 判断条件1:  
     判断条件1 成立,会执行的代码  
@@ -63,7 +63,7 @@ else:
     判断条件1不成立,会执行的代码
 ```
 
-# 随机数
+## 随机数
 ```python
 import random  # 导入随机数模块
  #[a, b] 之间的随机整数,包含 a 和 b
@@ -77,7 +77,7 @@ random.randint(1,10)
 random.setstate(x)
 ```
 
-## 猜拳游戏
+### 猜拳游戏
 ```python
 import random
 a=int(input("输入你想出的拳，石1，剪2，布3："))
@@ -91,7 +91,7 @@ else:
 	print('输')
 ```
 
-# 三目运算
+## 目运算
 
 <font color=#FF0212>if else 结构变形</font>
 
@@ -113,7 +113,7 @@ print(result)
 
 ```
 
-# 循环
+## 循环
 while 判断条件:
     判断条件成立,执行的代码
     判断条件成立,执行的代码
@@ -147,26 +147,26 @@ print('求和的结果为', my_sum)
 
 `while True:`
 
-## 猜拳游戏while
+### 猜拳游戏while
 ```python
 while True:
 ```
 
-# 循环嵌套
+## 循环嵌套
 while 判断条件1:
     代码1
     while 判断条件2:
         代码2
 
-# for 循环遍历
+## for 循环遍历
 
-## for 变量 in 字符串
+### for 变量 in 字符串
 ```python
 for i in 'hello':
     print(i, end=' ')
 ```
 
-## range
+### range
 ```python
 # range(n)  会生成 [0, n) 的数据序列, 不包含n
 for i in range(5):  # 0 1 2 3 4
@@ -182,7 +182,7 @@ for i in range(1, 10, 3):  # 1 4  7
     print(i)
 ```
 
-# Break 和 continue
+## Break 和 continue
 
 1. break 和 continue 是 python 两个关键字  
 2. break 和 continue 只能用在循环中  
@@ -210,7 +210,7 @@ for i in range(1, 6):
     print(f'吃了编号为{i}的苹果')
 ```
 
-# 循环 else 结构
+## 循环 else 结构
 for x in xx:
     if xxx:
         xx  # if 判断条件成立会执行
@@ -233,9 +233,9 @@ else:
 
 ```
 
-# 实例
+## 实例
 
-## 打印正方形
+### 打印正方形
 
 ```python
 while True:
@@ -258,7 +258,7 @@ for j in range(a):
 	print()
 ```
 
-## 打印正三角形
+### 打印正三角形
 ```python
 n = 5
 
@@ -282,10 +282,13 @@ for i in range(n):  # 控制行数
 
 ```
 
-## 求个位十位数
+### 求个位十位数
 
 num = 76
+
 使用代码的方法,求出这个数字的个位数和十位数
+
 个位数: num % 10 
+
 十位数: num // 10
 
