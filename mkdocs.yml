@@ -52,17 +52,17 @@ nav:
   - Foundation Course:
     - Foundation Course/index.md
     - python: 
-      # - python基础: 
-      # - 01 绪论: Foundation Course/Python/python基础/Day01 python基础.md
-      # - 02 if判断与循环: Foundation Course/Python/python基础/Day02 if判断与循环.md
-      # - 03 容器: Foundation Course/Python/python基础/Day03 容器.md
-      # - 04 字典与函数: Foundation Course/Python/python基础/Day04 字典与函数.md
-      # - 05 函数: Foundation Course/Python/python基础/Day05 函数.md
-      # - 06 函数与文件: Foundation Course/Python/python基础/Day06 函数与文件.md
-      # - 07 文件: Foundation Course/Python/python基础/Day07 文件.md
-      # - 08 面向对象_封装: Foundation Course/Python/python基础/Day08 面向对象_封装.md
-      # - 09 面向对象: Foundation Course/Python/python基础/Day09 面向对象.md
-      # - 10 异常与模块: Foundation Course/Python/python基础/Day10 异常与模块.md
+      - python基础: 
+        - 01 绪论: Foundation Course/Python/python基础/Day01 python基础.md
+        - 02 if判断与循环: Foundation Course/Python/python基础/Day02 if判断与循环.md
+        - 03 容器: Foundation Course/Python/python基础/Day03 容器.md
+        - 04 字典与函数: Foundation Course/Python/python基础/Day04 字典与函数.md
+        - 05 函数: Foundation Course/Python/python基础/Day05 函数.md
+        - 06 函数与文件: Foundation Course/Python/python基础/Day06 函数与文件.md
+        - 07 文件: Foundation Course/Python/python基础/Day07 文件.md
+        - 08 面向对象_封装: Foundation Course/Python/python基础/Day08 面向对象_封装.md
+        - 09 面向对象: Foundation Course/Python/python基础/Day09 面向对象.md
+        - 10 异常与模块: Foundation Course/Python/python基础/Day10 异常与模块.md
     - MATLAB: 
       - 02Array_Operation: Foundation Course/MATLAB/02Array_Operation.md
       - 03Structured_Programming_&_Function: Foundation Course/MATLAB/03Structured_Programming_&_Function.md
