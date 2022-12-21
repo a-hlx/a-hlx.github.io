@@ -198,9 +198,9 @@ nav:
   #         - ddp-note.py: BLOG/Deeplearning/ddp-note.md
   #   - 其他:
   #     - 视频信息初探: BLOG/Others/video-info.md
-  - CV:
-    - CV/index.md
-    - 1-computer_basics:
+  # - CV:
+  #   - CV/index.md
+  #   - 1-computer_basics:
 
   # - 开发:
   #   - DEV/index.md
