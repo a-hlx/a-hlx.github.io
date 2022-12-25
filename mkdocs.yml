@@ -106,9 +106,9 @@ nav:
     - Linux: 
       - Linux讲座: LECTURE/Linux/linux.md
       - 命令行入门精简版: LECTURE/Linux/commands-concise.md
-      # - vim: BLOG/Linux/vim.md
-      # - tmux: BLOG/Linux/tmux.md
-      # - UNIX: BLOG/Linux/unix.md
+      - vim: BLOG/Linux/vim.md
+      - tmux: BLOG/Linux/tmux.md
+      - UNIX: BLOG/Linux/unix.md
       # - 内核编译: BLOG/Linux/kernel-compile.md
       # - 连接树莓派: BLOG/Linux/pi-start.md
     - Markdown: 
