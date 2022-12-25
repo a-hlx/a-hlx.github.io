@@ -78,23 +78,24 @@ nav:
       - 14Curve_Fitting_&_Interpolation: Foundation Course/MATLAB/14Curve_Fitting_&_Interpolation.md
       - 微分方程数值解: Foundation Course/MATLAB/微分方程数值解.md
     - MYSQL:
-      - 01.mysql安装: Foundation Course/MYSQL/01.mysql安装.md
-      - 02.数据类型: Foundation Course/MYSQL/02.数据类型.md
-      - 03.库和数据表: Foundation Course/MYSQL/03.库和数据表.md
-      - 04.表的增删改查: Foundation Course/MYSQL/04.表的增删改查.md
-      - 05.表的综合查询: Foundation Course/MYSQL/05.表的综合查询.md
-      - 06.索引: Foundation Course/MYSQL/06.索引.md
-      - 07.事务: Foundation Course/MYSQL/07.事务.md
-      - 08.mysql用户与权限管理: Foundation Course/MYSQL/08.mysql用户与权限管理.md
-      - 09.mysql优化: Foundation Course/MYSQL/09.mysql优化.md
-      - 10.mysql优化分析: Foundation Course/MYSQL/10.mysql优化分析.md
-      - 11.表分区: Foundation Course/MYSQL/11.表分区.md
-      - 12.mysql集群: Foundation Course/MYSQL/12.mysql集群.md
-      - 13.开发中比较少用的功能: Foundation Course/MYSQL/13.开发中比较少用的功能.md
-      - 14.数据库导入导出: Foundation Course/MYSQL/14.数据库导入导出.md
-      - 15.客户端和服务端安全传输数据: Foundation Course/MYSQL/15.客户端和服务端安全传输数据.md
-      - 00.目录: Foundation Course/MYSQL/目录.md
-      - 常见问题: Foundation Course/MYSQL/常见问题.md
+      - 00.目录: Foundation Course/MySQL/目录.md
+      - 01.mysql安装: Foundation Course/MySQL/01.mysql安装.md
+      - 02.数据类型: Foundation Course/MySQL/02.数据类型.md
+      - 03.库和数据表: Foundation Course/MySQL/03.库和数据表.md
+      - 04.表的增删改查: Foundation Course/MySQL/04.表的增删改查.md
+      - 05.表的综合查询: Foundation Course/MySQL/05.表的综合查询.md
+      - 06.索引: Foundation Course/MySQL/06.索引.md
+      - 07.事务: Foundation Course/MySQL/07.事务.md
+      - 08.mysql用户与权限管理: Foundation Course/MySQL/08.mysql用户与权限管理.md
+      - 09.mysql优化: Foundation Course/MySQL/09.mysql优化.md
+      - 10.mysql优化分析: Foundation Course/MySQL/10.mysql优化分析.md
+      - 11.表分区: Foundation Course/MySQL/11.表分区.md
+      - 12.mysql集群: Foundation Course/MySQL/12.mysql集群.md
+      - 13.开发中比较少用的功能: Foundation Course/MySQL/13.开发中比较少用的功能.md
+      - 14.数据库导入导出: Foundation Course/MySQL/14.数据库导入导出.md
+      - 15.客户端和服务端安全传输数据: Foundation Course/MySQL/15.客户端和服务端安全传输数据.md
+      - 常见问题: Foundation Course/MySQL/常见问题.md
+
     - Git:
       - Git技巧: Foundation Course/Git/10 个节省时间和改善工作流的 Git 技巧.md
       - 00.目录: Foundation Course/Git/目录.md
