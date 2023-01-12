@@ -108,27 +108,27 @@ nav:
     - Linux: 
       - Linux讲座: LECTURE/Linux/linux.md
       - 命令行入门精简版: LECTURE/Linux/commands-concise.md
-      - vim: BLOG/Linux/vim.md
-      - tmux: BLOG/Linux/tmux.md
-      - UNIX: BLOG/Linux/unix.md
-      - 内核编译: BLOG/Linux/kernel-compile.md
-      - 连接树莓派: BLOG/Linux/pi-start.md
+      # - vim: BLOG/Linux/vim.md
+      # - tmux: BLOG/Linux/tmux.md
+      # - UNIX: BLOG/Linux/unix.md
+      # - 内核编译: BLOG/Linux/kernel-compile.md
+      # - 连接树莓派: BLOG/Linux/pi-start.md
     - Markdown: 
       - Markdown讲座: LECTURE/Markdown/markdown.md
       - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
-      - Markdown语法初学习: BLOG/Markdown/grammars.md
-      - TODO ExMark规范: BLOG/Markdown/ExMark-spec-zh.txt
-      - MarkDown教程Ob版: BLOG/Markdown/MarkDown超级教程 Obsidian版 2022.1.12.md
+      # - Markdown语法初学习: BLOG/Markdown/grammars.md
+      # - TODO ExMark规范: BLOG/Markdown/ExMark-spec-zh.txt
+      # - MarkDown教程Ob版: BLOG/Markdown/MarkDown超级教程 Obsidian版 2022.1.12.md
     # - Git: 
     #   - Git: LECTURE/Git/git.md
     #   - Git例子: LECTURE/Git/git-demos.md
     #   - Git合作: LECTURE/Git/git-teamwork.md
     #   - Windows安装Git: LECTURE/Git/windows-install.md
     #   - 镜像到Gitee: BLOG/GitHub/mirror.md
-    - 建站:
-      - MkDocs静态网站构建: BLOG/Markdown/mkdocs-site.md
-      - mdBook静态网站构建: BLOG/Markdown/mdbook-site.md
-      - GitHub Pages简介: BLOG/Markdown/github-pages.md
+    # - 建站:
+    #   - MkDocs静态网站构建: BLOG/Markdown/mkdocs-site.md
+    #   - mdBook静态网站构建: BLOG/Markdown/mdbook-site.md
+    #   - GitHub Pages简介: BLOG/Markdown/github-pages.md
 
 
     # - 应用开发设计: LECTURE/App/app-design.md
@@ -146,9 +146,9 @@ nav:
     #   - 极速版: LECTURE/vscode-cpp/10_极速版.md
     #   - 补充: LECTURE/vscode-cpp/11_补充.md
     # - 在macOS上用VSCode写Python: LECTURE/vscode-python/vscode-python.md
- - curriculum: 
-    - curriculum/index.md
-    - 英语音标教学: LECTURE/English/phonetic-symbol.md
+#  - curriculum: 
+#     - curriculum/index.md
+#     - 英语音标教学: LECTURE/English/phonetic-symbol.md
   # - 博客:
   #   - BLOG/index.md
   #   - 日语:
