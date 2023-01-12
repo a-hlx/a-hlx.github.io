@@ -227,7 +227,7 @@ assert s == '-0123'
 ```
 
 
- ```
+```python
 # 转义字符 \n  将\和n组合在一块,作为一个字符使用, \n 代表换行  
 # print()函数输出之后,默认会添加一个换行, 如果不想要这个换行可以去掉  
 print('hello', end=' ')  # hello world
@@ -235,7 +235,7 @@ print('hello', end='_*_')  # hello_*_world
 print('hello', end='')  # helloworld
 print('world')  
 print('good good study\nday day up')
- ```
+```
 
 #### 大小写
 
