@@ -36,7 +36,7 @@ edit_uri: edit/main/docs # 编辑按钮跳转的链接
 repo_url: https://github.com/a-hlx/a-hlx.github.io # 右上角点击跳转的链接
 repo_name: a-hlx.github.io # 右上角的名字
 ## [bottom-left corner]
-copyright: Copyright &copy; 2022 hlx # 左下角的版权声明
+copyright: Copyright &copy; 2023 hlx # 左下角的版权声明
 ## [bottom-right corner]
 extra:
   social: # icons
@@ -96,12 +96,19 @@ nav:
       - 15.客户端和服务端安全传输数据: Foundation Course/MySQL/15.客户端和服务端安全传输数据.md
       - 常见问题: Foundation Course/MySQL/常见问题.md
 
+
+  - cornerstone: 
+    - cornerstone/index.md 
     - Git:
-      - Git技巧: Foundation Course/Git/10 个节省时间和改善工作流的 Git 技巧.md
-      - Git基础: Foundation Course/Git/Git(分布式版本控制工具).md
-      - Git速查: Foundation Course/Git/git速查.md
-
-
+      - Git技巧: cornerstone/Git/10 个节省时间和改善工作流的 Git 技巧.md
+      - Git基础: cornerstone/Git/Git(分布式版本控制工具).md
+      - Git速查: cornerstone/Git/git速查.md
+    - Markdown:    
+      - Markdown讲座: cornerstone/Markdown/markdown.md
+      - VSCode及插件安装: cornerstone/Markdown/vscode-extension.md
+      - Markdown语法初学习: cornerstone/Markdown/grammars.md
+      - TODO ExMark规范: cornerstone/Markdown/ExMark-spec-zh.txt
+      - MarkDown教程Ob版: cornerstone/Markdown/MarkDown超级教程 Obsidian版 2022.1.12.md
 
   - augment: 
     - LECTURE/index.md 
@@ -113,12 +120,12 @@ nav:
       # - UNIX: BLOG/Linux/unix.md
       # - 内核编译: BLOG/Linux/kernel-compile.md
       # - 连接树莓派: BLOG/Linux/pi-start.md
-    - Markdown: 
-      - Markdown讲座: LECTURE/Markdown/markdown.md
-      - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
-      # - Markdown语法初学习: BLOG/Markdown/grammars.md
-      # - TODO ExMark规范: BLOG/Markdown/ExMark-spec-zh.txt
-      # - MarkDown教程Ob版: BLOG/Markdown/MarkDown超级教程 Obsidian版 2022.1.12.md
+    # - Markdown: 
+    #   - Markdown讲座: LECTURE/Markdown/markdown.md
+    #   - VSCode及插件安装: LECTURE/Markdown/vscode-extension.md
+    #   - Markdown语法初学习: BLOG/Markdown/grammars.md
+    #   - TODO ExMark规范: BLOG/Markdown/ExMark-spec-zh.txt
+    #   - MarkDown教程Ob版: BLOG/Markdown/MarkDown超级教程 Obsidian版 2022.1.12.md
     # - Git: 
     #   - Git: LECTURE/Git/git.md
     #   - Git例子: LECTURE/Git/git-demos.md
@@ -149,8 +156,12 @@ nav:
 #  - curriculum: 
 #     - curriculum/index.md
 #     - 英语音标教学: LECTURE/English/phonetic-symbol.md
-  # - 博客:
-  #   - BLOG/index.md
+  - Blog:
+    - BLOG/index.md
+    - software:
+      - 免费激活Typora: BLOG/software/免费激活Typora.md
+    - Fun learning:
+      - ChatGPT中文调教指南: BLOG/Fun learning/ChatGPT中文调教指南.md
   #   - 日语:
   #     - 笔记2/3: BLOG/Japanese/notes-2202-2203.md
   #     - 笔记4: BLOG/Japanese/notes-2204.md
