@@ -1,0 +1,3041 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ML%E5%82%A8%E5%A4%87/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88CNN%29/">
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>卷积神经网络（CNN) - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              卷积神经网络（CNN)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 卷积神经网络结构介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 构建卷积神经网络的各种层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 卷积层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211" class="md-nav__link">
+    2.1.1 卷积层作用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#212" class="md-nav__link">
+    2.1.2 感受野（重点理解）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    2.1.3 神经元的空间排列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    2.1.4 权值共享
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#215" class="md-nav__link">
+    2.1.5 卷积层的超参数及选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#216" class="md-nav__link">
+    2.1.6 卷积层演示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    2.1.7 用矩阵乘法实现卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#218" class="md-nav__link">
+    2.1.8 其他形式的卷积操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 池化层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 归一化层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 全连接层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    2.4.1 将卷积层转化成全连接层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#242" class="md-nav__link">
+    2.4.2 将全连接层转化成卷积层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 卷积神经网络的结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 层的排列规律
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 卷积层的大小选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 层的尺寸设置规律
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 案例学习
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-vggnet" class="md-nav__link">
+    4.1 VGGNet的细节
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 计算上的考量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    卷积层输出大小计算
+  </a>
+  
+    <nav class="md-nav" aria-label="卷积层输出大小计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1、无填充
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2、有填充
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    实例：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+  <h1>卷积神经网络（CNN)</h1>
+
+<h2 id="1"><strong>1. 卷积神经网络结构介绍</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>如果用全连接神经网络处理大尺寸图像具有三个明显的缺点：</p>
+<p>（1）首先将图像展开为向量会丢失空间信息；</p>
+<p>（2）其次参数过多效率低下，训练困难；</p>
+<p>（3）同时大量的参数也很快会导致网络过拟合。</p>
+<p>而使用卷积神经网络可以很好地解决上面的三个问题。</p>
+<p>与常规神经网络不同，卷积神经网络的各层中的神经元是3维排列的：宽度、高度和深度。其中的宽度和高度是很好理解的，因为本身卷积就是一个二维模板，但是在卷积神经网络中的深度指的是<strong>激活数据体</strong>的第三个维度，而不是整个网络的深度，整个网络的深度指的是网络的层数。举个例子来理解什么是宽度，高度和深度，假如使用CIFAR-10中的图像是作为卷积神经网络的输入，该<strong>输入数据体</strong>的维度是32x32x3（宽度，高度和深度）。<strong>我们将看到，层中的神经元将只与前一层中的一小块区域连接，而不是采取全连接方式。</strong>对于用来分类CIFAR-10中的图像的卷积网络，其最后的输出层的维度是1x1x10，因为在卷积神经网络结构的最后部分将会把全尺寸的图像压缩为包含分类评分的一个向量，<strong>向量是在深度方向排列的</strong>。下面是例子：</p>
+<p><img alt="" src="https://pic3.zhimg.com/v2-ff46cd1067d97a86f5c2617e58c95442_b.jpg" /></p>
+<p>图 1. 全连接神经网络与卷积神经网络的对比</p>
+<p>图1中左侧是一个3层的神经网络；右侧是一个卷积神经网络，将它的神经元在成3个维度（宽、高和深度）进行排列。卷积神经网络的每一层都将3D的输入数据变化为神经元3D的激活数据并输出。在图1的右侧，红色的输入层代表输入图像，所以它的宽度和高度就是图像的宽度和高度，它的深度是3（代表了红、绿、蓝3种颜色通道），与红色相邻的蓝色部分是经过卷积和池化之后的激活值（也可以看做是神经元） ，后面是接着的卷积池化层。</p>
+<h2 id="2"><strong>2. 构建卷积神经网络的各种层</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>卷积神经网络主要由这几类层构成：输入层、卷积层，ReLU层、池化（Pooling）层和全连接层（全连接层和常规神经网络中的一样）。通过将这些层叠加起来，就可以构建一个完整的卷积神经网络。在实际应用中往往将卷积层与ReLU层共同称之为卷积层，<strong>所以卷积层经过卷积操作也是要经过激活函数的</strong>。具体说来，卷积层和全连接层（CONV/FC）对输入执行变换操作的时候，不仅会用到激活函数，还会用到很多参数，即神经元的权值w和偏差b；而ReLU层和池化层则是进行一个固定不变的函数操作。卷积层和全连接层中的参数会随着梯度下降被训练，这样卷积神经网络计算出的分类评分就能和训练集中的每个图像的标签吻合了。</p>
+<h2 id="21"><strong>2.1 卷积层</strong><a class="headerlink" href="#21" title="Permanent link">&para;</a></h2>
+<p>卷积层是构建卷积神经网络的<strong>核心层</strong>，它产生了网络中大部分的<strong>计算量</strong>。注意是计算量而不是参数量。</p>
+<h2 id="211">2.1.1 卷积层作用<a class="headerlink" href="#211" title="Permanent link">&para;</a></h2>
+<p>1. <strong>滤波器的作用或者说是卷积的作用</strong>。卷积层的参数是有一些可学习的滤波器集合构成的。每个滤波器在空间上（宽度和高度）都比较小，<strong>但是深度和输入数据一致</strong>（这一点很重要，后面会具体介绍）。直观地来说，网络会让滤波器学习到当它看到某些类型的视觉特征时就激活，具体的视觉特征可能是某些方位上的边界，或者在第一层上某些颜色的斑点，甚至可以是网络更高层上的蜂巢状或者车轮状图案。</p>
+<p>2. <strong>可以被看做是神经元的一个输出</strong>。神经元只观察输入数据中的一小部分，并且和空间上左右两边的所有神经元共享参数（因为这些数字都是使用同一个滤波器得到的结果）。</p>
+<p>3. <strong>降低参数的数量</strong>。这个由于卷积具有“权值共享”这样的特性，可以降低参数数量，达到降低计算开销，防止由于参数过多而造成过拟合。</p>
+<h2 id="212"><strong>2.1.2 感受野（重点理解）</strong><a class="headerlink" href="#212" title="Permanent link">&para;</a></h2>
+<p>在处理图像这样的高维度输入时，让每个神经元都与前一层中的所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接。<strong>该连接的空间大小叫做神经元的感受野</strong>（receptive field），它的尺寸是一个超参数（其实就是滤波器的空间尺寸）。<strong>在深度方向上，这个连接的大小总是和输入量的深度相等</strong>。需要再次强调的是，我们对待空间维度（宽和高）与深度维度是不同的：连接在空间（宽高）上是局部的，但是在深度上总是和输入数据的深度一致，这一点会在下面举例具体说明。</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-94792663768ebde313002cdbedb5297f_b.jpg" /></p>
+<p>图 2. 举例说明感受野的连接及尺寸说明</p>
+<p>在图 2 中展现的卷积神经网络的一部分，其中的红色为输入数据，假设输入数据体尺寸为[32x32x3]（比如CIFAR-10的RGB图像），如果感受野（或滤波器尺寸）是5x5，那么卷积层中的每个神经元会有输入数据体中[5x5x3]区域的权重，共5x5x3=75个权重（还要加一个偏差参数）。注意这个连接在深度维度上的大小必须为3，和输入数据体的深度一致。其中还有一点需要注意，对应一个感受野有75个权重，这75个权重是通过学习进行更新的，所以很大程度上这些权值之间是不相等（也就对于同一个卷积核，它对于与它连接的输入的每一层的权重都是独特的，不是同样的权重重复输入层层数那么多次就可以的）。在这里相当于前面的每一个层对应一个传统意义上的卷积模板，每一层与自己卷积模板做完卷积之后，再将各个层的结果加起来，再加上偏置，注意是<strong>一个偏置</strong>，无论输入输入数据是多少层，一个卷积核就对应一个偏置。</p>
+<h2 id="213"><strong>2.1.3 神经元的空间排列</strong><a class="headerlink" href="#213" title="Permanent link">&para;</a></h2>
+<p>感受野讲解了卷积层中每个神经元与<strong>输入数据体</strong>之间的连接方式，但是尚未讨论输出数据体中神经元的数量，以及它们的排列方式。3个超参数控制着<strong>输出数据体</strong>的尺寸：深度（depth），步长（stride）和零填充（zero-padding）。</p>
+<p>(1) 输出数据体的深度：它是一个超参数，和使用的滤波器的数量一致，而每个滤波器在输入数据中寻找一些不同的东西，即图像的某些特征。如图2 所示，将沿着深度方向排列、感受野相同的神经元集合称为<strong>深度列</strong>（depth column），也有人使用纤维（fibre）来称呼它们。</p>
+<p>(2) 在滑动滤波器的时候，必须指定步长。当步长为1，滤波器每次移动1个像素；当步长为2，滤波器滑动时每次移动2个像素，当然步长也可以是不常用的3，或者更大的数字，但这些在实际中很少使用）。这个操作会让输出数据体在空间上变小。</p>
+<p>(3) 有时候将输入数据体用0在边缘处进行填充是很方便的。这个零填充（zero-padding）的尺寸是一个超参数。零填充有一个良好性质，即可以控制输出数据体的空间尺寸（最常用的是用来保持输入数据体在空间上的尺寸，使得<strong>输入和输出的宽高都相等</strong>）。</p>
+<p>输出数据体在空间上的尺寸 <span class="arithmatex">\(W_2×H_2×D_2\)</span>W_2×H_2×D_2 可以通过输入数据体尺寸 <span class="arithmatex">\(W_1×H_1×D_1\)</span>W_1×H_1×D_1，卷积层中神经元的感受野尺寸（F），步长（S），滤波器数量（K）和零填充的数量（P）计算输出出来。</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-dae5834d45e0e3fb3243d2adbbb738a3_b.jpg" /></p>
+<p>一般说来，当步长S=1时，零填充的值是P=(F-1)/2，这样就能保证输入和输出数据体有相同的空间尺寸。</p>
+<p><strong>步长的限制</strong>：注意这些空间排列的超参数之间是相互限制的。举例说来，当输入尺寸W=10，不使用零填充 P=0，滤波器尺寸 F=3，此时步长 S=2 是行不通，因为 (W-F+2P)/S+1=(10-3+0)/2+1=4.5，结果不是整数，这就是说神经元不能整齐对称地滑过输入数据体。因此，这些超参数的设定就被认为是无效的，一个卷积神经网络库可能会报出一个错误，通过修改零填充值、修改输入数据体尺寸，或者其他什么措施来让设置合理。在后面的卷积神经网络结构小节中，读者可以看到合理地设置网络的尺寸让所有的维度都能正常工作，是相当让人头痛的事；而使用零填充和遵守其他一些设计策略将会有效解决这个问题。</p>
+<h2 id="214"><strong>2.1.4 权值共享</strong><a class="headerlink" href="#214" title="Permanent link">&para;</a></h2>
+<p>在卷积层中权值共享是用来控制参数的数量。假如在一个卷积核中，每一个感受野采用的都是不同的权重值（卷积核的值不同），那么这样的网络中参数数量将是十分巨大的。</p>
+<p>权值共享是基于这样的一个合理的假设：如果一个特征在计算某个空间位置 (x1,y1)(x1,y1) 的时候有用，那么它在计算另一个不同位置 (x2,y2)(x2,y2) 的时候也有用。基于这个假设，可以显著地减少参数数量。换言之，就是将深度维度上一个单独的2维切片看做深度切片（depth slice），比如一个数据体尺寸为[55x55x96]的就有96个深度切片，每个尺寸为[55x55]，其中在每个深度切片上的结果都使用同样的权重和偏差获得的。在这样的参数共享下，假如一个例子中的第一个卷积层有96个卷积核，那么就有96个不同的权重集了，一个权重集对应一个深度切片，如果卷积核的大小是 11x11的，图像是RGB 3 通道的，那么就共有96x11x11x3=34,848个不同的权重，总共有34,944个参数（因为要+96个偏差），并且在每个深度切片中的55x55 的结果使用的都是同样的参数。</p>
+<p>在反向传播的时候，都要计算每个神经元对它的权重的梯度，但是需要把同一个深度切片上的所有神经元对权重的梯度累加，这样就得到了对共享权重的梯度。这样，每个切片只更新一个权重集。这样做的原因可以通过下面这张图进行解释</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-9cb091229562146799d69b05cd2c02b8_b.jpg" /></p>
+<p>图 3. 将卷积层用全连接层的形式表示</p>
+<p>如上图所示，左侧的神经元是将每一个感受野展开为一列之后串联起来（就是展开排成一列，同一层神经元之间不连接）。右侧的 Deep1i 是深度为1的神经元的第 i 个， Deep2i 是深度为2的神经元的第 i 个，同一个深度的神经元的权值都是相同的，黄色的都是相同的（上面4个与下面4个的参数相同），蓝色都是相同的。所以现在回过头来看上面说的卷积神经网络的反向传播公式对梯度进行累加求和也是基于这点考虑（同一深度的不同神经元共用一组参数，所以累加）；而每个切片只更新一个权重集的原因也是这样的，因为从图3 中可以看到，<strong>不同深度的神经元不会公用相同的权重</strong>，所以只能更新一个权重集。</p>
+<p><strong>注意</strong>，如果在一个深度切片中的所有权重都使用同一个权重向量，那么卷积层的前向传播在每个深度切片中可以看做是在计算神经元权重和输入数据体的卷积（这就是“卷积层”名字由来）。这也是为什么总是将这些权重集合称为滤波器（filter）（或卷积核（kernel）），因为它们和输入进行了卷积。</p>
+<p><strong>注意</strong>，有时候参数共享假设可能没有意义，特别是当卷积神经网络的输入图像是一些明确的中心结构时候。这时候我们就应该期望在图片的不同位置学习到完全不同的特征（而一个卷积核滑动地与图像做卷积都是在学习相同的特征）。一个具体的例子就是输入图像是人脸，人脸一般都处于图片中心，而我们期望在不同的位置学习到不同的特征，比如眼睛特征或者头发特征可能（也应该）会在图片的不同位置被学习。在这个例子中，通常就放松参数共享的限制，将层称为局部连接层（Locally-Connected Layer）。</p>
+<h2 id="215"><strong>2.1.5 卷积层的超参数及选择</strong><a class="headerlink" href="#215" title="Permanent link">&para;</a></h2>
+<p>由于参数共享，每个滤波器包含 <span class="arithmatex">\(F⋅F⋅D_1\)</span>F⋅F⋅D_1 个权重（字符的具体含义在2.1.3中有介绍），卷积层一共有 <span class="arithmatex">\(F⋅F⋅D_1⋅K\)</span>F⋅F⋅D_1⋅K 个权重和 K 个偏置。在输出数据体中，第d个深度切片（空间尺寸是 <span class="arithmatex">\(W_2×H_2\)</span>W_2×H_2 ），用第d个滤波器和输入数据进行有效卷积运算的结果（使用步长S），最后在加上第d个偏差。</p>
+<p>对这些超参数，常见的设置是 F=3，S=1，P=1,F=3，S=1，P=1。同时设置这些超参数也有一些约定俗成的惯例和经验，可以在下面的“卷积神经网络结构”中查看。</p>
+<h2 id="216"><strong>2.1.6 卷积层演示</strong><a class="headerlink" href="#216" title="Permanent link">&para;</a></h2>
+<p>因为3D数据难以可视化，所以所有的数据（输入数据体是蓝色，权重数据体是红色，输出数据体是绿色）都采取将深度切片按照列的方式排列展现。输入数据体的尺寸是W1=5,H1=5,D1=3W1=5,H1=5,D1=3，卷积层参数K=2,F=3,S=2,P=1K=2,F=3,S=2,P=1。就是说，有2个滤波器，滤波器的尺寸是3⋅33⋅3，它们的步长是2。因此，输出数据体的空间尺寸是(5−3+2)/2+1=3(5−3+2)/2+1=3。注意输入数据体使用了零填充P=1P=1，所以输入数据体外边缘一圈都是0。下面的例子在绿色的输出激活数据上循环演示，展示了其中每个元素都是先通过蓝色的输入数据和红色的滤波器逐元素相乘，然后<strong>求其总和</strong>，最后加上偏差得来。</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-e7dd00d7fda722d5f8f70a9928e95a17_b.jpg" /></p>
+<p>图 4. 卷积层演示过程</p>
+<h2 id="217"><strong>2.1.7 用矩阵乘法实现卷积</strong><a class="headerlink" href="#217" title="Permanent link">&para;</a></h2>
+<p>卷积运算本质上就是在滤波器和输入数据的局部区域间做点积。卷积层的常用实现方式就是利用这一点，将卷积层的前向传播变成一个巨大的矩阵乘法。</p>
+<p>(1) 输入图像的局部区域被 im2coim2co l操作拉伸为列。比如输入是[227x227x3]，要与尺寸为11x11x3的滤波器以步长为4进行卷积，就依次取输入中的[11x11x3]数据块，然后将其拉伸为长度为11x11x3=363的列向量。重复进行这一过程，因为步长为4，所以经过卷积后的宽和高均为(227-11)/4+1=55，共有55x55=3,025个个神经元。因为每一个神经元实际上都是对应有 363 的列向量构成的感受野，即一共要从输入上取出 3025 个 363 维的列向量。所以经过im2col操作得到的输出矩阵 XcolXcol 的尺寸是[363x3025]，其中每列是拉伸的感受野。注意因为感受野之间有重叠，所以输入数据体中的数字在不同的列中可能有重复。</p>
+<p>(2) 卷积层的权重也同样被拉伸成行。举例，如果有96个尺寸为[11x11x3]的滤波器，就生成一个矩阵WrowWrow，尺寸为[96x363]。</p>
+<p>(3) 现在卷积的结果和进行一个大矩阵乘法 np.dot(Wrow,Xcol)np.dot(Wrow,Xcol) 是等价的了，能得到每个滤波器和每个感受野间的点积。在我们的例子中，这个操作的输出是[96x3025]，给出了每个滤波器在每个位置的点积输出。注意其中的 np.dotnp.dot计算的是矩阵乘法而不是点积。</p>
+<p>(4) 结果最后必须被重新变为合理的输出尺寸[55x55x96]。</p>
+<p>这个方法的缺点就是占用内存太多，因为在输入数据体中的某些值在XcolXcol中被复制了多次；优点在于矩阵乘法有非常多的高效底层实现方式（比如常用的BLAS API）。还有，同样的im2col思路可以用在池化操作中。反向传播：卷积操作的反向传播（同时对于数据和权重）还是一个卷积（但是和空间上翻转的滤波器）。使用一个1维的例子比较容易演示。<strong>这两部分中</strong>，不是很懂如何用矩阵的形式进行汇聚操作和反向传播。</p>
+<h2 id="218"><strong>2.1.8 其他形式的卷积操作</strong><a class="headerlink" href="#218" title="Permanent link">&para;</a></h2>
+<p><strong>1x1卷积</strong>：一些论文中使用了1x1的卷积，这个方法最早是在论文Network in Network中出现。人们刚开始看见这个1x1卷积的时候比较困惑，尤其是那些具有信号处理专业背景的人。因为信号是2维的，所以1x1卷积就没有意义。但是，在卷积神经网络中不是这样，因为这里是对3个维度进行操作，滤波器和输入数据体的深度是一样的。比如，如果输入是[32x32x3]，那么1x1卷积就是在高效地进行3维点积（因为输入深度是3个通道）；另外的一种想法是将这种卷积的结果看作是全连接层的一种实现方式，详见本文2.4.2 部分。</p>
+<p><strong>扩张卷积</strong>：最近一个研究（Fisher Yu和Vladlen Koltun的论文）给卷积层引入了一个新的叫扩张（dilation）的超参数。到目前为止，我们只讨论了卷积层滤波器是连续的情况。但是，让滤波器中元素之间有间隙也是可以的，这就叫做扩张。如图5 为进行1扩张。</p>
+<p><img alt="" src="https://pic3.zhimg.com/v2-f83dcfed915be7a79eb945d045c8c67e_b.jpg" /></p>
+<p>图 5. 扩张卷积的例子及扩张前后的叠加效果</p>
+<p>在某些设置中，扩张卷积与正常卷积结合起来非常有用，因为在很少的层数内更快地汇集输入图片的大尺度特征。比如，如果上下重叠2个3x3的卷积层，那么第二个卷积层的神经元的感受野是输入数据体中5x5的区域（可以成这些神经元的有效感受野是5x5，如图5 所示）。如果我们对卷积进行扩张，那么这个有效感受野就会迅速增长。</p>
+<h2 id="22"><strong>2.2 池化层</strong><a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p>通常在连续的卷积层之间会周期性地插入一个池化层。它的作用是逐渐降低数据体的空间尺寸，这样的话就能减少网络中参数的数量，使得计算资源耗费变少，也能有效控制过拟合。汇聚层使用 MAX 操作，对输入数据体的每一个深度切片独立进行操作，改变它的空间尺寸。最常见的形式是汇聚层使用尺寸2x2的滤波器，以步长为2来对每个深度切片进行降采样，将其中75%的激活信息都丢掉。每个MAX操作是从4个数字中取最大值（也就是在深度切片中某个2x2的区域），深度保持不变。</p>
+<p>汇聚层的一些公式：输入数据体尺寸 W_1⋅H_1⋅D_1 ，有两个超参数：空间大小FF和步长SS；输出数据体的尺寸 W_2⋅H_2⋅D_2 ，其中</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-676560fcadd292ae64f894be09c4d45c_b.jpg" /></p>
+<p>这里面与之前的卷积的尺寸计算的区别主要在于两点，首先在池化的过程中基本不会进行另补充；其次池化前后深度不变。</p>
+<p>在实践中，最大池化层通常只有两种形式：一种是F=3,S=2F=3,S=2，也叫重叠汇聚（overlapping pooling），另一个更常用的是F=2,S=2F=2,S=2。对更大感受野进行池化需要的池化尺寸也更大，而且往往对网络有破坏性。<br />
+<strong>普通池化（General Pooling）</strong>：除了最大池化，池化单元还可以使用其他的函数，比如平均池化（average pooling）或L-2范式池化（L2-norm pooling）。平均池化历史上比较常用，但是现在已经很少使用了。因为实践证明，最大池化的效果比平均池化要好。</p>
+<p><strong>反向传播</strong>：回顾一下反向传播的内容，其中max(x,y)函数的反向传播可以简单理解为将梯度只沿最大的数回传。因此，在向前传播经过汇聚层的时候，通常会把池中最大元素的索引记录下来（有时这个也叫作道岔（switches）），这样在反向传播的时候梯度的路由就很高效。(具体如何实现我也不是很懂)。</p>
+<p><strong>不使用汇聚层</strong>：很多人不喜欢汇聚操作，认为可以不使用它。比如在Striving for Simplicity: The All Convolutional Net一文中，提出使用一种只有重复的卷积层组成的结构，抛弃汇聚层。通过在卷积层中使用更大的步长来降低数据体的尺寸。有发现认为，在训练一个良好的生成模型时，弃用汇聚层也是很重要的。比如<strong>变化自编码器</strong>（VAEs：variational autoencoders）和<strong>生成性对抗网络</strong>（GANs：generative adversarial networks）。现在看起来，未<strong>来的卷积网络结构中，可能会很少使用甚至不使用汇聚层</strong>。</p>
+<h2 id="23"><strong>2.3 归一化层</strong><a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
+<p>在卷积神经网络的结构中，提出了很多不同类型的归一化层，有时候是为了实现在生物大脑中观测到的抑制机制。但是这些层渐渐都<strong>不再流行</strong>，因为实践证明<strong>它们的效果即使存在，也是极其有限的</strong>。</p>
+<h2 id="24"><strong>2.4 全连接层</strong><a class="headerlink" href="#24" title="Permanent link">&para;</a></h2>
+<p>这个常规神经网络中一样，它们的激活可以先用矩阵乘法，再加上偏差。</p>
+<h2 id="241"><strong>2.4.1 将卷积层转化成全连接层</strong><a class="headerlink" href="#241" title="Permanent link">&para;</a></h2>
+<p>对于任一个卷积层，都存在一个能实现和它一样的前向传播函数的全连接层。该全连接层的权重是一个巨大的矩阵，除了某些特定块（感受野），其余部分都是零；而在非 0 部分中，大部分元素都是相等的（权值共享），具体可以参考图3。如果把全连接层转化成卷积层，以输出层的 Deep11 为例，与它有关的输入神经元只有上面四个，所以在权重矩阵中与它相乘的元素，除了它所对应的4个，剩下的均为0，这也就解释了为什么权重矩阵中有为零的部分；另外要把“将全连接层转化成卷积层”和“用矩阵乘法实现卷积”区别开，这两者是不同的，后者本身还是在计算卷积，只不过将其展开为矩阵相乘的形式，并不是”将全连接层转化成卷积层”，所以除非权重中本身有零，否则用矩阵乘法实现卷积的过程中不会出现值为0的权重。</p>
+<h2 id="242"><strong>2.4.2 将全连接层转化成卷积层</strong><a class="headerlink" href="#242" title="Permanent link">&para;</a></h2>
+<p>任何全连接层都可以被转化为卷积层。比如，一个K=4096的全连接层，输入数据体的尺寸是 7×7×5127×7×512，这个全连接层可以被等效地看做一个F=7,P=0,S=1,K=4096,F=7,P=0,S=1,K=4096的卷积层。换句话说，就是将滤波器的尺寸设置为和输入数据体的尺寸设为一致的。因为只有一个单独的深度列覆盖并滑过输入数据体，所以输出将变成1×1×40961×1×4096，这个结果就和使用初始的那个全连接层一样了。这个实际上也很好理解，因为，对于其中的一个卷积滤波器，这个滤波器的的深度为512，也就是说，虽然这个卷积滤波器的输出只有1个，但是它的权重有7×7×5127×7×512，相当于卷积滤波器的输出为一个神经元，这个神经元与上一层的所有神经元相连接，而这样与前一层所有神经元相连接的神经元一共有4096个，这不就是一个全连接网络嘛~</p>
+<p>在上述的两种变换中，将全连接层转化为卷积层在实际运用中更加有用。假设一个卷积神经网络的输入是224x224x3的图像，一系列的卷积层和汇聚层将图像数据变为尺寸为7x7x512的激活数据体（在AlexNet中就是这样，通过使用5个汇聚层来对输入数据进行空间上的降采样，每次尺寸下降一半，所以最终空间尺寸为224/2/2/2/2/2=7）。从这里可以看到，AlexNet使用了两个尺寸为4096的全连接层，最后一个有1000个神经元的全连接层用于计算分类评分。我们可以将这3个全连接转化为3个卷积层：</p>
+<p>(1) 针对第一个连接区域是[7x7x512]的全连接层，令其滤波器尺寸为F=7，这样输出数据体就为[1x1x4096]了。</p>
+<p>(2) 针对第二个全连接层，令其滤波器尺寸为F=1，这样输出数据体为[1x1x4096]。</p>
+<p>(3) 对最后一个全连接层也做类似的，令其F=1，最终输出为[1x1x1000]。</p>
+<p>这样做的目的是让卷积网络在一张更大的输入图片上滑动，得到多个输出，这样的转化可以让我们在单个向前传播的过程中完成上述的操作。</p>
+<p>举个例子，如果我们想让224x224尺寸的浮窗，以步长为32在384x384的图片上滑动，把每个经停的位置都带入卷积网络，最后得到6x6个位置的类别得分。上述的把全连接层转换成卷积层的做法会更简便。如果224x224的输入图片经过卷积层和汇聚层之后得到了[7x7x512]的数组，那么，384x384的大图片直接经过同样的卷积层和汇聚层之后会得到[12x12x512]的数组（因为途径5个汇聚层，尺寸变为384/2/2/2/2/2 = 12）。然后再经过上面由3个全连接层转化得到的3个卷积层，最终得到[6x6x1000]的输出（因为(12 - 7)/1 + 1 = 6）。这个结果正是浮窗在原图经停的6x6个位置的得分！</p>
+<p>面对384x384的图像，让（含全连接层）的初始卷积神经网络以32像素的步长独立对图像中的224x224块进行多次评价，其效果和使用把全连接层变换为卷积层后的卷积神经网络进行一次前向传播是一样的。自然，相较于使用被转化前的原始卷积神经网络对所有36个位置进行迭代计算，使用转化后的卷积神经网络进行一次前向传播计算要高效得多，因为36次计算都在共享计算资源。</p>
+<p>这里有<strong>几个问题</strong>，首先<strong>为什么是以32为步长</strong>，如果我以<strong>64为步长</strong>呢？再或者如果我们<strong>想用步长小于32（如16）的浮窗怎么办</strong>？</p>
+<p>首先回答其中的第一个问题。这个是因为其中一个有五个汇聚层，因为25=3225=32,也就是在原始图像上的宽或者高增加 3232 个像素，经过这些卷积和汇聚后，将变为一个像素。现在进行举例说明，虽然例子并没有32那么大的尺寸，但是意义都是一样的。假设原始图像的大小为 4×4，卷积核 F=3,S=1,P=1F=3,S=1,P=1，而较大的图像的尺寸为 8×8，假设对图像进行两层的卷积池化，在较大的图像上以步长为4进行滑动（22=422=4），如图5所示</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-619aa40a7f02dcf61cda3fc968073754_b.jpg" /></p>
+<p>图 5. 以步长为4在原始图像上滑动取出4×4窗口再计算卷积的结果</p>
+<p>对原始图像（图5左图红框）进行卷积得到的结果是图5右图红色框内的结果，使用步长为4在较大的图像获得的结果为图5中右侧四种颜色加在一起的样子。所以以步长为4在8x8的图片上滑动，把每个经停的位置都带入卷积网络，最后得到2x2个位置的卷积结果，但是如果直接使用卷积核 F=3,S=1,P=1F=3,S=1,P=1进行两次卷积池化的话，得到的结果的大小显然也是4×4的。</p>
+<p>所以从获得结果来看，这两者是相同的，但是不同点在哪呢？如图6所示，是在整个图像上进行卷积运算和以步长为4在8x8的图片上滑动所经停的第一个位置，这两种方法使用相同的卷积核进行计算的对比图。</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-4ce114b0441bd5a803aedc94b91fb9b4_b.jpg" /></p>
+<p>图6. 使用整张图像和一部分图像计算某一点处的卷积</p>
+<p>如图6所示，左图代表使用整张图像时计算a点处的卷积，右图代表使用滑动的方法第一次经停图像上a点的卷积，两张图中的a点是同一个a点。虽然同一个卷积模板进行计算，但是在计算卷积的过程是不同的！因为在右图中a的右侧及右下侧是0，而在左图中是原始的像素值，所以计算的卷积一定是不同的。但是要怎么理解这样的差别呢？这要从补零的意义讲起，补零是因为如果不补零的话，图像经过卷积之后的尺寸会小于原始的尺寸，补零可以保证图像的尺寸不变，所以归根结底补零实际上是一种图像填充的方法。左图中a的右边及右下角的像素是原始图像的像素，相当于在计算a点的时候，不是用0进行的补充，而是原始像素值进行补充，这样的不仅可以保持卷积前后图像的大小不变，而且可以这种图像填充方法得到的结果显然要比填0更接近与原始图像，保留的信息更多。</p>
+<p><strong>小节</strong></p>
+<p>(1) 用一整图像进行卷积和在较大的图像上通过滑动窗提取出一个个子图象进行卷积得到的效果是相同的。</p>
+<p>(2) 可以这样做的主要原因在于将最后的全连接层改写成了卷积层。</p>
+<p>(3) 在一整章图像做卷积的效率要远远高于在图像上滑动的效率，因为前者只需要依次前向传播，而后者需要多次</p>
+<p>(4) 用整张图像计算与滑动窗口的方法对比，所补充的零更少（如上所讲，不用零而是用在其旁边的像素代替），提取的信息损失的更少。</p>
+<p>即，<strong>用整张图像直接计算卷积不仅仅在效率上高于使用滑动窗口的方法，而且更多的保留了图像的细节</strong>，完胜！</p>
+<p>另外还可以得到<strong>另一个结论</strong>，<strong>当在较大的图像上以步长为</strong> <strong>2L2L进行滑动时，其效果与在有直接在大图像上进行卷积得到的结果上以步长为1移动是一样的</strong>。如图5中的大红色框对应小红色框，大黄色框对应小黄色框。所以当步长为64时，将相当于以步长为2在大图的卷积结果上移动。</p>
+<p>对于第二个问题，如果我非要以12为步长呢？是可以的，只是这个时候所获得结果不再是如图5的那种滑动的计算方式了。还是举例说明，不过为了方便说明改变了一下尺寸。将步长32改为4，将步长16改为2进行分析。假如说原始的输入图像为一个 4×4 的图像，现在将使用一个比原来大的图像，是一个8×8的图像，使用卷积核为 4×4 大小，步长为4，则在图像进行卷积运算的如图6左侧的4个部分（红黄绿蓝），而图6 右侧的是步长为2时与原始相比增加的部分。将图 6中两个部分相加就可以得到步长为2它时所有进行卷积运算的部分了。</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-2352106e15a7f179b44dba1db284573f_b.jpg" /></p>
+<p>图6 .步长为4时原始图像进行卷积的部分及将步长改为2时比原来多出的部分</p>
+<p>获得步长为2的时进行卷积的区域。首先像之前一样对原始图像做以4为步长的卷积，这时进行卷积的部分就是图6中左侧的部分；其次将原始图片沿宽度方向平移2个像素之后，依旧进行步长为4的卷积，这个时候进行卷积的部分为图6中的红色部分和绿色部分；然后沿高度方向平移2个像素之后，按步长为4进行卷积，这个时候进行卷积的部分为图6中的蓝色部分和黄色部分；最后沿高度方向和宽度方向同时移动2个像素，按步长为4进行卷积，这个时候进行卷积的部分为图6中的紫色部分。将这些部分加在一起就是进行卷积运算你得所有区域了。</p>
+<p>这个结果明显是无法通过像图5中的那样滑动得到了，这样的方法所需要进行卷积的区域要远远大于以4为步长时所需要就进行卷积运算的区域；后续的卷积都是在这一卷积的结果上进行的，所以后面的都会发生改变。</p>
+<p>综上，步长为32的正整数倍只是保证获得结果可以像图5那样滑动的获得的下限值。</p>
+<h2 id="3"><strong>3. 卷积神经网络的结构</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>卷积神经网络通常是由三种层构成：卷积层，汇聚层（除非特别说明，一般就是最大值汇聚）和全连接层（简称FC）。ReLU激活函数也应该算是是一层，它逐元素地进行激活函数操作，常常将它与卷积层看作是同一层。</p>
+<h2 id="31"><strong>3.1 层的排列规律</strong><a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>卷积神经网络最常见的形式就是将一些卷积层和ReLU层放在一起，其后紧跟汇聚层，然后重复如此直到图像在空间上被缩小到一个足够小的尺寸，在某个地方过渡成成全连接层也较为常见。最后的全连接层得到输出，比如分类评分等。换句话说，最常见的卷积神经网络结构如下：</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-2dbb2fab147f00d3a2b0409a7a07175c_b.jpg" /></p>
+<p>其中*指的是重复次数，POOL?指的是一个可选的汇聚层。其中N &gt;=0,通常N&lt;=3,M&gt;=0,K&gt;=0,通常K&lt;3。例如，下面是一些常见的网络结构规律：</p>
+<ul>
+<li><strong>INPUT -&gt; FC</strong> ，实现一个线性分类器，此处N = M = K = 0。</li>
+<li><strong>INPUT -&gt; CONV -&gt; RELU -&gt; FC</strong>，单层的卷积神经网络</li>
+<li><strong>INPUT -&gt; [CONV -&gt; RELU -&gt; POOL]*2 -&gt; FC -&gt; RELU -&gt; FC</strong>，此处在每个汇聚层之间有一个卷积层，这种网络就是简单的多层的卷积神经网络。</li>
+<li><strong>INPUT -&gt; [CONV -&gt; RELU -&gt; CONV -&gt; RELU -&gt; POOL]*3 -&gt; [FC -&gt; RELU]*2 -&gt; FC</strong> ，此处每个汇聚层前有两个卷积层，这个思路适用于更大更深的网络（比如说这个思路就和VGG比较像），因为在执行具有破坏性的汇聚操作前，多重的卷积层可以从输入数据中学习到更多的复杂特征。</li>
+</ul>
+<p><strong>最新进展</strong>：传统的将层按照线性进行排列的方法已经受到了挑战，挑战来自谷歌的Inception结构和微软亚洲研究院的残差网络（Residual Net）结构。这两个网络的特征更加复杂，连接结构也不同。</p>
+<h2 id="32"><strong>3.2 卷积层的大小选择</strong><a class="headerlink" href="#32" title="Permanent link">&para;</a></h2>
+<p><strong>几个小滤波器卷积层的组合比一个大滤波器卷积层好</strong>。假设你一层一层地重叠了3个3x3的卷积层（层与层之间有非线性激活函数）。在这个排列下，第一个卷积层中的每个神经元都对输入数据体有一个3x3的视野。第二个卷积层上的神经元对第一个卷积层有一个3x3的视野，也就是对输入数据体有5x5的视野。同样，在第三个卷积层上的神经元对第二个卷积层有3x3的视野，也就是对输入数据体有7x7的视野。假设不采用这3个3x3的卷积层，二是使用一个单独的有7x7的感受野的卷积层，那么所有神经元的感受野也是7x7，但是就有一些缺点。首先，多个卷积层与非线性的激活层交替的结构，比单一卷积层的结构更能提取出深层的更好的特征。其次，假设所有的数据有C个通道，那么单独的7x7卷积层将会包含 C×(7×7×C)=49C^2 个参数，而3个3x3的卷积层的组合仅有 3×(C×(3×3×C))=27C^2 个参数。直观说来，最好选择带有小滤波器的卷积层组合，而不是用一个带有大的滤波器的卷积层。前者可以表达出输入数据中更多个强力特征，使用的参数也更少。唯一的不足是，在进行反向传播时，中间的卷积层可能会导致占用更多的内存。</p>
+<h2 id="33"><strong>3.3 层的尺寸设置规律</strong><a class="headerlink" href="#33" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>输入层</strong> ，应该能被2整除很多次。常用数字包括32（比如CIFAR-10），64，96（比如STL-10）或224（比如ImageNet卷积神经网络），384和512。</li>
+<li><strong>卷积层</strong> ，应该使用小尺寸滤波器（比如3x3或最多5x5），使用步长S=1。还有一点非常重要，就是对输入数据进行零填充，这样卷积层就不会改变输入数据在空间维度上的尺寸。比如，当F=3，那就使用P=1来保持输入尺寸。当F=5,P=2，一般对于任意F，当P=(F-1)/2的时候能保持输入尺寸。如果必须使用更大的滤波器尺寸（比如7x7之类），通常只用在第一个面对原始图像的卷积层上。</li>
+<li><strong>汇聚层</strong> ，负责对输入数据的空间维度进行降采样。最常用的设置是用用2x2感受野（即F=2）的最大值汇聚，步长为2（S=2）。注意这一操作将会把输入数据中75%的激活数据丢弃（因为对宽度和高度都进行了2的降采样）。另一个不那么常用的设置是使用3x3的感受野，步长为2。最大值汇聚的感受野尺寸很少有超过3的，因为汇聚操作过于激烈，易造成数据信息丢失，这通常会导致算法性能变差。</li>
+</ul>
+<p>上文中展示的两种设置(卷积层F=3，P=1，汇聚层F=2,P=2)是很好的，因为所有的卷积层都能保持其输入数据的空间尺寸，汇聚层只负责对数据体从空间维度进行降采样。如果使用的步长大于1并且不对卷积层的输入数据使用零填充，那么就必须非常仔细地监督输入数据体通过整个卷积神经网络结构的过程，确认所有的步长和滤波器都尺寸互相吻合，卷积神经网络的结构美妙对称地联系在一起。</p>
+<p><strong>为何使用零填充</strong>？使用零填充除了前面提到的可以让卷积层的输出数据保持和输入数据在空间维度的不变，还可以提高算法性能。如果卷积层值进行卷积而不进行零填充，那么数据体的尺寸就会略微减小，那么图像边缘的信息就会过快地损失掉。</p>
+<p><strong>因为内存限制所做的妥协</strong>：在某些案例（尤其是早期的卷积神经网络结构）中，基于前面的各种规则，内存的使用量迅速飙升。例如，使用64个尺寸为3x3的滤波器对224x224x3的图像进行卷积，零填充为1，得到的激活数据体尺寸是[224x224x64]。这个数量就是一千万的激活数据，或者就是72MB的内存（每张图就是这么多，激活函数和梯度都是）。因为GPU通常因为内存导致性能瓶颈，所以做出一些妥协是必须的。在实践中，人们倾向于在网络的第一个卷积层做出妥协。例如，可以妥协可能是在第一个卷积层使用步长为2，尺寸为7x7的滤波器（比如在ZFnet中）。在AlexNet中，滤波器的尺寸的11x11，步长为4。</p>
+<h2 id="4"><strong>4. 案例学习</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>下面是卷积神经网络领域中比较有名的几种结构：</p>
+<ul>
+<li><strong>LeNet</strong> ，第一个成功的卷积神经网络应用，是Yann LeCun在上世纪90年代实现的。当然，最著名还是被应用在识别数字和邮政编码等的LeNet结构。</li>
+<li><strong>AlexNet</strong> ，AlexNet卷积神经网络在计算机视觉领域中受到欢迎，它由Alex Krizhevsky，Ilya Sutskever和Geoff Hinton实现。AlexNet在2012年的ImageNet ILSVRC 竞赛中夺冠，性能远远超出第二名（16%的top5错误率，第二名是26%的top5错误率）。这个网络的结构和LeNet非常类似，但是更深更大，并且使用了<strong>层叠的卷积层</strong>来获取特征（<strong>之前通常是只用一个卷积层并且在其后马上跟着一个汇聚层</strong>）。</li>
+<li><strong>ZF Net</strong> ，Matthew Zeiler和Rob Fergus发明的网络在ILSVRC 2013比赛中夺冠，它被称为 ZFNet（Zeiler &amp; Fergus Net的简称）。它通过修改结构中的超参数来实现对AlexNet的改良，具体说来就是<strong>增加了中间卷积层的尺寸</strong>，<strong>让第一层的步长和滤波器尺寸更小</strong>。</li>
+<li><strong>GoogLeNet</strong> ，ILSVRC 2014的胜利者是谷歌的Szeged等实现的卷积神经网络。它主要的贡献就是实现了一个奠基模块，它能够<strong>显著地减少网络中参数的数量</strong>（AlexNet中有60M，该网络中只有4M）。还有，这个论文中<strong>没有使用卷积神经网络顶部使用全连接层</strong>，而是使用了一个平均汇聚，把大量不是很重要的参数都去除掉了。GooLeNet还有几种改进的版本，<strong>最新的一个是Inception-v4</strong>。</li>
+<li><strong>VGGNet</strong> ，ILSVRC 2014的第二名是Karen Simonyan和 Andrew Zisserman实现的卷积神经网络，现在称其为VGGNet。它主要的贡献是展示出网络的<strong>深度是算法优良性能的关键部分</strong>。他们最好的网络包含了16个卷积/全连接层。网络的结构非常一致，<strong>从头到尾全部使用的是3x3的卷积和2x2的汇聚</strong>。他们的预训练模型是可以在网络上获得并在Caffe中使用的。VGGNet**不好的一点是它耗费更多计算资源，并且使用了更多的参数，导致更多的内存占用（140M）<strong>。其中绝大多数的参数都是来自于第一个全连接层。后来发现这些</strong>全连接层即使被去除，对于性能也没有什么影响**，这样就显著降低了参数数量。</li>
+<li><strong>ResNet</strong> ，残差网络（Residual Network）是ILSVRC2015的胜利者，由何恺明等实现。它使用了特殊的<strong>跳跃链接</strong>，大量使用了<strong>批量归一化</strong>（batch normalization）。这个结构同样在最后没有使用全连接层。读者可以查看何恺明的的演讲（视频，PPT），以及一些使用Torch重现网络的实验。ResNet当前最好的卷积神经网络模型（2016年五月）。何开明等最近的工作是对原始结构做一些优化，可以看论文Identity Mappings in Deep Residual Networks，2016年3月发表。</li>
+</ul>
+<h2 id="41-vggnet">4.1 VGGNet的细节<a class="headerlink" href="#41-vggnet" title="Permanent link">&para;</a></h2>
+<p>我们进一步对VGGNet的细节进行分析学习。整个VGGNet中的卷积层都是以步长为1进行3x3的卷积，使用了1的零填充，汇聚层都是以步长为2进行了2x2的最大值汇聚。可以写出处理过程中每一步数据体尺寸的变化，然后对数据尺寸和整体权重的数量进行查看：</p>
+<div class="highlight"><pre><span></span><code>INPUT: [224x224x3]        memory:  224*224*3=150K   weights: 0
+CONV3-64: [224x224x64]  memory:  224*224*64=3.2M   weights: (3*3*3)*64 = 1,728
+CONV3-64: [224x224x64]  memory:  224*224*64=3.2M   weights: (3*3*64)*64 = 36,864
+POOL2: [112x112x64]  memory:  112*112*64=800K   weights: 0
+CONV3-128: [112x112x128]  memory:  112*112*128=1.6M   weights: (3*3*64)*128 = 73,728
+CONV3-128: [112x112x128]  memory:  112*112*128=1.6M   weights: (3*3*128)*128 = 147,456
+POOL2: [56x56x128]  memory:  56*56*128=400K   weights: 0
+CONV3-256: [56x56x256]  memory:  56*56*256=800K   weights: (3*3*128)*256 = 294,912
+CONV3-256: [56x56x256]  memory:  56*56*256=800K   weights: (3*3*256)*256 = 589,824
+CONV3-256: [56x56x256]  memory:  56*56*256=800K   weights: (3*3*256)*256 = 589,824
+POOL2: [28x28x256]  memory:  28*28*256=200K   weights: 0
+CONV3-512: [28x28x512]  memory:  28*28*512=400K   weights: (3*3*256)*512 = 1,179,648
+CONV3-512: [28x28x512]  memory:  28*28*512=400K   weights: (3*3*512)*512 = 2,359,296
+CONV3-512: [28x28x512]  memory:  28*28*512=400K   weights: (3*3*512)*512 = 2,359,296
+POOL2: [14x14x512]  memory:  14*14*512=100K   weights: 0
+CONV3-512: [14x14x512]  memory:  14*14*512=100K   weights: (3*3*512)*512 = 2,359,296
+CONV3-512: [14x14x512]  memory:  14*14*512=100K   weights: (3*3*512)*512 = 2,359,296
+CONV3-512: [14x14x512]  memory:  14*14*512=100K   weights: (3*3*512)*512 = 2,359,296
+POOL2: [7x7x512]  memory:  7*7*512=25K  weights: 0
+FC: [1x1x4096]  memory:  4096  weights: 7*7*512*4096 = 102,760,448
+FC: [1x1x4096]  memory:  4096  weights: 4096*4096 = 16,777,216
+FC: [1x1x1000]  memory:  1000 weights: 4096*1000 = 4,096,000
+
+TOTAL memory: 24M * 4 bytes ~= 93MB / image (only forward! ~*2 for bwd)
+TOTAL params: 138M parameters
+</code></pre></div>
+<p>注意，<strong>大部分的内存和计算时间都被前面的卷积层占用，大部分的参数都用在后面的全连接层</strong>，这在卷积神经网络中是比较常见的。在这个例子中，<strong>全部参数有140M，但第一个全连接层就包含了100M的参数</strong>。</p>
+<h2 id="5"><strong>5. 计算上的考量</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>在构建卷积神经网络结构时，最大的瓶颈是内存瓶颈，所以如何降低内存消耗量是一个值得思考的问题。三种内存占用来源：</p>
+<ul>
+<li><strong>1</strong> 来自中间数据体尺寸：卷积神经网络中的每一层中都有激活数据体的原始数值，以及损失函数对它们的梯度（和激活数据体尺寸一致）。通常，大部分激活数据都是在网络中靠前的层中（比如第一个卷积层）。在训练时，这些数据需要放在内存中，因为反向传播的时候还会用到。但是在测试时可以聪明点：让网络在测试运行时候每层都只存储当前的激活数据，然后丢弃前面层的激活数据，这样就能减少巨大的激活数据量。这实际上是底层问题，在编写框架的过程中，设计者会进行这方面的考虑。</li>
+<li><strong>2</strong> 来自参数尺寸：即整个网络的参数的数量，在反向传播时它们的梯度值，以及使用momentum、Adagrad或RMSProp等方法进行最优化时的每一步计算缓存。因此，存储参数向量的内存通常需要在参数向量的容量基础上乘以3或者更多。</li>
+<li><strong>3</strong> 卷积神经网络实现还有各种零散的内存占用，比如成批的训练数据，扩充的数据等等。</li>
+</ul>
+<p>一旦对于所有这些数值的数量有了一个大略估计（包含激活数据，梯度和各种杂项），数量应该转化为以GB为计量单位。把这个值乘以4，得到原始的字节数（因为每个浮点数占用4个字节，如果是双精度浮点数那就是占用8个字节），然后多次除以1024分别得到占用内存的KB，MB，最后是GB计量。如果你的网络工作得不好，一个常用的方法是降低批尺寸（batch size），因为绝大多数的内存都是被激活数据消耗掉了。</p>
+<p><strong>以上就是本文的全部内容，如果你想在AI领域继续深入学习，光掌握这些理论知识还是不够的，所以我还是推荐这个3天深度学习框架原理实战训练营给你们，希望你们可以通过这个课程构建属于你自己的神经网络框架，点击下方链接 ↓ ↓ ↓ 就可以免费报名啦~</strong></p>
+<p><strong>---------------------------------</strong></p>
+<h2 id="_1">卷积层输出大小计算<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#1_1">1、无填充</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#11_1_2">1.1 公式1</a></li>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#12__15">1.2 示例</a></li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#2_22">2、有填充</a></li>
+<li>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#211_2_23">2.1.1 公式2</a></li>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#212__38">2.1.2 示例</a></li>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#221_3_41">2.2.1 公式3</a></li>
+<li><a href="https://blog.csdn.net/weixin_43715601/article/details/120626768#222__54">2.2.2 示例</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="1_1">1、无填充<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\begin{aligned}\\ H' &amp;= \frac{(H-K[0])}{S[0]} + 1 \\ \\ W’ &amp;=\frac{(W-K[1])}{S[1]} + 1 \end{aligned}
+\]</div>
+<p>其中:</p>
+<ul>
+<li>K 表示卷积核大小(kernel_size=(kernel_height,kernel_width))</li>
+<li>S 表示步幅大小(stride_size=(stride_height, stride_width))</li>
+<li>H 表示输入的张量的行长, H′ 表示输出张量的行长</li>
+<li>W 表示输入的张量的列长, W′ 表示输出张量的列长</li>
+</ul>
+<p>ps:这里的除法为<code>向下取整</code></p>
+<h3 id="2_1">2、有填充<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\begin{aligned}\\ H' &amp;= \frac{(H-K[0] + 2*Pad[0])}{S[0]} + 1 \\ \\ W’ &amp;=\frac{(W-K[1] + 2*Pad[1])}{S[1]} + 1 \end{aligned}
+\]</div>
+<p>其中:</p>
+<ul>
+<li>K 表示卷积核大小(kernel_size=(kernel_height,kernel_width))</li>
+<li>S S S表示步幅大小(stride_size=(stride_height, stride_width))</li>
+<li>Pad表示填充大小(padding_size=(up_down, left_right))</li>
+<li>H表示输入的张量的行长, H ′表示输出张量的行长</li>
+<li>W表示输入的张量的列长, W ′表示输出张量的列长</li>
+</ul>
+<p>ps:pytorch卷积操作中的默认填充方式为(上下、左右)<code>对称0填充</code>,且具体操作流程为<code>先填充后卷积</code>。</p>
+<div class="arithmatex">\[
+\begin{aligned}\\ H' &amp;= \frac{(H-K[0] + Pad[0] + Pad[1])}{S[0]} + 1 \\ \\ W’ &amp;=\frac{(W-K[1] + Pad[2] + Pad[3])}{S[1]} + 1 \end{aligned}
+\]</div>
+<p>其中:</p>
+<ul>
+<li>K 表示卷积核大小(kernel_size=(kernel_height,kernel_width))</li>
+<li>S 表示步幅大小(stride_size=(stride_height, stride_width))</li>
+<li>Pad表示填充大小(padding_size=(left, right, up, down))</li>
+<li>H表示输入的张量的行长, H′表示输出张量的行长</li>
+<li>W表示输入的张量的列长, W′表示输出张量的列长</li>
+</ul>
+<h3 id="_2">实例：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>cove1d：用于文本数据，只对宽度进行卷积，对高度不进行卷积 cove2d：用于图像数据，对宽度和高度都进行卷积</p>
+<div class="highlight"><pre><span></span><code>import torch
+from torch.autograd import Variable
+#torch.autograd提供了类和函数用来对任意标量函数进行求导。
+import torch.nn as nn
+import torch.nn.functional as F
+class MNISTConvNet(nn.Module):
+    def __init__(self):
+        super(MNISTConvNet, self).__init__()
+        &#39;&#39;&#39;
+这是对继承自父类的属性进行初始化。而且是用父类的初始化方法来初始化继承的属性。
+也就是说，子类继承了父类的所有属性和方法，父类属性自然会用父类方法来进行初始化。
+        &#39;&#39;&#39;
+#定义网络结构
+        self.conv1 = nn.Conv2d(1, 10, 5)
+        self.pool1 = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(10, 20, 5)
+        self.pool2 = nn.MaxPool2d(2, 2)
+        self.fc1 = nn.Linear(320, 50)
+        self.fc2 = nn.Linear(50, 10)
+    def forward(self, input):
+        x = self.pool1(F.relu(self.conv1(input)))
+        x = self.pool2(F.relu(self.conv2(x)))
+        x = self.fc2(self.fc1(x))
+        return x
+
+net = MNISTConvNet()
+print(net)
+input = Variable(torch.randn(1, 1, 28, 28))
+out = net(input)
+print(out.size())
+</code></pre></div>
+<p><strong>我们在这个实例中抽出网络结构部分：</strong></p>
+<div class="highlight"><pre><span></span><code>self.conv1 = nn.Conv2d(1, 10, 5)
+        self.pool1 = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(10, 20, 5)
+        self.pool2 = nn.MaxPool2d(2, 2)
+        self.fc1 = nn.Linear(320, 50)
+        self.fc2 = nn.Linear(50, 10)
+    def forward(self, input):
+        x = self.pool1(F.relu(self.conv1(input)))
+        x = self.pool2(F.relu(self.conv2(x)))
+        x = self.fc2(self.fc1(x))
+</code></pre></div>
+<p>网络结构为：</p>
+<div class="highlight"><pre><span></span><code>conv2d--maxpool2d--conv2d--maxpool2d--fullyconnect--fullyconnect
+</code></pre></div>
+<p>输入图片大小为：input = Variable(torch.randn(1, 1, 28, 28)) 即28 * 28的单通道图片，即：1<em> 28</em> 28</p>
+<p><strong>（1）conv2d(1,10,5)</strong></p>
+<div class="highlight"><pre><span></span><code>N：输出大小
+W：输入大小  28*28
+F：卷积核大小 5*5
+P：填充值的大小    0默认值
+S：步长大小  1默认值
+N=(W-F+2P)/S+1=(28-5 + 2*0)/1 + 1 = 24
+输出为：10*24*24
+</code></pre></div>
+<p>Conv2d(输入通道数, 输出通道数, kernel_size（长和宽）)，当卷积核为方形时，只写一个就可以，<strong>卷积核不是方形时，长和宽都要写</strong>，如下：</p>
+<div class="highlight"><pre><span></span><code>self.conv1 = nn.Conv2d(2, 4, （5，2）)
+</code></pre></div>
+<hr />
+<p><strong>（2）MaxPool2d(2, 2)</strong> MaxPool 最大池化层，池化层在卷积神经网络中的作用在于特征融合和降维。池化也是一种类似的卷积操作，只是池化层的所有参数都是超参数，是学习不到的。maxpooling有局部不变性而且可以提取显著特征的同时降低模型的参数，从而降低模型的过拟合。只提取了显著特征，而舍弃了不显著的信息，是的模型的参数减少了，从而一定程度上可以缓解过拟合的产生。</p>
+<div class="highlight"><pre><span></span><code>class torch.nn.MaxPool2d(kernel_size, stride=None, padding=0, dilation=1, return_indices=False, ceil_mode=False)
+N：输出大小
+W：输入大小  24*24
+F：卷积核大小 2*2
+P：填充值的大小    0默认值
+S：步长大小  默认值为kernel_size
+N=(W-F+2P)/S+1=(24-2 + 2*0)/2 + 1 = 12
+输出为：10*12*12
+</code></pre></div>
+<hr />
+<p><strong>（3）conv2d(10,20,5)</strong></p>
+<div class="highlight"><pre><span></span><code>N：输出大小
+W：输入大小  12*12
+F：卷积核大小 5*5
+P：填充值的大小    0默认值
+S：步长大小  1默认值
+N=(W-F+2P)/S+1=(12-5 + 2*0)/1 + 1 = 8
+输出为：20*8*8
+</code></pre></div>
+<hr />
+<p><strong>（4）MaxPool2d(2, 2)</strong></p>
+<div class="highlight"><pre><span></span><code>N：输出大小
+W：输入大小  8*8
+F：卷积核大小 5*5
+P：填充值的大小    0默认值
+S：步长大小  
+N=(W-F+2P)/S+1=(8-2 + 2*0)/2 + 1 = 4
+输出为：20*4*4
+</code></pre></div>
+<hr />
+<p><strong>（5）fully-connect Linear(320, 50)</strong></p>
+<div class="highlight"><pre><span></span><code>输入：20*4*4=320
+输出：50
+</code></pre></div>
+<hr />
+<p><strong>（6）fully-connect Linear(50, 10)</strong></p>
+<div class="highlight"><pre><span></span><code>输入：50
+输出：10
+</code></pre></div>
+<hr />
+<p>所以，整个实例的训练过程数据流动为：</p>
+<div class="highlight"><pre><span></span><code>def forward(self, input):
+        x = self.pool1(F.relu(self.conv1(input)))
+        x = self.pool2(F.relu(self.conv2(x)))
+        x = self.fc2(self.fc1(x))
+</code></pre></div>
+<p>激活函数Relu，在神经网络中的作用是：通过加权的输入进行非线性组合产生非线性决策边界 简单的来说就是增加非线性作用。 在深层卷积神经网络中使用激活函数同样也是增加非线性，主要是为了解决sigmoid函数带来的梯度消失问题。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

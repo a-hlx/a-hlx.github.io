@@ -1,0 +1,2710 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Coursera-ML-AndrewNg-Notes-master/week7/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Week7 - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week7
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    12.1 优化目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    12.2 大边界的直观理解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    12.3 大边界分类背后的数学（选修）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-1" class="md-nav__link">
+    12.4 核函数1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#125-2" class="md-nav__link">
+    12.5 核函数2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    12.6 使用支持向量机
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<h1 id="7">第7周<a class="headerlink" href="#7" title="Permanent link">&para;</a></h1>
+<p>[TOC]
+十二、支持向量机(Support Vector Machines)</p>
+<hr />
+<h3 id="121">12.1 优化目标<a class="headerlink" href="#121" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 1 - Optimization Objective (15 min).mkv</p>
+<p>到目前为止,你已经见过一系列不同的学习算法。在监督学习中，许多学习算法的性能都非常类似，因此，重要的不是你该选择使用学习算法<strong>A</strong>还是学习算法<strong>B</strong>，而更重要的是，应用这些算法时，所创建的大量数据在应用这些算法时，表现情况通常依赖于你的水平。比如：你为学习算法所设计的特征量的选择，以及如何选择正则化参数，诸如此类的事。还有一个更加强大的算法广泛的应用于工业界和学术界，它被称为支持向量机(<strong>Support Vector Machine</strong>)。与逻辑回归和神经网络相比，支持向量机，或者简称<strong>SVM</strong>，在学习复杂的非线性方程时提供了一种更为清晰，更加强大的方式。因此，在接下来的视频中，我会探讨这一算法。在稍后的课程中，我也会对监督学习算法进行简要的总结。当然，仅仅是作简要描述。但对于支持向量机，鉴于该算法的强大和受欢迎度，在本课中，我会花许多时间来讲解它。它也是我们所介绍的最后一个监督学习算法。</p>
+<p>正如我们之前开发的学习算法，我们从优化目标开始。那么，我们开始学习这个算法。为了描述支持向量机，事实上，我将会从逻辑回归开始展示我们如何一点一点修改来得到本质上的支持向量机。</p>
+<p><img alt="" src="../images/3d12b07f13a976e916d0c707fd03153c.png" /></p>
+<p>那么，在逻辑回归中我们已经熟悉了这里的假设函数形式，和右边的S型激励函数。然而，为了解释一些数学知识.我将用<span class="arithmatex">\(z\)</span> 表示<span class="arithmatex">\(\theta^Tx\)</span>。</p>
+<p>现在考虑下我们想要逻辑回归做什么：如果有一个 <span class="arithmatex">\(y=1\)</span>的样本，我的意思是不管是在训练集中或是在测试集中，又或者在交叉验证集中，总之是 <span class="arithmatex">\(y=1\)</span>，现在我们希望<span class="arithmatex">\({{h}_{\theta }}\left( x \right)\)</span> 趋近1。因为我们想要正确地将此样本分类，这就意味着当 <span class="arithmatex">\({{h}_{\theta }}\left( x \right)\)</span>趋近于1时，<span class="arithmatex">\(\theta^Tx\)</span> 应当远大于0，这里的<span class="arithmatex">\(&gt;&gt;\)</span>意思是远远大于0。这是因为由于 <span class="arithmatex">\(z\)</span> 表示 <span class="arithmatex">\(\theta^Tx\)</span>，当 <span class="arithmatex">\(z\)</span>远大于0时，即到了该图的右边，你不难发现此时逻辑回归的输出将趋近于1。相反地，如果我们有另一个样本，即<span class="arithmatex">\(y=0\)</span>。我们希望假设函数的输出值将趋近于0，这对应于<span class="arithmatex">\(\theta^Tx\)</span>，或者就是 <span class="arithmatex">\(z\)</span> 会远小于0，因为对应的假设函数的输出值趋近0。</p>
+<p><img alt="" src="../images/66facb7fa8eddc3a860e420588c981d5.png" /></p>
+<p>如果你进一步观察逻辑回归的代价函数，你会发现每个样本 <span class="arithmatex">\((x,y)\)</span>都会为总代价函数，增加这里的一项，因此，对于总代价函数通常会有对所有的训练样本求和，并且这里还有一个<span class="arithmatex">\(1/m\)</span>项，但是，在逻辑回归中，这里的这一项就是表示一个训练样本所对应的表达式。现在，如果我将完整定义的假设函数代入这里。那么，我们就会得到每一个训练样本都影响这一项。</p>
+<p>现在，先忽略 <span class="arithmatex">\(1/m\)</span> 这一项，但是这一项是影响整个总代价函数中的这一项的。</p>
+<p>现在，一起来考虑两种情况：</p>
+<p>一种是<span class="arithmatex">\(y\)</span>等于1的情况；另一种是 <span class="arithmatex">\(y\)</span> 等于0的情况。</p>
+<p>在第一种情况中，假设 <span class="arithmatex">\(y=1\)</span> ，此时在目标函数中只需有第一项起作用，因为<span class="arithmatex">\(y=1\)</span>时，<span class="arithmatex">\((1-y)\)</span>项将等于0。因此，当在 <span class="arithmatex">\(y=1\)</span> 的样本中时，即在 $(x, y) $中 ，我们得到 <span class="arithmatex">\(y=1\)</span> <span class="arithmatex">\(-\log(1-\frac{1}{1+e^{-z}})​\)</span>这样一项，这里同上一张幻灯片一致。</p>
+<p>我用 <span class="arithmatex">\(z\)</span> 表示<span class="arithmatex">\(\theta^Tx\)</span>，即： <span class="arithmatex">\(z= \theta^Tx\)</span>。当然，在代价函数中，<span class="arithmatex">\(y\)</span> 前面有负号。我们只是这样表示，如果 <span class="arithmatex">\(y=1\)</span> 代价函数中，这一项也等于1。这样做是为了简化此处的表达式。如果画出关于<span class="arithmatex">\(z\)</span> 的函数，你会看到左下角的这条曲线，我们同样可以看到，当<span class="arithmatex">\(z\)</span> 增大时，也就是相当于<span class="arithmatex">\(\theta^Tx\)</span>增大时，<span class="arithmatex">\(z\)</span> 对应的值会变的非常小。对整个代价函数而言，影响也非常小。这也就解释了，为什么逻辑回归在观察到正样本<span class="arithmatex">\(y=1\)</span>时，试图将<span class="arithmatex">\(\theta^Tx\)</span>设置得非常大。因为，在代价函数中的这一项会变的非常小。</p>
+<p>现在开始建立支持向量机，我们从这里开始：</p>
+<p>我们会从这个代价函数开始，也就是<span class="arithmatex">\(-\log(1-\frac{1}{1+e^{-z}})\)</span>一点一点修改，让我取这里的<span class="arithmatex">\(z=1\)</span> 点，我先画出将要用的代价函数。</p>
+<p><img alt="" src="../images/b4b43ee98bff9f5e73d841af1fa316bf.png" /></p>
+<p>新的代价函数将会水平的从这里到右边(图外)，然后我再画一条同逻辑回归非常相似的直线，但是，在这里是一条直线，也就是我用紫红色画的曲线，就是这条紫红色的曲线。那么，到了这里已经非常接近逻辑回归中使用的代价函数了。只是这里是由两条线段组成，即位于右边的水平部分和位于左边的直线部分，先别过多的考虑左边直线部分的斜率，这并不是很重要。但是，这里我们将使用的新的代价函数，是在<span class="arithmatex">\(y=1\)</span>的前提下的。你也许能想到，这应该能做同逻辑回归中类似的事情，但事实上，在之后的优化问题中，这会变得更坚定，并且为支持向量机，带来计算上的优势。例如，更容易计算股票交易的问题等等。</p>
+<p>目前，我们只是讨论了<span class="arithmatex">\(y=1\)</span>的情况，另外一种情况是当<span class="arithmatex">\(y=0\)</span>时，此时如果你仔细观察代价函数只留下了第二项，因为第一项被消除了。如果当<span class="arithmatex">\(y=0\)</span>时，那么这一项也就是0了。所以上述表达式只留下了第二项。因此，这个样本的代价或是代价函数的贡献。将会由这一项表示。并且，如果你将这一项作为<span class="arithmatex">\(z\)</span>的函数，那么，这里就会得到横轴<span class="arithmatex">\(z\)</span>。现在，你完成了支持向量机中的部分内容，同样地，我们要替代这一条蓝色的线，用相似的方法。</p>
+<p><img alt="" src="../images/ab372c9161375a4f7b6f0bd4a69560e9.png" /></p>
+<p>如果我们用一个新的代价函数来代替，即这条从0点开始的水平直线，然后是一条斜线，像上图。那么，现在让我给这两个方程命名，左边的函数，我称之为<span class="arithmatex">\({\cos}t_1{(z)}\)</span>，同时，右边函数我称它为<span class="arithmatex">\({\cos}t_0{(z)}\)</span>。这里的下标是指在代价函数中，对应的 <span class="arithmatex">\(y=1\)</span> 和 <span class="arithmatex">\(y=0\)</span> 的情况，拥有了这些定义后，现在，我们就开始构建支持向量机。</p>
+<p><img alt="" src="../images/59541ab1fda4f92d6f1b508c8e29ab1c.png" /></p>
+<p>这是我们在逻辑回归中使用代价函数<span class="arithmatex">\(J(\theta)\)</span>。也许这个方程看起来不是非常熟悉。这是因为之前有个负号在方程外面，但是，这里我所做的是，将负号移到了表达式的里面，这样做使得方程看起来有些不同。对于支持向量机而言，实质上我们要将这替换为<span class="arithmatex">\({\cos}t_1{(z)}\)</span>，也就是<span class="arithmatex">\({\cos}t_1{(\theta^Tx)}\)</span>，同样地，我也将这一项替换为<span class="arithmatex">\({\cos}t_0{(z)}\)</span>，也就是代价<span class="arithmatex">\({\cos}t_0{(\theta^Tx)}\)</span>。这里的代价函数<span class="arithmatex">\({\cos}t_1\)</span>，就是之前所提到的那条线。此外，代价函数<span class="arithmatex">\({\cos}t_0\)</span>，也是上面所介绍过的那条线。因此，对于支持向量机，我们得到了这里的最小化问题，即:</p>
+<p><img alt="" src="../images/4ac1ca54cb0f2c465ab81339baaf9186.png" /></p>
+<p>然后，再加上正则化参数。现在，按照支持向量机的惯例，事实上，我们的书写会稍微有些不同，代价函数的参数表示也会稍微有些不同。</p>
+<p>首先，我们要除去<span class="arithmatex">\(1/m\)</span>这一项，当然，这仅仅是由于人们使用支持向量机时，对比于逻辑回归而言，不同的习惯所致，但这里我所说的意思是：你知道，我将要做的是仅仅除去<span class="arithmatex">\(1/m\)</span>这一项，但是，这也会得出同样的 <span class="arithmatex">\({{\theta }}\)</span> 最优值，好的，因为<span class="arithmatex">\(1/m\)</span> 仅是个常量，因此，你知道在这个最小化问题中，无论前面是否有<span class="arithmatex">\(1/m\)</span> 这一项，最终我所得到的最优值<span class="arithmatex">\({{\theta }}\)</span>都是一样的。这里我的意思是，先给你举一个样本，假定有一最小化问题：即要求当<span class="arithmatex">\((u-5)^2+1\)</span>取得最小值时的<span class="arithmatex">\(u\)</span>值，这时最小值为：当<span class="arithmatex">\(u=5\)</span>时取得最小值。</p>
+<p>现在，如果我们想要将这个目标函数乘上常数10，这里我的最小化问题就变成了：求使得<span class="arithmatex">\(10×(u-5)^2+10\)</span>最小的值<span class="arithmatex">\(u\)</span>，然而，使得这里最小的<span class="arithmatex">\(u\)</span>值仍为5。因此将一些常数乘以你的最小化项，这并不会改变最小化该方程时得到<span class="arithmatex">\(u\)</span>值。因此，这里我所做的是删去常量<span class="arithmatex">\(m\)</span>。也相同的，我将目标函数乘上一个常量<span class="arithmatex">\(m\)</span>，并不会改变取得最小值时的<span class="arithmatex">\({{\theta }}\)</span>值。</p>
+<p>第二点概念上的变化，我们只是指在使用支持向量机时，一些如下的标准惯例，而不是逻辑回归。因此，对于逻辑回归，在目标函数中，我们有两项：第一个是训练样本的代价，第二个是我们的正则化项，我们不得不去用这一项来平衡。这就相当于我们想要最小化<span class="arithmatex">\(A\)</span>加上正则化参数<span class="arithmatex">\(\lambda\)</span>，然后乘以其他项<span class="arithmatex">\(B\)</span>对吧？这里的<span class="arithmatex">\(A\)</span>表示这里的第一项，同时我用<strong>B</strong>表示第二项，但不包括<span class="arithmatex">\(\lambda\)</span>，我们不是优化这里的<span class="arithmatex">\(A+\lambda\times B\)</span>。我们所做的是通过设置不同正则参数<span class="arithmatex">\(\lambda\)</span>达到优化目的。这样，我们就能够权衡对应的项，是使得训练样本拟合的更好。即最小化<span class="arithmatex">\(A\)</span>。还是保证正则参数足够小，也即是对于<strong>B</strong>项而言，但对于支持向量机，按照惯例，我们将使用一个不同的参数替换这里使用的<span class="arithmatex">\(\lambda\)</span>来权衡这两项。你知道，就是第一项和第二项我们依照惯例使用一个不同的参数称为<span class="arithmatex">\(C\)</span>，同时改为优化目标，<span class="arithmatex">\(C×A+B\)</span>。
+因此，在逻辑回归中，如果给定<span class="arithmatex">\(\lambda\)</span>，一个非常大的值，意味着给予<span class="arithmatex">\(B\)</span>更大的权重。而这里，就对应于将<span class="arithmatex">\(C\)</span> 设定为非常小的值，那么，相应的将会给<span class="arithmatex">\(B\)</span>比给<span class="arithmatex">\(A\)</span>更大的权重。因此，这只是一种不同的方式来控制这种权衡或者一种不同的方法，即用参数来决定是更关心第一项的优化，还是更关心第二项的优化。当然你也可以把这里的参数<span class="arithmatex">\(C\)</span> 考虑成<span class="arithmatex">\(1/\lambda\)</span>，同 <span class="arithmatex">\(1/\lambda\)</span>所扮演的角色相同，并且这两个方程或这两个表达式并不相同，因为<span class="arithmatex">\(C=1/\lambda\)</span>，但是也并不全是这样，如果当<span class="arithmatex">\(C=1/\lambda\)</span>时，这两个优化目标应当得到相同的值，相同的最优值 <span class="arithmatex">\({{\theta }}\)</span>。因此，就用它们来代替。那么，我现在删掉这里的<span class="arithmatex">\(\lambda\)</span>，并且用常数<span class="arithmatex">\(C\)</span>来代替。因此，这就得到了在支持向量机中我们的整个优化目标函数。然后最小化这个目标函数，得到<strong>SVM</strong> 学习到的参数<span class="arithmatex">\(C\)</span>。</p>
+<p><img alt="" src="../images/5a63e35db410fdb57c76de97ea888278.png" /></p>
+<p>最后有别于逻辑回归输出的概率。在这里，我们的代价函数，当最小化代价函数，获得参数<span class="arithmatex">\({{\theta }}\)</span>时，支持向量机所做的是它来直接预测<span class="arithmatex">\(y\)</span>的值等于1，还是等于0。因此，这个假设函数会预测1。当<span class="arithmatex">\(\theta^Tx\)</span>大于或者等于0时，或者等于0时，所以学习参数<span class="arithmatex">\({{\theta }}\)</span>就是支持向量机假设函数的形式。那么，这就是支持向量机数学上的定义。</p>
+<p>在接下来的视频中，让我们再回去从直观的角度看看优化目标，实际上是在做什么，以及SVM的假设函数将会学习什么，同时也会谈谈如何做些许修改，学习更加复杂、非线性的函数。</p>
+<h3 id="122">12.2 大边界的直观理解<a class="headerlink" href="#122" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 2 - Large Margin Intuition (11 min).mkv</p>
+<p>人们有时将支持向量机看作是大间距分类器。在这一部分，我将介绍其中的含义，这有助于我们直观理解<strong>SVM</strong>模型的假设是什么样的。</p>
+<p><img alt="" src="../images/cc66af7cbd88183efc07c8ddf09cbc73.png" /></p>
+<p>这是我的支持向量机模型的代价函数，在左边这里我画出了关于<span class="arithmatex">\(z\)</span>的代价函数<span class="arithmatex">\({\cos}t_1{(z)}\)</span>，此函数用于正样本，而在右边这里我画出了关于<span class="arithmatex">\(z\)</span>的代价函数<span class="arithmatex">\({\cos}t_0{(z)}\)</span>，横轴表示<span class="arithmatex">\(z\)</span>，现在让我们考虑一下，最小化这些代价函数的必要条件是什么。如果你有一个正样本，<span class="arithmatex">\(y=1\)</span>，则只有在<span class="arithmatex">\(z&gt;=1\)</span>时，代价函数<span class="arithmatex">\({\cos}t_1{(z)}\)</span>才等于0。</p>
+<p>换句话说，如果你有一个正样本，我们会希望<span class="arithmatex">\(\theta^Tx&gt;=1\)</span>，反之，如果<span class="arithmatex">\(y=0\)</span>，我们观察一下，函数<span class="arithmatex">\({\cos}t_0{(z)}\)</span>，它只有在<span class="arithmatex">\(z&lt;=-1\)</span>的区间里函数值为0。这是支持向量机的一个有趣性质。事实上，如果你有一个正样本<span class="arithmatex">\(y=1\)</span>，则其实我们仅仅要求<span class="arithmatex">\(\theta^Tx\)</span>大于等于0，就能将该样本恰当分出，这是因为如果<span class="arithmatex">\(\theta^Tx\)</span>>0大的话，我们的模型代价函数值为0，类似地，如果你有一个负样本，则仅需要<span class="arithmatex">\(\theta^Tx\)</span>\&lt;=0就会将负例正确分离，但是，支持向量机的要求更高，不仅仅要能正确分开输入的样本，即不仅仅要求<span class="arithmatex">\(\theta^Tx\)</span>>0，我们需要的是比0值大很多，比如大于等于1，我也想这个比0小很多，比如我希望它小于等于-1，这就相当于在支持向量机中嵌入了一个额外的安全因子，或者说安全的间距因子。</p>
+<p>当然，逻辑回归做了类似的事情。但是让我们看一下，在支持向量机中，这个因子会导致什么结果。具体而言，我接下来会考虑一个特例。我们将这个常数<span class="arithmatex">\(C\)</span>设置成一个非常大的值。比如我们假设<span class="arithmatex">\(C\)</span>的值为100000或者其它非常大的数，然后来观察支持向量机会给出什么结果？</p>
+<p><img alt="" src="../images/12ebd5973230e8fdf279ae09e187f437.png" /></p>
+<p>如果 <span class="arithmatex">\(C\)</span>非常大，则最小化代价函数的时候，我们将会很希望找到一个使第一项为0的最优解。因此，让我们尝试在代价项的第一项为0的情形下理解该优化问题。比如我们可以把<span class="arithmatex">\(C\)</span>设置成了非常大的常数，这将给我们一些关于支持向量机模型的直观感受。</p>
+<p><span class="arithmatex">\(\min_\limits{\theta}C\sum_\limits{i=1}^{m}\left[y^{(i)}{\cos}t_{1}\left(\theta^{T}x^{(i)}\right)+\left(1-y^{(i)}\right){\cos}t\left(\theta^{T}x^{(i)}\right)\right]+\frac{1}{2}\sum_\limits{i=1}^{n}\theta^{2}_{j}\)</span></p>
+<p>我们已经看到输入一个训练样本标签为<span class="arithmatex">\(y=1​\)</span>，你想令第一项为0，你需要做的是找到一个<span class="arithmatex">\({{\theta }}​\)</span>，使得<span class="arithmatex">\(\theta^Tx&gt;=1​\)</span>，类似地，对于一个训练样本，标签为<span class="arithmatex">\(y=0​\)</span>，为了使<span class="arithmatex">\({\cos}t_0{(z)}​\)</span> 函数的值为0，我们需要<span class="arithmatex">\(\theta^Tx&lt;=-1​\)</span>。因此，现在考虑我们的优化问题。选择参数，使得第一项等于0，就会导致下面的优化问题，因为我们将选择参数使第一项为0，因此这个函数的第一项为0，因此是<span class="arithmatex">\(C​\)</span>乘以0加上二分之一乘以第二项。这里第一项是<span class="arithmatex">\(C​\)</span>乘以0，因此可以将其删去，因为我知道它是0。</p>
+<p>这将遵从以下的约束：<span class="arithmatex">\(\theta^Tx^{(i)}&gt;=1\)</span>，如果 <span class="arithmatex">\(y^{(i)}\)</span>是等于1 的，<span class="arithmatex">\(\theta^Tx^{(i)}&lt;=-1\)</span>，如果样本<span class="arithmatex">\(i\)</span>是一个负样本，这样当你求解这个优化问题的时候，当你最小化这个关于变量<span class="arithmatex">\({{\theta }}\)</span>的函数的时候，你会得到一个非常有趣的决策边界。</p>
+<p><img alt="" src="../images/b1f670fddd9529727aa16a559d49d151.png" /></p>
+<p>具体而言，如果你考察这样一个数据集，其中有正样本，也有负样本，可以看到这个数据集是线性可分的。我的意思是，存在一条直线把正负样本分开。当然有多条不同的直线，可以把正样本和负样本完全分开。</p>
+<p><img alt="" src="../images/01105c3afd1315acf0577f8493137dcc.png" /></p>
+<p>比如，这就是一个决策边界可以把正样本和负样本分开。但是多多少少这个看起来并不是非常自然是么?</p>
+<p>或者我们可以画一条更差的决策界，这是另一条决策边界，可以将正样本和负样本分开，但仅仅是勉强分开，这些决策边界看起来都不是特别好的选择，支持向量机将会选择这个黑色的决策边界，相较于之前我用粉色或者绿色画的决策界。这条黑色的看起来好得多，黑线看起来是更稳健的决策界。在分离正样本和负样本上它显得的更好。数学上来讲，这是什么意思呢？这条黑线有更大的距离，这个距离叫做间距(<strong>margin</strong>)。</p>
+<p><img alt="" src="../images/e68e6ca3275f433330a7981971eb4f16.png" /></p>
+<p>当画出这两条额外的蓝线，我们看到黑色的决策界和训练样本之间有更大的最短距离。然而粉线和蓝线离训练样本就非常近，在分离样本的时候就会比黑线表现差。因此，这个距离叫做支持向量机的间距，而这是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本。因此支持向量机有时被称为<strong>大间距分类器</strong>，而这其实是求解上一页幻灯片上优化问题的结果。</p>
+<p>我知道你也许想知道求解上一页幻灯片中的优化问题为什么会产生这个结果？它是如何产生这个大间距分类器的呢？我知道我还没有解释这一点。</p>
+<p>我将会从直观上略述为什么这个优化问题会产生大间距分类器。总之这个图示有助于你理解支持向量机模型的做法，即努力将正样本和负样本用最大的间距分开。</p>
+<p><img alt="" src="../images/dd6239efad3d3ee7a89a28574d7795b3.png" /></p>
+<p>在本节课中关于大间距分类器，我想讲最后一点：我们将这个大间距分类器中的正则化因子常数<span class="arithmatex">\(C\)</span>设置的非常大，我记得我将其设置为了100000，因此对这样的一个数据集，也许我们将选择这样的决策界，从而最大间距地分离开正样本和负样本。那么在让代价函数最小化的过程中，我们希望找出在<span class="arithmatex">\(y=1\)</span>和<span class="arithmatex">\(y=0\)</span>两种情况下都使得代价函数中左边的这一项尽量为零的参数。如果我们找到了这样的参数，则我们的最小化问题便转变成：</p>
+<p><img alt="" src="../images/f4b6dee99cfb4352b3cac5287002e8de.png" /></p>
+<p>事实上，支持向量机现在要比这个大间距分类器所体现得更成熟，尤其是当你使用大间距分类器的时候，你的学习算法会受异常点(outlier) 的影响。比如我们加入一个额外的正样本。</p>
+<p><img alt="" src="../images/b8fbe2f6ac48897cf40497a2d034c691.png" /></p>
+<p>在这里，如果你加了这个样本，为了将样本用最大间距分开，也许我最终会得到一条类似这样的决策界，对么？就是这条粉色的线，仅仅基于一个异常值，仅仅基于一个样本，就将我的决策界从这条黑线变到这条粉线，这实在是不明智的。而如果正则化参数<span class="arithmatex">\(C\)</span>，设置的非常大，这事实上正是支持向量机将会做的。它将决策界，从黑线变到了粉线，但是如果<span class="arithmatex">\(C\)</span> 设置的小一点，<strong>如果你将C设置的不要太大，则你最终会得到这条黑线，</strong>当然数据如果不是线性可分的，如果你在这里有一些正样本或者你在这里有一些负样本，则支持向量机也会将它们恰当分开。因此，大间距分类器的描述，仅仅是从直观上给出了正则化参数<span class="arithmatex">\(C\)</span>非常大的情形，同时，要提醒你<span class="arithmatex">\(C\)</span>的作用类似于<span class="arithmatex">\(1/\lambda\)</span>，<span class="arithmatex">\(\lambda\)</span>是我们之前使用过的正则化参数。这只是<span class="arithmatex">\(C\)</span>非常大的情形，或者等价地 <span class="arithmatex">\(\lambda\)</span> 非常小的情形。你最终会得到类似粉线这样的决策界，但是实际上应用支持向量机的时候，<strong>当<span class="arithmatex">\(C\)</span>不是非常非常大的时候，它可以忽略掉一些异常点的影响，得到更好的决策界。</strong>甚至当你的数据不是线性可分的时候，支持向量机也可以给出好的结果。</p>
+<p>回顾 <span class="arithmatex">\(C=1/\lambda\)</span>，因此：</p>
+<p><span class="arithmatex">\(C\)</span> 较大时，相当于 <span class="arithmatex">\(\lambda\)</span> 较小，可能会导致过拟合，高方差。</p>
+<p><span class="arithmatex">\(C\)</span> 较小时，相当于<span class="arithmatex">\(\lambda\)</span>较大，可能会导致低拟合，高偏差。</p>
+<p>我们稍后会介绍支持向量机的偏差和方差，希望在那时候关于如何处理参数的这种平衡会变得更加清晰。我希望，这节课给出了一些关于为什么支持向量机被看做大间距分类器的直观理解。它用最大间距将样本区分开，尽管从技术上讲，这只有当参数<span class="arithmatex">\(C\)</span>是非常大的时候是真的，但是它对于理解支持向量机是有益的。</p>
+<p>本节课中我们略去了一步，那就是我们在幻灯片中给出的优化问题。为什么会是这样的？它是如何得出大间距分类器的？我在本节中没有讲解，在下一节课中，我将略述这些问题背后的数学原理，来解释这个优化问题是如何得到一个大间距分类器的。</p>
+<h3 id="123">12.3 大边界分类背后的数学（选修）<a class="headerlink" href="#123" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 3 - Mathematics Behind Large Margin Classification (Optional) (20 min).mkv</p>
+<p>在本节课中，我将介绍一些大间隔分类背后的数学原理。本节为选修部分，你完全可以跳过它，但是听听这节课可能让你对支持向量机中的优化问题，以及如何得到大间距分类器，产生更好的直观理解。</p>
+<p><img alt="" src="../images/55e05845c636c8c99c03e6e29337d8c4.png" /></p>
+<p>首先，让我来给大家复习一下关于向量内积的知识。假设我有两个向量，<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>，我将它们写在这里。两个都是二维向量，我们看一下，<span class="arithmatex">\(u^T v\)</span>的结果。<span class="arithmatex">\(u^T v\)</span>也叫做向量<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>之间的内积。由于是二维向量，我可以将它们画在这个图上。我们说，这就是向量<span class="arithmatex">\(u\)</span>即在横轴上，取值为某个<span class="arithmatex">\({{u}_{1}}\)</span>，而在纵轴上，高度是某个<span class="arithmatex">\({{u}_{2}}\)</span>作为<span class="arithmatex">\(u\)</span>的第二个分量。现在，很容易计算的一个量就是向量<span class="arithmatex">\(u\)</span>的范数。<span class="arithmatex">\(\left\| u \right\|\)</span>表示<span class="arithmatex">\(u\)</span>的范数，即<span class="arithmatex">\(u\)</span>的长度，即向量<span class="arithmatex">\(u\)</span>的欧几里得长度。根据毕达哥拉斯定理，<span class="arithmatex">\(\left\| u \right\|=\sqrt{u_{1}^{2}+u_{2}^{2}}\)</span>，这是向量<span class="arithmatex">\(u\)</span>的长度，它是一个实数。现在你知道了这个的长度是多少了。我刚刚画的这个向量的长度就知道了。</p>
+<p>现在让我们回头来看向量<span class="arithmatex">\(v\)</span> ，因为我们想计算内积。<span class="arithmatex">\(v\)</span>是另一个向量，它的两个分量<span class="arithmatex">\({{v}_{1}}\)</span>和<span class="arithmatex">\({{v}_{2}}\)</span>是已知的。向量<span class="arithmatex">\(v\)</span>可以画在这里，现在让我们来看看如何计算<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>之间的内积。这就是具体做法，我们将向量<span class="arithmatex">\(v\)</span>投影到向量<span class="arithmatex">\(u\)</span>上，我们做一个直角投影，或者说一个90度投影将其投影到<span class="arithmatex">\(u\)</span>上，接下来我度量这条红线的长度。我称这条红线的长度为<span class="arithmatex">\(p\)</span>，因此<span class="arithmatex">\(p\)</span>就是长度，或者说是向量<span class="arithmatex">\(v\)</span>投影到向量<span class="arithmatex">\(u\)</span>上的量，我将它写下来，<span class="arithmatex">\(p\)</span>是<span class="arithmatex">\(v\)</span>投影到向量<span class="arithmatex">\(u\)</span>上的长度，因此可以将<span class="arithmatex">\({{u}^{T}}v=p\centerdot \left\| u \right\|\)</span>，或者说<span class="arithmatex">\(u\)</span>的长度。这是计算内积的一种方法。如果你从几何上画出<span class="arithmatex">\(p\)</span>的值，同时画出<span class="arithmatex">\(u\)</span>的范数，你也会同样地计算出内积，答案是一样的。另一个计算公式是：<span class="arithmatex">\(u^T v\)</span>就是<span class="arithmatex">\(\left[ {{u}_{1}}\text{ }{{u}_{2}} \right]\)</span> 这个一行两列的矩阵乘以<span class="arithmatex">\(v\)</span>。因此可以得到<span class="arithmatex">\({{u}_{1}}\times {{v}_{1}}+{{u}_{2}}\times {{v}_{2}}\)</span>。根据线性代数的知识，这两个公式会给出同样的结果。顺便说一句，<span class="arithmatex">\(u^Tv=v^Tu\)</span>。因此如果你将<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>交换位置，将<span class="arithmatex">\(u\)</span>投影到<span class="arithmatex">\(v\)</span>上，而不是将<span class="arithmatex">\(v\)</span>投影到<span class="arithmatex">\(u\)</span>上，然后做同样地计算，只是把<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>的位置交换一下，你事实上可以得到同样的结果。申明一点，在这个等式中<span class="arithmatex">\(u\)</span>的范数是一个实数，<span class="arithmatex">\(p\)</span>也是一个实数，因此<span class="arithmatex">\(u^T v\)</span>就是两个实数正常相乘。</p>
+<p><img alt="" src="../images/44ad37bce4b7e03835095dccbd2a7b7a.png" /></p>
+<p>最后一点，需要注意的就是<span class="arithmatex">\(p\)</span>值，<span class="arithmatex">\(p\)</span>事实上是有符号的，即它可能是正值，也可能是负值。我的意思是说，如果<span class="arithmatex">\(u\)</span>是一个类似这样的向量，<span class="arithmatex">\(v\)</span>是一个类似这样的向量，<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>之间的夹角大于90度，则如果将<span class="arithmatex">\(v\)</span>投影到<span class="arithmatex">\(u\)</span>上，会得到这样的一个投影，这是<span class="arithmatex">\(p\)</span>的长度，在这个情形下我们仍然有<span class="arithmatex">\({{u}^{T}}v\)</span>是等于<span class="arithmatex">\(p\)</span>乘以<span class="arithmatex">\(u\)</span>的范数。唯一一点不同的是<span class="arithmatex">\(p\)</span>在这里是负的。在内积计算中，如果<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span>之间的夹角小于90度，那么那条红线的长度<span class="arithmatex">\(p\)</span>是正值。然而如果这个夹角大于90度，则<span class="arithmatex">\(p\)</span>将会是负的。就是这个小线段的长度是负的。如果它们之间的夹角大于90度，两个向量之间的内积也是负的。这就是关于向量内积的知识。我们接下来将会使用这些关于向量内积的性质试图来理解支持向量机中的目标函数。</p>
+<p><img alt="" src="../images/03bd4b3ff69e327f7949c3d2a73eed8a.png" /></p>
+<p>这就是我们先前给出的支持向量机模型中的目标函数。为了讲解方便，我做一点简化，仅仅是为了让目标函数更容易被分析。</p>
+<p><img alt="" src="../images/3cc61c6e5fe85c2a7bf8170f5bbfd8c3.png" /></p>
+<p>我接下来忽略掉截距，令<span class="arithmatex">\({{\theta }_{0}}=0\)</span>，这样更容易画示意图。我将特征数<span class="arithmatex">\(n\)</span>置为2，因此我们仅有两个特征<span class="arithmatex">\({{x}_{1}},{{x}_{2}}\)</span>，现在我们来看一下目标函数，支持向量机的优化目标函数。当我们仅有两个特征，即<span class="arithmatex">\(n=2\)</span>时，这个式子可以写作：<span class="arithmatex">\(\frac{1}{2}\left({\theta_1^2+\theta_2^2}\right)=\frac{1}{2}\left(\sqrt{\theta_1^2+\theta_2^2}\right)^2\)</span>，我们只有两个参数<span class="arithmatex">\({{\theta }_{1}},{{\theta }_{2}}\)</span>。你可能注意到括号里面的这一项是向量<span class="arithmatex">\({{\theta }}\)</span>的范数，或者说是向量<span class="arithmatex">\({{\theta }}\)</span>的长度。我的意思是如果我们将向量<span class="arithmatex">\({{\theta }}\)</span>写出来，那么我刚刚画红线的这一项就是向量<span class="arithmatex">\({{\theta }}\)</span>的长度或范数。这里我们用的是之前学过的向量范数的定义，事实上这就等于向量<span class="arithmatex">\({{\theta }}\)</span>的长度。</p>
+<p>当然你可以将其写作<span class="arithmatex">\({{\theta }_{0}}\text{,}{{\theta }_{1}},{{\theta }_{2}}\)</span>，如果<span class="arithmatex">\({{\theta }_{0}}=0\)</span>，那就是<span class="arithmatex">\({{\theta }_{1}},{{\theta }_{2}}\)</span>的长度。在这里我将忽略<span class="arithmatex">\({{\theta }_{0}}\)</span>，这样来写<span class="arithmatex">\(\theta\)</span>的范数，它仅仅和<span class="arithmatex">\({{\theta }_{1}},{{\theta }_{2}}\)</span>有关。但是，数学上不管你是否包含，其实并没有差别，因此在我们接下来的推导中去掉<span class="arithmatex">\({{\theta }_{0}}\)</span>不会有影响这意味着我们的目标函数是等于<span class="arithmatex">\(\frac{1}{2}\left\| \theta \right\|^2\)</span>。因此支持向量机做的全部事情，就是<strong>极小化参数向量</strong><span class="arithmatex">\({{\theta }}\)</span><strong>范数的平方，或者说长度的平方</strong>。</p>
+<p>现在我将要看看这些项：<span class="arithmatex">\(\theta^{T}x\)</span>更深入地理解它们的含义。给定参数向量<span class="arithmatex">\(\theta <span class="arithmatex">\(给定一个样本\)</span>x\)</span>，这等于什么呢?在前一页幻灯片上，我们画出了在不同情形下，<span class="arithmatex">\(u^Tv\)</span>的示意图，我们将会使用这些概念，<span class="arithmatex">\(\theta <span class="arithmatex">\(和\)</span>x^{(i)}\)</span>就类似于<span class="arithmatex">\(u\)</span>和<span class="arithmatex">\(v\)</span> 。</p>
+<p><img alt="" src="../images/4510b8fbc90ba2b233bb6996529f2df1.png" /></p>
+<p>让我们看一下示意图：我们考察一个单一的训练样本，我有一个正样本在这里，用一个叉来表示这个样本<span class="arithmatex">\(x^{(i)}​\)</span>，意思是在水平轴上取值为<span class="arithmatex">\(x_1^{(i)}​\)</span>，在竖直轴上取值为<span class="arithmatex">\(x_2^{(i)}​\)</span>。这就是我画出的训练样本。尽管我没有将其真的看做向量。它事实上就是一个始于原点，终点位置在这个训练样本点的向量。现在，我们有一个参数向量我会将它也画成向量。我将<span class="arithmatex">\(θ_1​\)</span>画在横轴这里，将<span class="arithmatex">\(θ_2​\)</span> 画在纵轴这里，那么内积<span class="arithmatex">\(θ^T x^{(i)}\)</span> 将会是什么呢？</p>
+<p>使用我们之前的方法，我们计算的方式就是我将训练样本投影到参数向量<span class="arithmatex">\({{\theta }}\)</span>，然后我来看一看这个线段的长度，我将它画成红色。我将它称为<span class="arithmatex">\(p^{(i)}\)</span>用来表示这是第 <span class="arithmatex">\(i\)</span>个训练样本在参数向量<span class="arithmatex">\({{\theta }}\)</span>上的投影。根据我们之前幻灯片的内容，我们知道的是<span class="arithmatex">\(θ^Tx^{(i)}\)</span>将会等于<span class="arithmatex">\(p\)</span> 乘以向量 <span class="arithmatex">\(θ\)</span> 的长度或范数。这就等于<span class="arithmatex">\(\theta_1\cdot{x_1^{(i)}}+\theta_2\cdot{x_2^{(i)}}\)</span>。这两种方式是等价的，都可以用来计算<span class="arithmatex">\(θ\)</span>和<span class="arithmatex">\(x^{(i)}\)</span>之间的内积。</p>
+<p>这告诉了我们什么呢？这里表达的意思是：这个<span class="arithmatex">\(θ^Tx^{(i)}&gt;=1\)</span>  或者<span class="arithmatex">\(θ^Tx^{(i)}&lt;-1\)</span>的,约束是可以被<span class="arithmatex">\(p^{(i)}\cdot{x}&gt;=1\)</span>这个约束所代替的。因为<span class="arithmatex">\(θ^Tx^{(i)}=p^{(i)}\cdot{\left\| \theta \right\|}\)</span> ，将其写入我们的优化目标。我们将会得到没有了约束，<span class="arithmatex">\(θ^Tx^{(i)}\)</span>而变成了<span class="arithmatex">\(p^{(i)}\cdot{\left\| \theta \right\|}\)</span>。</p>
+<p><img alt="" src="../images/912cb43058cee46ddf51598b7538968c.png" /></p>
+<p>需要提醒一点，我们之前曾讲过这个优化目标函数可以被写成等于<span class="arithmatex">\(\frac{1}{2}\left\| \theta \right\|^2\)</span>。</p>
+<p>现在让我们考虑下面这里的训练样本。现在，继续使用之前的简化，即<span class="arithmatex">\({{\theta }_{0}}=0\)</span>，我们来看一下支持向量机会选择什么样的决策界。这是一种选择，我们假设支持向量机会选择这个决策边界。这不是一个非常好的选择，因为它的间距很小。这个决策界离训练样本的距离很近。我们来看一下为什么支持向量机不会选择它。</p>
+<p>对于这样选择的参数<span class="arithmatex">\({{\theta }}\)</span>，可以看到参数向量<span class="arithmatex">\({{\theta }}\)</span>事实上是和决策界是90度正交的，因此这个绿色的决策界对应着一个参数向量<span class="arithmatex">\({{\theta }}\)</span>这个方向,顺便提一句<span class="arithmatex">\({{\theta }_{0}}=0\)</span>的简化仅仅意味着决策界必须通过原点<span class="arithmatex">\((0,0)\)</span>。现在让我们看一下这对于优化目标函数意味着什么。</p>
+<p><img alt="" src="../images/20725ba601c1c90d1024e50fc24c579b.png" /></p>
+<p>比如这个样本，我们假设它是我的第一个样本<span class="arithmatex">\(x^{(1)}\)</span>，如果我考察这个样本到参数<span class="arithmatex">\({{\theta }}\)</span>的投影，投影是这个短的红线段，就等于<span class="arithmatex">\(p^{(1)}\)</span>，它非常短。类似地，这个样本如果它恰好是<span class="arithmatex">\(x^{(2)}\)</span>，我的第二个训练样本，则它到<span class="arithmatex">\({{\theta }}\)</span>的投影在这里。我将它画成粉色，这个短的粉色线段是<span class="arithmatex">\(p^{(2)}\)</span>，即第二个样本到我的参数向量<span class="arithmatex">\({{\theta }}\)</span>的投影。因此，这个投影非常短。<span class="arithmatex">\(p^{(2)}\)</span>事实上是一个负值，<span class="arithmatex">\(p^{(2)}\)</span>是在相反的方向，这个向量和参数向量<span class="arithmatex">\({{\theta }}\)</span>的夹角大于90度，<span class="arithmatex">\(p^{(2)}\)</span>的值小于0。</p>
+<p>我们会发现这些<span class="arithmatex">\(p^{(i)}\)</span>将会是非常小的数，因此当我们考察优化目标函数的时候，对于正样本而言，我们需要<span class="arithmatex">\(p^{(i)}\cdot{\left\| \theta \right\|}&gt;=1\)</span>,但是如果 <span class="arithmatex">\(p^{(i)}\)</span>在这里非常小,那就意味着我们需要<span class="arithmatex">\({{\theta }}\)</span>的范数非常大.因为如果 <span class="arithmatex">\(p^{(1)}\)</span> 很小,而我们希望<span class="arithmatex">\(p^{(1)}\cdot{\left\| \theta \right\|}&gt;=1\)</span>,令其实现的唯一的办法就是这两个数较大。如果 <span class="arithmatex">\(p^{(1)}\)</span> 小，我们就希望<span class="arithmatex">\({{\theta }}\)</span>的范数大。类似地，对于负样本而言我们需要<span class="arithmatex">\(p^{(2)}\cdot{\left\|\theta \right\|}&lt;=-1\)</span>。我们已经在这个样本中看到<span class="arithmatex">\(p^{(2)}\)</span>会是一个非常小的数，因此唯一的办法就是<span class="arithmatex">\({{\theta }}\)</span>的范数变大。但是我们的目标函数是希望找到一个参数<span class="arithmatex">\({{\theta }}\)</span>，它的范数是小的。因此，这看起来不像是一个好的参数向量<span class="arithmatex">\({{\theta }}\)</span>的选择。</p>
+<p><img alt="" src="../images/5eab58ad9cb54b3b6fda8f6c96efff24.png" /></p>
+<p>相反的，来看一个不同的决策边界。比如说，支持向量机选择了这个决策界，现在状况会有很大不同。如果这是决策界，这就是相对应的参数<span class="arithmatex">\({{\theta }}\)</span>的方向，因此，在这个决策界之下，垂直线是决策界。使用线性代数的知识，可以说明，这个绿色的决策界有一个垂直于它的向量<span class="arithmatex">\({{\theta }}\)</span>。现在如果你考察你的数据在横轴<span class="arithmatex">\(x\)</span>上的投影，比如这个我之前提到的样本，我的样本<span class="arithmatex">\(x^{(1)}\)</span>，当我将它投影到横轴<span class="arithmatex">\(x\)</span>上，或说投影到<span class="arithmatex">\({{\theta }}\)</span>上，就会得到这样<span class="arithmatex">\(p^{(1)}\)</span>。它的长度是<span class="arithmatex">\(p^{(1)}\)</span>，另一个样本，那个样本是<span class="arithmatex">\(x^{(2)}\)</span>。我做同样的投影，我会发现，<span class="arithmatex">\(p^{(2)}\)</span>的长度是负值。你会注意到现在<span class="arithmatex">\(p^{(1)}\)</span> 和<span class="arithmatex">\(p^{(2)}\)</span>这些投影长度是长多了。如果我们仍然要满足这些约束，<span class="arithmatex">\(P^{(i)}\cdot{\left\| \theta \right\|}\)</span>>1，则因为<span class="arithmatex">\(p^{(1)}\)</span>变大了，<span class="arithmatex">\({{\theta }}\)</span>的范数就可以变小了。因此这意味着通过选择右边的决策界，而不是左边的那个，支持向量机可以使参数<span class="arithmatex">\({{\theta }}\)</span>的范数变小很多。因此，如果我们想令<span class="arithmatex">\({{\theta }}\)</span>的范数变小，从而令<span class="arithmatex">\({{\theta }}\)</span>范数的平方变小，就能让支持向量机选择右边的决策界。这就是支持向量机如何能有效地产生大间距分类的原因。</p>
+<p>看这条绿线，这个绿色的决策界。我们希望正样本和负样本投影到<span class="arithmatex">\(\theta\)</span>的值大。要做到这一点的唯一方式就是选择这条绿线做决策界。这是大间距决策界来区分开正样本和负样本这个间距的值。这个间距的值就是<span class="arithmatex">\(p^{(1)},p^{(2)},p^{(3)}\)</span>等等的值。通过让间距变大，即通过这些<span class="arithmatex">\(p^{(1)},p^{(2)},p^{(3)}\)</span>等等的值，支持向量机最终可以找到一个较小的<span class="arithmatex">\({{\theta }}\)</span>范数。这正是支持向量机中最小化目标函数的目的。</p>
+<p>以上就是为什么支持向量机最终会找到大间距分类器的原因。因为它试图极大化这些<span class="arithmatex">\(p^{(i)}\)</span>的范数，它们是训练样本到决策边界的距离。最后一点，我们的推导自始至终使用了这个简化假设，就是参数<span class="arithmatex">\(θ_0=0\)</span>。</p>
+<p><img alt="" src="../images/65198a1748fdbe16da34afab9f33d801.png" /></p>
+<p>就像我之前提到的。这个的作用是：<span class="arithmatex">\(θ_0=0\)</span>的意思是我们让决策界通过原点。如果你令<span class="arithmatex">\(θ_0\)</span>不是0的话，含义就是你希望决策界不通过原点。我将不会做全部的推导。实际上，支持向量机产生大间距分类器的结论，会被证明同样成立，证明方式是非常类似的，是我们刚刚做的证明的推广。</p>
+<p>之前视频中说过，即便<span class="arithmatex">\(θ_0\)</span>不等于0，支持向量机要做的事情都是优化这个目标函数对应着<span class="arithmatex">\(C\)</span>值非常大的情况，但是可以说明的是，即便<span class="arithmatex">\(θ_0\)</span>不等于0，支持向量机仍然会找到正样本和负样本之间的大间距分隔。</p>
+<p>总之，我们解释了为什么支持向量机是一个大间距分类器。在下一节我们，将开始讨论如何利用支持向量机的原理，应用它们建立一个复杂的非线性分类器。</p>
+<h3 id="124-1">12.4 核函数1<a class="headerlink" href="#124-1" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 4 - Kernels I (16 min).mkv</p>
+<p>回顾我们之前讨论过可以使用高级数的多项式模型来解决无法用直线进行分隔的分类问题：</p>
+<p><img alt="" src="../images/529b6dbc07c9f39f5266bd0b3f628545.png" /></p>
+<p>为了获得上图所示的判定边界，我们的模型可能是${{\theta }<em 1="1">{0}}+{{\theta }</em>}{{x}<em 2="2">{1}}+{{\theta }</em>}{{x}<em 3="3">{2}}+{{\theta }</em>}{{x}<em 2="2">{1}}{{x}</em>}+{{\theta }<em 1="1">{4}}x</em>^{2}+{{\theta }<em 2="2">{5}}x</em>^{2}+\cdots $的形式。</p>
+<p>我们可以用一系列的新的特征<span class="arithmatex">\(f\)</span>来替换模型中的每一项。例如令：
+<span class="arithmatex">\({{f}_{1}}={{x}_{1}},{{f}_{2}}={{x}_{2}},{{f}_{3}}={{x}_{1}}{{x}_{2}},{{f}_{4}}=x_{1}^{2},{{f}_{5}}=x_{2}^{2}\)</span></p>
+<p>...得到<span class="arithmatex">\(h_θ(x)={{\theta }_{1}}f_1+{{\theta }_{2}}f_2+...+{{\theta }_{n}}f_n\)</span>。然而，除了对原有的特征进行组合以外，有没有更好的方法来构造<span class="arithmatex">\(f_1,f_2,f_3\)</span>？我们可以利用核函数来计算出新的特征。</p>
+<p>给定一个训练样本<span class="arithmatex">\(x\)</span>，我们利用<span class="arithmatex">\(x\)</span>的各个特征与我们预先选定的<strong>地标</strong>(<strong>landmarks</strong>)<span class="arithmatex">\(l^{(1)},l^{(2)},l^{(3)}\)</span>的近似程度来选取新的特征<span class="arithmatex">\(f_1,f_2,f_3\)</span>。</p>
+<p><img alt="" src="../images/2516821097bda5dfaf0b94e55de851e0.png" /></p>
+<p>例如：<span class="arithmatex">\({{f}_{1}}=similarity(x,{{l}^{(1)}})=e(-\frac{{{\left\| x-{{l}^{(1)}} \right\|}^{2}}}{2{{\sigma }^{2}}})\)</span></p>
+<p>其中：<span class="arithmatex">\({{\left\| x-{{l}^{(1)}} \right\|}^{2}}=\sum{_{j=1}^{n}}{{({{x}_{j}}-l_{j}^{(1)})}^{2}}\)</span>，为实例<span class="arithmatex">\(x\)</span>中所有特征与地标<span class="arithmatex">\(l^{(1)}\)</span>之间的距离的和。上例中的<span class="arithmatex">\(similarity(x,{{l}^{(1)}})\)</span>就是核函数，具体而言，这里是一个<strong>高斯核函数</strong>(<strong>Gaussian Kernel</strong>)。 <strong>注：这个函数与正态分布没什么实际上的关系，只是看上去像而已。</strong></p>
+<p>这些地标的作用是什么？如果一个训练样本<span class="arithmatex">\(x\)</span>与地标<span class="arithmatex">\(l\)</span>之间的距离近似于0，则新特征 <span class="arithmatex">\(f\)</span>近似于<span class="arithmatex">\(e^{-0}=1\)</span>，如果训练样本<span class="arithmatex">\(x\)</span>与地标<span class="arithmatex">\(l\)</span>之间距离较远，则<span class="arithmatex">\(f\)</span>近似于<span class="arithmatex">\(e^{-(一个较大的数)}=0\)</span>。</p>
+<p>假设我们的训练样本含有两个特征[<span class="arithmatex">\(x_{1}\)</span> <span class="arithmatex">\(x{_2}\)</span>]，给定地标<span class="arithmatex">\(l^{(1)}\)</span>与不同的<span class="arithmatex">\(\sigma\)</span>值，见下图：</p>
+<p><img alt="" src="../images/b9acfc507a54f5ca13a3d50379972535.jpg" /></p>
+<p>图中水平面的坐标为 <span class="arithmatex">\(x_{1}\)</span>，<span class="arithmatex">\(x_{2}\)</span>而垂直坐标轴代表<span class="arithmatex">\(f\)</span>。可以看出，只有当<span class="arithmatex">\(x\)</span>与<span class="arithmatex">\(l^{(1)}\)</span>重合时<span class="arithmatex">\(f\)</span>才具有最大值。随着<span class="arithmatex">\(x\)</span>的改变<span class="arithmatex">\(f\)</span>值改变的速率受到<span class="arithmatex">\(\sigma^2\)</span>的控制。</p>
+<p>在下图中，当样本处于洋红色的点位置处，因为其离<span class="arithmatex">\(l^{(1)}\)</span>更近，但是离<span class="arithmatex">\(l^{(2)}\)</span>和<span class="arithmatex">\(l^{(3)}\)</span>较远，因此<span class="arithmatex">\(f_1\)</span>接近1，而<span class="arithmatex">\(f_2\)</span>,<span class="arithmatex">\(f_3\)</span>接近0。因此<span class="arithmatex">\(h_θ(x)=θ_0+θ_1f_1+θ_2f_2+θ_1f_3&gt;0\)</span>，因此预测<span class="arithmatex">\(y=1\)</span>。同理可以求出，对于离<span class="arithmatex">\(l^{(2)}\)</span>较近的绿色点，也预测<span class="arithmatex">\(y=1\)</span>，但是对于蓝绿色的点，因为其离三个地标都较远，预测<span class="arithmatex">\(y=0\)</span>。</p>
+<p><img alt="" src="../images/3d8959d0d12fe9914dc827d5a074b564.jpg" /></p>
+<p>这样，图中红色的封闭曲线所表示的范围，便是我们依据一个单一的训练样本和我们选取的地标所得出的判定边界，在预测时，我们采用的特征不是训练样本本身的特征，而是通过核函数计算出的新特征<span class="arithmatex">\(f_1,f_2,f_3\)</span>。</p>
+<h3 id="125-2">12.5 核函数2<a class="headerlink" href="#125-2" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 5 - Kernels II (16 min).mkv</p>
+<p>在上一节视频里，我们讨论了核函数这个想法，以及怎样利用它去实现支持向量机的一些新特性。在这一节视频中，我将补充一些缺失的细节，并简单的介绍一下怎么在实际中使用应用这些想法。</p>
+<p>如何选择地标？</p>
+<p>我们通常是根据训练集的数量选择地标的数量，即如果训练集中有<span class="arithmatex">\(m\)</span>个样本，则我们选取<span class="arithmatex">\(m\)</span>个地标，并且令:<span class="arithmatex">\(l^{(1)}=x^{(1)},l^{(2)}=x^{(2)},.....,l^{(m)}=x^{(m)}\)</span>。这样做的好处在于：现在我们得到的新特征是建立在原有特征与训练集中所有其他特征之间距离的基础之上的，即：</p>
+<p><img alt="" src="../images/eca2571849cc36748c26c68708a7a5bd.png" /></p>
+<p><img alt="" src="../images/ea31af620b0a0132fe494ebb4a362465.png" /></p>
+<p>下面我们将核函数运用到支持向量机中，修改我们的支持向量机假设为：</p>
+<p>• 给定<span class="arithmatex">\(x\)</span>，计算新特征<span class="arithmatex">\(f\)</span>，当<span class="arithmatex">\(θ^Tf&gt;=0\)</span> 时，预测 <span class="arithmatex">\(y=1\)</span>，否则反之。 </p>
+<p>相应地修改代价函数为：$\sum{<em j="j">{j=1}^{n=m}}\theta </em>^{2}={{\theta}^{T}}\theta $，</p>
+<p><span class="arithmatex">\(min C\sum\limits_{i=1}^{m}{[{{y}^{(i)}}cos {{t}_{1}}}( {{\theta }^{T}}{{f}^{(i)}})+(1-{{y}^{(i)}})cos {{t}_{0}}( {{\theta }^{T}}{{f}^{(i)}})]+\frac{1}{2}\sum\limits_{j=1}^{n=m}{\theta _{j}^{2}}\)</span>
+在具体实施过程中，我们还需要对最后的正则化项进行些微调整，在计算<span class="arithmatex">\(\sum{_{j=1}^{n=m}}\theta _{j}^{2}={{\theta}^{T}}\theta <span class="arithmatex">\(时，我们用\)</span>θ^TMθ\)</span>代替<span class="arithmatex">\(θ^Tθ\)</span>，其中<span class="arithmatex">\(M\)</span>是根据我们选择的核函数而不同的一个矩阵。这样做的原因是为了简化计算。</p>
+<p>理论上讲，我们也可以在逻辑回归中使用核函数，但是上面使用 <span class="arithmatex">\(M\)</span>来简化计算的方法不适用与逻辑回归，因此计算将非常耗费时间。</p>
+<p>在此，我们不介绍最小化支持向量机的代价函数的方法，你可以使用现有的软件包（如<strong>liblinear</strong>,<strong>libsvm</strong>等）。在使用这些软件包最小化我们的代价函数之前，我们通常需要编写核函数，并且如果我们使用高斯核函数，那么在使用之前进行特征缩放是非常必要的。</p>
+<p>另外，支持向量机也可以不使用核函数，不使用核函数又称为<strong>线性核函数</strong>(<strong>linear kernel</strong>)，当我们不采用非常复杂的函数，或者我们的训练集特征非常多而样本非常少的时候，可以采用这种不带核函数的支持向量机。</p>
+<p>下面是支持向量机的两个参数<span class="arithmatex">\(C\)</span>和<span class="arithmatex">\(\sigma\)</span>的影响：</p>
+<p><span class="arithmatex">\(C=1/\lambda\)</span></p>
+<p><span class="arithmatex">\(C\)</span> 较大时，相当于<span class="arithmatex">\(\lambda\)</span>较小，可能会导致过拟合，高方差；</p>
+<p><span class="arithmatex">\(C\)</span> 较小时，相当于<span class="arithmatex">\(\lambda\)</span>较大，可能会导致低拟合，高偏差；</p>
+<p><span class="arithmatex">\(\sigma\)</span>较大时，可能会导致低方差，高偏差；</p>
+<p><span class="arithmatex">\(\sigma\)</span>较小时，可能会导致低偏差，高方差。</p>
+<p>如果你看了本周的编程作业，你就能亲自实现这些想法，并亲眼看到这些效果。这就是利用核函数的支持向量机算法，希望这些关于偏差和方差的讨论，能给你一些对于算法结果预期的直观印象。</p>
+<h3 id="126">12.6 使用支持向量机<a class="headerlink" href="#126" title="Permanent link">&para;</a></h3>
+<p>参考视频: 12 - 6 - Using An SVM (21 min).mkv</p>
+<p>目前为止，我们已经讨论了<strong>SVM</strong>比较抽象的层面，在这个视频中我将要讨论到为了运行或者运用<strong>SVM</strong>。你实际上所需要的一些东西：支持向量机算法，提出了一个特别优化的问题。但是就如在之前的视频中我简单提到的，我真的不建议你自己写软件来求解参数<span class="arithmatex">\({{\theta }}\)</span>，因此由于今天我们中的很少人，或者其实没有人考虑过自己写代码来转换矩阵，或求一个数的平方根等我们只是知道如何去调用库函数来实现这些功能。同样的，用以解决<strong>SVM</strong>最优化问题的软件很复杂，且已经有研究者做了很多年数值优化了。因此你提出好的软件库和好的软件包来做这样一些事儿。然后强烈建议使用高优化软件库中的一个，而不是尝试自己落实一些数据。有许多好的软件库，我正好用得最多的两个是<strong>liblinear</strong>和<strong>libsvm</strong>，但是真的有很多软件库可以用来做这件事儿。你可以连接许多你可能会用来编写学习算法的主要编程语言。</p>
+<p>在高斯核函数之外我们还有其他一些选择，如：</p>
+<p>多项式核函数（<strong>Polynomial Kerne</strong>l）</p>
+<p>字符串核函数（<strong>String kernel</strong>）</p>
+<p>卡方核函数（ <strong>chi-square kernel</strong>）</p>
+<p>直方图交集核函数（<strong>histogram intersection kernel</strong>）</p>
+<p>等等...</p>
+<p>这些核函数的目标也都是根据训练集和地标之间的距离来构建新特征，这些核函数需要满足Mercer's定理，才能被支持向量机的优化软件正确处理。</p>
+<p>多类分类问题</p>
+<p>假设我们利用之前介绍的一对多方法来解决一个多类分类问题。如果一共有<span class="arithmatex">\(k\)</span>个类，则我们需要<span class="arithmatex">\(k\)</span>个模型，以及<span class="arithmatex">\(k\)</span>个参数向量<span class="arithmatex">\({{\theta }}\)</span>。我们同样也可以训练<span class="arithmatex">\(k\)</span>个支持向量机来解决多类分类问题。但是大多数支持向量机软件包都有内置的多类分类功能，我们只要直接使用即可。</p>
+<p>尽管你不去写你自己的<strong>SVM</strong>的优化软件，但是你也需要做几件事：</p>
+<p>1、是提出参数<span class="arithmatex">\(C\)</span>的选择。我们在之前的视频中讨论过误差/方差在这方面的性质。</p>
+<p>2、你也需要选择内核参数或你想要使用的相似函数，其中一个选择是：我们选择不需要任何内核参数，没有内核参数的理念，也叫线性核函数。因此，如果有人说他使用了线性核的<strong>SVM</strong>（支持向量机），这就意味这他使用了不带有核函数的<strong>SVM</strong>（支持向量机）。</p>
+<p>从逻辑回归模型，我们得到了支持向量机模型，在两者之间，我们应该如何选择呢？</p>
+<p><strong>下面是一些普遍使用的准则：</strong></p>
+<p><span class="arithmatex">\(n\)</span>为特征数，<span class="arithmatex">\(m\)</span>为训练样本数。</p>
+<p>(1)如果相较于<span class="arithmatex">\(m\)</span>而言，<span class="arithmatex">\(n\)</span>要大许多，即训练集数据量不够支持我们训练一个复杂的非线性模型，我们选用逻辑回归模型或者不带核函数的支持向量机。</p>
+<p>(2)如果<span class="arithmatex">\(n\)</span>较小，而且<span class="arithmatex">\(m\)</span>大小中等，例如<span class="arithmatex">\(n\)</span>在 1-1000 之间，而<span class="arithmatex">\(m\)</span>在10-10000之间，使用高斯核函数的支持向量机。</p>
+<p>(3)如果<span class="arithmatex">\(n\)</span>较小，而<span class="arithmatex">\(m\)</span>较大，例如<span class="arithmatex">\(n\)</span>在1-1000之间，而<span class="arithmatex">\(m\)</span>大于50000，则使用支持向量机会非常慢，解决方案是创造、增加更多的特征，然后使用逻辑回归或不带核函数的支持向量机。</p>
+<p>值得一提的是，神经网络在以上三种情况下都可能会有较好的表现，但是训练神经网络可能非常慢，选择支持向量机的原因主要在于它的代价函数是凸函数，不存在局部最小值。</p>
+<p>今天的<strong>SVM</strong>包会工作得很好，但是它们仍然会有一些慢。当你有非常非常大的训练集，且用高斯核函数是在这种情况下，我经常会做的是尝试手动地创建，拥有更多的特征变量，然后用逻辑回归或者不带核函数的支持向量机。如果你看到这个幻灯片，看到了逻辑回归，或者不带核函数的支持向量机。在这个两个地方，我把它们放在一起是有原因的。原因是：逻辑回归和不带核函数的支持向量机它们都是非常相似的算法，不管是逻辑回归还是不带核函数的<strong>SVM</strong>，通常都会做相似的事情，并给出相似的结果。但是根据你实现的情况，其中一个可能会比另一个更加有效。但是在其中一个算法应用的地方，逻辑回归或不带核函数的<strong>SVM</strong>另一个也很有可能很有效。但是随着<strong>SVM</strong>的复杂度增加，当你使用不同的内核函数来学习复杂的非线性函数时，这个体系，你知道的，当你有多达1万（10,000）的样本时，也可能是5万（50,000），你的特征变量的数量这是相当大的。那是一个非常常见的体系，也许在这个体系里，不带核函数的支持向量机就会表现得相当突出。你可以做比这困难得多需要逻辑回归的事情。</p>
+<p>最后，神经网络使用于什么时候呢？ 对于所有的这些问题，对于所有的这些不同体系一个设计得很好的神经网络也很有可能会非常有效。有一个缺点是，或者说是有时可能不会使用神经网络的原因是：对于许多这样的问题，神经网络训练起来可能会特别慢，但是如果你有一个非常好的<strong>SVM</strong>实现包，它可能会运行得比较快比神经网络快很多，尽管我们在此之前没有展示，但是事实证明，<strong>SVM</strong>具有的优化问题，是一种凸优化问题。因此，好的<strong>SVM</strong>优化软件包总是会找到全局最小值，或者接近它的值。对于<strong>SVM</strong>你不需要担心局部最优。在实际应用中，局部最优不是神经网络所需要解决的一个重大问题，所以这是你在使用<strong>SVM</strong>的时候不需要太去担心的一个问题。根据你的问题，神经网络可能会比<strong>SVM</strong>慢，尤其是在这样一个体系中，至于这里给出的参考，看上去有些模糊，如果你在考虑一些问题，这些参考会有一些模糊，但是我仍然不能完全确定，我是该用这个算法还是改用那个算法，这个没有太大关系，当我遇到机器学习问题的时候，有时它确实不清楚这是否是最好的算法，但是就如在之前的视频中看到的算法确实很重要。但是通常更加重要的是：你有多少数据，你有多熟练是否擅长做误差分析和排除学习算法，指出如何设定新的特征变量和找出其他能决定你学习算法的变量等方面，通常这些方面会比你使用逻辑回归还是<strong>SVM</strong>这方面更加重要。但是，已经说过了，<strong>SVM</strong>仍然被广泛认为是一种最强大的学习算法，这是一个体系，包含了什么时候一个有效的方法去学习复杂的非线性函数。因此，实际上与逻辑回归、神经网络、<strong>SVM</strong>一起使用这些方法来提高学习算法，我认为你会很好地建立很有技术的状态。（编者注：当时<strong>GPU</strong>计算比较慢，神经网络还不流行。）</p>
+<p>机器学习系统对于一个宽泛的应用领域来说，这是另一个在你军械库里非常强大的工具，你可以把它应用到很多地方，如硅谷、在工业、学术等领域建立许多高性能的机器学习系统。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

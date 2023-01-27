@@ -1,0 +1,6112 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/">
+      
+      
+        <link rel="prev" href="../github/">
+      
+      
+        <link rel="next" href="../gitlab/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>gitlab-ci - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gitlab-cicd" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              gitlab-ci
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Foundation%20Course/" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Foundation%20Course/">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="true">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          gitlab-ci
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        gitlab-ci
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    入门
+  </a>
+  
+    <nav class="md-nav" aria-label="入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    关键字
+  </a>
+  
+    <nav class="md-nav" aria-label="关键字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    关键字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    关键字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    全局关键词
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    全局关键词
+  </a>
+  
+    <nav class="md-nav" aria-label="全局关键词">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includelocal" class="md-nav__link">
+    include:local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includeproject" class="md-nav__link">
+    include:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includeremote" class="md-nav__link">
+    include:remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includetemplate" class="md-nav__link">
+    include:template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stages" class="md-nav__link">
+    stages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    workflow
+  </a>
+  
+    <nav class="md-nav" aria-label="workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflowname" class="md-nav__link">
+    workflow:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowrulesvariables" class="md-nav__link">
+    workflow:rules:variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowrules" class="md-nav__link">
+    workflow:rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    Job 关键词
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 关键词">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#after_script" class="md-nav__link">
+    after_script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow_failure" class="md-nav__link">
+    allow_failure
+  </a>
+  
+    <nav class="md-nav" aria-label="allow_failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow_failureexit_codes" class="md-nav__link">
+    allow_failure:exit_codes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dast_configuration" class="md-nav__link">
+    dast_configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#before_script" class="md-nav__link">
+    before_script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extends" class="md-nav__link">
+    extends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inherit" class="md-nav__link">
+    inherit
+  </a>
+  
+    <nav class="md-nav" aria-label="inherit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inheritdefault" class="md-nav__link">
+    inherit:default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritvariables" class="md-nav__link">
+    inherit:variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruptible" class="md-nav__link">
+    interruptible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel" class="md-nav__link">
+    parallel
+  </a>
+  
+    <nav class="md-nav" aria-label="parallel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallelmatrix" class="md-nav__link">
+    parallel:matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource_group" class="md-nav__link">
+    resource_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    retry
+  </a>
+  
+    <nav class="md-nav" aria-label="retry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrywhen" class="md-nav__link">
+    retry:when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secretsvault" class="md-nav__link">
+    secrets:vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secretsfile" class="md-nav__link">
+    secrets:file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    services
+  </a>
+  
+    <nav class="md-nav" aria-label="services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicepull_policy" class="md-nav__link">
+    service:pull_policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage" class="md-nav__link">
+    stage
+  </a>
+  
+    <nav class="md-nav" aria-label="stage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-pre" class="md-nav__link">
+    stage: .pre
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-post" class="md-nav__link">
+    stage: .post
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    trigger
+  </a>
+  
+    <nav class="md-nav" aria-label="trigger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triggerinclude" class="md-nav__link">
+    trigger:include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerproject" class="md-nav__link">
+    trigger:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerstrategy" class="md-nav__link">
+    trigger:strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerforward" class="md-nav__link">
+    trigger:forward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    variables
+  </a>
+  
+    <nav class="md-nav" aria-label="variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variablesdescription" class="md-nav__link">
+    variables:description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variablesexpand" class="md-nav__link">
+    variables:expand
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifacts" class="md-nav__link">
+    artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifactspaths" class="md-nav__link">
+    artifacts:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexclude" class="md-nav__link">
+    artifacts:exclude
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexpire_in" class="md-nav__link">
+    artifacts:expire_in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexpose_as" class="md-nav__link">
+    artifacts:expose_as
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsname" class="md-nav__link">
+    artifacts:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactspublic" class="md-nav__link">
+    artifacts:public
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsreports" class="md-nav__link">
+    artifacts:reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsuntracked" class="md-nav__link">
+    artifacts:untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactswhen" class="md-nav__link">
+    artifacts:when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    cache
+  </a>
+  
+    <nav class="md-nav" aria-label="cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cachepaths" class="md-nav__link">
+    cache:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachekey" class="md-nav__link">
+    cache:key
+  </a>
+  
+    <nav class="md-nav" aria-label="cache:key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cachekeyfiles" class="md-nav__link">
+    cache:key:files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachekeyprefix" class="md-nav__link">
+    cache:key:prefix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cacheuntracked" class="md-nav__link">
+    cache:untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachewhen" class="md-nav__link">
+    cache:when
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachepolicy" class="md-nav__link">
+    cache:policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    environment
+  </a>
+  
+    <nav class="md-nav" aria-label="environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environmentname" class="md-nav__link">
+    environment:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmenturl" class="md-nav__link">
+    environment:url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmenton_stop" class="md-nav__link">
+    environment:on_stop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentaction" class="md-nav__link">
+    environment:action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentauto_stop_in" class="md-nav__link">
+    environment:auto_stop_in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentkubernetes" class="md-nav__link">
+    environment:kubernetes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentdeployment_tier" class="md-nav__link">
+    environment:deployment_tier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment_1" class="md-nav__link">
+    动态 environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    image
+  </a>
+  
+    <nav class="md-nav" aria-label="image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagename" class="md-nav__link">
+    image:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageentrypoint" class="md-nav__link">
+    image:entrypoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imagepull_policy" class="md-nav__link">
+    image:pull_policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#needs" class="md-nav__link">
+    needs
+  </a>
+  
+    <nav class="md-nav" aria-label="needs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#needsartifacts" class="md-nav__link">
+    needs:artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needsproject" class="md-nav__link">
+    needs:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needspipelinejob" class="md-nav__link">
+    needs:pipeline:job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needsoptional" class="md-nav__link">
+    needs:optional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needspipeline" class="md-nav__link">
+    needs:pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#only-except" class="md-nav__link">
+    only / except
+  </a>
+  
+    <nav class="md-nav" aria-label="only / except">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onlyrefs-exceptrefs" class="md-nav__link">
+    only:refs / except:refs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlyvariables-exceptvariables" class="md-nav__link">
+    only:variables / except:variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlychanges-exceptchanges" class="md-nav__link">
+    only:changes / except:changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlykubernetes-exceptkubernetes" class="md-nav__link">
+    only:kubernetes / except:kubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    release
+  </a>
+  
+    <nav class="md-nav" aria-label="release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release_1" class="md-nav__link">
+    release 参考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasetag_name" class="md-nav__link">
+    release:tag_name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasetag_message" class="md-nav__link">
+    release:tag_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasename" class="md-nav__link">
+    release:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasedescription" class="md-nav__link">
+    release:description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseref" class="md-nav__link">
+    release:ref
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasemilestones" class="md-nav__link">
+    release:milestones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasereleased_at" class="md-nav__link">
+    release:released_at
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseassetslinks" class="md-nav__link">
+    release:assets:links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    rules
+  </a>
+  
+    <nav class="md-nav" aria-label="rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rulesif" class="md-nav__link">
+    rules:if
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruleschanges" class="md-nav__link">
+    rules:changes
+  </a>
+  
+    <nav class="md-nav" aria-label="rules:changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruleschangespaths" class="md-nav__link">
+    rules:changes:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruleschangescompare_to" class="md-nav__link">
+    rules:changes:compare_to
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesexists" class="md-nav__link">
+    rules:exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesallow_failure" class="md-nav__link">
+    rules:allow_failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesvariables" class="md-nav__link">
+    rules:variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    另见
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    入门
+  </a>
+  
+    <nav class="md-nav" aria-label="入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    关键字
+  </a>
+  
+    <nav class="md-nav" aria-label="关键字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    关键字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    关键字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    全局关键词
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    全局关键词
+  </a>
+  
+    <nav class="md-nav" aria-label="全局关键词">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includelocal" class="md-nav__link">
+    include:local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includeproject" class="md-nav__link">
+    include:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includeremote" class="md-nav__link">
+    include:remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#includetemplate" class="md-nav__link">
+    include:template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stages" class="md-nav__link">
+    stages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    workflow
+  </a>
+  
+    <nav class="md-nav" aria-label="workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflowname" class="md-nav__link">
+    workflow:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowrulesvariables" class="md-nav__link">
+    workflow:rules:variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflowrules" class="md-nav__link">
+    workflow:rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    Job 关键词
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 关键词">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#after_script" class="md-nav__link">
+    after_script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow_failure" class="md-nav__link">
+    allow_failure
+  </a>
+  
+    <nav class="md-nav" aria-label="allow_failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allow_failureexit_codes" class="md-nav__link">
+    allow_failure:exit_codes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dast_configuration" class="md-nav__link">
+    dast_configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#before_script" class="md-nav__link">
+    before_script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage" class="md-nav__link">
+    coverage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extends" class="md-nav__link">
+    extends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inherit" class="md-nav__link">
+    inherit
+  </a>
+  
+    <nav class="md-nav" aria-label="inherit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inheritdefault" class="md-nav__link">
+    inherit:default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritvariables" class="md-nav__link">
+    inherit:variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruptible" class="md-nav__link">
+    interruptible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    pages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel" class="md-nav__link">
+    parallel
+  </a>
+  
+    <nav class="md-nav" aria-label="parallel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallelmatrix" class="md-nav__link">
+    parallel:matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource_group" class="md-nav__link">
+    resource_group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    retry
+  </a>
+  
+    <nav class="md-nav" aria-label="retry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrywhen" class="md-nav__link">
+    retry:when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secretsvault" class="md-nav__link">
+    secrets:vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secretsfile" class="md-nav__link">
+    secrets:file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    services
+  </a>
+  
+    <nav class="md-nav" aria-label="services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicepull_policy" class="md-nav__link">
+    service:pull_policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage" class="md-nav__link">
+    stage
+  </a>
+  
+    <nav class="md-nav" aria-label="stage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-pre" class="md-nav__link">
+    stage: .pre
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-post" class="md-nav__link">
+    stage: .post
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    trigger
+  </a>
+  
+    <nav class="md-nav" aria-label="trigger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triggerinclude" class="md-nav__link">
+    trigger:include
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerproject" class="md-nav__link">
+    trigger:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerstrategy" class="md-nav__link">
+    trigger:strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggerforward" class="md-nav__link">
+    trigger:forward
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    variables
+  </a>
+  
+    <nav class="md-nav" aria-label="variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variablesdescription" class="md-nav__link">
+    variables:description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variablesexpand" class="md-nav__link">
+    variables:expand
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifacts" class="md-nav__link">
+    artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifactspaths" class="md-nav__link">
+    artifacts:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexclude" class="md-nav__link">
+    artifacts:exclude
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexpire_in" class="md-nav__link">
+    artifacts:expire_in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsexpose_as" class="md-nav__link">
+    artifacts:expose_as
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsname" class="md-nav__link">
+    artifacts:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactspublic" class="md-nav__link">
+    artifacts:public
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsreports" class="md-nav__link">
+    artifacts:reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactsuntracked" class="md-nav__link">
+    artifacts:untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifactswhen" class="md-nav__link">
+    artifacts:when
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    cache
+  </a>
+  
+    <nav class="md-nav" aria-label="cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cachepaths" class="md-nav__link">
+    cache:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachekey" class="md-nav__link">
+    cache:key
+  </a>
+  
+    <nav class="md-nav" aria-label="cache:key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cachekeyfiles" class="md-nav__link">
+    cache:key:files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachekeyprefix" class="md-nav__link">
+    cache:key:prefix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cacheuntracked" class="md-nav__link">
+    cache:untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachewhen" class="md-nav__link">
+    cache:when
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cachepolicy" class="md-nav__link">
+    cache:policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    environment
+  </a>
+  
+    <nav class="md-nav" aria-label="environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environmentname" class="md-nav__link">
+    environment:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmenturl" class="md-nav__link">
+    environment:url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmenton_stop" class="md-nav__link">
+    environment:on_stop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentaction" class="md-nav__link">
+    environment:action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentauto_stop_in" class="md-nav__link">
+    environment:auto_stop_in
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentkubernetes" class="md-nav__link">
+    environment:kubernetes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environmentdeployment_tier" class="md-nav__link">
+    environment:deployment_tier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment_1" class="md-nav__link">
+    动态 environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    image
+  </a>
+  
+    <nav class="md-nav" aria-label="image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagename" class="md-nav__link">
+    image:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageentrypoint" class="md-nav__link">
+    image:entrypoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imagepull_policy" class="md-nav__link">
+    image:pull_policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#needs" class="md-nav__link">
+    needs
+  </a>
+  
+    <nav class="md-nav" aria-label="needs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#needsartifacts" class="md-nav__link">
+    needs:artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needsproject" class="md-nav__link">
+    needs:project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needspipelinejob" class="md-nav__link">
+    needs:pipeline:job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needsoptional" class="md-nav__link">
+    needs:optional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#needspipeline" class="md-nav__link">
+    needs:pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#only-except" class="md-nav__link">
+    only / except
+  </a>
+  
+    <nav class="md-nav" aria-label="only / except">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onlyrefs-exceptrefs" class="md-nav__link">
+    only:refs / except:refs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlyvariables-exceptvariables" class="md-nav__link">
+    only:variables / except:variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlychanges-exceptchanges" class="md-nav__link">
+    only:changes / except:changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlykubernetes-exceptkubernetes" class="md-nav__link">
+    only:kubernetes / except:kubernetes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    release
+  </a>
+  
+    <nav class="md-nav" aria-label="release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release_1" class="md-nav__link">
+    release 参考
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasetag_name" class="md-nav__link">
+    release:tag_name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasetag_message" class="md-nav__link">
+    release:tag_message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasename" class="md-nav__link">
+    release:name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasedescription" class="md-nav__link">
+    release:description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseref" class="md-nav__link">
+    release:ref
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasemilestones" class="md-nav__link">
+    release:milestones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releasereleased_at" class="md-nav__link">
+    release:released_at
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseassetslinks" class="md-nav__link">
+    release:assets:links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    rules
+  </a>
+  
+    <nav class="md-nav" aria-label="rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rulesif" class="md-nav__link">
+    rules:if
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruleschanges" class="md-nav__link">
+    rules:changes
+  </a>
+  
+    <nav class="md-nav" aria-label="rules:changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ruleschangespaths" class="md-nav__link">
+    rules:changes:paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruleschangescompare_to" class="md-nav__link">
+    rules:changes:compare_to
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesexists" class="md-nav__link">
+    rules:exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesallow_failure" class="md-nav__link">
+    rules:allow_failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rulesvariables" class="md-nav__link">
+    rules:variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    另见
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<h1 id="gitlab-cicd">GitLab CI/CD 备忘清单<a class="headerlink" href="#gitlab-cicd" title="Permanent link">&para;</a></h1>
+<p>本备忘单总结了 <a href="https://docs.gitlab.com/ee/ci/yaml/#default">GitLab CI/CD</a> 常用的配置说明，以供快速参考</p>
+<h2 id="_1">入门<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">介绍<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>创建并运行您的第一个 GitLab <code>CI/CD</code> 管道，在开始之前，请确保您拥有：</p>
+<ul>
+<li>GitLab 中您想要使用 CI/CD 的项目</li>
+<li>项目的维护者或所有者角色</li>
+</ul>
+<p>如果您没有项目，可以在 <a href="https://gitlab.com">https://gitlab.com</a> 上免费创建一个公共项目</p>
+<ul>
+<li>在存储库的根目录下创建一个 <code>.gitlab-ci.yml</code> 文件。该文件是您定义 <code>CI/CD</code> 作业的地方</li>
+<li>转到<code>Settings</code> &gt; <code>CI/CD</code> 并展开运行程序，只要您至少有一个运行器处于活动状态，旁边有一个绿色圆圈，您就有一个运行器可以处理您的工作</li>
+</ul>
+<!--rehype:className=style-timeline-->
+
+<h3 id="_3">示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>default:
+  image: node:16
+
+windows_job:
+  only:
+    - master
+  tags:
+    - windows
+  script:
+    - echo Hello, %USERNAME%!
+
+linux_job: tags:
+    - linux script:
+    - echo &quot;Hello, $USER!&quot;
+</code></pre></div>
+<p><code>tags</code> 用于在不同的平台上运行作业，<code>only</code> 控制 <code>master</code> 分支提交触发</p>
+<h2 id="_4">关键字<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">关键字<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#default">default</a></td>
+<td>工作关键字的自定义默认值 <a href="https://docs.gitlab.com/ee/ci/yaml/#default">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#include">include</a></td>
+<td>从其他 YAML 文件导入配置 <a href="https://docs.gitlab.com/ee/ci/yaml/#include">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#stages">stages</a></td>
+<td>管道阶段的名称和顺序 <a href="https://docs.gitlab.com/ee/ci/yaml/#stages">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#variables">variables</a></td>
+<td>为管道中的所有作业定义 CI/CD 变量 <a href="https://docs.gitlab.com/ee/ci/yaml/#variables">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#workflow">workflow</a></td>
+<td>控制运行什么类型的管道 <a href="https://docs.gitlab.com/ee/ci/yaml/#workflow">#</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">关键字<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+<table>
+<thead>
+<tr>
+<th align="left">关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#after_script">after_script</a></td>
+<td>覆盖一组在作业之后执行的命令 <a href="https://docs.gitlab.com/ee/ci/yaml/#after_script">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#allow_failure">allow_failure</a></td>
+<td>允许作业失败。失败的作业不会导致管道失败 <a href="https://docs.gitlab.com/ee/ci/yaml/#allow_failure">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#artifacts">artifacts</a></td>
+<td>成功时附加到作业的文件和目录列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#artifacts">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#before_script">before_script</a></td>
+<td>覆盖在作业之前执行的一组命令 <a href="https://docs.gitlab.com/ee/ci/yaml/#before_script">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#cache">cache</a></td>
+<td>应在后续运行之间缓存的文件列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#cache">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#coverage">coverage</a></td>
+<td>给定作业的代码覆盖率设置 <a href="https://docs.gitlab.com/ee/ci/yaml/#coverage">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#dast_configuration">dast_configuration</a></td>
+<td>在作业级别使用 DAST 配置文件中的配置 <a href="https://docs.gitlab.com/ee/ci/yaml/#dast_configuration">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#dependencies">dependencies</a></td>
+<td>通过提供要从中获取工件的作业列表来限制将哪些工件传递给特定作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#dependencies">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#environment">environment</a></td>
+<td>作业部署到的环境的名称 <a href="https://docs.gitlab.com/ee/ci/yaml/#environment">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#only--except">except</a></td>
+<td>控制何时不创建作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#only--except">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#extends">extends</a></td>
+<td>此作业继承自的配置条目 <a href="https://docs.gitlab.com/ee/ci/yaml/#extends">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#image">image</a></td>
+<td>使用 Docker 镜像 <a href="https://docs.gitlab.com/ee/ci/yaml/#image">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#inherit">inherit</a></td>
+<td>选择所有作业继承的全局默认值 <a href="https://docs.gitlab.com/ee/ci/yaml/#inherit">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#interruptible">interruptible</a></td>
+<td>定义作业是否可以在被较新的运行冗余时取消 <a href="https://docs.gitlab.com/ee/ci/yaml/#interruptible">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#needs">needs</a></td>
+<td>在阶段排序之前执行作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#needs">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#only--except">only</a></td>
+<td>控制何时创建作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#only--except">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#pages">pages</a></td>
+<td>上传作业的结果以与 GitLab Pages 一起使用 <a href="https://docs.gitlab.com/ee/ci/yaml/#pages">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#parallel">parallel</a></td>
+<td>应并行运行多少个作业实例 <a href="https://docs.gitlab.com/ee/ci/yaml/#parallel">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#release">release</a></td>
+<td>指示运行器生成释放对象 <a href="https://docs.gitlab.com/ee/ci/yaml/#release">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#resource_group">resource_group</a></td>
+<td>限制作业并发 <a href="https://docs.gitlab.com/ee/ci/yaml/#resource_group">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#retry">retry</a></td>
+<td>发生故障时可以自动重试作业的时间和次数 <a href="https://docs.gitlab.com/ee/ci/yaml/#retry">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#rules">rules</a></td>
+<td>用于评估和确定作业的选定属性以及是否创建的条件列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#rules">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#script">script</a></td>
+<td>由运行器执行的 Shell 脚本 <a href="https://docs.gitlab.com/ee/ci/yaml/#script">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#secrets">secrets</a></td>
+<td>CI/CD 保密工作需要 <a href="https://docs.gitlab.com/ee/ci/yaml/#secrets">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#services">services</a></td>
+<td>使用 Docker 服务映像 <a href="https://docs.gitlab.com/ee/ci/yaml/#services">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#stage">stage</a></td>
+<td>定义作业阶段 <a href="https://docs.gitlab.com/ee/ci/yaml/#stage">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#tags">tags</a></td>
+<td>用于选择跑步者的标签列表 <a href="https://docs.gitlab.com/ee/ci/yaml/#tags">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#timeout">timeout</a></td>
+<td>定义优先于项目范围设置的自定义作业级超时 <a href="https://docs.gitlab.com/ee/ci/yaml/#timeout">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#trigger">trigger</a></td>
+<td>定义下游管道触发器 <a href="https://docs.gitlab.com/ee/ci/yaml/#trigger">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#variables">variables</a></td>
+<td>在作业级别定义作业变量 <a href="https://docs.gitlab.com/ee/ci/yaml/#variables">#</a></td>
+</tr>
+<tr>
+<td align="left"><a href="#when">when</a></td>
+<td>何时运行作业 <a href="https://docs.gitlab.com/ee/ci/yaml/#when">#</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">全局关键词<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#after_script">after_script</a></li>
+<li><a href="#artifacts">artifacts</a></li>
+<li><a href="#before_script">before_script</a></li>
+<li><a href="#cache">cache</a></li>
+<li><a href="#image">image</a></li>
+<li><a href="#interruptible">interruptible</a></li>
+<li><a href="#retry">retry</a></li>
+<li><a href="#services">services</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#timeout">timeout</a></li>
+</ul>
+<!--rehype:className=cols-3-->
+
+<h2 id="_8">全局关键词<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="default">default<a class="headerlink" href="#default" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-3-->
+
+<div class="highlight"><pre><span></span><code>default:
+  image: ruby:3.0
+
+rspec:
+  script: bundle exec rspec
+
+rspec 2.7:
+  image: ruby:2.7
+  script: bundle exec rspec
+</code></pre></div>
+<p>在此示例中，<code>ruby:3.0</code> 是管道中所有作业的默认图像值。<code>rspec 2.7</code> 作业不使用默认值，因为它使用特定于作业的图像部分覆盖了默认值</p>
+<h3 id="include">include<a class="headerlink" href="#include" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>include:
+  - local: &#39;/temp/.gitlab-ci-template.yml&#39;
+</code></pre></div>
+<p>在 <code>11.4</code> 中移至 <code>GitLab</code> 免费版，使用 <code>include</code> 将外部 <code>YAML</code> 文件包含在您的 <code>CI/CD</code> 配置中</p>
+<h3 id="includelocal">include:local<a class="headerlink" href="#includelocal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>include:
+  - local: &#39;/temp/.gitlab-ci-template.yml&#39;
+</code></pre></div>
+<p>使用 <code>include:local</code> 包含与 <code>.gitlab-ci.yml</code> 文件位于同一存储库中的文件</p>
+<h3 id="includeproject">include:project<a class="headerlink" href="#includeproject" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-3-->
+
+<p>要在同一个 GitLab 实例上包含来自另一个私有项目的文件，请使用 <code>include:project</code> 和 <code>include:file</code></p>
+<div class="highlight"><pre><span></span><code>include:
+  - project: &#39;group/my-project&#39;
+    file: &#39;/temp/.gitlab-ci-template.yml&#39;
+  - project: &#39;group/subgroup/my-project-2&#39;
+    file:
+      - &#39;/temp/.builds.yml&#39;
+      - &#39;/temp/.tests.yml&#39;
+</code></pre></div>
+<p>您还可以指定一个 <code>ref</code>：</p>
+<div class="highlight"><pre><span></span><code>include:
+  - project: &#39;group/my-project&#39;
+    ref: main    # Git branch
+    file: &#39;/templates/.gitlab-ci.yml&#39;
+  - project: &#39;group/my-project&#39;
+    ref: v1.0.0   # Git Tag
+    file: &#39;/templates/.gitlab-ci.yml&#39;
+  - project: &#39;group/my-project&#39;
+    ref: 787123b  # Git SHA
+    file: &#39;/templates/.gitlab-ci.yml&#39;
+</code></pre></div>
+<h3 id="includeremote">include:remote<a class="headerlink" href="#includeremote" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>include:
+  - remote: &#39;https://gitlab.com/example-project/-/raw/main/.gitlab-ci.yml&#39;
+</code></pre></div>
+<p>使用带有完整 <code>URL</code> 的 <code>include:remote</code> 来包含来自不同位置的文件</p>
+<h3 id="includetemplate">include:template<a class="headerlink" href="#includetemplate" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>使用 <code>include:template</code> 来包含 <code>.gitlab-ci.yml</code> 模板</p>
+<div class="highlight"><pre><span></span><code># 文件来自 GitLab 模板集合
+include:
+  - template: Auto-DevOps.gitlab-ci.yml
+</code></pre></div>
+<p>多个 <code>include:template</code> 文件：</p>
+<div class="highlight"><pre><span></span><code>include:
+  - template: Android-Fastlane.gitlab-ci.yml
+  - template: Auto-DevOps.gitlab-ci.yml
+</code></pre></div>
+<h3 id="stages">stages<a class="headerlink" href="#stages" title="Permanent link">&para;</a></h3>
+<p>使用阶段来定义包含作业组的阶段。如果 <code>.gitlab-ci.yml</code> 文件中未定义阶段，则默认管道阶段为：</p>
+<ul>
+<li><a href="#stage-pre">.pre</a></li>
+<li>build</li>
+<li>test</li>
+<li>deploy</li>
+<li><a href="#stage-post">.post</a></li>
+</ul>
+<!--rehype:className=cols-2-->
+
+<hr />
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - test
+  - deploy
+</code></pre></div>
+<h2 id="workflow">workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<h3 id="workflowname">workflow:name<a class="headerlink" href="#workflowname" title="Permanent link">&para;</a></h3>
+<p>您可以在 workflow: 中使用 name 来定义管道的名称</p>
+<div class="highlight"><pre><span></span><code>workflow:
+  name: &#39;分支管道：$CI_COMMIT_BRANCH&#39;
+</code></pre></div>
+<p>根据管道条件具有不同管道名称的配置：</p>
+<div class="highlight"><pre><span></span><code>variables:
+  PIPELINE_NAME: &#39;默认管道名称&#39;
+
+workflow:
+  name: &#39;$PIPELINE_NAME&#39;
+  rules:
+    - if: &#39;$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;&#39;
+      variables:
+        PIPELINE_NAME: &#39;MR pipeline: $CI_COMMIT_BRANCH&#39;
+    - if: &#39;$CI_MERGE_REQUEST_LABELS =~ /pipeline:run-in-ruby3/&#39;
+      variables:
+        PIPELINE_NAME: &#39;Ruby 3 pipeline&#39;
+</code></pre></div>
+<h3 id="workflowrulesvariables">workflow:rules:variables<a class="headerlink" href="#workflowrulesvariables" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+<p>您可以在 <code>workflow:rules</code> 中使用变量来定义特定管道条件的变量</p>
+<div class="highlight"><pre><span></span><code>variables:
+  DEPLOY_VARIABLE: &quot;default-deploy&quot;
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      variables:
+        DEPLOY_VARIABLE: &quot;deploy-production&quot;  # 覆盖全局定义的 DEPLOY_VARIABLE
+    - if: $CI_COMMIT_REF_NAME =~ /feature/
+      variables:
+        IS_A_FEATURE: &quot;true&quot;                  # 定义一个新变量
+    - when: always                            # 在其他情况下运行管道
+
+job1:
+  variables:
+    DEPLOY_VARIABLE: &quot;job1-default-deploy&quot;
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      variables:                                   # 覆盖定义的 DEPLOY_VARIABLE
+        DEPLOY_VARIABLE: &quot;job1-deploy-production&quot;  # 在工作层面。
+    - when: on_success                             # 在其他情况下运行作业
+  script:
+    - echo &quot;以 $DEPLOY_VARIABLE 作为参数运行脚本&quot;
+    - echo &quot;如果 $IS_A_FEATURE 存在则运行另一个脚本&quot;
+
+job2:
+  script:
+    - echo &quot;以 $DEPLOY_VARIABLE 作为参数运行脚本&quot;
+    - echo &quot;如果 $IS_A_FEATURE 存在则运行另一个脚本&quot;
+</code></pre></div>
+<h3 id="workflowrules">workflow:rules<a class="headerlink" href="#workflowrules" title="Permanent link">&para;</a></h3>
+<p>工作流(workflow)中的 <code>rules</code> 关键字类似于作业中定义的 <a href="#rules"><code>rules</code></a>，但控制是否创建整个管道</p>
+<ul>
+<li><a href="#rulesif">rules: if</a></li>
+<li><a href="#ruleschanges">rules: changes</a></li>
+<li><a href="#rulesexists">rules: exists</a></li>
+<li><a href="#when">when</a></li>
+<li><a href="#workflowrulesvariables">variables</a></li>
+</ul>
+<!--rehype:className=cols-2-->
+
+<div class="highlight"><pre><span></span><code>workflow:
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /-draft$/
+      when: never
+    - if: $CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+</code></pre></div>
+<h2 id="job">Job 关键词<a class="headerlink" href="#job" title="Permanent link">&para;</a></h2>
+<h3 id="after_script">after_script<a class="headerlink" href="#after_script" title="Permanent link">&para;</a></h3>
+<p>在每个作业（包括失败的作业）<strong>之后</strong>运行的命令数组</p>
+<div class="highlight"><pre><span></span><code>job:
+  script:
+    - echo &quot;示例脚本部分&quot;
+  after_script:
+    - echo &quot;在“script”部分完成后执行此命令&quot;
+</code></pre></div>
+<h3 id="allow_failure">allow_failure<a class="headerlink" href="#allow_failure" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-4-->
+
+<p>确定管道是否应在作业失败时继续运行</p>
+<div class="highlight"><pre><span></span><code>job1:
+  stage: test
+  script:
+    - execute_script_1
+
+job2:
+  stage: test
+  script:
+    - execute_script_2
+  allow_failure: true
+
+job3:
+  stage: deploy
+  script:
+    - deploy_to_staging
+  environment: staging
+</code></pre></div>
+<h4 id="allow_failureexit_codes">allow_failure:exit_codes<a class="headerlink" href="#allow_failureexit_codes" title="Permanent link">&para;</a></h4>
+<p>控制何时允许作业失败。对于任何列出的退出代码，作业是 <code>allow_failure: true</code>，对于任何其他退出代码，<code>allow_failure</code> false</p>
+<div class="highlight"><pre><span></span><code>test_job_1:
+  script:
+    - echo &quot;退出代码 1 的脚本。此作业失败&quot;
+    - exit 1
+  allow_failure:
+    exit_codes: 137
+
+test_job_2:
+  script:
+    - echo &quot;退出代码 137 的脚本允许此作业失败&quot;
+    - exit 137
+  allow_failure:
+    exit_codes:
+      - 137
+      - 255
+</code></pre></div>
+<h3 id="dast_configuration">dast_configuration<a class="headerlink" href="#dast_configuration" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - dast
+
+include:
+  - template: DAST.gitlab-ci.yml
+
+dast:
+  dast_configuration:
+    site_profile: &quot;Example Co&quot;
+    scanner_profile: &quot;Quick Passive Test&quot;
+</code></pre></div>
+<p>指定要在 CI/CD 配置中使用的站点配置文件和扫描仪配置文件。 两个配置文件必须首先在项目中创建。 作业的阶段必须快</p>
+<h3 id="before_script">before_script<a class="headerlink" href="#before_script" title="Permanent link">&para;</a></h3>
+<p>在每个作业的 <code>script</code> 命令之前运行，但在工件恢复之后运行</p>
+<div class="highlight"><pre><span></span><code>job:
+  before_script:
+    - echo &quot;在任何“script:”命令之前执行此命令&quot;
+  script:
+    - echo &quot;“before_script”命令之后执行&quot;
+</code></pre></div>
+<h3 id="coverage">coverage<a class="headerlink" href="#coverage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job1:
+  script: rspec
+  coverage: &#39;/Code coverage: \d+\.\d+/&#39;
+</code></pre></div>
+<p>使用自定义正则表达式的覆盖率来配置如何从作业输出中提取代码覆盖率</p>
+<h3 id="extends">extends<a class="headerlink" href="#extends" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>.tests:
+  script: rake test
+  stage: test
+  only:
+    refs:
+      - branches
+
+rspec:
+  extends: .tests
+  script: rake rspec
+  only:
+    variables:
+      - $RSPEC
+</code></pre></div>
+<p>使用 <code>extends</code> 重用配置部分。 它是 YAML 锚点的替代品，并且更加灵活和可读</p>
+<h3 id="dependencies">dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>build osx:
+  stage: build
+  script: make build:osx
+  artifacts:
+    paths:
+      - binaries/
+
+build linux:
+  stage: build
+  script: make build:linux
+  artifacts:
+    paths:
+      - binaries/
+
+test osx:
+  stage: test
+  script: make test:osx
+  dependencies:
+    - build osx
+
+test linux:
+  stage: test
+  script: make test:linux
+  dependencies:
+    - build linux
+
+deploy:
+  stage: deploy
+  script: make deploy
+  environment: production
+</code></pre></div>
+<p>定义要从中获取工件的作业列表。您还可以将作业设置为根本不下载任何工件</p>
+<h3 id="inherit">inherit<a class="headerlink" href="#inherit" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>使用 inherit 控制默认关键字和变量的继承</p>
+<h4 id="inheritdefault">inherit:default<a class="headerlink" href="#inheritdefault" title="Permanent link">&para;</a></h4>
+<p>使用 <code>inherit:default</code> 控制 <code>default</code> 关键字的继承</p>
+<div class="highlight"><pre><span></span><code>default:
+  retry: 2
+  image: ruby:3.0
+  interruptible: true
+
+job1:
+  script: echo &quot;此作业不继承任何默认关键字&quot;
+  inherit:
+    default: false
+
+job2:
+  script: echo &quot;此作业仅继承列出的两个默认关键字。它不继承“可中断”&quot;
+  inherit:
+    default:
+      - retry
+      - image
+</code></pre></div>
+<h4 id="inheritvariables">inherit:variables<a class="headerlink" href="#inheritvariables" title="Permanent link">&para;</a></h4>
+<p>使用 inherit:variables 控制全局变量关键字的继承</p>
+<div class="highlight"><pre><span></span><code>variables:
+  VARIABLE1: &quot;这是变量 1&quot;
+  VARIABLE2: &quot;这是变量 2&quot;
+  VARIABLE3: &quot;这是变量 3&quot;
+
+job1:
+  script: echo &quot;该作业不继承任何全局变量&quot;
+  inherit:
+    variables: false
+
+job2:
+  script: echo &quot;此作业仅继承列出的两个全局变量。它不继承“VARIABLE3”&quot;
+  inherit:
+    variables:
+      - VARIABLE1
+      - VARIABLE2
+</code></pre></div>
+<h3 id="interruptible">interruptible<a class="headerlink" href="#interruptible" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>stages:
+  - stage1
+  - stage2
+  - stage3
+
+step-1:
+  stage: stage1
+  script:
+    - echo &quot;可以取消&quot;
+  interruptible: true
+
+step-2:
+  stage: stage2
+  script:
+    - echo &quot;不能取消&quot;
+
+step-3:
+  stage: stage3
+  script:
+    - echo &quot;因为第 2 步无法取消，所以此步骤永远无法取消，即使它被设置为可中断&quot;
+  interruptible: true
+</code></pre></div>
+<p>如果在作业完成之前启动较新的管道时应取消作业，则使用可中断的</p>
+<h3 id="pages">pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment: production
+</code></pre></div>
+<p>使用页面定义将静态内容上传到 <code>GitLab</code> 的 <code>GitLab Pages</code> 作业。然后将内容发布为网站</p>
+<h3 id="parallel">parallel<a class="headerlink" href="#parallel" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>test:
+  script: rspec
+  parallel: 5
+</code></pre></div>
+<p>使用 <code>parallel</code> 在单个管道中并行多次运行作业</p>
+<h4 id="parallelmatrix">parallel:matrix<a class="headerlink" href="#parallelmatrix" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>deploystacks:
+  stage: deploy
+  script:
+    - bin/deploy
+  parallel:
+    matrix:
+      - PROVIDER: aws
+        STACK:
+          - monitoring
+          - app1
+          - app2
+      - PROVIDER: ovh
+        STACK: [monitoring, backup, app]
+      - PROVIDER: [gcp, vultr]
+        STACK: [data, processing]
+  environment: $PROVIDER/$STACK
+</code></pre></div>
+<p>使用 <code>parallel:matrix</code> 在单个管道中并行多次运行作业，但每个作业实例具有不同的变量值</p>
+<h3 id="resource_group">resource_group<a class="headerlink" href="#resource_group" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy-to-production:
+  script: deploy
+  resource_group: production
+</code></pre></div>
+<p>创建一个资源组，以确保作业在同一项目的不同管道之间互斥</p>
+<h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  tags:
+    - ruby
+    - postgres
+</code></pre></div>
+<p>使用标签从项目可用的所有运行器列表中选择特定运行器</p>
+<h3 id="retry">retry<a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>test:
+  script: rspec
+  retry: 2
+</code></pre></div>
+<p>使用 <code>retry</code> 配置作业失败时重试的次数。如果未定义，则默认为 <code>0</code>，并且作业不会重试</p>
+<h4 id="retrywhen">retry:when<a class="headerlink" href="#retrywhen" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>test:
+  script: rspec
+  retry:
+    max: 2
+    when: runner_system_failure
+</code></pre></div>
+<p>使用 <code>retry:when</code> 和 <code>retry:max</code> 来重试特定失败案例的作业。 <code>retry:max</code> 是最大重试次数，和<code>retry</code>一样，可以是0、1、2</p>
+<h3 id="script">script<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job1:
+  script: &quot;bundle exec rspec&quot;
+
+job2:
+  script:
+    - uname -a
+    - bundle exec rspec
+</code></pre></div>
+<p>使用脚本指定运行器执行的命令</p>
+<h3 id="secrets">secrets<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>此关键字必须与 <code>secrets:vault</code> 一起使用</p>
+<h4 id="secretsvault">secrets:vault<a class="headerlink" href="#secretsvault" title="Permanent link">&para;</a></h4>
+<p>使用 <code>secrets:vault</code> 指定 HashiCorp Vault 提供的秘密</p>
+<div class="highlight"><pre><span></span><code>job:
+  secrets:
+    # 将秘密的路径存储在此 CI/CD 变量中
+    DATABASE_PASSWORD:
+      # 转换为秘密：`ops/data/production/db`
+      # 字段：`password`
+      vault: 
+        engine:
+          name: kv-v2
+          path: ops
+        path: production/db
+        field: password
+</code></pre></div>
+<h4 id="secretsfile">secrets:file<a class="headerlink" href="#secretsfile" title="Permanent link">&para;</a></h4>
+<p>使用 <code>secrets:file</code> 将秘密配置为存储为文件或变量类型的 CI/CD 变量</p>
+<div class="highlight"><pre><span></span><code>job:
+  secrets:
+    DATABASE_PASSWORD:
+      vault: production/db/password@ops
+      file: false
+</code></pre></div>
+<h3 id="timeout">timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>build:
+  script: build.sh
+  timeout: 3 hours 30 minutes
+
+test:
+  script: rspec
+  timeout: 3h 30m
+</code></pre></div>
+<p>为特定作业配置超时。 如果作业运行时间超过超时时间，则作业失败</p>
+<h3 id="services">services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>使用服务指定额外的 <code>Docker</code> 映像以在其中运行脚本</p>
+<div class="highlight"><pre><span></span><code>default:
+  image:
+    name: ruby:2.6
+    entrypoint: [&quot;/bin/bash&quot;]
+
+  services:
+    - name: my-postgres:11.7
+      alias: db-postgres
+      entrypoint: [&quot;/usr/local/bin/db-postgres&quot;]
+      command: [&quot;start&quot;]
+
+  before_script:
+    - bundle install
+
+test:
+  script:
+    - bundle exec rake spec
+</code></pre></div>
+<h4 id="servicepull_policy">service:pull_policy<a class="headerlink" href="#servicepull_policy" title="Permanent link">&para;</a></h4>
+<p>运行器用于获取 <code>Docker</code> 映像的拉取策略</p>
+<div class="highlight"><pre><span></span><code>job1:
+  script: echo &quot;A single pull policy.&quot;
+  services:
+    - name: postgres:11.6
+      pull_policy: if-not-present
+
+job2:
+  script: echo &quot;Multiple pull policies.&quot;
+  services:
+    - name: postgres:11.6
+      pull_policy: [always, if-not-present]
+</code></pre></div>
+<h3 id="stage">stage<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - test
+  - deploy
+
+job1:
+  stage: build
+  script:
+    - echo &quot;这项工作编译代码&quot;
+
+job2:
+  stage: test
+  script:
+    - echo &quot;此作业测试编译后的代码。它在构建阶段完成时运行&quot;
+
+job3:
+  script:
+    - echo &quot;这项工作也在测试阶段运行&quot;
+
+job4:
+  stage: deploy
+  script:
+    - echo &quot;此作业部署代码。它在测试阶段完成时运行&quot;
+  environment: production
+</code></pre></div>
+<h4 id="stage-pre">stage: .pre<a class="headerlink" href="#stage-pre" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - test
+
+job1:
+  stage: build
+  script:
+    - echo &quot;该作业在构建阶段运行&quot;
+
+first-job:
+  stage: .pre
+  script:
+    - echo &quot;该作业在 .pre 阶段运行，在所有其他阶段之前&quot;
+
+job2:
+  stage: test
+  script:
+    - echo &quot;该作业在测试阶段运行&quot;
+</code></pre></div>
+<h4 id="stage-post">stage: .post<a class="headerlink" href="#stage-post" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - test
+
+job1:
+  stage: build
+  script:
+    - echo &quot;该作业在构建阶段运行&quot;
+
+last-job:
+  stage: .post
+  script:
+    - echo &quot;该作业在 .post 阶段运行，在所有其他阶段之后&quot;
+
+job2:
+  stage: test
+  script:
+    - echo &quot;该作业在测试阶段运行&quot;
+</code></pre></div>
+<h3 id="trigger">trigger<a class="headerlink" href="#trigger" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>声明一个作业是一个“触发作业”</p>
+<div class="highlight"><pre><span></span><code>trigger-multi-project-pipeline:
+  trigger: my-group/my-project
+</code></pre></div>
+<h4 id="triggerinclude">trigger:include<a class="headerlink" href="#triggerinclude" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>trigger-child-pipeline:
+  trigger:
+    include: path/to/child-pipeline.gitlab-ci.yml
+</code></pre></div>
+<p>声明作业是启动子管道的“触发器作业”</p>
+<h4 id="triggerproject">trigger:project<a class="headerlink" href="#triggerproject" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>trigger-multi-project-pipeline:
+  trigger:
+    project: my-group/my-project
+</code></pre></div>
+<p>声明作业是启动多项目管道的“触发器作业”</p>
+<h4 id="triggerstrategy">trigger:strategy<a class="headerlink" href="#triggerstrategy" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>trigger-multi-project-pipeline:
+  trigger:
+    project: my-group/my-project
+    branch: development
+</code></pre></div>
+<p>强制触发作业等待下游管道完成后再标记为成功</p>
+<h4 id="triggerforward">trigger:forward<a class="headerlink" href="#triggerforward" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>variables: # 每个作业的默认变量
+  VAR: value
+
+# 默认行为：
+# - VAR 传递给孩子
+# - MYVAR 没有传递给孩子
+child1:
+  trigger:
+    include: .child-pipeline.yml
+
+# 转发管道变量：
+# - VAR 传递给孩子
+# - MYVAR 传递给孩子
+child2:
+  trigger:
+    include: .child-pipeline.yml
+    forward:
+      pipeline_variables: true
+
+# 不要转发 YAML 变量：
+# - VAR 不会传递给孩子
+# - MYVAR 没有传递给孩子
+child3:
+  trigger:
+    include: .child-pipeline.yml
+    forward:
+      yaml_variables: false
+</code></pre></div>
+<h3 id="variables">variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<p>CI/CD 变量是传递给作业的可配置值。使用变量创建自定义变量</p>
+<div class="highlight"><pre><span></span><code>variables:
+  DEPLOY_SITE: &quot;https://example.com/&quot;
+
+deploy_job:
+  stage: deploy
+  script:
+    - deploy-script --url $DEPLOY_SITE --path &quot;/&quot;
+  environment: production
+
+deploy_review_job:
+  stage: deploy
+  variables:
+    REVIEW_PATH: &quot;/review&quot;
+  script:
+    - deploy-review-script --url $DEPLOY_SITE --path $REVIEW_PATH
+  environment: production
+</code></pre></div>
+<h4 id="variablesdescription">variables:description<a class="headerlink" href="#variablesdescription" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>variables:
+  DEPLOY_ENVIRONMENT:
+    description: &quot;部署目标。 如果需要，将此变量更改为“canary”或“production”&quot;
+    value: &quot;staging&quot;
+</code></pre></div>
+<h4 id="variablesexpand">variables:expand<a class="headerlink" href="#variablesexpand" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>variables:
+  VAR1: value1
+  VAR2: value2 $VAR1
+  VAR3:
+    value: value3 $VAR1
+    expand: false
+</code></pre></div>
+<p>使用 <code>expand</code> 关键字将变量配置为可扩展或不可扩展</p>
+<h3 id="when">when<a class="headerlink" href="#when" title="Permanent link">&para;</a></h3>
+<p>使用 <code>when</code> 配置作业运行的条件。如果未在作业中定义，则默认值为 <code>when:on_success</code></p>
+<div class="highlight"><pre><span></span><code>stages:
+  - build
+  - cleanup_build
+  - test
+  - deploy
+  - cleanup
+
+build_job:
+  stage: build
+  script:
+    - make build
+
+cleanup_build_job:
+  stage: cleanup_build
+  script:
+    - cleanup build when failed
+  when: on_failure
+
+test_job:
+  stage: test
+  script:
+    - make test
+
+deploy_job:
+  stage: deploy
+  script:
+    - make deploy
+  when: manual
+  environment: production
+
+cleanup_job:
+  stage: cleanup
+  script:
+    - cleanup after jobs
+  when: always
+</code></pre></div>
+<hr />
+<table>
+<thead>
+<tr>
+<th align="left">:-</th>
+<th>--</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>on_success(default)</code></td>
+<td>仅当早期阶段的所有作业都成功或具有 <code>allow_failure: true</code> 时才运行该作业</td>
+</tr>
+<tr>
+<td align="left"><code>manual</code></td>
+<td>仅在手动触发时运行作业</td>
+</tr>
+<tr>
+<td align="left"><code>always</code></td>
+<td>无论早期阶段的作业状态如何，都运行作业。也可以用在 <code>workflow:rules</code> 中</td>
+</tr>
+<tr>
+<td align="left"><code>on_failure</code></td>
+<td>仅当早期阶段的至少一项作业失败时才运行该作业</td>
+</tr>
+<tr>
+<td align="left"><code>delayed</code></td>
+<td>将作业的执行延迟指定的持续时间</td>
+</tr>
+<tr>
+<td align="left"><code>never</code></td>
+<td>不要运行作业。只能在规则<a href="#rules">rules</a>部分或工作流中使用：<code>workflow: rules</code></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=style-list-->
+
+<h2 id="artifacts">artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h2>
+<p>使用工件指定要将哪些文件另存为作业 artifacts。作业 artifacts 是作业成功、失败或始终附加到作业的文件和目录的列表</p>
+<h3 id="artifactspaths">artifacts:paths<a class="headerlink" href="#artifactspaths" title="Permanent link">&para;</a></h3>
+<p>路径是相对于项目目录（$CI_PROJECT_DIR）的，不能直接链接到项目目录之外</p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    paths:
+      - binaries/
+      - .config
+</code></pre></div>
+<h3 id="artifactsexclude">artifacts:exclude<a class="headerlink" href="#artifactsexclude" title="Permanent link">&para;</a></h3>
+<p>防止将文件添加到 artifacts 存档中</p>
+<div class="highlight"><pre><span></span><code>artifacts:
+  paths:
+    - binaries/
+  exclude:
+    - binaries/**/*.o
+</code></pre></div>
+<h3 id="artifactsexpire_in">artifacts:expire_in<a class="headerlink" href="#artifactsexpire_in" title="Permanent link">&para;</a></h3>
+<p>指定作业 artifacts 在它们过期和被删除之前存储多长时间</p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    expire_in: 1 week
+</code></pre></div>
+<hr />
+<ul>
+<li>'42'</li>
+<li>42 seconds</li>
+<li>3 mins 4 sec</li>
+<li>2 hrs 20 min</li>
+<li>2h20min</li>
+<li>6 mos 1 day</li>
+<li>47 yrs 6 mos and 4d</li>
+<li>3 weeks and 2 days</li>
+<li>never</li>
+</ul>
+<!--rehype:className=cols-2-->
+
+<h3 id="artifactsexpose_as">artifacts:expose_as<a class="headerlink" href="#artifactsexpose_as" title="Permanent link">&para;</a></h3>
+<p>使用 <code>artifacts:expose_as</code> 关键字在合并请求 UI 中公开作业 artifacts</p>
+<div class="highlight"><pre><span></span><code>test:
+  script: [&quot;echo &#39;test&#39; &gt; file.txt&quot;]
+  artifacts:
+    expose_as: &#39;artifact 1&#39;
+    paths: [&#39;file.txt&#39;]
+</code></pre></div>
+<h3 id="artifactsname">artifacts:name<a class="headerlink" href="#artifactsname" title="Permanent link">&para;</a></h3>
+<p>定义创建的 <code>artifacts</code> 存档的名称。您可以为每个存档指定一个唯一的名称</p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    name: &quot;job1-artifacts-file&quot;
+    paths:
+      - binaries/
+</code></pre></div>
+<h3 id="artifactspublic">artifacts:public<a class="headerlink" href="#artifactspublic" title="Permanent link">&para;</a></h3>
+<p>确定作业工件是否应该公开可用</p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    public: false
+</code></pre></div>
+<h3 id="artifactsreports">artifacts:reports<a class="headerlink" href="#artifactsreports" title="Permanent link">&para;</a></h3>
+<p>收集作业中包含的模板生成的 <code>artifacts</code></p>
+<div class="highlight"><pre><span></span><code>rspec:
+  stage: test
+  script:
+    - bundle install
+    - rspec --format RspecJunitFormatter --out rspec.xml
+  artifacts:
+    reports:
+      junit: rspec.xml
+</code></pre></div>
+<h3 id="artifactsuntracked">artifacts:untracked<a class="headerlink" href="#artifactsuntracked" title="Permanent link">&para;</a></h3>
+<p>将所有 Git 未跟踪文件添加为 <code>artifacts</code>（连同在 <code>artifacts:paths</code> 中定义的路径）</p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    untracked: true
+</code></pre></div>
+<h3 id="artifactswhen">artifacts:when<a class="headerlink" href="#artifactswhen" title="Permanent link">&para;</a></h3>
+<p>作业失败或尽管失败时上传 <code>artifacts</code></p>
+<div class="highlight"><pre><span></span><code>job:
+  artifacts:
+    when: on_failure
+</code></pre></div>
+<h2 id="cache">cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h2>
+<h3 id="cachepaths">cache:paths<a class="headerlink" href="#cachepaths" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rspec:
+  script:
+    - echo &quot;此作业使用缓存&quot;
+  cache:
+    key: binaries-cache
+    paths:
+      - binaries/*.apk
+      - .config
+</code></pre></div>
+<p>关键字来选择要缓存的文件或目录</p>
+<h3 id="cachekey">cache:key<a class="headerlink" href="#cachekey" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<p>为每个缓存提供唯一的标识键。 使用相同缓存键的所有作业都使用相同的缓存，包括在不同的管道中</p>
+<div class="highlight"><pre><span></span><code>cache-job:
+  script:
+    - echo &quot;此作业使用缓存&quot;
+  cache:
+    key: binaries-cache-$CI_COMMIT_REF_SLUG
+    paths:
+      - binaries/
+</code></pre></div>
+<h4 id="cachekeyfiles"><code>cache:key:files</code><a class="headerlink" href="#cachekeyfiles" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>cache-job:
+  script:
+    - echo &quot;此作业使用缓存&quot;
+  cache:
+    key:
+      files:
+        - Gemfile.lock
+        - package.json
+    paths:
+      - vendor/ruby
+      - node_modules
+</code></pre></div>
+<p>当一个或两个特定文件更改时，使用 <code>cache:key:files</code> 关键字生成新密钥</p>
+<h4 id="cachekeyprefix"><code>cache:key:prefix</code><a class="headerlink" href="#cachekeyprefix" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>rspec:
+  script:
+    - echo &quot;此 rspec 作业使用缓存&quot;
+  cache:
+    key:
+      files:
+        - Gemfile.lock
+      prefix: $CI_JOB_NAME
+    paths:
+      - vendor/ruby
+</code></pre></div>
+<p>使用 <code>cache:key:prefix</code> 将前缀与为 <code>cache:key:files</code> 计算的 SHA 结合起来</p>
+<h3 id="cacheuntracked">cache:untracked<a class="headerlink" href="#cacheuntracked" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rspec:
+  script: test
+  cache:
+    untracked: true
+    paths:
+      - binaries/
+</code></pre></div>
+<p>使用 <code>untracked: true</code> 缓存 Git 存储库中所有未跟踪的文件</p>
+<h3 id="cachewhen">cache:when<a class="headerlink" href="#cachewhen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rspec:
+  script: rspec
+  cache:
+    paths:
+      - rspec/
+    when: &#39;always&#39;
+</code></pre></div>
+<p>使用 <code>cache:when</code> 根据作业的状态定义何时保存缓存</p>
+<table>
+<thead>
+<tr>
+<th align="left">:-</th>
+<th>--</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>on_succes(默认)</code></td>
+<td>仅当作业成功时才保存缓存</td>
+</tr>
+<tr>
+<td align="left"><code>on_failure</code></td>
+<td>仅在作业失败时才保存缓存</td>
+</tr>
+<tr>
+<td align="left"><code>always</code></td>
+<td>始终保存缓存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cachepolicy">cache:policy<a class="headerlink" href="#cachepolicy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>prepare-dependencies-job:
+  stage: build
+  cache:
+    key: gems
+    paths:
+      - vendor/bundle
+    policy: push
+  script:
+    - echo &quot;此作业仅下载依赖项并构建缓存&quot;
+    - echo &quot;正在下载依赖...&quot;
+
+faster-test-job:
+  stage: test
+  cache:
+    key: gems
+    paths:
+      - vendor/bundle
+    policy: pull
+  script:
+    - echo &quot;此作业脚本使用缓存，但不更新它&quot;
+    - echo &quot;运行测试...&quot;
+</code></pre></div>
+<p>要更改缓存的上传和下载行为，请使用 <code>cache:policy</code> 关键字</p>
+<h2 id="environment">environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
+<h3 id="environmentname">environment:name<a class="headerlink" href="#environmentname" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy to production:
+  stage: deploy
+  script: git push production HEAD:main
+  environment:
+    name: production
+</code></pre></div>
+<p>为环境设置名称</p>
+<h3 id="environmenturl">environment:url<a class="headerlink" href="#environmenturl" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy to production:
+  stage: deploy
+  script: git push production HEAD:main
+  environment:
+    name: production
+    url: https://prod.example.com
+</code></pre></div>
+<p>为环境设置 URL</p>
+<h3 id="environmenton_stop">environment:on_stop<a class="headerlink" href="#environmenton_stop" title="Permanent link">&para;</a></h3>
+<p>关闭（停止）环境可以通过在环境下定义的 on_stop 关键字来实现。 它声明运行以关闭环境的不同作业</p>
+<h3 id="environmentaction">environment:action<a class="headerlink" href="#environmentaction" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>stop_review_app:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script: make delete-app
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    action: stop
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">:-</th>
+<th>--</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>start</code> <em>默认值</em></td>
+<td>指示作业启动环境。在作业开始后创建的</td>
+</tr>
+<tr>
+<td align="left"><code>prepare</code></td>
+<td>表示作业只是准备环境。它不会触发部署</td>
+</tr>
+<tr>
+<td align="left"><code>stop</code></td>
+<td>指示作业停止部署</td>
+</tr>
+<tr>
+<td align="left"><code>verify</code></td>
+<td>指示作业仅验证环境。它不会触发部署</td>
+</tr>
+<tr>
+<td align="left"><code>access</code></td>
+<td>指示作业仅访问环境。它不会触发部署</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environmentauto_stop_in">environment:auto_stop_in<a class="headerlink" href="#environmentauto_stop_in" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>review_app:
+  script: deploy-review-app
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    auto_stop_in: 1 day
+</code></pre></div>
+<ul>
+<li><code>168 hours</code></li>
+<li><code>7 days</code></li>
+<li><code>one week</code></li>
+<li><code>never</code></li>
+</ul>
+<!--rehype:className=cols-2-->
+
+<p><code>auto_stop_in</code> 关键字指定环境的生命周期。 当环境到期时，GitLab 会自动停止它</p>
+<h3 id="environmentkubernetes">environment:kubernetes<a class="headerlink" href="#environmentkubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy:
+  stage: deploy
+  script: make deploy-app
+  environment:
+    name: production
+    kubernetes:
+      namespace: production
+</code></pre></div>
+<p>使用 <code>kubernetes</code> 关键字将部署配置到与您的项目关联的 <code>Kubernetes</code> 集群</p>
+<h3 id="environmentdeployment_tier">environment:deployment_tier<a class="headerlink" href="#environmentdeployment_tier" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy:
+  script: echo
+  environment:
+    name: customer-portal
+    deployment_tier: production
+</code></pre></div>
+<ul>
+<li><code>production</code></li>
+<li><code>staging</code></li>
+<li><code>testing</code></li>
+<li><code>development</code></li>
+<li><code>other</code></li>
+</ul>
+<!--rehype:className=cols-2-->
+
+<h3 id="environment_1">动态 environment<a class="headerlink" href="#environment_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy as review app:
+  stage: deploy
+  script: make deploy
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://$CI_ENVIRONMENT_SLUG.example.com/
+</code></pre></div>
+<h2 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h2>
+<h3 id="imagename">image:name<a class="headerlink" href="#imagename" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>image:
+  name: &quot;registry.example.com/my/image:latest&quot;
+</code></pre></div>
+<!--rehype:className=wrap-text-->
+
+<p>作业运行所在的 Docker 镜像的名称。类似于它自己使用的镜像</p>
+<h3 id="imageentrypoint">image:entrypoint<a class="headerlink" href="#imageentrypoint" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>image:
+  name: super/sql:experimental
+  entrypoint: [&quot;&quot;]
+</code></pre></div>
+<p>作为容器入口点执行的命令或脚本</p>
+<h3 id="imagepull_policy">image:pull_policy<a class="headerlink" href="#imagepull_policy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job1:
+  script: echo &quot;单一拉动政策&quot;
+  image:
+    name: ruby:3.0
+    pull_policy: if-not-present
+
+job2:
+  script: echo &quot;多重拉动政策&quot;
+  image:
+    name: ruby:3.0
+    pull_policy: [always, if-not-present]
+</code></pre></div>
+<p>运行器用于获取 Docker 映像的拉取策略</p>
+<h2 id="needs">needs<a class="headerlink" href="#needs" title="Permanent link">&para;</a></h2>
+<h3 id="needsartifacts">needs:artifacts<a class="headerlink" href="#needsartifacts" title="Permanent link">&para;</a></h3>
+<p>当作业使用需求时，它不再默认下载先前阶段的所有工件，因为有需求的作业可以在早期阶段完成之前开始</p>
+<div class="highlight"><pre><span></span><code>test-job1:
+  stage: test
+  needs:
+    - job: build_job1
+      artifacts: true
+
+test-job2:
+  stage: test
+  needs:
+    - job: build_job2
+      artifacts: false
+
+test-job3:
+  needs:
+    - job: build_job1
+      artifacts: true
+    - job: build_job2
+    - build_job3
+</code></pre></div>
+<h3 id="needsproject">needs:project<a class="headerlink" href="#needsproject" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=col-span-2-->
+
+<p>使用 <code>needs:project</code> 从其他管道中的最多五个作业下载工件。工件是从指定参考的最新成功管道下载的。要指定多个作业，请将每个作业作为单独的数组项添加到 needs 关键字下</p>
+<div class="highlight"><pre><span></span><code>build_job:
+  stage: build
+  script:
+    - ls -lhR
+  needs:
+    - project: namespace/group/project-name
+      job: build-1
+      ref: main
+      artifacts: true
+    - project: namespace/group/project-name-2
+      job: build-2
+      ref: main
+      artifacts: true
+</code></pre></div>
+<h3 id="needspipelinejob">needs:pipeline:job<a class="headerlink" href="#needspipelinejob" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>create-artifact:
+  stage: build
+  script: echo &quot;sample artifact&quot; &gt; artifact.txt
+  artifacts:
+    paths: [artifact.txt]
+
+child-pipeline:
+  stage: test
+  trigger:
+    include: child.yml
+    strategy: depend
+  variables:
+    PARENT_PIPELINE_ID: $CI_PIPELINE_ID
+</code></pre></div>
+<p>子管道可以从其父管道中的作业或同一父子管道层次结构中的另一个子管道下载工件</p>
+<h3 id="needsoptional">needs:optional<a class="headerlink" href="#needsoptional" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=col-span-2 row-span-2-->
+
+<p>要需要管道中有时不存在的作业，请将 <code>optional: true</code> 添加到需求配置中。如果未定义，则可选：默认为 <code>false</code></p>
+<div class="highlight"><pre><span></span><code>build-job:
+  stage: build
+
+test-job1:
+  stage: test
+
+test-job2:
+  stage: test
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+deploy-job:
+  stage: deploy
+  needs:
+    - job: test-job2
+      optional: true
+    - job: test-job1
+  environment: production
+
+review-job:
+  stage: deploy
+  needs:
+    - job: test-job2
+      optional: true
+  environment: review
+</code></pre></div>
+<h3 id="needspipeline">needs:pipeline<a class="headerlink" href="#needspipeline" title="Permanent link">&para;</a></h3>
+<p>您可以使用 <code>needs:pipeline</code> 关键字将管道状态从上游管道镜像到桥接作业</p>
+<div class="highlight"><pre><span></span><code>upstream_bridge:
+  stage: test
+  needs:
+    pipeline: other/project
+</code></pre></div>
+<h2 id="only-except">only / except<a class="headerlink" href="#only-except" title="Permanent link">&para;</a></h2>
+<h3 id="onlyrefs-exceptrefs">only:refs / except:refs<a class="headerlink" href="#onlyrefs-exceptrefs" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>job1:
+  script: echo
+  only:
+    - main
+    - /^issue-.*$/
+    - merge_requests
+
+job2:
+  script: echo
+  except:
+    - main
+    - /^stable-branch.*$/
+    - schedules
+</code></pre></div>
+<p>使用 <code>only:refs</code> 和 <code>except:refs</code> 关键字来控制何时根据分支名称或管道类型将作业添加到管道</p>
+<h3 id="onlyvariables-exceptvariables">only:variables / except:variables<a class="headerlink" href="#onlyvariables-exceptvariables" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy:
+  script: cap staging deploy
+  only:
+    variables:
+      - $RELEASE == &quot;staging&quot;
+      - $STAGING
+</code></pre></div>
+<p>根据 CI/CD 变量的状态，使用 only:variables 或 except:variables 关键字来控制何时将作业添加到管道</p>
+<h3 id="onlychanges-exceptchanges">only:changes / except:changes<a class="headerlink" href="#onlychanges-exceptchanges" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>docker build:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  only:
+    refs:
+      - branches
+    changes:
+      - Dockerfile
+      - docker/scripts/*
+      - dockerfiles/**/*
+      - more_scripts/*.{rb,py,sh}
+      - &quot;**/*.json&quot;
+</code></pre></div>
+<p>当 <code>Git</code> 推送事件修改文件时，使用 <code>changes</code> 关键字仅运行作业，或使用 <code>except</code> 跳过作业</p>
+<h3 id="onlykubernetes-exceptkubernetes">only:kubernetes / except:kubernetes<a class="headerlink" href="#onlykubernetes-exceptkubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>deploy:
+  only:
+    kubernetes: active
+</code></pre></div>
+<p>使用 <code>only:kubernetes</code> 或 <code>except:kubernetes</code> 来控制当 <code>Kubernetes</code> 服务在项目中处于活动状态时是否将作业添加到管道中</p>
+<h2 id="release">release<a class="headerlink" href="#release" title="Permanent link">&para;</a></h2>
+<h3 id="release_1">release 参考<a class="headerlink" href="#release_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">:-</th>
+<th>--</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#releasetag_name">release:tag_name</a></td>
+<td>发布的 Git 标签</td>
+</tr>
+<tr>
+<td align="left"><a href="#releasetag_message">release:tag_message</a></td>
+<td>指定的消息进行注释</td>
+</tr>
+<tr>
+<td align="left"><a href="#releasename">release:name</a></td>
+<td>发布名称</td>
+</tr>
+<tr>
+<td align="left"><a href="#releasedescription">release:description</a></td>
+<td>版本的详细描述</td>
+</tr>
+<tr>
+<td align="left"><a href="#releaseref">release:ref</a></td>
+<td>发布的 ref</td>
+</tr>
+<tr>
+<td align="left"><a href="#releasemilestones">release:milestones</a></td>
+<td>每个里程碑的标题</td>
+</tr>
+<tr>
+<td align="left"><a href="#releasereleased_at">release:released_at</a></td>
+<td>发布准备就绪的日期和时间</td>
+</tr>
+</tbody>
+</table>
+<h3 id="releasetag_name">release:tag_name<a class="headerlink" href="#releasetag_name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  script: echo &quot;为新标签运行发布作业&quot;
+  release:
+    tag_name: $CI_COMMIT_TAG
+    description: &#39;Release description&#39;
+  rules:
+    - if: $CI_COMMIT_TAG
+</code></pre></div>
+<p>必需的。发布的 Git 标签</p>
+<h3 id="releasetag_message">release:tag_message<a class="headerlink" href="#releasetag_message" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>release_job:
+  stage: release
+  release:
+    tag_name: $CI_COMMIT_TAG
+    description: &#39;Release description&#39;
+    tag_message: &#39;Annotated tag message&#39;
+</code></pre></div>
+<p>如果标签不存在，则新创建的标签将使用 <code>tag_message</code> 指定的消息进行注释</p>
+<h3 id="releasename">release:name<a class="headerlink" href="#releasename" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>release_job:
+  stage: release
+  release:
+    name: &#39;Release $CI_COMMIT_TAG&#39;
+</code></pre></div>
+<p>发布名称。如果省略，它会填充 <code>release:tag_name</code> 的值</p>
+<h3 id="releasedescription">release:description<a class="headerlink" href="#releasedescription" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  release:
+    tag_name: ${MAJOR}_${MINOR}_${REVISION}
+    description: &#39;./path/to/CHANGELOG.md&#39;
+</code></pre></div>
+<p>版本的详细描述</p>
+<h3 id="releaseref">release:ref<a class="headerlink" href="#releaseref" title="Permanent link">&para;</a></h3>
+<p>发布的 ref，如果发布：<code>tag_name</code> 尚不存在</p>
+<h3 id="releasemilestones">release:milestones<a class="headerlink" href="#releasemilestones" title="Permanent link">&para;</a></h3>
+<p>与版本关联的每个里程碑的标题</p>
+<h3 id="releasereleased_at">release:released_at<a class="headerlink" href="#releasereleased_at" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>released_at: &#39;2021-03-15T08:00:00Z&#39;
+</code></pre></div>
+<p>发布准备就绪的日期和时间</p>
+<h3 id="releaseassetslinks">release:assets:links<a class="headerlink" href="#releaseassetslinks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>assets:
+  links:
+    - name: &#39;asset1&#39;
+      url: &#39;https://example.com/assets/1&#39;
+    - name: &#39;asset2&#39;
+      url: &#39;https://example.com/assets/2&#39;
+      filepath: &#39;/pretty/url/1&#39; # 可选的
+      link_type: &#39;other&#39; # 可选的
+</code></pre></div>
+<p>使用 <code>release:assets:links</code> 在发布中包含资产链接</p>
+<h2 id="rules">rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h2>
+<h3 id="rulesif">rules:if<a class="headerlink" href="#rulesif" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  script: echo &quot;Hello, Rules!&quot;
+  rules:
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^feature/ &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != $CI_DEFAULT_BRANCH
+      when: never
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^feature/
+      when: manual
+      allow_failure: true
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+</code></pre></div>
+<p>使用 <code>rules:if</code> 子句指定何时将作业添加到管道</p>
+<h3 id="ruleschanges">rules:changes<a class="headerlink" href="#ruleschanges" title="Permanent link">&para;</a></h3>
+<!--rehype:wrap-class=row-span-2-->
+
+<div class="highlight"><pre><span></span><code>docker build:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: $CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;
+      changes:
+        - Dockerfile
+      when: manual
+      allow_failure: true
+</code></pre></div>
+<p>使用 <code>rules:changes</code> 通过检查对特定文件的更改来指定何时将作业添加到管道</p>
+<h4 id="ruleschangespaths">rules:changes:paths<a class="headerlink" href="#ruleschangespaths" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>docker-build-1:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: $CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;
+      changes:
+        - Dockerfile
+
+docker-build-2:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: $CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;
+      changes:
+        paths:
+          - Dockerfile
+</code></pre></div>
+<p>使用 <code>rules:changes</code> 指定仅在更改特定文件时将作业添加到管道，并使用 <code>rules:changes:paths</code> 指定文件</p>
+<h4 id="ruleschangescompare_to">rules:changes:compare_to<a class="headerlink" href="#ruleschangescompare_to" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>docker build:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: $CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;
+      changes:
+        paths:
+          - Dockerfile
+        compare_to: &#39;refs/heads/branch1&#39;
+</code></pre></div>
+<p>使用 <code>rules:changes:compare_to</code> 指定要比较哪个 <code>ref</code> 来比较 <code>rules:changes:paths</code> 下列出的文件的更改</p>
+<h3 id="rulesexists">rules:exists<a class="headerlink" href="#rulesexists" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - exists:
+        - Dockerfile
+</code></pre></div>
+<p>当存储库中存在某些文件时，使用 <code>exists</code> 运行作业</p>
+<h3 id="rulesallow_failure">rules:allow_failure<a class="headerlink" href="#rulesallow_failure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  script: echo &quot;Hello, Rules!&quot;
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      when: manual
+      allow_failure: true
+</code></pre></div>
+<p>在规则中使用 <code>allow_failure: true</code> 允许作业失败而不停止管道</p>
+<h3 id="rulesvariables">rules:variables<a class="headerlink" href="#rulesvariables" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>job:
+  variables:
+    DEPLOY_VARIABLE: &quot;default-deploy&quot;
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+      variables:                              # 覆盖定义的 DEPLOY_VARIABLE
+        DEPLOY_VARIABLE: &quot;deploy-production&quot;  # 在工作层面
+    - if: $CI_COMMIT_REF_NAME =~ /feature/
+      variables:
+        IS_A_FEATURE: &quot;true&quot;                  # 定义一个新变量
+  script:
+    - echo &quot;以 $DEPLOY_VARIABLE 作为参数运行脚本&quot;
+    - echo &quot;如果 $IS_A_FEATURE 存在则运行另一个脚本&quot;
+</code></pre></div>
+<p>在规则中使用变量来为特定条件定义变量</p>
+<h2 id="_9">另见<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/">.gitlab-ci.yml 关键字参考</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

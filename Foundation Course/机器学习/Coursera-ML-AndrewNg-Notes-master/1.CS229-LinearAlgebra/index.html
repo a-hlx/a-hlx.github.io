@@ -1,0 +1,3490 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Coursera-ML-AndrewNg-Notes-master/1.CS229-LinearAlgebra/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>1.CS229 LinearAlgebra - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cs229-" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.CS229 LinearAlgebra
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    线性代数复习和参考
+  </a>
+  
+    <nav class="md-nav" aria-label="线性代数复习和参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.  基础概念和符号
+  </a>
+  
+    <nav class="md-nav" aria-label="1.  基础概念和符号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 基本符号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.矩阵乘法
+  </a>
+  
+    <nav class="md-nav" aria-label="2.矩阵乘法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-" class="md-nav__link">
+    2.1 向量-向量乘法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-" class="md-nav__link">
+    2.2 矩阵-向量乘法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-" class="md-nav__link">
+    2.3 矩阵-矩阵乘法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 运算和属性
+  </a>
+  
+    <nav class="md-nav" aria-label="3 运算和属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 单位矩阵和对角矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 转置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 对称矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 矩阵的迹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 范数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 线性相关性和秩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 方阵的逆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    3.8 正交阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    3.9 矩阵的值域和零空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    3.10 行列式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.11 二次型和半正定矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.12 特征值和特征向量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.13 对称矩阵的特征值和特征向量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4.矩阵微积分
+  </a>
+  
+    <nav class="md-nav" aria-label="4.矩阵微积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 梯度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 黑塞矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 二次函数和线性函数的梯度和黑塞矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 最小二乘法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 行列式的梯度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 特征值优化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<blockquote>
+<p>本文是斯坦福大学CS 229机器学习课程的基础材料，<a href="http://cs229.stanford.edu/summer2019/cs229-linalg.pdf">原始文件下载</a></p>
+<p>原文作者：Zico Kolter，修改：Chuong Do， Tengyu Ma</p>
+<p>翻译：<a href="https://github.com/fengdu78">黄海广</a>
+备注：请关注<a href="https://github.com/fengdu78/Data-Science-Notes/tree/master/0.math">github</a>的更新，线性代数和概率论已经更新完毕。</p>
+</blockquote>
+<h1 id="cs229-">CS229 机器学习课程复习材料-线性代数<a class="headerlink" href="#cs229-" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#cs229-">CS229 机器学习课程复习材料-线性代数</a><ul>
+<li><a href="#_1">线性代数复习和参考</a><ul>
+<li><a href="#1">1.  基础概念和符号</a><ul>
+<li><a href="#11">1.1 基本符号</a></li>
+</ul>
+</li>
+<li><a href="#2">2.矩阵乘法</a><ul>
+<li><a href="#21-">2.1 向量-向量乘法</a></li>
+<li><a href="#22-">2.2 矩阵-向量乘法</a></li>
+<li><a href="#23-">2.3 矩阵-矩阵乘法</a></li>
+</ul>
+</li>
+<li><a href="#3">3 运算和属性</a><ul>
+<li><a href="#31">3.1 单位矩阵和对角矩阵</a></li>
+<li><a href="#32">3.2 转置</a></li>
+<li><a href="#33">3.3 对称矩阵</a></li>
+<li><a href="#34">3.4 矩阵的迹</a></li>
+<li><a href="#35">3.5 范数</a></li>
+<li><a href="#36">3.6 线性相关性和秩</a></li>
+<li><a href="#37">3.7 方阵的逆</a></li>
+<li><a href="#38">3.8 正交阵</a></li>
+<li><a href="#39">3.9 矩阵的值域和零空间</a></li>
+<li><a href="#310">3.10 行列式</a></li>
+<li><a href="#311">3.11 二次型和半正定矩阵</a></li>
+<li><a href="#312">3.12 特征值和特征向量</a></li>
+<li><a href="#313">3.13 对称矩阵的特征值和特征向量</a></li>
+</ul>
+</li>
+<li><a href="#4">4.矩阵微积分</a><ul>
+<li><a href="#41">4.1 梯度</a></li>
+<li><a href="#42">4.2 黑塞矩阵</a></li>
+<li><a href="#43">4.3 二次函数和线性函数的梯度和黑塞矩阵</a></li>
+<li><a href="#44">4.4 最小二乘法</a></li>
+<li><a href="#45">4.5 行列式的梯度</a></li>
+<li><a href="#46">4.6 特征值优化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">线性代数复习和参考<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="1">1.  基础概念和符号<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>线性代数提供了一种紧凑地表示和操作线性方程组的方法。 例如，以下方程组：
+$$
+4x_1 − 5x_2 = −13
+$$
+$$
+−2x_1 + 3x_2 = 9
+$$</p>
+<p>这是两个方程和两个变量，正如你从高中代数中所知，你可以找到 <span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(x_2\)</span> 的唯一解（除非方程以某种方式退化，例如，如果第二个方程只是第一个的倍数，但在上面的情况下，实际上只有一个唯一解）。 在矩阵表示法中，我们可以更紧凑地表达：</p>
+<div class="arithmatex">\[
+Ax= b
+\]</div>
+<div class="arithmatex">\[
+\text { with } A=\left[\begin{array}{cc}{4} &amp; {-5} \\ {-2} &amp; {3}\end{array}\right], b=\left[\begin{array}{c}{-13} \\ {9}\end{array}\right]
+\]</div>
+<p>我们可以看到，这种形式的线性方程有许多优点（比如明显地节省空间）。</p>
+<h4 id="11">1.1 基本符号<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<p>我们使用以下符号：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>，表示 <span class="arithmatex">\(A\)</span> 为由实数组成具有<span class="arithmatex">\(m\)</span>行和<span class="arithmatex">\(n\)</span>列的矩阵。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x \in \mathbb{R}^{ n}\)</span>，表示具有<span class="arithmatex">\(n\)</span>个元素的向量。 通常，向量<span class="arithmatex">\(x\)</span>将表示列向量: 即，具有<span class="arithmatex">\(n\)</span>行和<span class="arithmatex">\(1\)</span>列的矩阵。 如果我们想要明确地表示行向量: 具有 <span class="arithmatex">\(1\)</span> 行和<span class="arithmatex">\(n\)</span>列的矩阵 - 我们通常写<span class="arithmatex">\(x^T\)</span>（这里<span class="arithmatex">\(x^T\)</span><span class="arithmatex">\(x\)</span>的转置）。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_i\)</span>表示向量<span class="arithmatex">\(x\)</span>的第<span class="arithmatex">\(i\)</span>个元素</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+x=\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{n}}\end{array}\right]
+\]</div>
+<ul>
+<li>我们使用符号 <span class="arithmatex">\(a_{ij}\)</span>（或<span class="arithmatex">\(A_{ij}\)</span>,<span class="arithmatex">\(A_{i,j}\)</span>等）来表示第 <span class="arithmatex">\(i\)</span> 行和第<span class="arithmatex">\(j\)</span>列中的 <span class="arithmatex">\(A\)</span> 的元素：</li>
+</ul>
+<div class="arithmatex">\[
+A=\left[\begin{array}{cccc}{a_{11}} &amp; {a_{12}} &amp; {\cdots} &amp; {a_{1 n}} \\ {a_{21}} &amp; {a_{22}} &amp; {\cdots} &amp; {a_{2 n}} \\ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\ {a_{m 1}} &amp; {a_{m 2}} &amp; {\cdots} &amp; {a_{m n}}\end{array}\right]
+\]</div>
+<ul>
+<li>我们用<span class="arithmatex">\(a^j\)</span>或者<span class="arithmatex">\(A_{:,j}\)</span>表示矩阵<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(j\)</span>列：</li>
+</ul>
+<div class="arithmatex">\[
+A=\left[\begin{array}{llll}{ |} &amp; { |} &amp; {} &amp; { |} \\ {a^{1}} &amp; {a^{2}} &amp; {\cdots} &amp; {a^{n}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]
+\]</div>
+<ul>
+<li>
+<p>我们用<span class="arithmatex">\(a^T_i\)</span>或者<span class="arithmatex">\(A_{i,:}\)</span>表示矩阵<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>行：
+$$
+A=\left[\begin{array}{c}{-a_{1}^{T}-} \ {-a_{2}^{T}-} \ {\vdots} \ {-a_{m}^{T}-}\end{array}\right]
+$$</p>
+</li>
+<li>
+<p>在许多情况下，将矩阵视为列向量或行向量的集合非常重要且方便。 通常，在向量而不是标量上操作在数学上（和概念上）更清晰。只要明确定义了符号，用于矩阵的列或行的表示方式并没有通用约定。</p>
+</li>
+</ul>
+<h3 id="2">2.矩阵乘法<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>两个矩阵相乘，其中 <span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>  and <span class="arithmatex">\(B \in \mathbb{R}^{n \times p}\)</span> ，则：</p>
+<div class="arithmatex">\[
+C = AB \in \mathbb{R}^{m \times p}
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+C_{i j}=\sum_{k=1}^{n} A_{i k} B_{k j}
+\]</div>
+<p>请注意，为了使矩阵乘积存在，<span class="arithmatex">\(A\)</span>中的列数必须等于<span class="arithmatex">\(B\)</span>中的行数。有很多方法可以查看矩阵乘法，我们将从检查一些特殊情况开始。</p>
+<h4 id="21-">2.1 向量-向量乘法<a class="headerlink" href="#21-" title="Permanent link">&para;</a></h4>
+<p>给定两个向量<span class="arithmatex">\(x, y \in \mathbb{R}^{n}\)</span>,<span class="arithmatex">\(x^T y\)</span>通常称为<strong>向量内积</strong>或者<strong>点积</strong>，结果是个<strong>实数</strong>。</p>
+<div class="arithmatex">\[
+x^{T} y \in \mathbb{R}=\left[\begin{array}{llll}{x_{1}} &amp; {x_{2}} &amp; {\cdots} &amp; {x_{n}}\end{array}\right]\left[\begin{array}{c}{y_{1}} \\ {y_{2}} \\ {\vdots} \\ {y_{n}}\end{array}\right]=\sum_{i=1}^{n} x_{i} y_{i}
+\]</div>
+<p>注意：<span class="arithmatex">\(x^T y = y^Tx\)</span> 始终成立。</p>
+<p>给定向量 <span class="arithmatex">\(x \in \mathbb{R}^{m}\)</span>, <span class="arithmatex">\(y \in \mathbb{R}^{n}\)</span> (他们的维度是否相同都没关系)，<span class="arithmatex">\(xy^T \in \mathbb{R}^{m \times n}\)</span>叫做<strong>向量外积 </strong> , 当 <span class="arithmatex">\((xy^T)_{ij} = x_iy_j\)</span> 的时候，它是一个矩阵。</p>
+<p>$$
+x y^{T} \in \mathbb{R}^{m \times n}=\left[\begin{array}{c}{x_{1}} \ {x_{2}} \ {\vdots} \ {x_{m}}\end{array}\right]\left[\begin{array}{llll}{y_{1}} &amp; {y_{2}} &amp; {\cdots} &amp; {y_{n}}\end{array}\right]=\left[\begin{array}{cccc}{x_{1} y_{1}} &amp; {x_{1} y_{2}} &amp; {\cdots} &amp; {x_{1} y_{n}} \ {x_{2} y_{1}} &amp; {x_{2} y_{2}} &amp; {\cdots} &amp; {x_{2} y_{n}} \ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \ {x_{m} y_{1}} &amp; {x_{m} y_{2}} &amp; {\cdots} &amp; {x_{m} y_{n}}\end{array}\right]
+$$
+举一个外积如何使用的一个例子：让<span class="arithmatex">\(1\in R^{n}\)</span>表示一个<span class="arithmatex">\(n\)</span>维向量，其元素都等于1，此外，考虑矩阵<span class="arithmatex">\(A \in R^{m \times n}\)</span>，其列全部等于某个向量 <span class="arithmatex">\(x \in R^{m}\)</span>。 我们可以使用外积紧凑地表示矩阵 <span class="arithmatex">\(A\)</span>:</p>
+<div class="arithmatex">\[
+A=\left[\begin{array}{llll}{ |} &amp; { |} &amp; {} &amp; { |} \\ {x} &amp; {x} &amp; {\cdots} &amp; {x} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]=\left[\begin{array}{cccc}{x_{1}} &amp; {x_{1}} &amp; {\cdots} &amp; {x_{1}} \\ {x_{2}} &amp; {x_{2}} &amp; {\cdots} &amp; {x_{2}} \\ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\ {x_{m}} &amp; {x_{m}} &amp; {\cdots} &amp; {x_{m}}\end{array}\right]=\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{m}}\end{array}\right]\left[\begin{array}{lll}{1} &amp; {1} &amp; {\cdots} &amp; {1}\end{array}\right]=x \mathbf{1}^{T}
+\]</div>
+<h4 id="22-">2.2 矩阵-向量乘法<a class="headerlink" href="#22-" title="Permanent link">&para;</a></h4>
+<p>给定矩阵 <span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>，向量 <span class="arithmatex">\(x \in  \mathbb{R}^{n}\)</span> , 它们的积是一个向量 <span class="arithmatex">\(y = Ax \in R^{m}\)</span>。 有几种方法可以查看矩阵向量乘法，我们将依次查看它们中的每一种。</p>
+<p>如果我们按行写<span class="arithmatex">\(A\)</span>，那么我们可以表示<span class="arithmatex">\(Ax\)</span>为：</p>
+<div class="arithmatex">\[
+y=A x=\left[\begin{array}{ccc}{-} &amp; {a_{1}^{T}} &amp; {-} \\ {-} &amp; {a_{2}^{T}} &amp; {-} \\ {} &amp; {\vdots} &amp; {} \\ {-} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right] x=\left[\begin{array}{c}{a_{1}^{T} x} \\ {a_{2}^{T} x} \\ {\vdots} \\ {a_{m}^{T} x}\end{array}\right]
+\]</div>
+<p>换句话说，第<span class="arithmatex">\(i\)</span>个<span class="arithmatex">\(y\)</span>是<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>行和<span class="arithmatex">\(x\)</span>的内积，即：<span class="arithmatex">\(y_i = y_{i}=a_{i}^{T} x\)</span>。</p>
+<p>同样的， 可以把 <span class="arithmatex">\(A\)</span> 写成列的方式，则公式如下：</p>
+<div class="arithmatex">\[
+y=A x=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \\ {a^{1}} &amp; {a^{2}} &amp; {\cdots} &amp; {a^{n}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{n}}\end{array}\right]=\left[\begin{array}{c}{ } \\ {a^{1}{ } \\ }\end{array}\right] x_{1}+\left[\begin{array}{c}{ } \\ {a^{2}{ } \\ }\end{array}\right] x_{2}+{\cdots} +\left[\begin{array}{c}{ } \\ {a^{n}{ } \\ }\end{array}\right] x_{n}
+\]</div>
+<p>换句话说，<span class="arithmatex">\(y\)</span>是<span class="arithmatex">\(A\)</span>的列的线性组合，其中线性组合的系数由<span class="arithmatex">\(x\)</span>的元素给出。</p>
+<p>到目前为止，我们一直在右侧乘以列向量，但也可以在左侧乘以行向量。 这是写的，<span class="arithmatex">\(y^T = x^TA\)</span> 表示<span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(x \in \mathbb{R}^{m}\)</span>，<span class="arithmatex">\(y \in \mathbb{R}^{n}\)</span>。 和以前一样，我们可以用两种可行的方式表达<span class="arithmatex">\(y^T\)</span>，这取决于我们是否根据行或列表达<span class="arithmatex">\(A\)</span>.</p>
+<p>第一种情况，我们把<span class="arithmatex">\(A\)</span>用列表示：</p>
+<div class="arithmatex">\[
+y^{T}=x^{T} A=x^{T}\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \\ {a^{1}} &amp; {a^{2}} &amp; {\cdots} &amp; {a^{n}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]=\left[\begin{array}{cccc}{x^{T} a^{1}} &amp; {x^{T} a^{2}} &amp; {\dots} &amp; {x^{T} a^{n}}\end{array}\right]
+\]</div>
+<p>这表明<span class="arithmatex">\(y^T\)</span>的第<span class="arithmatex">\(i\)</span>个元素等于<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>列的内积。</p>
+<p>最后，根据行表示<span class="arithmatex">\(A\)</span>，我们得到了向量-矩阵乘积的最终表示:</p>
+<p>$$
+y^T=x^TA
+=\left[\begin{array}{llll}{x_{1}} &amp; {x_{2}} &amp; {\cdots} &amp; {x_{n}}\end{array}\right]\left[\begin{array}{c}{-a_{1}^{T}-} \ {-a_{2}^{T}-} \ {\vdots} \ {-a_{m}^{T}-}\end{array}\right]</p>
+<p>=x_{1}\left[-a_{1}^{T}-\right]+x_{2}\left[-a_{2}^{T}-\right]+\ldots+x_{n}\left[-a_{n}^{T}-\right]
+$$
+所以我们看到<span class="arithmatex">\(y^T\)</span>是<span class="arithmatex">\(A\)</span>的行的线性组合，其中线性组合的系数由<span class="arithmatex">\(x\)</span>的元素给出。</p>
+<h4 id="23-">2.3 矩阵-矩阵乘法<a class="headerlink" href="#23-" title="Permanent link">&para;</a></h4>
+<p>有了这些知识，我们现在可以看看四种不同的（形式不同，但结果是相同的）矩阵-矩阵乘法：也就是本节开头所定义的<span class="arithmatex">\(C=AB\)</span>的乘法。</p>
+<p>首先，我们可以将矩阵 - 矩阵乘法视为一组向量-向量乘积。 从定义中可以得出：最明显的观点是<span class="arithmatex">\(C <span class="arithmatex">\(的\)</span>( i，j )\)</span>元素等于<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>行和<span class="arithmatex">\(B\)</span>的的<span class="arithmatex">\(j\)</span>列的内积。如下面的公式所示：
+$$
+C=A B=\left[\begin{array}{cc}{-} &amp; {a_{1}^{T}} &amp;{-} \ {-} &amp; {a_{2}^{T}} &amp;{-}  \ {} &amp; {\vdots} \ {-} &amp; {a_{m}^{T}} &amp;{-} \end{array}\right]\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \ {b_{1}} &amp; {b_{2}} &amp; {\cdots} &amp; {b_{p}} \ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]=\left[\begin{array}{cccc}{a_{1}^{T} b_{1}} &amp; {a_{1}^{T} b_{2}} &amp; {\cdots} &amp; {a_{1}^{T} b_{p}} \ {a_{2}^{T} b_{1}} &amp; {a_{2}^{T} b_{2}} &amp; {\cdots} &amp; {a_{2}^{T} b_{p}} \ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \ {a_{m}^{T} b_{1}} &amp; {a_{m}^{T} b_{2}} &amp; {\cdots} &amp; {a_{m}^{T} b_{p}}\end{array}\right]
+$$</p>
+<p>这里的$ A \in \mathbb{R}^{m\times n}$ ，<span class="arithmatex">\(B \in \mathbb{R}^{n \times p}\)</span>， <span class="arithmatex">\(a_i \in \mathbb{R}^n\)</span> ，<span class="arithmatex">\(b^j \in \mathbb{R}^{n \times p}\)</span>， 这里的$  A \in \mathbb{R}^ {m \times n}，$ <span class="arithmatex">\(B \in \mathbb{R}^ {n \times p} <span class="arithmatex">(， <span class="arithmatex">(a_i \in \mathbb{R} ^ n <span class="arithmatex">\(，\)</span> b ^ j \in \mathbb{R} ^ {n \times p} <span class="arithmatex">\(，所以它们可以计算内积。 我们用通常用行表示\)</span> A <span class="arithmatex">\(而用列表示\)</span>B\)</span>。
+或者，我们可以用列表示\)</span> A\)</span>，用行表示<span class="arithmatex">\(B <span class="arithmatex">\(，这时\)</span>AB\)</span>是求外积的和。公式如下：
+$$
+C=A B=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \ {a_{1}} &amp; {a_{2}} &amp; {\cdots} &amp; {a_{n}} \ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]\left[\begin{array}{c}{-}&amp; {b_{1}^{T}}&amp;{-} \ {-}&amp; {b_{2}^{T}}&amp;{-}  \ {\vdots} \{-}&amp; {b_{n}^{T}}&amp;{-}\end{array}\right]=\sum_{i=1}^{n} a_{i} b_{i}^{T}
+$$
+换句话说，<span class="arithmatex">\(AB\)</span>等于所有的<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(i\)</span>列和<span class="arithmatex">\(B\)</span>第<span class="arithmatex">\(i\)</span>行的外积的和。因此，在这种情况下， <span class="arithmatex">\(a_i \in \mathbb{R}^ m <span class="arithmatex">\(和\)</span>b_i \in \mathbb{R}^p\)</span>， 外积<span class="arithmatex">\(a^ib_i^T\)</span>的维度是<span class="arithmatex">\(m×p\)</span>，与<span class="arithmatex">\(C\)</span>的维度一致。</p>
+<p>其次，我们还可以将矩阵 - 矩阵乘法视为一组矩阵向量积。如果我们把<span class="arithmatex">\(B\)</span>用列表示，我们可以将<span class="arithmatex">\(C\)</span>的列视为<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(B\)</span>的列的矩阵向量积。公式如下：</p>
+<div class="arithmatex">\[
+C=A B=A\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \\ {b_{1}} &amp; {b_{2}} &amp; {\cdots} &amp; {b_{p}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \\ {A b_{1}} &amp; {A b_{2}} &amp; {\cdots} &amp; {A b_{p}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]
+$$
+这里$C$的第$i$列由矩阵向量乘积给出，右边的向量为$c_i = Ab_i$。 这些矩阵向量乘积可以使用前一小节中给出的两个观点来解释。
+最后，我们有类似的观点，我们用行表示$A$，$C$的行作为$A$和$C$行之间的矩阵向量积。公式如下：
+$$
+C=A B=\left[\begin{array}{ccc}{-} &amp; {a_{1}^{T}} &amp; {-} \\ {-} &amp; {a_{2}^{T}} &amp; {-} \\ {} &amp; {\vdots} &amp; {} \\ {-} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right]  B=\left[\begin{array}{c} {-} &amp; {a_{1}^{T} B} &amp; {-}\\ {-} &amp; {a_{2}^{T} B} &amp; {-} \\ {\vdots} \\ {-} &amp; {a_{m}^{T} B}&amp; {-}\end{array}\right]
+\]</div>
+<p>这里第<span class="arithmatex">\(i\)</span>行的<span class="arithmatex">\(C\)</span>由左边的向量的矩阵向量乘积给出：<span class="arithmatex">\(c_i^T = a_i^T B\)</span></p>
+<p>将矩阵乘法剖析到如此大的程度似乎有点过分，特别是当所有这些观点都紧跟在我们在本节开头给出的初始定义（在一行数学中）之后。 </p>
+<p>这些不同方法的直接优势在于它们允许您<strong>在向量的级别/单位而不是标量上进行操作</strong>。 为了完全理解线性代数而不会迷失在复杂的索引操作中，关键是要用尽可能多的概念进行操作。</p>
+<p>实际上所有的线性代数都处理某种矩阵乘法，花一些时间对这里提出的观点进行直观的理解是非常必要的。 </p>
+<p>除此之外，了解一些更高级别的矩阵乘法的基本属性是很有必要的：</p>
+<ul>
+<li>
+<p>矩阵乘法结合律: <span class="arithmatex">\((AB)C = A(BC)\)</span></p>
+</li>
+<li>
+<p>矩阵乘法分配律: <span class="arithmatex">\(A(B + C) = AB + AC\)</span></p>
+</li>
+<li>
+<p>矩阵乘法通常不是可交换的; 也就是说，通常<span class="arithmatex">\(AB \ne BA\)</span>。 （例如，假设$  A \in \mathbb{R}^ {m \times n}，$ <span class="arithmatex">\(B \in \mathbb{R}^ {n \times p} <span class="arithmatex">\(，如果\)</span>m\)</span>和<span class="arithmatex">\(q\)</span>不相等，矩阵乘积<span class="arithmatex">\(BA\)</span>甚至不存在！）</p>
+</li>
+</ul>
+<p>如果您不熟悉这些属性，请花点时间自己验证它们。 例如，为了检查矩阵乘法的相关性，假设<span class="arithmatex">\(A \in \mathbb{R}^ {m \times n}，\)</span> <span class="arithmatex">\(B \in \mathbb{R}^ {n \times p} <span class="arithmatex">\(，\)</span>C \in \mathbb{R}^ {p \times q}\)</span>。 注意<span class="arithmatex">\(AB \in \mathbb{R}^ {m \times p}\)</span>，所以<span class="arithmatex">\((AB)C \in \mathbb{R}^ {m \times q}\)</span>。 类似地，<span class="arithmatex">\(BC \in \mathbb{R}^ {n \times q}\)</span>，所以<span class="arithmatex">\(A(BC) \in \mathbb{R}^ {m \times q}\)</span>。 因此，所得矩阵的维度一致。 为了表明矩阵乘法是相关的，足以检查<span class="arithmatex">\((AB)C <span class="arithmatex">\(的第\)</span>(i,j)\)</span>个元素是否等于<span class="arithmatex">\(A(BC)\)</span>的第<span class="arithmatex">\((i,j)\)</span>个元素。 我们可以使用矩阵乘法的定义直接验证这一点：</p>
+<div class="arithmatex">\[
+\begin{aligned}((A B) C)_{i j} &amp;=\sum_{k=1}^{p}(A B)_{i k} C_{k j}=\sum_{k=1}^{p}\left(\sum_{l=1}^{n} A_{i l} B_{l k}\right) C_{k j} \\ &amp;=\sum_{k=1}^{p}\left(\sum_{l=1}^{n} A_{i l} B_{l k} C_{k j}\right)=\sum_{l=1}^{n}\left(\sum_{k=1}^{p} A_{i l} B_{l k} C_{k j}\right) \\ &amp;=\sum_{l=1}^{n} A_{i l}\left(\sum_{k=1}^{p} B_{l k} C_{k j}\right)=\sum_{l=1}^{n} A_{i l}(B C)_{l j}=(A(B C))_{i j} \end{aligned}
+\]</div>
+<h3 id="3">3 运算和属性<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>在本节中，我们介绍矩阵和向量的几种运算和属性。 希望能够为您复习大量此类内容，这些笔记可以作为这些主题的参考。</p>
+<h4 id="31">3.1 单位矩阵和对角矩阵<a class="headerlink" href="#31" title="Permanent link">&para;</a></h4>
+<p><strong>单位矩阵</strong>,$I \in \mathbb{R}^{n \times n} $，它是一个方阵，对角线的元素是1，其余元素都是0：
+$$
+I_{i j}=\left{\begin{array}{ll}{1} &amp; {i=j} \ {0} &amp; {i \neq j}\end{array}\right.
+$$
+对于所有<span class="arithmatex">\(A \in \mathbb{R}^ {m \times n}\)</span>，有：
+$$
+AI = A = IA
+$$
+注意，在某种意义上，单位矩阵的表示法是不明确的，因为它没有指定<span class="arithmatex">\(I\)</span>的维数。通常，<span class="arithmatex">\(I\)</span>的维数是从上下文推断出来的，以便使矩阵乘法成为可能。 例如，在上面的等式中，<span class="arithmatex">\(AI = A\)</span>中的I是<span class="arithmatex">\(n\times n\)</span>矩阵，而<span class="arithmatex">\(A = IA\)</span>中的<span class="arithmatex">\(I\)</span>是<span class="arithmatex">\(m\times m\)</span>矩阵。</p>
+<p>对角矩阵是一种这样的矩阵：对角线之外的元素全为0。对角阵通常表示为：<span class="arithmatex">\(D= diag(d_1, d_2, . . . , d_n)\)</span>，其中：
+$$
+D_{i j}=\left{\begin{array}{ll}{d_{i}} &amp; {i=j} \ {0} &amp; {i \neq j}\end{array}\right.
+$$
+很明显：单位矩阵$ I = diag(1, 1, . . . , 1)$。</p>
+<h4 id="32">3.2 转置<a class="headerlink" href="#32" title="Permanent link">&para;</a></h4>
+<p>矩阵的转置是指翻转矩阵的行和列。</p>
+<p>给定一个矩阵：</p>
+<p><span class="arithmatex">\(A \in \mathbb{R}^ {m \times n}\)</span>, 它的转置为<span class="arithmatex">\(n \times m\)</span>的矩阵<span class="arithmatex">\(A^T \in \mathbb{R}^ {n \times m}\)</span> ，其中的元素为：
+$$
+(A^T)<em ji="ji">{ij} = A</em>
+$$
+事实上，我们在描述行向量时已经使用了转置，因为列向量的转置自然是行向量。</p>
+<p>转置的以下属性很容易验证：</p>
+<ul>
+<li><span class="arithmatex">\((A^T )^T = A\)</span></li>
+<li>$ (AB)^T = B^T A^T$</li>
+<li><span class="arithmatex">\((A + B)^T = A^T + B^T\)</span></li>
+</ul>
+<h4 id="33">3.3 对称矩阵<a class="headerlink" href="#33" title="Permanent link">&para;</a></h4>
+<p>如果<span class="arithmatex">\(A =  A^T\)</span>，则矩阵<span class="arithmatex">\(A \in \mathbb{R}^ {n \times n}\)</span>是对称矩阵。 如果$ A =  -  A^T<span class="arithmatex">\(，它是反对称的。 很容易证明，对于任何矩阵\)</span>A \in \mathbb{R}^ {n \times n}<span class="arithmatex">\(，矩阵\)</span>A  +  A^ T<span class="arithmatex">\(是对称的，矩阵\)</span>A -A^T<span class="arithmatex">\(是反对称的。 由此得出，任何方矩阵\)</span>A \in \mathbb{R}^ {n \times n}$可以表示为对称矩阵和反对称矩阵的和，所以：
+$$
+A=\frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)
+$$
+上面公式的右边的第一个矩阵是对称矩阵，而第二个矩阵是反对称矩阵。 事实证明，对称矩阵在实践中用到很多，它们有很多很好的属性，我们很快就会看到它们。
+通常将大小为<span class="arithmatex">\(n\)</span>的所有对称矩阵的集合表示为<span class="arithmatex">\(\mathbb{S}^n\)</span>，因此<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>意味着<span class="arithmatex">\(A\)</span>是对称的<span class="arithmatex">\(n\times n\)</span>矩阵;</p>
+<h4 id="34">3.4 矩阵的迹<a class="headerlink" href="#34" title="Permanent link">&para;</a></h4>
+<p>方矩阵<span class="arithmatex">\(A \in \mathbb{R}^ {n \times n}\)</span>的迹，表示为<span class="arithmatex">\(\operatorname{tr} (A)\)</span>（或者只是<span class="arithmatex">\(\operatorname{tr} A\)</span>，如果括号显然是隐含的），是矩阵中对角元素的总和：
+$$
+\operatorname{tr} A=\sum_{i=1}^{n} A_{i i}
+$$
+如<strong>CS229</strong>讲义中所述，迹具有以下属性（如下所示）：</p>
+<ul>
+<li>
+<p>对于矩阵<span class="arithmatex">\(A \in \mathbb{R}^ {n \times n}\)</span>，则：<span class="arithmatex">\(\operatorname{tr}A =\operatorname{tr}A^T\)</span></p>
+</li>
+<li>
+<p>对于矩阵<span class="arithmatex">\(A,B \in \mathbb{R}^ {n \times n}\)</span>，则：<span class="arithmatex">\(\operatorname{tr}(A + B) = \operatorname{tr}A + \operatorname{tr}B\)</span></p>
+</li>
+<li>
+<p>对于矩阵<span class="arithmatex">\(A \in \mathbb{R}^ {n \times n}\)</span>，$ t \in \mathbb{R}<span class="arithmatex">\(，则：\)</span>\operatorname{tr}(tA) = t\operatorname{tr}A$.</p>
+</li>
+<li>
+<p>对于矩阵 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>，<span class="arithmatex">\(AB\)</span> 为方阵, 则：<span class="arithmatex">\(\operatorname{tr}AB = \operatorname{tr}BA\)</span></p>
+</li>
+<li>
+<p>对于矩阵 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, <span class="arithmatex">\(C\)</span>, <span class="arithmatex">\(ABC\)</span>为方阵, 则：<span class="arithmatex">\(\operatorname{tr}ABC = \operatorname{tr}BCA=\operatorname{tr}CAB\)</span>, 同理，更多矩阵的积也是有这个性质。</p>
+</li>
+</ul>
+<p>作为如何证明这些属性的示例，我们将考虑上面给出的第四个属性。 假设<span class="arithmatex">\(A \in \mathbb{R}^ {m \times n}\)</span>和<span class="arithmatex">\(B \in \mathbb{R}^ {n \times m}\)</span>（因此<span class="arithmatex">\(AB \in \mathbb{R}^ {m \times m}\)</span>是方阵）。 观察到<span class="arithmatex">\(BA \in \mathbb{R}^ {n \times n}\)</span>也是一个方阵，因此对它们进行迹的运算是有意义的。 要证明<span class="arithmatex">\(\operatorname{tr}AB = \operatorname{tr}BA\)</span>，请注意：</p>
+<div class="arithmatex">\[
+\begin{aligned} \operatorname{tr} A B &amp;=\sum_{i=1}^{m}(A B)_{i i}=\sum_{i=1}^{m}\left(\sum_{j=1}^{n} A_{i j} B_{j i}\right) \\ &amp;=\sum_{i=1}^{m} \sum_{j=1}^{n} A_{i j} B_{j i}=\sum_{j=1}^{n} \sum_{i=1}^{m} B_{j i} A_{i j} \\ &amp;=\sum_{j=1}^{n}\left(\sum_{i=1}^{m} B_{j i} A_{i j}\right)=\sum_{j=1}^{n}(B A)_{j j}=\operatorname{tr} B A \end{aligned}
+\]</div>
+<p>这里，第一个和最后两个等式使用迹运算符和矩阵乘法的定义，重点在第四个等式，使用标量乘法的可交换性来反转每个乘积中的项的顺序，以及标量加法的可交换性和相关性，以便重新排列求和的顺序。</p>
+<h4 id="35">3.5 范数<a class="headerlink" href="#35" title="Permanent link">&para;</a></h4>
+<p>向量的范数<span class="arithmatex">\(\|x\|\)</span>是非正式度量的向量的“长度” 。 例如，我们有常用的欧几里德或<span class="arithmatex">\(\ell_{2}\)</span>范数，
+$$
+|x|<em i="1">{2}=\sqrt{\sum</em>^{n} x_{i}^{2}}
+$$
+注意：<span class="arithmatex">\(\|x\|_{2}^{2}=x^{T} x\)</span></p>
+<p>更正式地，范数是满足4个属性的函数（<span class="arithmatex">\(f : \mathbb{R}^{n} \rightarrow \mathbb{R}\)</span>）：</p>
+<ol>
+<li>对于所有的 <span class="arithmatex">\(x \in \mathbb{R}^ {n}\)</span>, $f(x) \geq 0 $(非负).</li>
+<li>当且仅当<span class="arithmatex">\(x = 0\)</span> 时，<span class="arithmatex">\(f(x) = 0\)</span> (明确性).</li>
+<li>对于所有<span class="arithmatex">\(x \in \mathbb{R}^ {n}\)</span>,<span class="arithmatex">\(t\in \mathbb{R}\)</span>，则 <span class="arithmatex">\(f(tx) = \left| t \right|f(x)\)</span> (正齐次性).</li>
+<li>对于所有 <span class="arithmatex">\(x,y \in \mathbb{R}^ {n}\)</span>, <span class="arithmatex">\(f(x + y) \leq f(x) + f(y)\)</span> (三角不等式)</li>
+</ol>
+<p>其他范数的例子是<span class="arithmatex">\(\ell_1\)</span>范数:
+$$
+|x|<em i="1">{1}=\sum</em>^{n}\left|x_{i}\right|
+$$
+和<span class="arithmatex">\(\ell_{\infty }\)</span>范数：
+$$
+|x|<em i="i">{\infty}=\max </em>\left|x_{i}\right|
+$$
+事实上，到目前为止所提出的所有三个范数都是<span class="arithmatex">\(\ell_p\)</span>范数族的例子，它们由实数<span class="arithmatex">\(p \geq 1\)</span>参数化，并定义为：
+$$
+|x|<em i="1">{p}=\left(\sum</em>^{n}\left|x_{i}\right|^{p}\right)^{1 / p}
+$$</p>
+<p>也可以为矩阵定义范数，例如<strong>Frobenius</strong>范数:
+$$
+|A|<em i="1">{F}=\sqrt{\sum</em>^{m} \sum_{j=1}^{n} A_{i j}^{2}}=\sqrt{\operatorname{tr}\left(A^{T} A\right)}
+$$
+许多其他更多的范数，但它们超出了这个复习材料的范围。</p>
+<h4 id="36">3.6 线性相关性和秩<a class="headerlink" href="#36" title="Permanent link">&para;</a></h4>
+<p>一组向量<span class="arithmatex">\({x_1,x_2, \cdots x_n} \in \mathbb{R}\)</span>， 如果没有向量可以表示为其余向量的线性组合，则称称该向量是线性无相关的。 相反，如果属于该组的一个向量可以表示为其余向量的线性组合，则称该向量是线性相关的。 也就是说，如果：
+$$
+x_{n}=\sum_{i=1}^{n-1} \alpha_{i} x_{i}
+$$
+对于某些标量值<span class="arithmatex">\(\alpha_1,\cdots \alpha_n-1 \in \mathbb{R}\)</span>，要么向量<span class="arithmatex">\(x_1,x_2, \cdots x_n\)</span>是线性相关的; 否则，向量是线性无关的。 例如，向量：
+$$
+x_{1}=\left[\begin{array}{l}{1} \ {2} \ {3}\end{array}\right] \quad x_{2}=\left[\begin{array}{c}{4} \ {1} \ {5}\end{array}\right] \quad x_{3}=\left[\begin{array}{c}{2} \ {-3} \ {-1}\end{array}\right]
+$$
+是线性相关的，因为：<span class="arithmatex">\(x_3=-2x_1+x_2\)</span>。</p>
+<p>矩阵<span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>的<strong>列秩</strong>是构成线性无关集合的<span class="arithmatex">\(A\)</span>的最大列子集的大小。 由于术语的多样性，这通常简称为<span class="arithmatex">\(A\)</span>的线性无关列的数量。同样，行秩是构成线性无关集合的<span class="arithmatex">\(A\)</span>的最大行数。 对于任何矩阵<span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>，事实证明<span class="arithmatex">\(A\)</span>的列秩等于<span class="arithmatex">\(A\)</span>的行秩（尽管我们不会证明这一点），因此两个量统称为<span class="arithmatex">\(A\)</span>的<strong>秩</strong>，用 <span class="arithmatex">\(\text{rank}(A)\)</span>表示。 以下是秩的一些基本属性：</p>
+<ul>
+<li>对于  <span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(\text{rank}(A) \leq min(m, n)\)</span>，如果$ \text(A) = \text{min} (m, n)$，则： <span class="arithmatex">\(A\)</span> 被称作<strong>满秩</strong>。</li>
+<li>对于  <span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>， <span class="arithmatex">\(\text{rank}(A) = \text{rank}(A^T)\)</span></li>
+<li>对于  <span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>,<span class="arithmatex">\(B  \in \mathbb{R}^{n \times p}\)</span> ,<span class="arithmatex">\(\text{rank}(AB) \leq \text{min} ( \text{rank}(A), \text{rank}(B))\)</span></li>
+<li>对于  <span class="arithmatex">\(A,B \in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(\text{rank}(A + B) \leq \text{rank}(A) + \text{rank}(B)\)</span></li>
+</ul>
+<h4 id="37">3.7 方阵的逆<a class="headerlink" href="#37" title="Permanent link">&para;</a></h4>
+<p>方阵<span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>的倒数表示为<span class="arithmatex">\(A^{-1}\)</span>，并且是这样的独特矩阵:
+$$
+A^{-1}A=I=AA^{-1}
+$$
+请注意，并非所有矩阵都具有逆。 例如，非方形矩阵根据定义没有逆。 然而，对于一些方形矩阵<span class="arithmatex">\(A\)</span>，可能仍然存在<span class="arithmatex">\(A^{-1}\)</span>可能不存在的情况。 特别是，如果<span class="arithmatex">\(A^{-1}\)</span>存在，我们说<span class="arithmatex">\(A\)</span>是<strong>可逆</strong>的或<strong>非奇异</strong>的，否则就是<strong>不可逆</strong>或<strong>奇异</strong>的。
+为了使方阵A具有逆<span class="arithmatex">\(A^{-1}\)</span>，则<span class="arithmatex">\(A\)</span>必须是满秩。 我们很快就会发现，除了满秩之外，还有许多其它的充分必要条件。
+以下是逆的属性; 假设<span class="arithmatex">\(A,B  \in \mathbb{R}^{n \times n}\)</span>，而且是非奇异的：</p>
+<ul>
+<li><span class="arithmatex">\((A^{-1})^{-1} = A\)</span></li>
+<li><span class="arithmatex">\((AB)^{-1} = B^{-1}A^{-1}\)</span></li>
+<li><span class="arithmatex">\((A^{-1})^{T} =(A^{T})^{-1} <span class="arithmatex">\(因此，该矩阵通常表示为\)</span>A^{-T}\)</span>。
+作为如何使用逆的示例，考虑线性方程组，<span class="arithmatex">\(Ax = b\)</span>，其中<span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>，<span class="arithmatex">\(x,b\in \mathbb{R}\)</span>， 如果<span class="arithmatex">\(A\)</span>是非奇异的（即可逆的），那么<span class="arithmatex">\(x = A^{-1}b\)</span>。 （如果<span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>不是方阵，这公式还有用吗？）</li>
+</ul>
+<h4 id="38">3.8 正交阵<a class="headerlink" href="#38" title="Permanent link">&para;</a></h4>
+<p>如果 <span class="arithmatex">\(x^Ty=0\)</span>，则两个向量<span class="arithmatex">\(x,y\in \mathbb{R}^{n}\)</span> 是<strong>正交</strong>的。如果<span class="arithmatex">\(\|x\|_2=1\)</span>，则向量<span class="arithmatex">\(x\in \mathbb{R}^{n}\)</span> 被归一化。如果一个方阵<span class="arithmatex">\(U\in \mathbb{R}^{n \times n}\)</span>的所有列彼此正交并被归一化（这些列然后被称为正交），则方阵<span class="arithmatex">\(U\)</span>是正交阵（注意在讨论向量时的意义不一样）。</p>
+<p>它可以从正交性和正态性的定义中得出:
+$$
+U^ TU = I = U U^T
+$$</p>
+<p>换句话说，正交矩阵的逆是其转置。 注意，如果<span class="arithmatex">\(U\)</span>不是方阵 :即，<span class="arithmatex">\(U\in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(n &lt;m\)</span>  ，但其列仍然是正交的，则<span class="arithmatex">\(U^TU = I\)</span>，但是<span class="arithmatex">\(UU^T \neq I\)</span>。我们通常只使用术语"正交"来描述先前的情况 ，其中<span class="arithmatex">\(U\)</span>是方阵。
+正交矩阵的另一个好的特性是在具有正交矩阵的向量上操作不会改变其欧几里德范数，即:
+$$
+|U x|<em 2="2">{2}=|x|</em>
+$$
+对于任何 <span class="arithmatex">\(x\in \mathbb{R}\)</span> , <span class="arithmatex">\(U\in \mathbb{R}^{n}\)</span>是正交的。</p>
+<h4 id="39">3.9 矩阵的值域和零空间<a class="headerlink" href="#39" title="Permanent link">&para;</a></h4>
+<p>一组向量<span class="arithmatex">\(\{x_{1}, \ldots x_{n}\}\)</span>是可以表示为<span class="arithmatex">\(\{x_{1}, \ldots x_{n}\}\)</span>的线性组合的所有向量的集合。 即：
+$$
+\operatorname{span}\left(\left{x_{1}, \ldots x_{n}\right}\right)=\left{v : v=\sum_{i=1}^{n} \alpha_{i} x_{i}, \quad \alpha_{i} \in \mathbb{R}\right}
+$$
+可以证明，如果<span class="arithmatex">\(\{x_{1}, \ldots x_{n}\}\)</span>是一组<span class="arithmatex">\(n\)</span>个线性无关的向量，其中每个<span class="arithmatex">\(x_i \in \mathbb{R}^{n}\)</span>，则<span class="arithmatex">\(\text{span}(\{x_{1}, \ldots x_{n}\})=\mathbb{R}^{n}\)</span>。 换句话说，任何向量<span class="arithmatex">\(v\in \mathbb{R}^{n}\)</span>都可以写成<span class="arithmatex">\(x_1\)</span>到<span class="arithmatex">\(x_n\)</span>的线性组合。</p>
+<p>向量<span class="arithmatex">\(y\in \mathbb{R}^{m}\)</span>投影到<span class="arithmatex">\(\{x_{1}, \ldots x_{n}\}\)</span>（这里我们假设<span class="arithmatex">\(x_i \in \mathbb{R}^{m}\)</span>）得到向量<span class="arithmatex">\(v \in \operatorname{span}(\{x_{1}, \ldots, x_{n}\})\)</span>，由欧几里德范数<span class="arithmatex">\(\|v  -  y\|_2\)</span>可以得知，这样<span class="arithmatex">\(v\)</span>尽可能接近<span class="arithmatex">\(y\)</span>。</p>
+<p>我们将投影表示为<span class="arithmatex">\(\operatorname{Proj}\left(y ;\left\{x_{1}, \ldots x_{n}\right\}\right)\)</span>，并且可以将其正式定义为:
+$$
+\operatorname{Proj}\left(y ;\left{x_{1}, \ldots x_{n}\right}\right)=\operatorname{argmin}<em 1="1">{v \in \operatorname{span}\left(\left{x</em>, \ldots, x_{n}\right}\right)}|y-v|<em _in="\in" _mathcal_R="\mathcal{R" v="v">{2}
+$$
+矩阵<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>的值域（有时也称为列空间），表示为<span class="arithmatex">\(\mathcal{R}(A)\)</span>，是<span class="arithmatex">\(A\)</span>列的跨度。换句话说，
+$$
+\mathcal{R}(A)=\left{v \in \mathbb{R}^{m} : v=A x, x \in \mathbb{R}^{n}\right}
+$$
+做一些技术性的假设（即<span class="arithmatex">\(A\)</span>是满秩且<span class="arithmatex">\(n &lt;m\)</span>），向量<span class="arithmatex">\(y \in \mathbb{R}^{m}\)</span>到<span class="arithmatex">\(A\)</span>的范围的投影由下式给出:
+$$
+\operatorname{Proj}(y ; A)=\operatorname{argmin}</em>(A)}|v-y|_{2}=A\left(A^{T} A\right)^{-1} A^{T} y
+$$
+这个最后的方程应该看起来非常熟悉，因为它几乎与我们在课程中（我们将很快再次得出）得到的公式：用于参数的最小二乘估计一样。 看一下投影的定义，显而易见，这实际上是我们在最小二乘问题中最小化的目标（除了范数的平方这里有点不一样，这不会影响找到最优解），所以这些问题自然是非常相关的。 </p>
+<p>当<span class="arithmatex">\(A\)</span>只包含一列时，<span class="arithmatex">\(a \in \mathbb{R}^{m}\)</span>，这给出了向量投影到一条线上的特殊情况：
+$$
+\operatorname{Proj}(y ; a)=\frac{a a^{T}}{a^{T} a} y
+$$
+一个矩阵<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>的零空间 <span class="arithmatex">\(\mathcal{N}(A)\)</span> 是所有乘以<span class="arithmatex">\(A\)</span>时等于0向量的集合，即：
+$$
+\mathcal{N}(A)=\left{x \in \mathbb{R}^{n} : A x=0\right}
+$$
+注意，<span class="arithmatex">\(\mathcal{R}(A)\)</span>中的向量的大小为<span class="arithmatex">\(m\)</span>，而 <span class="arithmatex">\(\mathcal{N}(A)\)</span> 中的向量的大小为<span class="arithmatex">\(n\)</span>，因此<span class="arithmatex">\(\mathcal{R}(A^T)\)</span>和 <span class="arithmatex">\(\mathcal{N}(A)\)</span> 中的向量的大小均为<span class="arithmatex">\(\mathbb{R}^{n}\)</span>。 事实上，还有很多例子。 证明：
+$$
+\left{w : w=u+v, u \in \mathcal{R}\left(A^{T}\right), v \in \mathcal{N}(A)\right}=\mathbb{R}^{n} \text { and } \mathcal{R}\left(A^{T}\right) \cap \mathcal{N}(A)={\mathbf{0}}
+$$
+换句话说，<span class="arithmatex">\(\mathcal{R}(A^T)\)</span>和 <span class="arithmatex">\(\mathcal{N}(A)\)</span> 是不相交的子集，它们一起跨越<span class="arithmatex">\(\mathbb{R}^{n}\)</span>的整个空间。 这种类型的集合称为<strong>正交补</strong>，我们用<span class="arithmatex">\(\mathcal{R}(A^T)= \mathcal{N}(A)^{\perp}\)</span>表示。</p>
+<h4 id="310">3.10 行列式<a class="headerlink" href="#310" title="Permanent link">&para;</a></h4>
+<p>一个方阵<span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>的行列式是函数<span class="arithmatex">\(\text {det}\)</span>：<span class="arithmatex">\(\mathbb{R}^{n \times n} \rightarrow \mathbb{R}^{n} <span class="arithmatex">\(，并且表示为\)</span>\left| A \right|\)</span>。 或者<span class="arithmatex">\(\text{det} A\)</span>（有点像迹运算符，我们通常省略括号）。 从代数的角度来说，我们可以写出一个关于<span class="arithmatex">\(A\)</span>行列式的显式公式。 因此，我们首先提供行列式的几何解释，然后探讨它的一些特定的代数性质。</p>
+<p>给定一个矩阵：
+$$
+\left[\begin{array}{cccc}{-} &amp; {a_{1}^{T}}  &amp; {-} \ {-} &amp; {a_{2}^{T}} &amp; {-} \ {} &amp; {\vdots} &amp; {} \  {-} &amp; {a_{n}^{T}} &amp; {-}\end{array}\right]
+$$</p>
+<p>考虑通过采用<span class="arithmatex">\(A\)</span>行向量<span class="arithmatex">\(a_{1}, \ldots a_{n}\in  \mathbb{R}^{n}\)</span>的所有可能线性组合形成的点<span class="arithmatex">\(S \subset \mathbb{R}^{n}\)</span>的集合，其中线性组合的系数都在0和1之间; 也就是说，集合<span class="arithmatex">\(S\)</span>是<span class="arithmatex">\(\text{span}(\{a_{1}, \ldots a_{n}\})\)</span>受到系数<span class="arithmatex">\(a_{1}, \ldots a_{n}\)</span>的限制的线性组合，<span class="arithmatex">\(\alpha_1, \cdots ,\alpha_n\)</span>满足<span class="arithmatex">\(0 \leq \alpha_{i} \leq 1, i=1, \ldots, n\)</span>。从形式上看，
+$$
+S=\left{v \in \mathbb{R}^{n} : v=\sum_{i=1}^{n} \alpha_{i} a_{i} \text { where } 0 \leq \alpha_{i} \leq 1, i=1, \ldots, n\right}
+$$
+事实证明，<span class="arithmatex">\(A\)</span>的行列式的绝对值是对集合<span class="arithmatex">\(S\)</span>的“体积”的度量。</p>
+<p>比方说：一个<span class="arithmatex">\(2 \times2\)</span>的矩阵(4)：
+$$
+A=\left[\begin{array}{ll}{1} &amp; {3} \ {3} &amp; {2}\end{array}\right]
+$$
+它的矩阵的行是：
+$$
+a_{1}=\left[\begin{array}{l}{1} \ {3}\end{array}\right] \quad a_{2}=\left[\begin{array}{l}{3} \ {2}\end{array}\right]
+$$
+对应于这些行对应的集合<span class="arithmatex">\(S\)</span>如图1所示。对于二维矩阵，<span class="arithmatex">\(S\)</span>通常具有平行四边形的形状。 在我们的例子中，行列式的值是<span class="arithmatex">\(\left| A \right| = -7\)</span>（可以使用本节后面显示的公式计算），因此平行四边形的面积为7。（请自己验证！）</p>
+<p>在三维中，集合<span class="arithmatex">\(S\)</span>对应于一个称为平行六面体的对象（一个有倾斜边的三维框，这样每个面都有一个平行四边形）。行定义<span class="arithmatex">\(S\)</span>的<span class="arithmatex">\(3×3\)</span>矩阵S的行列式的绝对值给出了平行六面体的三维体积。在更高的维度中，集合<span class="arithmatex">\(S\)</span>是一个称为<span class="arithmatex">\(n\)</span>维平行切的对象。</p>
+<p><img alt="" src="images/fig1.png" /></p>
+<p>图1：（4）中给出的<span class="arithmatex">\(2×2\)</span>矩阵<span class="arithmatex">\(A\)</span>的行列式的图示。 这里，<span class="arithmatex">\(a_1\)</span>和<span class="arithmatex">\(a_2\)</span>是对应于<span class="arithmatex">\(A\)</span>行的向量，并且集合<span class="arithmatex">\(S\)</span>对应于阴影区域（即，平行四边形）。 这个行列式的绝对值，<span class="arithmatex">\(\left| \text{det} A \right| = 7\)</span>，即平行四边形的面积。</p>
+<p>在代数上，行列式满足以下三个属性（所有其他属性都遵循这些属性，包括通用公式）：</p>
+<ol>
+<li>
+<p>恒等式的行列式为1, <span class="arithmatex">\(\left| I \right|= 1\)</span>（几何上，单位超立方体的体积为1）。</p>
+</li>
+<li>
+<p>给定一个矩阵 <span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>, 如果我们将<span class="arithmatex">\(A\)</span>中的一行乘上一个标量<span class="arithmatex">\(t  \in \mathbb{R}\)</span>，那么新矩阵的行列式是<span class="arithmatex">\(t\left| A \right|\)</span>
+$$
+\left|\left[\begin{array}{ccc}{-} &amp; {t a_{1}^{T}} &amp; {-} \ {-} &amp; {a_{2}^{T}} &amp; {-} \ {} &amp; {\vdots} &amp; {} \ {} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right]\right|=t|A|
+$$
+几何上，将集合<span class="arithmatex">\(S\)</span>的一个边乘以系数<span class="arithmatex">\(t\)</span>，体积也会增加一个系数<span class="arithmatex">\(t\)</span>。</p>
+</li>
+<li>
+<p>如果我们交换任意两行在<span class="arithmatex">\(a_i^T\)</span>和<span class="arithmatex">\(a_j^T\)</span>，那么新矩阵的行列式是<span class="arithmatex">\(-\left| A \right|\)</span>，例如：
+$$
+\left|\left[\begin{array}{ccc}{-} &amp; {a_{2}^{T}} &amp; {-} \ {-} &amp; {a_{1}^{T}} &amp; {-} \ {} &amp; {\vdots} &amp; {} \ {-} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right]\right|=-|A|
+$$
+你一定很奇怪，满足上述三个属性的函数的存在并不多。事实上，这样的函数确实存在，而且是唯一的（我们在这里不再证明了）。</p>
+</li>
+</ol>
+<p>从上述三个属性中得出的几个属性包括：</p>
+<ul>
+<li>对于 <span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>, <span class="arithmatex">\(\left| A \right| = \left| A^T \right|\)</span></li>
+<li>对于 <span class="arithmatex">\(A,B \in \mathbb{R}^{n \times n}\)</span>, <span class="arithmatex">\(\left| AB \right|= \left| A \right|\left| B \right|\)</span></li>
+<li>对于 <span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>, 有且只有当<span class="arithmatex">\(A\)</span>是奇异的（比如不可逆） ，则：<span class="arithmatex">\(\left| A \right|= 0\)</span></li>
+<li>对于 <span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span> 同时，<span class="arithmatex">\(A\)</span>为非奇异的，则：<span class="arithmatex">\(\left| A ^{−1}\right| = 1/\left| A \right|\)</span></li>
+</ul>
+<p>在给出行列式的一般定义之前，我们定义，对于<span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>，<span class="arithmatex">\(A_{\backslash i, \backslash j}\in \mathbb{R}^{(n-1) \times (n-1)}\)</span>是由于删除第<span class="arithmatex">\(i\)</span>行和第<span class="arithmatex">\(j\)</span>列而产生的矩阵。 行列式的一般（递归）公式是：
+$$
+\begin{aligned}|A| &amp;=\sum_{i=1}^{n}(-1)^{i+j} a_{i j}\left|A_{\backslash i, \backslash j}\right| \quad(\text { for any } j \in 1, \ldots, n) \ &amp;=\sum_{j=1}^{n}(-1)^{i+j} a_{i j}\left|A_{\backslash i, \backslash j}\right| \quad(\text { for any } i \in 1, \ldots, n) \end{aligned}
+$$
+对于 <span class="arithmatex">\(A  \in \mathbb{R}^{1 \times 1}\)</span>，初始情况为<span class="arithmatex">\(\left| A \right|= a_{11}\)</span>。如果我们把这个公式完全展开为 <span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>，就等于<span class="arithmatex">\(n!\)</span>（<span class="arithmatex">\(n\)</span>阶乘）不同的项。因此，对于大于<span class="arithmatex">\(3×3\)</span>的矩阵，我们几乎没有明确地写出完整的行列式方程。然而，<span class="arithmatex">\(3×3\)</span>大小的矩阵的行列式方程是相当常见的，建议好好地了解它们：
+$$
+\left|\left[a_{11}\right]\right|=a_{11}
+$$</p>
+<div class="arithmatex">\[
+\left|\left[\begin{array}{ll}{a_{11}} &amp; {a_{12}} \\ {a_{21}} &amp; {a_{22}}\end{array}\right]\right|=a_{11} a_{22}-a_{12} a_{21}
+\]</div>
+<div class="arithmatex">\[
+\left|\left[\begin{array}{l}{a_{11}} &amp; {a_{12}} &amp; {a_{13}} \\ {a_{21}} &amp; {a_{22}} &amp; {a_{23}} \\ {a_{31}} &amp; {a_{32}} &amp; {a_{33}}\end{array}\right]\right|=\quad \begin{array}{c}{a_{11} a_{22} a_{33}+a_{12} a_{23} a_{31}+a_{13} a_{21} a_{32}} \\\quad \quad {-a_{11} a_{23} a_{32}-a_{12} a_{21} a_{33}-a_{13} a_{22} a_{31}} \\ {}\end{array}
+$$
+矩阵$A  \in \mathbb{R}^{n \times n}$的经典伴随矩阵（通常称为伴随矩阵）表示为$\operatorname{adj}(A)$，并定义为：
+$$
+\operatorname{adj}(A) \in \mathbb{R}^{n \times n}, \quad(\operatorname{adj}(A))_{i j}=(-1)^{i+j}\left|A_{\backslash j, \backslash i}\right|
+$$
+（注意索引$A_{\backslash j, \backslash i}$中的变化）。可以看出，对于任何非奇异$A  \in \mathbb{R}^{n \times n}$，
+$$
+A^{-1}=\frac{1}{|A|} \operatorname{adj}(A)
+\]</div>
+<p>虽然这是一个很好的“显式”的逆矩阵公式，但我们应该注意，从数字上讲，有很多更有效的方法来计算逆矩阵。</p>
+<h4 id="311">3.11 二次型和半正定矩阵<a class="headerlink" href="#311" title="Permanent link">&para;</a></h4>
+<p>给定方矩阵<span class="arithmatex">\(A  \in \mathbb{R}^{n \times n}\)</span>和向量<span class="arithmatex">\(x \in \mathbb{R}^{n}\)</span>，标量值<span class="arithmatex">\(x^T Ax\)</span>被称为二次型。 写得清楚些，我们可以看到：
+$$
+x^{T} A x=\sum_{i=1}^{n} x_{i}(A x)<em i="1">{i}=\sum</em>^{n} x_{i}\left(\sum_{j=1}^{n} A_{i j} x_{j}\right)=\sum_{i=1}^{n} \sum_{j=1}^{n} A_{i j} x_{i} x_{j}
+$$
+注意：
+$$
+x^{T} A x=\left(x^{T} A x\right)^{T}=x^{T} A^{T} x=x^{T}\left(\frac{1}{2} A+\frac{1}{2} A^{T}\right) x
+$$
+第一个等号的是因为是标量的转置与自身相等，而第二个等号是因为是我们平均两个本身相等的量。 由此，我们可以得出结论，只有<span class="arithmatex">\(A\)</span>的对称部分有助于形成二次型。 出于这个原因，我们经常隐含地假设以二次型出现的矩阵是对称阵。
+我们给出以下定义：</p>
+<ul>
+<li>
+<p>对于所有非零向量<span class="arithmatex">\(x \in \mathbb{R}^n\)</span>，<span class="arithmatex">\(x^TAx&gt;0\)</span>，对称阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>为<strong>正定</strong>（<strong>positive definite,PD</strong>）。这通常表示为<span class="arithmatex">\(A\succ0\)</span>（或<span class="arithmatex">\(A&gt;0\)</span>），并且通常将所有正定矩阵的集合表示为<span class="arithmatex">\(\mathbb{S}_{++}^n\)</span>。</p>
+</li>
+<li>
+<p>对于所有向量<span class="arithmatex">\(x^TAx\geq 0\)</span>，对称矩阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>是<strong>半正定</strong>(<strong>positive semidefinite ,PSD</strong>)。 这写为（或<span class="arithmatex">\(A \succeq 0\)</span>仅<span class="arithmatex">\(A≥0\)</span>），并且所有半正定矩阵的集合通常表示为<span class="arithmatex">\(\mathbb{S}_+^n\)</span>。</p>
+</li>
+<li>
+<p>同样，对称矩阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>是<strong>负定</strong>（<strong>negative definite,ND</strong>），如果对于所有非零<span class="arithmatex">\(x \in \mathbb{R}^n\)</span>，则<span class="arithmatex">\(x^TAx &lt;0\)</span>表示为<span class="arithmatex">\(A\prec0\)</span>（或<span class="arithmatex">\(A &lt;0\)</span>）。</p>
+</li>
+<li>
+<p>类似地，对称矩阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>是<strong>半负定</strong>(<strong>negative semidefinite,NSD</strong>），如果对于所有<span class="arithmatex">\(x \in \mathbb{R}^n\)</span>，则<span class="arithmatex">\(x^TAx \leq 0\)</span>表示为<span class="arithmatex">\(A\preceq 0\)</span>（或<span class="arithmatex">\(A≤0\)</span>）。</p>
+</li>
+<li>
+<p>最后，对称矩阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>是<strong>不定</strong>的，如果它既不是正半定也不是负半定，即，如果存在<span class="arithmatex">\(x_1,x_2 \in \mathbb{R}^n\)</span>，那么<span class="arithmatex">\(x_1^TAx_1&gt;0\)</span>且<span class="arithmatex">\(x_2^TAx_2&lt;0\)</span>。</p>
+</li>
+</ul>
+<p>很明显，如果<span class="arithmatex">\(A\)</span>是正定的，那么<span class="arithmatex">\(−A\)</span>是负定的，反之亦然。同样，如果<span class="arithmatex">\(A\)</span>是半正定的，那么<span class="arithmatex">\(−A\)</span>是是半负定的，反之亦然。如果果<span class="arithmatex">\(A\)</span>是不定的，那么<span class="arithmatex">\(−A\)</span>是也是不定的。</p>
+<p>正定矩阵和负定矩阵的一个重要性质是它们总是满秩，因此是可逆的。为了了解这是为什么，假设某个矩阵<span class="arithmatex">\(A \in \mathbb{S}^n\)</span>不是满秩。然后，假设<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\(j\)</span>列可以表示为其他<span class="arithmatex">\(n-1\)</span>列的线性组合：
+$$
+a_{j}=\sum_{i \neq j} x_{i} a_{i}
+$$
+对于某些<span class="arithmatex">\(x_1,\cdots x_{j-1},x_{j + 1} ,\cdots ,x_n\in \mathbb{R}\)</span>。设<span class="arithmatex">\(x_j = -1\)</span>，则：
+$$
+Ax=\sum_{i \neq j} x_{i} a_{i}=0
+$$
+但这意味着对于某些非零向量<span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(x^T Ax = 0\)</span>，因此<span class="arithmatex">\(A\)</span>必须既不是正定也不是负定。如果<span class="arithmatex">\(A\)</span>是正定或负定，则必须是满秩。
+最后，有一种类型的正定矩阵经常出现，因此值得特别提及。 给定矩阵<span class="arithmatex">\(A  \in \mathbb{R}^{m \times n}\)</span>（不一定是对称或偶数平方），矩阵<span class="arithmatex">\(G = A^T A\)</span>（有时称为<strong>Gram矩阵</strong>）总是半正定的。 此外，如果<span class="arithmatex">\(m\geq n\)</span>（同时为了方便起见，我们假设<span class="arithmatex">\(A\)</span>是满秩），则<span class="arithmatex">\(G = A^T A\)</span>是正定的。</p>
+<h4 id="312">3.12 特征值和特征向量<a class="headerlink" href="#312" title="Permanent link">&para;</a></h4>
+<p>给定一个方阵<span class="arithmatex">\(A \in\mathbb{R}^{n\times n}\)</span>，我们认为在以下条件下，<span class="arithmatex">\(\lambda \in\mathbb{C}\)</span>是<span class="arithmatex">\(A\)</span>的<strong>特征值</strong>，<span class="arithmatex">\(x\in\mathbb{C}^n\)</span>是相应的<strong>特征向量</strong>：</p>
+<div class="arithmatex">\[
+Ax=\lambda x,x \ne 0
+\]</div>
+<p>直观地说，这个定义意味着将<span class="arithmatex">\(A\)</span>乘以向量<span class="arithmatex">\(x\)</span>会得到一个新的向量，该向量指向与<span class="arithmatex">\(x\)</span>相同的方向，但按系数<span class="arithmatex">\(\lambda\)</span>缩放。值得注意的是，对于任何特征向量<span class="arithmatex">\(x\in\mathbb{C}^n\)</span>和标量<span class="arithmatex">\(t\in\mathbb{C}\)</span>，<span class="arithmatex">\(A(cx)=cAx=c\lambda x=\lambda(cx)\)</span>，<span class="arithmatex">\(cx\)</span>也是一个特征向量。因此，当我们讨论与<span class="arithmatex">\(\lambda\)</span>相关的<strong>特征向量</strong>时，我们通常假设特征向量被标准化为长度为1（这仍然会造成一些歧义，因为<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(−x\)</span>都是特征向量，但我们必须接受这一点）。</p>
+<p>我们可以重写上面的等式来说明<span class="arithmatex">\((\lambda,x)\)</span>是<span class="arithmatex">\(A\)</span>的特征值和特征向量的组合：
+$$
+(\lambda I-A)x=0,x \ne 0
+$$
+但是<span class="arithmatex">\((\lambda I-A)x=0\)</span>只有当<span class="arithmatex">\((\lambda I-A)\)</span>有一个非空零空间时，同时<span class="arithmatex">\((\lambda I-A)\)</span>是奇异的，<span class="arithmatex">\(x\)</span>才具有非零解，即：
+$$
+|(\lambda I-A)|=0
+$$
+现在，我们可以使用行列式的先前定义将表达式<span class="arithmatex">\(|(\lambda I-A)|\)</span>扩展为<span class="arithmatex">\(\lambda\)</span>中的（非常大的）多项式，其中，<span class="arithmatex">\(\lambda\)</span>的度为<span class="arithmatex">\(n\)</span>。它通常被称为矩阵<span class="arithmatex">\(A\)</span>的特征多项式。</p>
+<p>然后我们找到这个特征多项式的<span class="arithmatex">\(n\)</span>（可能是复数）根，并用<span class="arithmatex">\(\lambda_1,\cdots,\lambda_n\)</span>表示。这些都是矩阵<span class="arithmatex">\(A\)</span>的特征值，但我们注意到它们可能不明显。为了找到特征值<span class="arithmatex">\(\lambda_i\)</span>对应的特征向量，我们只需解线性方程<span class="arithmatex">\((\lambda I-A)x=0\)</span>，因为<span class="arithmatex">\((\lambda I-A)\)</span>是奇异的，所以保证有一个非零解（但也可能有多个或无穷多个解）。</p>
+<p>应该注意的是，这不是实际用于数值计算特征值和特征向量的方法（记住行列式的完全展开式有<span class="arithmatex">\(n!\)</span>项），这是一个数学上的争议。</p>
+<p>以下是特征值和特征向量的属性（所有假设在<span class="arithmatex">\(A \in\mathbb{R}^{n\times n}\)</span>具有特征值<span class="arithmatex">\(\lambda_1,\cdots,\lambda_n\)</span>的前提下）：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A\)</span>的迹等于其特征值之和
+  $$
+  \operatorname{tr} A=\sum_{i=1}^{n} \lambda_{i}
+  $$</p>
+</li>
+<li>
+<p><span class="arithmatex">\(A\)</span>的行列式等于其特征值的乘积
+  $$
+  |A|=\prod_{i=1}^{n} \lambda_{i}
+  $$</p>
+</li>
+<li>
+<p><span class="arithmatex">\(A\)</span>的秩等于<span class="arithmatex">\(A\)</span>的非零特征值的个数</p>
+</li>
+<li>
+<p>假设<span class="arithmatex">\(A\)</span>非奇异，其特征值为<span class="arithmatex">\(\lambda\)</span>和特征向量为<span class="arithmatex">\(x\)</span>。那么<span class="arithmatex">\(1/\lambda\)</span>是具有相关特征向量<span class="arithmatex">\(x\)</span>的<span class="arithmatex">\(A^{-1}\)</span>的特征值，即<span class="arithmatex">\(A^{-1}x=(1/\lambda)x\)</span>。（要证明这一点，取特征向量方程，<span class="arithmatex">\(Ax=\lambda x\)</span>，两边都左乘<span class="arithmatex">\(A^{-1}\)</span>）</p>
+</li>
+<li>
+<p>对角阵的特征值<span class="arithmatex">\(d=diag(d_1，\cdots,d_n)\)</span>实际上就是对角元素<span class="arithmatex">\(d_1，\cdots,d_n\)</span></p>
+</li>
+</ul>
+<h4 id="313">3.13 对称矩阵的特征值和特征向量<a class="headerlink" href="#313" title="Permanent link">&para;</a></h4>
+<p>通常情况下，一般的方阵的特征值和特征向量的结构可以很细微地表示出来。
+值得庆幸的是，在机器学习的大多数场景下，处理对称实矩阵就足够了，其处理的对称实矩阵的特征值和特征向量具有显着的特性。</p>
+<p>在本节中，我们假设<span class="arithmatex">\(A\)</span>是实对称矩阵, 具有以下属性：</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(A\)</span>的所有特征值都是实数。 我们用用<span class="arithmatex">\(\lambda_1,\cdots,\lambda_n\)</span>表示。</p>
+</li>
+<li>
+<p>存在一组特征向量<span class="arithmatex">\(u_1，\cdots u_n\)</span>，对于所有<span class="arithmatex">\(i\)</span>，<span class="arithmatex">\(u_i\)</span>是具有特征值<span class="arithmatex">\(\lambda_{i}\)</span>和<span class="arithmatex">\(b\)</span>的特征向量。<span class="arithmatex">\(u_1，\cdots u_n\)</span>是单位向量并且彼此正交。</p>
+</li>
+</ol>
+<p>设<span class="arithmatex">\(U\)</span>是包含<span class="arithmatex">\(u_i\)</span>作为列的正交矩阵：
+$$
+U=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \ {u_{1}} &amp; {u_{2}} &amp; {\cdots} &amp; {u_{n}} \ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]
+$$
+设<span class="arithmatex">\(\Lambda= diag(\lambda_1,\cdots,\lambda_n)\)</span>是包含<span class="arithmatex">\(\lambda_1,\cdots,\lambda_n\)</span>作为对角线上的元素的对角矩阵。 使用2.3节的方程（2）中的矩阵 - 矩阵向量乘法的方法，我们可以验证：
+$$
+A U=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \ {A u_{1}} &amp; {A u_{2}} &amp; {\cdots} &amp; {A u_{n}} \ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]=\left[\begin{array}{ccc}{ |} &amp; { |} &amp; { |} &amp; { |}\ {\lambda_{1} u_{1}} &amp; {\lambda_{2} u_{2}} &amp; {\cdots} &amp; {\lambda_{n} u_{n}} \ { |} &amp; { |} &amp; {|} &amp; { |}\end{array}\right]=U \operatorname{diag}\left(\lambda_{1}, \ldots, \lambda_{n}\right)=U \Lambda
+$$
+考虑到正交矩阵<span class="arithmatex">\(U\)</span>满足<span class="arithmatex">\(UU^T=I\)</span>，利用上面的方程，我们得到：
+$$
+A=AUU^T=U\Lambda U^T
+$$</p>
+<p>这种<span class="arithmatex">\(A\)</span>的新的表示形式为<span class="arithmatex">\(U\Lambda U^T\)</span>，通常称为矩阵<span class="arithmatex">\(A\)</span>的对角化。术语对角化是这样来的：通过这种表示，我们通常可以有效地将对称矩阵<span class="arithmatex">\(A\)</span>视为对角矩阵 , 这更容易理解。关于由特征向量<span class="arithmatex">\(U\)</span>定义的基础， 我们将通过几个例子详细说明。</p>
+<p><strong>背景知识</strong>：代表另一个基的向量。</p>
+<p>任何正交矩阵<span class="arithmatex">\(U=\left[\begin{array}{cccc}{ |} &amp; { |} &amp; {} &amp; { |} \\ {u_{1}} &amp; {u_{2}} &amp; {\cdots} &amp; {u_{n}} \\ { |} &amp; { |} &amp; {} &amp; { |}\end{array}\right]\)</span>定义了一个新的属于<span class="arithmatex">\(\mathbb {R}^{n}\)</span>的基（坐标系），意义如下：对于任何向量<span class="arithmatex">\(x \in\mathbb{R}^{n}\)</span>都可以表示为<span class="arithmatex">\(u_1，\cdots u_n\)</span>的线性组合，其系数为<span class="arithmatex">\(x_1,\cdots x_n\)</span>：</p>
+<div class="arithmatex">\[
+x=\hat x_1u_1+\cdots +\cdots \hat x_nu_n=U\hat x
+\]</div>
+<p>在第二个等式中，我们使用矩阵和向量相乘的方法。 实际上，这种<span class="arithmatex">\(\hat x\)</span>是唯一存在的:
+$$
+x=U \hat{x} \Leftrightarrow U^{T} x=\hat{x}
+$$
+换句话说，向量<span class="arithmatex">\(\hat x=U^Tx\)</span>可以作为向量<span class="arithmatex">\(x\)</span>的另一种表示，与<span class="arithmatex">\(U\)</span>定义的基有关。</p>
+<p><strong>“对角化”矩阵向量乘法</strong>。 通过上面的设置，我们将看到左乘矩阵<span class="arithmatex">\(A\)</span>可以被视为左乘以对角矩阵关于特征向量的基。 假设<span class="arithmatex">\(x\)</span>是一个向量，<span class="arithmatex">\(\hat x\)</span>表示<span class="arithmatex">\(U\)</span>的基。设<span class="arithmatex">\(z=Ax\)</span>为矩阵向量积。现在让我们计算关于<span class="arithmatex">\(U\)</span>的基<span class="arithmatex">\(z\)</span>：
+然后，再利用<span class="arithmatex">\(UU^T=U^T=I\)</span>和方程<span class="arithmatex">\(A=AUU^T=U\Lambda U^T\)</span>，我们得到：
+$$
+\hat{z}=U^{T} z=U^{T} A x=U^{T} U \Lambda U^{T} x=\Lambda \hat{x}=\left[\begin{array}{c}{\lambda_{1} \hat{x}<em 2="2">{1}} \ {\lambda</em> \hat{x}<em n="n">{2}} \ {\vdots} \ {\lambda</em> \hat{x}<em 1="1">{n}}\end{array}\right]
+$$
+我们可以看到，原始空间中的左乘矩阵<span class="arithmatex">\(A\)</span>等于左乘对角矩阵<span class="arithmatex">\(\Lambda\)</span>相对于新的基，即仅将每个坐标缩放相应的特征值。
+在新的基上，矩阵多次相乘也变得简单多了。例如，假设<span class="arithmatex">\(q=AAAx\)</span>。根据<span class="arithmatex">\(A\)</span>的元素导出<span class="arithmatex">\(q\)</span>的分析形式，使用原始的基可能是一场噩梦，但使用新的基就容易多了：
+$$
+\hat{q}=U^{T} q=U^{T} AAA x=U^{T} U \Lambda U^{T} U \Lambda U^{T} U \Lambda U^{T} x=\Lambda^{3} \hat{x}=\left[\begin{array}{c}{\lambda</em>^{3} \hat{x}<em 2="2">{1}} \ {\lambda</em>^{3} \hat{x}<em n="n">{2}} \ {\vdots} \ {\lambda</em>^{3} \hat{x}<em i="1">{n}}\end{array}\right]
+$$
+<strong>“对角化”二次型</strong>。作为直接的推论，二次型<span class="arithmatex">\(x^TAx\)</span>也可以在新的基上简化。
+$$
+x^{T} A x=x^{T} U \Lambda U^{T} x=\hat{x} \Lambda \hat{x}=\sum</em>^{n} \lambda_{i} \hat{x}_{i}^{2}
+$$
+(回想一下，在旧的表示法中，<span class="arithmatex">\(x^{T} A x=\sum_{i=1, j=1}^{n} x_{i} x_{j} A_{i j}\)</span>涉及一个<span class="arithmatex">\(n^2\)</span>项的和，而不是上面等式中的<span class="arithmatex">\(n\)</span>项。)利用这个观点，我们还可以证明矩阵<span class="arithmatex">\(A\)</span>的正定性完全取决于其特征值的符号：</p>
+<ol>
+<li>如果所有的<span class="arithmatex">\(\lambda_i&gt;0\)</span>，则矩阵<span class="arithmatex">\(A\)</span>正定的，因为对于任意的<span class="arithmatex">\(\hat x \ne 0\)</span>,<span class="arithmatex">\(x^{T} A x=\sum_{i=1}^{n} \lambda_{i} \hat{x}_{i}^{2}&gt;0\)</span></li>
+<li>如果所有的<span class="arithmatex">\(\lambda_i\geq 0\)</span>，则矩阵<span class="arithmatex">\(A\)</span>是为正半定，因为对于任意的<span class="arithmatex">\(\hat x <span class="arithmatex">\(,\)</span>x^{T} A x=\sum_{i=1}^{n} \lambda_{i} \hat{x}_{i}^{2} \geq 0\)</span></li>
+<li>同样，如果所有<span class="arithmatex">\(\lambda_i&lt;0\)</span>或<span class="arithmatex">\(\lambda_i\leq 0\)</span>，则矩阵<span class="arithmatex">\(A\)</span>分别为负定或半负定。</li>
+<li>最后，如果<span class="arithmatex">\(A\)</span>同时具有正特征值和负特征值，比如λ<span class="arithmatex">\(\lambda_i&gt;0\)</span>和<span class="arithmatex">\(\lambda_j&lt;0\)</span>，那么它是不定的。这是因为如果我们让<span class="arithmatex">\(\hat x\)</span>满足<span class="arithmatex">\(\hat x_i=1\)</span>和<span class="arithmatex">\(\hat x_k=0\)</span>，同时所有的<span class="arithmatex">\(k\ne i\)</span>，那么<span class="arithmatex">\(x^{T} A x=\sum_{i=1}^{n} \lambda_{i} \hat{x}_{i}^{2}&gt;0\)</span> ,我们让<span class="arithmatex">\(\hat x\)</span>满足<span class="arithmatex">\(\hat x_i=1\)</span>和<span class="arithmatex">\(\hat x_k=0\)</span>，同时所有的<span class="arithmatex">\(k\ne i\)</span>，那么<span class="arithmatex">\(x^{T} A x=\sum_{i=1}^{n} \lambda_{i} \hat{x}_{i}^{2}&lt;0\)</span> </li>
+</ol>
+<p>特征值和特征向量经常出现的应用是最大化矩阵的某些函数。特别是对于矩阵<span class="arithmatex">\(A \in \mathbb{S}^{n}\)</span>，考虑以下最大化问题：
+$$
+\max <em i="1">{x \in \mathbb{R}^{n}} \ x^{T} A x=\sum</em>^{n} \lambda_{i} \hat{x}<em 2="2">{i}^{2} \quad \text { subject to }|x|</em>^{2}=1
+$$
+也就是说，我们要找到（范数1）的向量，它使二次型最大化。假设特征值的阶数为<span class="arithmatex">\(\lambda_1 \geq \lambda _2 \geq \cdots \lambda_n\)</span>，此优化问题的最优值为<span class="arithmatex">\(\lambda_1\)</span>，且与<span class="arithmatex">\(\lambda_1\)</span>对应的任何特征向量<span class="arithmatex">\(u_1\)</span>都是最大值之一。（如果<span class="arithmatex">\(\lambda_1 &gt; \lambda_2\)</span>，那么有一个与特征值<span class="arithmatex">\(\lambda_1\)</span>对应的唯一特征向量，它是上面那个优化问题的唯一最大值。）
+我们可以通过使用对角化技术来证明这一点：注意，通过公式<span class="arithmatex">\(\|U x\|_{2}=\|x\|_{2}\)</span>推出<span class="arithmatex">\(\|x\|_{2}=\|\hat{x}\|_{2}\)</span>，并利用公式：</p>
+<p><span class="arithmatex">\(x^{T} A x=x^{T} U \Lambda U^{T} x=\hat{x} \Lambda \hat{x}=\sum_{i=1}^{n} \lambda_{i} \hat{x}_{i}^{2}\)</span>，我们可以将上面那个优化问题改写为：
+$$
+\max <em i="1">{\hat{x} \in \mathbb{R}^{n}}\ \hat{x}^{T} \Lambda \hat{x}=\sum</em>^{n} \lambda_{i} \hat{x}<em 2="2">{i}^{2} \quad \text { subject to }|\hat{x}|</em>^{2}=1
+$$
+然后，我们得到目标的上界为<span class="arithmatex">\(\lambda_1\)</span>：
+$$
+\hat{x}^{T} \Lambda \hat{x}=\sum_{i=1}^{n} \lambda_{i} \hat{x}<em i="1">{i}^{2} \leq \sum</em>^{n} \lambda_{1} \hat{x}<em 1="1">{i}^{2}=\lambda</em>
+$$
+此外，设置<span class="arithmatex">\(\hat{x}=\left[\begin{array}{c}{1} \\ {0} \\ {\vdots} \\ {0}\end{array}\right]\)</span>可让上述等式成立，这与设置<span class="arithmatex">\(x=u_1\)</span>相对应。</p>
+<h3 id="4">4.矩阵微积分<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>虽然前面章节中的主题通常包含在线性代数的标准课程中，但似乎很少涉及（我们将广泛使用）的一个主题是微积分扩展到向量设置展。尽管我们使用的所有实际微积分都是相对微不足道的，但是符号通常会使事情看起来比实际困难得多。 在本节中，我们将介绍矩阵微积分的一些基本定义，并提供一些示例。</p>
+<h4 id="41">4.1 梯度<a class="headerlink" href="#41" title="Permanent link">&para;</a></h4>
+<p>假设<span class="arithmatex">\(f: \mathbb{R}^{m \times n} \rightarrow \mathbb{R}\)</span>是将维度为<span class="arithmatex">\(m \times n\)</span>的矩阵<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>作为输入并返回实数值的函数。 然后<span class="arithmatex">\(f\)</span>的梯度（相对于<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>）是偏导数矩阵，定义如下：
+$$
+\nabla_{A} f(A) \in \mathbb{R}^{m \times n}=\left[\begin{array}{cccc}{\frac{\partial f(A)}{\partial A_{11}}} &amp; {\frac{\partial f(A)}{\partial A_{12}}} &amp; {\cdots} &amp; {\frac{\partial f(A)}{\partial A_{1n}}} \ {\frac{\partial f(A)}{\partial A_{21}}} &amp; {\frac{\partial f(A)}{\partial A_{22}}} &amp; {\cdots} &amp; {\frac{\partial f(A)}{\partial A_{2 n}}} \ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \ {\frac{\partial f(A)}{\partial A_{m 1}}} &amp; {\frac{\partial f(A)}{\partial A_{m 2}}} &amp; {\cdots} &amp; {\frac{\partial f(A)}{\partial A_{m n}}}\end{array}\right]
+$$
+即，<span class="arithmatex">\(m \times n\)</span>矩阵:
+$$
+\left(\nabla_{A} f(A)\right)<em i="i" j="j">{i j}=\frac{\partial f(A)}{\partial A</em>}
+$$
+请注意，<span class="arithmatex">\(\nabla_{A} f(A) <span class="arithmatex">\(的维度始终与\)</span>A\)</span>的维度相同。特殊情况，如果<span class="arithmatex">\(A\)</span>只是向量<span class="arithmatex">\(A\in \mathbb{R}^{n}\)</span>，则
+$$
+\nabla_{x} f(x)=\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \ {\frac{\partial f(x)}{\partial x_{2}}} \ {\vdots} \ {\frac{\partial f(x)}{\partial x_{n}}}\end{array}\right]
+$$
+重要的是要记住，只有当函数是实值时，即如果函数返回标量值，才定义函数的梯度。例如，<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>相对于<span class="arithmatex">\(x\)</span>，我们不能取<span class="arithmatex">\(Ax\)</span>的梯度，因为这个量是向量值。
+它直接从偏导数的等价性质得出：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\nabla_{x}(f(x)+g(x))=\nabla_{x} f(x)+\nabla_{x} g(x)\)</span></p>
+</li>
+<li>
+<p>对于<span class="arithmatex">\(t \in \mathbb{R}\)</span> ，<span class="arithmatex">\(\nabla_{x}(t f(x))=t \nabla_{x} f(x)\)</span></p>
+</li>
+</ul>
+<p>原则上，梯度是偏导数对多变量函数的自然延伸。然而，在实践中，由于符号的原因，使用梯度有时是很困难的。例如，假设<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>是一个固定系数矩阵，假设<span class="arithmatex">\(b\in \mathbb{R}^{m}\)</span>是一个固定系数向量。设<span class="arithmatex">\(f: \mathbb{R}^{m \times n} \rightarrow \mathbb{R}\)</span>为<span class="arithmatex">\(f(z)=z^Tz\)</span>定义的函数，因此<span class="arithmatex">\(\nabla_{z}f(z)=2z\)</span>。但现在考虑表达式，
+$$
+\nabla f(Ax)
+$$
+该表达式应该如何解释？ 至少有两种可能性：
+1.在第一个解释中，回想起<span class="arithmatex">\(\nabla_{z}f(z)=2z\)</span>。 在这里，我们将<span class="arithmatex">\(\nabla f(Ax)\)</span>解释为评估点<span class="arithmatex">\(Ax\)</span>处的梯度，因此:</p>
+<div class="arithmatex">\[
+\nabla f(A x)=2(A x)=2 A x \in \mathbb{R}^{m}
+$$
+2.在第二种解释中，我们将数量$f(Ax)$视为输入变量$x$的函数。 更正式地说，设$g(x) =f(Ax)$。 然后在这个解释中:
+$$
+\nabla f(A x)=\nabla_{x} g(x) \in \mathbb{R}^{n}
+\]</div>
+<p>在这里，我们可以看到这两种解释确实不同。 一种解释产生<span class="arithmatex">\(m\)</span>维向量作为结果，而另一种解释产生<span class="arithmatex">\(n\)</span>维向量作为结果！ 我们怎么解决这个问题？</p>
+<p>这里，关键是要明确我们要区分的变量。
+在第一种情况下，我们将函数<span class="arithmatex">\(f\)</span>与其参数<span class="arithmatex">\(z\)</span>进行区分，然后替换参数<span class="arithmatex">\(Ax\)</span>。
+在第二种情况下，我们将复合函数<span class="arithmatex">\(g(x)=f(Ax)\)</span>直接与<span class="arithmatex">\(x\)</span>进行微分。</p>
+<p>我们将第一种情况表示为<span class="arithmatex">\(\nabla zf(Ax)\)</span>，第二种情况表示为<span class="arithmatex">\(\nabla xf(Ax)\)</span>。</p>
+<p>保持符号清晰是非常重要的，以后完成课程作业时候你就会发现。</p>
+<h4 id="42">4.2 黑塞矩阵<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<p>假设<span class="arithmatex">\(f: \mathbb{R}^{n} \rightarrow \mathbb{R}\)</span>是一个函数，它接受<span class="arithmatex">\(\mathbb{R}^{n}\)</span>中的向量并返回实数。那么关于<span class="arithmatex">\(x\)</span>的<strong>黑塞矩阵</strong>（也有翻译作海森矩阵），写做：<span class="arithmatex">\(\nabla_x ^2 f(A x)\)</span>，或者简单地说，<span class="arithmatex">\(H\)</span>是<span class="arithmatex">\(n \times n\)</span>矩阵的偏导数：
+$$
+\nabla_{x}^{2} f(x) \in \mathbb{R}^{n \times n}=\left[\begin{array}{cccc}{\frac{\partial^{2} f(x)}{\partial x_{1}^{2}}} &amp; {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{2}}} &amp; {\cdots} &amp; {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{n}}} \ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{1}}} &amp; {\frac{\partial^{2} f(x)}{\partial x_{2}^{2}}} &amp; {\cdots} &amp; {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{n}}} \ {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \ {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{1}}} &amp; {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{2}}} &amp; {\cdots} &amp; {\frac{\partial^{2} f(x)}{\partial x_{n}^{2}}}\end{array}\right]
+$$
+换句话说，<span class="arithmatex">\(\nabla_{x}^{2} f(x) \in \mathbb{R}^{n \times n}\)</span>，其：</p>
+<p>$$
+\left(\nabla_{x}^{2} f(x)\right)<em i="i">{i j}=\frac{\partial^{2} f(x)}{\partial x</em> \partial x_{j}}
+$$
+注意：黑塞矩阵通常是对称阵：</p>
+<p>$$
+\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{j}}=\frac{\partial^{2} f(x)}{\partial x_{j} \partial x_{i}}
+$$
+与梯度相似，只有当<span class="arithmatex">\(f(x)\)</span>为实值时才定义黑塞矩阵。</p>
+<p>很自然地认为梯度与向量函数的一阶导数的相似，而黑塞矩阵与二阶导数的相似（我们使用的符号也暗示了这种关系）。 这种直觉通常是正确的，但需要记住以下几个注意事项。
+首先，对于一个变量<span class="arithmatex">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span>的实值函数，它的基本定义：二阶导数是一阶导数的导数，即：
+$$
+\frac{\partial^{2} f(x)}{\partial x^{2}}=\frac{\partial}{\partial x} \frac{\partial}{\partial x} f(x)
+$$
+然而，对于向量的函数，函数的梯度是一个向量，我们不能取向量的梯度，即:
+$$
+\nabla_{x} \nabla_{x} f(x)=\nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \ {\frac{\partial f(x)}{\partial x_{2}}} \ {\vdots} \ {\frac{\partial f(x)}{\partial x_{n}}}\end{array}\right]
+$$</p>
+<p>上面这个表达式没有意义。 因此，黑塞矩阵不是梯度的梯度。 然而，下面这种情况却这几乎是正确的：如果我们看一下梯度<span class="arithmatex">\(\left(\nabla_{x} f(x)\right)_{i}=\partial f(x) / \partial x_{i}\)</span>的第<span class="arithmatex">\(i\)</span>个元素，并取关于于<span class="arithmatex">\(x\)</span>的梯度我们得到：
+$$
+\nabla_{x} \frac{\partial f(x)}{\partial x_{i}}=\left[\begin{array}{c}{\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{1}}} \ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{2}}} \ {\vdots} \ {\frac{\partial f(x)}{\partial x_{i} \partial x_{n}}}\end{array}\right]
+$$</p>
+<p>这是黑塞矩阵第<span class="arithmatex">\(i\)</span>行（列）,所以：
+$$
+\nabla_{x}^{2} f(x)=\left[\nabla_{x}\left(\nabla_{x} f(x)\right)<em x="x">{1} \quad \nabla</em>\left(\nabla_{x} f(x)\right)<em x="x">{2} \quad \cdots \quad \nabla</em>\left(\nabla_{x} f(x)\right)_{n}\right]
+$$
+简单地说：我们可以说由于：<span class="arithmatex">\(\nabla_{x}^{2} f(x)=\nabla_{x}\left(\nabla_{x} f(x)\right)^{T}\)</span>，只要我们理解，这实际上是取<span class="arithmatex">\(\nabla_{x} f(x)\)</span>的每个元素的梯度，而不是整个向量的梯度。</p>
+<p>最后，请注意，虽然我们可以对矩阵<span class="arithmatex">\(A\in \mathbb{R}^{n}\)</span>取梯度，但对于这门课，我们只考虑对向量<span class="arithmatex">\(x \in \mathbb{R}^{n}\)</span>取黑塞矩阵。
+这会方便很多（事实上，我们所做的任何计算都不要求我们找到关于矩阵的黑森方程），因为关于矩阵的黑塞方程就必须对矩阵所有元素求偏导数<span class="arithmatex">\(\partial^{2} f(A) /\left(\partial A_{i j} \partial A_{k \ell}\right)\)</span>，将其表示为矩阵相当麻烦。</p>
+<h4 id="43">4.3 二次函数和线性函数的梯度和黑塞矩阵<a class="headerlink" href="#43" title="Permanent link">&para;</a></h4>
+<p>现在让我们尝试确定几个简单函数的梯度和黑塞矩阵。 应该注意的是，这里给出的所有梯度都是<strong>CS229</strong>讲义中给出的梯度的特殊情况。</p>
+<p>对于<span class="arithmatex">\(x \in \mathbb{R}^{n}\)</span>, 设<span class="arithmatex">\(f(x)=b^Tx\)</span>  的某些已知向量<span class="arithmatex">\(b \in \mathbb{R}^{n}\)</span> ，则：</p>
+<p>$$
+f(x)=\sum_{i=1}^{n} b_{i} x_{i}
+$$
+所以：
+$$
+\frac{\partial f(x)}{\partial x_{k}}=\frac{\partial}{\partial x_{k}} \sum_{i=1}^{n} b_{i} x_{i}=b_{k}
+$$
+由此我们可以很容易地看出<span class="arithmatex">\(\nabla_{x} b^{T} x=b\)</span>。 这应该与单变量微积分中的类似情况进行比较，其中<span class="arithmatex">\(\partial /(\partial x) a x=a\)</span>。
+现在考虑<span class="arithmatex">\(A\in \mathbb{S}^{n}\)</span>的二次函数<span class="arithmatex">\(f(x)=x^TAx\)</span>。 记住这一点：
+$$
+f(x)=\sum_{i=1}^{n} \sum_{j=1}^{n} A_{i j} x_{i} x_{j}
+$$
+为了取偏导数，我们将分别考虑包括<span class="arithmatex">\(x_k\)</span>和<span class="arithmatex">\(x_2^k\)</span>因子的项：</p>
+<p>$$
+\begin{aligned} \frac{\partial f(x)}{\partial x_{k}} &amp;=\frac{\partial}{\partial x_{k}} \sum_{i=1}^{n} \sum_{j=1}^{n} A_{i j} x_{i} x_{j} \ &amp;=\frac{\partial}{\partial x_{k}}\left[\sum_{i \neq k} \sum_{j \neq k} A_{i j} x_{i} x_{j}+\sum_{i \neq k} A_{i k} x_{i} x_{k}+\sum_{j \neq k} A_{k j} x_{k} x_{j}+A_{k k} x_{k}^{2}\right] \ &amp;=\sum_{i \neq k} A_{i k} x_{i}+\sum_{j \neq k} A_{k j} x_{j}+2 A_{k k} x_{k} \ &amp;=\sum_{i=1}^{n} A_{i k} x_{i}+\sum_{j=1}^{n} A_{k j} x_{j}=2 \sum_{i=1}^{n} A_{k i} x_{i} \end{aligned}
+$$
+最后一个等式，是因为<span class="arithmatex">\(A\)</span>是对称的（我们可以安全地假设，因为它以二次形式出现）。 注意，<span class="arithmatex">\(\nabla_{x} f(x)\)</span>的第<span class="arithmatex">\(k\)</span>个元素是<span class="arithmatex">\(A\)</span>和<span class="arithmatex">\(x\)</span>的第<span class="arithmatex">\(k\)</span>行的内积。 因此，<span class="arithmatex">\(\nabla_{x} x^{T} A x=2 A x\)</span>。 同样，这应该提醒你单变量微积分中的类似事实，即<span class="arithmatex">\(\partial /(\partial x) a x^{2}=2 a x\)</span>。</p>
+<p>最后，让我们来看看二次函数<span class="arithmatex">\(f(x)=x^TAx\)</span>黑塞矩阵（显然，线性函数<span class="arithmatex">\(b^Tx\)</span>的黑塞矩阵为零）。在这种情况下:
+$$
+\frac{\partial^{2} f(x)}{\partial x_{k} \partial x_{\ell}}=\frac{\partial}{\partial x_{k}}\left[\frac{\partial f(x)}{\partial x_{\ell}}\right]=\frac{\partial}{\partial x_{k}}\left[2 \sum_{i=1}^{n} A_{\ell i} x_{i}\right]=2 A_{\ell k}=2 A_{k \ell}
+$$
+因此，应该很清楚<span class="arithmatex">\(\nabla_{x}^2 x^{T} A x=2 A\)</span>，这应该是完全可以理解的（同样类似于<span class="arithmatex">\(\partial^2 /(\partial x^2) a x^{2}=2a\)</span>的单变量事实）。</p>
+<p>简要概括起来：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\nabla_{x} b^{T} x=b\)</span> </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\nabla_{x} x^{T} A x=2 A x\)</span> (如果<span class="arithmatex">\(A\)</span>是对称阵)</p>
+</li>
+<li>
+<p>$\nabla_{x}^2 x^{T} A x=2 A $  (如果<span class="arithmatex">\(A\)</span>是对称阵)</p>
+</li>
+</ul>
+<h4 id="44">4.4 最小二乘法<a class="headerlink" href="#44" title="Permanent link">&para;</a></h4>
+<p>让我们应用上一节中得到的方程来推导最小二乘方程。假设我们得到矩阵<span class="arithmatex">\(A\in \mathbb{R}^{m \times n}\)</span>（为了简单起见，我们假设<span class="arithmatex">\(A\)</span>是满秩）和向量<span class="arithmatex">\(b\in \mathbb{R}^{m}\)</span>，从而使<span class="arithmatex">\(b \notin \mathcal{R}(A)\)</span>。在这种情况下，我们将无法找到向量<span class="arithmatex">\(x\in \mathbb{R}^{n}\)</span>，由于<span class="arithmatex">\(Ax = b\)</span>，因此我们想要找到一个向量<span class="arithmatex">\(x\)</span>，使得<span class="arithmatex">\(Ax\)</span>尽可能接近 <span class="arithmatex">\(b\)</span>，用欧几里德范数的平方$|A x-b|_{2}^{2} $来衡量。</p>
+<p>使用公式<span class="arithmatex">\(\|x\|^{2}=x^Tx\)</span>，我们可以得到：</p>
+<p>$$
+\begin{aligned}|A x-b|<em x="x">{2}^{2} &amp;=(A x-b)^{T}(A x-b) \ &amp;=x^{T} A^{T} A x-2 b^{T} A x+b^{T} b \end{aligned}
+$$
+根据<span class="arithmatex">\(x\)</span>的梯度，并利用上一节中推导的性质：
+$$
+\begin{aligned} \nabla</em>\left(x^{T} A^{T} A x-2 b^{T} A x+b^{T} b\right) &amp;=\nabla_{x} x^{T} A^{T} A x-\nabla_{x} 2 b^{T} A x+\nabla_{x} b^{T} b \ &amp;=2 A^{T} A x-2 A^{T} b \end{aligned}
+$$
+将最后一个表达式设置为零，然后解出<span class="arithmatex">\(x\)</span>，得到了正规方程：
+$$
+x = (A^TA)^{-1}A^Tb
+$$
+这和我们在课堂上得到的相同。</p>
+<h4 id="45">4.5 行列式的梯度<a class="headerlink" href="#45" title="Permanent link">&para;</a></h4>
+<p>现在让我们考虑一种情况，我们找到一个函数相对于矩阵的梯度，也就是说，对于<span class="arithmatex">\(A\in \mathbb{R}^{n \times n}\)</span>，我们要找到<span class="arithmatex">\(\nabla_{A}|A|\)</span>。回想一下我们对行列式的讨论：
+$$
+|A|=\sum_{i=1}^{n}(-1)^{i+j} A_{i j}\left|A_{\backslash i, \backslash j}\right| \quad(\text { for any } j \in 1, \ldots, n)
+$$
+所以：
+$$
+\frac{\partial}{\partial A_{k \ell}}|A|=\frac{\partial}{\partial A_{k \ell}} \sum_{i=1}^{n}(-1)^{i+j} A_{i j}\left|A_{\backslash i, \backslash j}\right|=(-1)^{k+\ell}\left|A_{\backslash k,\backslash \ell}\right|=(\operatorname{adj}(A))<em A="A">{\ell k}
+$$
+从这里可以知道，它直接从伴随矩阵的性质得出：
+$$
+\nabla</em>|A|=(\operatorname{adj}(A))^{T}=|A| A^{-T}
+$$
+现在我们来考虑函数<span class="arithmatex">\(f : \mathbb{S}_{++}^{n} \rightarrow \mathbb{R}\)</span>，<span class="arithmatex">\(f(A)=\log |A|\)</span>。注意，我们必须将<span class="arithmatex">\(f\)</span>的域限制为正定矩阵，因为这确保了<span class="arithmatex">\(|A|&gt;0\)</span>，因此<span class="arithmatex">\(|A|\)</span>的对数是实数。在这种情况下，我们可以使用链式法则（没什么奇怪的，只是单变量演算中的普通链式法则）来看看：
+$$
+\frac{\partial \log |A|}{\partial A_{i j}}=\frac{\partial \log |A|}{\partial|A|} \frac{\partial|A|}{\partial A_{i j}}=\frac{1}{|A|} \frac{\partial|A|}{\partial A_{i j}}
+$$
+从这一点可以明显看出：</p>
+<p>$$
+\nabla_{A} \log |A|=\frac{1}{|A|} \nabla_{A}|A|=A^{-1}
+$$
+我们可以在最后一个表达式中删除转置，因为<span class="arithmatex">\(A\)</span>是对称的。注意与单值情况的相似性，其中<span class="arithmatex">\(\partial /(\partial x) \log x=1 / x\)</span>。</p>
+<h4 id="46">4.6 特征值优化<a class="headerlink" href="#46" title="Permanent link">&para;</a></h4>
+<p>最后，我们使用矩阵演算以直接导致特征值/特征向量分析的方式求解优化问题。 考虑以下等式约束优化问题：</p>
+<p>$$
+\max <em 2="2">{x \in \mathbb{R}^{n}} x^{T} A x \quad \text { subject to }|x|</em>^{2}=1
+$$
+对于对称矩阵<span class="arithmatex">\(A\in \mathbb{S}^{n}\)</span>。求解等式约束优化问题的标准方法是采用<strong>拉格朗日</strong>形式，一种包含等式约束的目标函数，在这种情况下，拉格朗日函数可由以下公式给出：</p>
+<p>$$
+\mathcal{L}(x, \lambda)=x^{T} A x-\lambda x^{T} x
+$$
+其中，<span class="arithmatex">\(\lambda <span class="arithmatex">\(被称为与等式约束关联的拉格朗日乘子。可以确定，要使\)</span>x^*\)</span>成为问题的最佳点，拉格朗日的梯度必须在<span class="arithmatex">\(x^*\)</span>处为零（这不是唯一的条件，但它是必需的）。也就是说，
+$$
+\nabla_{x} \mathcal{L}(x, \lambda)=\nabla_{x}\left(x^{T} A x-\lambda x^{T} x\right)=2 A^{T} x-2 \lambda x=0
+$$
+请注意，这只是线性方程<span class="arithmatex">\(Ax =\lambda x\)</span>。 这表明假设<span class="arithmatex">\(x^T x = 1\)</span>，可能最大化（或最小化）<span class="arithmatex">\(x^T Ax\)</span>的唯一点是<span class="arithmatex">\(A\)</span>的特征向量。</p>
+<p><strong>线性代数和概率论都已经翻译完毕，请关注<a href="https://github.com/fengdu78/Data-Science-Notes/tree/master/0.math">github</a>的更新，若有修改将在github上更新</strong></p>
+<p>欢迎大家提交PR，对语言进行润色。</p>
+<p>翻译：<a href="https://github.com/fengdu78">黄海广</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

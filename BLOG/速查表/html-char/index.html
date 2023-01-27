@@ -1,0 +1,5489 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/">
+      
+      
+        <link rel="prev" href="../gmail/">
+      
+      
+        <link rel="next" href="../html/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>html-char - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#html" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              html-char
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Foundation%20Course/" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Foundation%20Course/">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Foundation%20Course/MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="true">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          html-char
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        html-char
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    HTML 字符实体引用
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML 字符实体引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    HTML 特殊字符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_3" class="md-nav__link">
+    HTML 拉丁语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_4" class="md-nav__link">
+    HTML 拉丁文扩展
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_5" class="md-nav__link">
+    HTML 间距修饰符字母
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_6" class="md-nav__link">
+    HTML 希腊语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-punctuation" class="md-nav__link">
+    HTML Punctuation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-letter-like-symbols" class="md-nav__link">
+    HTML Letter-like Symbols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-arrows" class="md-nav__link">
+    HTML Arrows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_7" class="md-nav__link">
+    HTML 数学运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_8" class="md-nav__link">
+    HTML 技术
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_9" class="md-nav__link">
+    HTML 杂项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    另见
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    HTML 字符实体引用
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML 字符实体引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    HTML 特殊字符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_3" class="md-nav__link">
+    HTML 拉丁语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_4" class="md-nav__link">
+    HTML 拉丁文扩展
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_5" class="md-nav__link">
+    HTML 间距修饰符字母
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_6" class="md-nav__link">
+    HTML 希腊语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-punctuation" class="md-nav__link">
+    HTML Punctuation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-letter-like-symbols" class="md-nav__link">
+    HTML Letter-like Symbols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-arrows" class="md-nav__link">
+    HTML Arrows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_7" class="md-nav__link">
+    HTML 数学运算符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_8" class="md-nav__link">
+    HTML 技术
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_9" class="md-nav__link">
+    HTML 杂项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    另见
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<h1 id="html">HTML 字符实体备忘清单<a class="headerlink" href="#html" title="Permanent link">&para;</a></h1>
+<p>此备忘清单是 HTML 实体及其编号和名称的完整列表。还包括可以用 HTML 表示的 ASCII 字符的完整列表。</p>
+<h2 id="html_1">HTML 字符实体引用<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h2>
+<!--rehype:body-class=cols-1-->
+
+<h3 id="html_2">HTML 特殊字符<a class="headerlink" href="#html_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;quot;</code></td>
+<td>"</td>
+<td><code>&amp;#34;</code></td>
+<td>引号</td>
+<td>u+0022 ISOnum</td>
+<td>\0022</td>
+<td><a href='javascript:alert(&quot;\42&quot;)'>\42</a></td>
+</tr>
+<tr>
+<td><code>&amp;num;</code></td>
+<td>#</td>
+<td><code>&amp;#35;</code></td>
+<td>数字符号</td>
+<td>u+0023 ISOnum</td>
+<td>\0023</td>
+<td><a href='javascript:alert(&quot;\43&quot;)'>\43</a></td>
+</tr>
+<tr>
+<td><code>&amp;dollar;</code></td>
+<td>$</td>
+<td><code>&amp;#36;</code></td>
+<td>美元符号</td>
+<td>u+0024 ISOnum</td>
+<td>\0024</td>
+<td><a href='javascript:alert(&quot;\44&quot;)'>\44</a></td>
+</tr>
+<tr>
+<td><code>&amp;percnt;</code></td>
+<td>%</td>
+<td><code>&amp;#37;</code></td>
+<td>百分号</td>
+<td>u+0025 ISOnum</td>
+<td>\0025</td>
+<td><a href='javascript:alert(&quot;\45&quot;)'>\45</a></td>
+</tr>
+<tr>
+<td><code>&amp;amp;</code></td>
+<td>&amp;</td>
+<td><code>&amp;#38;</code></td>
+<td>和号</td>
+<td>u+0026 ISOnum</td>
+<td>\0026</td>
+<td><a href='javascript:alert(&quot;\46&quot;)'>\46</a></td>
+</tr>
+<tr>
+<td><code>&amp;apos;</code></td>
+<td>'</td>
+<td><code>&amp;#39;</code></td>
+<td>撇号</td>
+<td>u+0027 ISOnum</td>
+<td>\0027</td>
+<td><a href='javascript:alert(&quot;\47&quot;)'>\47</a></td>
+</tr>
+<tr>
+<td><code>&amp;lpar;</code></td>
+<td>(</td>
+<td><code>&amp;#40;</code></td>
+<td>左括号</td>
+<td>u+0028 ISOnum</td>
+<td>\0028</td>
+<td><a href='javascript:alert(&quot;\50&quot;)'>\50</a></td>
+</tr>
+<tr>
+<td><code>&amp;rpar;</code></td>
+<td>)</td>
+<td><code>&amp;#41;</code></td>
+<td>右括号</td>
+<td>u+0029 ISOnum</td>
+<td>\0029</td>
+<td><a href='javascript:alert(&quot;\51&quot;)'>\51</a></td>
+</tr>
+<tr>
+<td><code>&amp;ast;</code></td>
+<td>*</td>
+<td><code>&amp;#42;</code></td>
+<td>星号</td>
+<td>u+002A ISOnum</td>
+<td>\002a</td>
+<td><a href='javascript:alert(&quot;\52&quot;)'>\52</a></td>
+</tr>
+<tr>
+<td><code>&amp;plus;</code></td>
+<td>+</td>
+<td><code>&amp;#43;</code></td>
+<td>加号</td>
+<td>u+002B ISOnum</td>
+<td>\002b</td>
+<td><a href='javascript:alert(&quot;\53&quot;)'>\53</a></td>
+</tr>
+<tr>
+<td><code>&amp;comma;</code></td>
+<td>,</td>
+<td><code>&amp;#44;</code></td>
+<td>逗号</td>
+<td>u+002C ISOnum</td>
+<td>\002c</td>
+<td><a href='javascript:alert(&quot;\54&quot;)'>\54</a></td>
+</tr>
+<tr>
+<td><code>&amp;minus;</code></td>
+<td>-</td>
+<td><code>&amp;#45;</code></td>
+<td>连字符减号</td>
+<td>u+002D ISOnum</td>
+<td>\002d</td>
+<td><a href='javascript:alert(&quot;\55&quot;)'>\55</a></td>
+</tr>
+<tr>
+<td><code>&amp;period;</code></td>
+<td>.</td>
+<td><code>&amp;#46;</code></td>
+<td>句号</td>
+<td>u+002E ISOnum</td>
+<td>\002e</td>
+<td><a href='javascript:alert(&quot;\56&quot;)'>\56</a></td>
+</tr>
+<tr>
+<td><code>&amp;sol;</code></td>
+<td>/</td>
+<td><code>&amp;#47;</code></td>
+<td>固相线</td>
+<td>u+002F ISOnum</td>
+<td>\002f</td>
+<td><a href='javascript:alert(&quot;\57&quot;)'>\57</a></td>
+</tr>
+<tr>
+<td><code>&amp;colon;</code></td>
+<td>:</td>
+<td><code>&amp;#58;</code></td>
+<td>冒号</td>
+<td>u+003A ISOnum</td>
+<td>\003a</td>
+<td><a href='javascript:alert(&quot;\72&quot;)'>\72</a></td>
+</tr>
+<tr>
+<td><code>&amp;semi;</code></td>
+<td>;</td>
+<td><code>&amp;#59;</code></td>
+<td>分号</td>
+<td>u+003B ISOnum</td>
+<td>\003b</td>
+<td><a href='javascript:alert(&quot;\73&quot;)'>\73</a></td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code></td>
+<td>&lt;</td>
+<td><code>&amp;#60;</code></td>
+<td>少于</td>
+<td>u+003C ISOnum</td>
+<td>\003c</td>
+<td><a href='javascript:alert(&quot;\74&quot;)'>\74</a></td>
+</tr>
+<tr>
+<td><code>&amp;equals;</code></td>
+<td>=</td>
+<td><code>&amp;#61;</code></td>
+<td>等于</td>
+<td>u+003D ISOnum</td>
+<td>\003d</td>
+<td><a href='javascript:alert(&quot;\75&quot;)'>\75</a></td>
+</tr>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td>&gt;</td>
+<td><code>&amp;#62;</code></td>
+<td>大于号</td>
+<td>u+003E ISOnum</td>
+<td>\003e</td>
+<td><a href='javascript:alert(&quot;\76&quot;)'>\76</a></td>
+</tr>
+<tr>
+<td><code>&amp;quest;</code></td>
+<td>?</td>
+<td><code>&amp;#63;</code></td>
+<td>问号</td>
+<td>u+003F ISOnum</td>
+<td>\003f</td>
+<td><a href='javascript:alert(&quot;\77&quot;)'>\77</a></td>
+</tr>
+<tr>
+<td><code>&amp;commat;</code></td>
+<td>@</td>
+<td><code>&amp;#64;</code></td>
+<td>在标志处</td>
+<td>u+0040 ISOnum</td>
+<td>\0040</td>
+<td><a href='javascript:alert(&quot;\100&quot;)'>\100</a></td>
+</tr>
+<tr>
+<td><code>&amp;lsqb;</code></td>
+<td>[</td>
+<td><code>&amp;#91;</code></td>
+<td>左方括号</td>
+<td>u+005B ISOnum</td>
+<td>\005b</td>
+<td><a href='javascript:alert(&quot;\133&quot;)'>\133</a></td>
+</tr>
+<tr>
+<td><code>&amp;bsol;</code></td>
+<td>\</td>
+<td><code>&amp;#92;</code></td>
+<td>反斜杠</td>
+<td>u+005C ISOnum</td>
+<td>\005c</td>
+<td><a href='javascript:alert(&quot;\134&quot;)'>\134</a></td>
+</tr>
+<tr>
+<td><code>&amp;rsqb;</code></td>
+<td>]</td>
+<td><code>&amp;#93;</code></td>
+<td>右方括号</td>
+<td>u+005D ISOnum</td>
+<td>\005d</td>
+<td><a href='javascript:alert(&quot;\135&quot;)'>\135</a></td>
+</tr>
+<tr>
+<td><code>&amp;Hat;</code></td>
+<td>^</td>
+<td><code>&amp;#94;</code></td>
+<td>抑扬顿挫</td>
+<td>u+005E ISOnum</td>
+<td>\005e</td>
+<td><a href='javascript:alert(&quot;\136&quot;)'>\136</a></td>
+</tr>
+<tr>
+<td><code>&amp;lowbar;</code></td>
+<td>_</td>
+<td><code>&amp;#95;</code></td>
+<td>低线</td>
+<td>u+005F ISOnum</td>
+<td>\005f</td>
+<td><a href='javascript:alert(&quot;\137&quot;)'>\137</a></td>
+</tr>
+<tr>
+<td><code>&amp;grave;</code></td>
+<td>&#96;</td>
+<td><code>&amp;#96;</code></td>
+<td>重音</td>
+<td>u+0060 ISOnum</td>
+<td>\0060</td>
+<td><a href='javascript:alert(&quot;\u0060&quot;)'>\u0060</a></td>
+</tr>
+<tr>
+<td><code>&amp;lcub;</code></td>
+<td>{</td>
+<td><code>&amp;#123;</code></td>
+<td>左大括号</td>
+<td>u+007b ISOnum</td>
+<td>\007b</td>
+<td><a href='javascript:alert(&quot;\173&quot;)'>\173</a></td>
+</tr>
+<tr>
+<td><code>&amp;verbar;</code></td>
+<td>|</td>
+<td><code>&amp;#124;</code></td>
+<td>竖线</td>
+<td>u+007c ISOnum</td>
+<td>\007c</td>
+<td><a href='javascript:alert(&quot;\174&quot;)'>\174</a></td>
+</tr>
+<tr>
+<td><code>&amp;rcub;</code></td>
+<td>}</td>
+<td><code>&amp;#125;</code></td>
+<td>右大括号</td>
+<td>u+007d ISOnum</td>
+<td>\007d</td>
+<td><a href='javascript:alert(&quot;\175&quot;)'>\175</a></td>
+</tr>
+<tr>
+<td></td>
+<td>~</td>
+<td><code>&amp;#126;</code></td>
+<td>波浪号</td>
+<td>u+007e ISOnum</td>
+<td>\007e</td>
+<td><a href='javascript:alert(&quot;\176&quot;)'>\176</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_3">HTML 拉丁语<a class="headerlink" href="#html_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;nbsp;</code></td>
+<td></td>
+<td><code>&amp;#160;</code></td>
+<td>no-break space</td>
+<td>%A0</td>
+<td>\00a0</td>
+<td><a href='javascript:alert(&quot;\240&quot;)'>\240</a></td>
+</tr>
+<tr>
+<td><code>&amp;iexcl;</code></td>
+<td>¡</td>
+<td><code>&amp;#161;</code></td>
+<td>inverted exclamation mark</td>
+<td>%A1</td>
+<td>\00a1</td>
+<td><a href='javascript:alert(&quot;\241&quot;)'>\241</a></td>
+</tr>
+<tr>
+<td><code>&amp;cent;</code></td>
+<td>¢</td>
+<td><code>&amp;#162;</code></td>
+<td>cent sign</td>
+<td>%A2</td>
+<td>\00a2</td>
+<td><a href='javascript:alert(&quot;\242&quot;)'>\242</a></td>
+</tr>
+<tr>
+<td><code>&amp;pound;</code></td>
+<td>£</td>
+<td><code>&amp;#163;</code></td>
+<td>pound sterling sign</td>
+<td>%A3</td>
+<td>\00a3</td>
+<td><a href='javascript:alert(&quot;\243&quot;)'>\243</a></td>
+</tr>
+<tr>
+<td><code>&amp;curren;</code></td>
+<td>¤</td>
+<td><code>&amp;#164;</code></td>
+<td>general currency sign</td>
+<td>%A4</td>
+<td>\00a4</td>
+<td><a href='javascript:alert(&quot;\244&quot;)'>\244</a></td>
+</tr>
+<tr>
+<td><code>&amp;yen;</code></td>
+<td>¥</td>
+<td><code>&amp;#165;</code></td>
+<td>yen sign</td>
+<td>%A5</td>
+<td>\00a5</td>
+<td><a href='javascript:alert(&quot;\245&quot;)'>\245</a></td>
+</tr>
+<tr>
+<td><code>&amp;#x20B9;</code></td>
+<td>₹</td>
+<td><code>&amp;#x20B9;</code></td>
+<td>Indian Rupee (INR) sign</td>
+<td>U+20B9</td>
+<td>\20B9</td>
+<td><a href='javascript:alert(&quot;\u20B9&quot;)'>\u20B9</a></td>
+</tr>
+<tr>
+<td><code>&amp;brvbar;</code></td>
+<td>¦</td>
+<td><code>&amp;#166;</code></td>
+<td>broken (vertical) bar</td>
+<td>%A6</td>
+<td>\00a6</td>
+<td><a href='javascript:alert(&quot;\246&quot;)'>\246</a></td>
+</tr>
+<tr>
+<td><code>&amp;sect;</code></td>
+<td>§</td>
+<td><code>&amp;#167;</code></td>
+<td>section sign</td>
+<td>%A7</td>
+<td>\00a7</td>
+<td><a href='javascript:alert(&quot;\247&quot;)'>\247</a></td>
+</tr>
+<tr>
+<td><code>&amp;uml;</code></td>
+<td>¨</td>
+<td><code>&amp;#168;</code></td>
+<td>umlaut (dieresis)</td>
+<td>%A8</td>
+<td>\00a8</td>
+<td><a href='javascript:alert(&quot;\250&quot;)'>\250</a></td>
+</tr>
+<tr>
+<td><code>&amp;copy;</code></td>
+<td>©</td>
+<td><code>&amp;#169;</code></td>
+<td>copyright sign</td>
+<td>%A9</td>
+<td>\00a9</td>
+<td><a href='javascript:alert(&quot;\251&quot;)'>\251</a></td>
+</tr>
+<tr>
+<td><code>&amp;ordf;</code></td>
+<td>ª</td>
+<td><code>&amp;#170;</code></td>
+<td>ordinal indicator, feminine</td>
+<td>%AA</td>
+<td>\00aa</td>
+<td><a href='javascript:alert(&quot;\252&quot;)'>\252</a></td>
+</tr>
+<tr>
+<td><code>&amp;laquo;</code></td>
+<td>«</td>
+<td><code>&amp;#171;</code></td>
+<td>angle quotation mark, left</td>
+<td>%AB</td>
+<td>\00ab</td>
+<td><a href='javascript:alert(&quot;\253&quot;)'>\253</a></td>
+</tr>
+<tr>
+<td><code>&amp;not;</code></td>
+<td>¬</td>
+<td><code>&amp;#172;</code></td>
+<td>not sign</td>
+<td>%AC</td>
+<td>\00ac</td>
+<td><a href='javascript:alert(&quot;\254&quot;)'>\254</a></td>
+</tr>
+<tr>
+<td><code>&amp;shy;</code></td>
+<td>­</td>
+<td><code>&amp;#173;</code></td>
+<td>soft hyphen</td>
+<td>%AD</td>
+<td>\00ad</td>
+<td><a href='javascript:alert(&quot;\255&quot;)'>\255</a></td>
+</tr>
+<tr>
+<td><code>&amp;reg;</code></td>
+<td>®</td>
+<td><code>&amp;#174;</code></td>
+<td>registered sign</td>
+<td>%AE</td>
+<td>\00ae</td>
+<td><a href='javascript:alert(&quot;\256&quot;)'>\256</a></td>
+</tr>
+<tr>
+<td><code>&amp;macr;</code></td>
+<td>¯</td>
+<td><code>&amp;#175;</code></td>
+<td>macron</td>
+<td>%AF</td>
+<td>\00af</td>
+<td><a href='javascript:alert(&quot;\257&quot;)'>\257</a></td>
+</tr>
+<tr>
+<td><code>&amp;deg;</code></td>
+<td>°</td>
+<td><code>&amp;#176;</code></td>
+<td>degree sign</td>
+<td>%B0</td>
+<td>\00b0</td>
+<td><a href='javascript:alert(&quot;\260&quot;)'>\260</a></td>
+</tr>
+<tr>
+<td><code>&amp;plusmn;</code></td>
+<td>±</td>
+<td><code>&amp;#177;</code></td>
+<td>plus-or-minus sign</td>
+<td>%B1</td>
+<td>\00b1</td>
+<td><a href='javascript:alert(&quot;\261&quot;)'>\261</a></td>
+</tr>
+<tr>
+<td><code>&amp;sup2;</code></td>
+<td>²</td>
+<td><code>&amp;#178;</code></td>
+<td>superscript two</td>
+<td>%B2</td>
+<td>\00b2</td>
+<td><a href='javascript:alert(&quot;\262&quot;)'>\262</a></td>
+</tr>
+<tr>
+<td><code>&amp;sup3;</code></td>
+<td>³</td>
+<td><code>&amp;#179;</code></td>
+<td>superscript three</td>
+<td>%B3</td>
+<td>\00b3</td>
+<td><a href='javascript:alert(&quot;\263&quot;)'>\263</a></td>
+</tr>
+<tr>
+<td><code>&amp;acute;</code></td>
+<td>´</td>
+<td><code>&amp;#180;</code></td>
+<td>acute accent</td>
+<td>%B4</td>
+<td>\00b4</td>
+<td><a href='javascript:alert(&quot;\264&quot;)'>\264</a></td>
+</tr>
+<tr>
+<td><code>&amp;micro;</code></td>
+<td>µ</td>
+<td><code>&amp;#181;</code></td>
+<td>micro sign</td>
+<td>%B5</td>
+<td>\00b5</td>
+<td><a href='javascript:alert(&quot;\265&quot;)'>\265</a></td>
+</tr>
+<tr>
+<td><code>&amp;para;</code></td>
+<td>¶</td>
+<td><code>&amp;#182;</code></td>
+<td>pilcrow (paragraph sign)</td>
+<td>%B6</td>
+<td>\00b6</td>
+<td><a href='javascript:alert(&quot;\266&quot;)'>\266</a></td>
+</tr>
+<tr>
+<td><code>&amp;middot;</code></td>
+<td>·</td>
+<td><code>&amp;#183;</code></td>
+<td>middle dot</td>
+<td>%B7</td>
+<td>\00b7</td>
+<td><a href='javascript:alert(&quot;\267&quot;)'>\267</a></td>
+</tr>
+<tr>
+<td><code>&amp;cedil;</code></td>
+<td>¸</td>
+<td><code>&amp;#184;</code></td>
+<td>cedilla</td>
+<td>%B8</td>
+<td>\00b8</td>
+<td><a href='javascript:alert(&quot;\270&quot;)'>\270</a></td>
+</tr>
+<tr>
+<td><code>&amp;sup1;</code></td>
+<td>¹</td>
+<td><code>&amp;#185;</code></td>
+<td>superscript one</td>
+<td>%B9</td>
+<td>\00b9</td>
+<td><a href='javascript:alert(&quot;\271&quot;)'>\271</a></td>
+</tr>
+<tr>
+<td><code>&amp;ordm;</code></td>
+<td>º</td>
+<td><code>&amp;#186;</code></td>
+<td>ordinal indicator, masculine</td>
+<td>%BA</td>
+<td>\00ba</td>
+<td><a href='javascript:alert(&quot;\272&quot;)'>\272</a></td>
+</tr>
+<tr>
+<td><code>&amp;raquo;</code></td>
+<td>»</td>
+<td><code>&amp;#187;</code></td>
+<td>angle quotation mark, right</td>
+<td>%BB</td>
+<td>\00bb</td>
+<td><a href='javascript:alert(&quot;\273&quot;)'>\273</a></td>
+</tr>
+<tr>
+<td><code>&amp;frac14;</code></td>
+<td>¼</td>
+<td><code>&amp;#188;</code></td>
+<td>fraction one-quarter</td>
+<td>%BC</td>
+<td>\00bc</td>
+<td><a href='javascript:alert(&quot;\274&quot;)'>\274</a></td>
+</tr>
+<tr>
+<td><code>&amp;frac12;</code></td>
+<td>½</td>
+<td><code>&amp;#189;</code></td>
+<td>fraction one-half</td>
+<td>%BD</td>
+<td>\00bd</td>
+<td><a href='javascript:alert(&quot;\275&quot;)'>\275</a></td>
+</tr>
+<tr>
+<td><code>&amp;frac34;</code></td>
+<td>¾</td>
+<td><code>&amp;#190;</code></td>
+<td>fraction three-quarters</td>
+<td>%BE</td>
+<td>\00be</td>
+<td><a href='javascript:alert(&quot;\276&quot;)'>\276</a></td>
+</tr>
+<tr>
+<td><code>&amp;iquest;</code></td>
+<td>¿</td>
+<td><code>&amp;#191;</code></td>
+<td>inverted question mark</td>
+<td>%BF</td>
+<td>\00bf</td>
+<td><a href='javascript:alert(&quot;\277&quot;)'>\277</a></td>
+</tr>
+<tr>
+<td><code>&amp;Agrave;</code></td>
+<td>À</td>
+<td><code>&amp;#192;</code></td>
+<td>capital A, grave accent</td>
+<td>%C0</td>
+<td>\00c0</td>
+<td><a href='javascript:alert(&quot;\300&quot;)'>\300</a></td>
+</tr>
+<tr>
+<td><code>&amp;Aacute;</code></td>
+<td>Á</td>
+<td><code>&amp;#193;</code></td>
+<td>capital A, acute accent</td>
+<td>%C1</td>
+<td>\00c1</td>
+<td><a href='javascript:alert(&quot;\301&quot;)'>\301</a></td>
+</tr>
+<tr>
+<td><code>&amp;Acirc;</code></td>
+<td>Â</td>
+<td><code>&amp;#194; ;</code></td>
+<td>capital A, circumflex accent</td>
+<td>%C2</td>
+<td>\00c2</td>
+<td><a href='javascript:alert(&quot;\302&quot;)'>\302</a></td>
+</tr>
+<tr>
+<td><code>&amp;Atilde;</code></td>
+<td>Ã</td>
+<td><code>&amp;#195;</code></td>
+<td>capital A, tilde</td>
+<td>%C3</td>
+<td>\00c3</td>
+<td><a href='javascript:alert(&quot;\303&quot;)'>\303</a></td>
+</tr>
+<tr>
+<td><code>&amp;Auml;</code></td>
+<td>Ä</td>
+<td><code>&amp;#196;</code></td>
+<td>capital A, dieresis or umlaut mark</td>
+<td>%C4</td>
+<td>\00c4</td>
+<td><a href='javascript:alert(&quot;\304&quot;)'>\304</a></td>
+</tr>
+<tr>
+<td><code>&amp;Aring;</code></td>
+<td>Å</td>
+<td><code>&amp;#197;</code></td>
+<td>capital A, ring</td>
+<td>%C5</td>
+<td>\00c5</td>
+<td><a href='javascript:alert(&quot;\305&quot;)'>\305</a></td>
+</tr>
+<tr>
+<td><code>&amp;AElig;</code></td>
+<td>Æ</td>
+<td><code>&amp;#198;</code></td>
+<td>capital AE diphthong (ligature)</td>
+<td>%C6</td>
+<td>\00c6</td>
+<td><a href='javascript:alert(&quot;\306&quot;)'>\306</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ccedil;</code></td>
+<td>Ç</td>
+<td><code>&amp;#199;</code></td>
+<td>capital C, cedilla</td>
+<td>%C7</td>
+<td>\00c7</td>
+<td><a href='javascript:alert(&quot;\307&quot;)'>\307</a></td>
+</tr>
+<tr>
+<td><code>&amp;Egrave;</code></td>
+<td>È</td>
+<td><code>&amp;#200;</code></td>
+<td>capital E, grave accent</td>
+<td>%C8</td>
+<td>\00c8</td>
+<td><a href='javascript:alert(&quot;\310&quot;)'>\310</a></td>
+</tr>
+<tr>
+<td><code>&amp;Eacute;</code></td>
+<td>É</td>
+<td><code>&amp;#201;</code></td>
+<td>capital E, acute accent</td>
+<td>%C9</td>
+<td>\00c9</td>
+<td><a href='javascript:alert(&quot;\311&quot;)'>\311</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ecirc;</code></td>
+<td>Ê</td>
+<td><code>&amp;#202;</code></td>
+<td>capital E, circumflex accent</td>
+<td>%CA</td>
+<td>\00ca</td>
+<td><a href='javascript:alert(&quot;\312&quot;)'>\312</a></td>
+</tr>
+<tr>
+<td><code>&amp;Euml;</code></td>
+<td>Ë</td>
+<td><code>&amp;#203;</code></td>
+<td>capital E, dieresis or umlaut mark</td>
+<td>%CB</td>
+<td>\00cb</td>
+<td><a href='javascript:alert(&quot;\313&quot;)'>\313</a></td>
+</tr>
+<tr>
+<td><code>&amp;Igrave;</code></td>
+<td>Ì</td>
+<td><code>&amp;#204;</code></td>
+<td>capital I, grave accent</td>
+<td>%CC</td>
+<td>\00cc</td>
+<td><a href='javascript:alert(&quot;\314&quot;)'>\314</a></td>
+</tr>
+<tr>
+<td><code>&amp;Iacute;</code></td>
+<td>Í</td>
+<td><code>&amp;#205;</code></td>
+<td>capital I, acute accent</td>
+<td>%CD</td>
+<td>\00cd</td>
+<td><a href='javascript:alert(&quot;\315&quot;)'>\315</a></td>
+</tr>
+<tr>
+<td><code>&amp;Icirc;</code></td>
+<td>Î</td>
+<td><code>&amp;#206;</code></td>
+<td>capital I, circumflex accent</td>
+<td>%CE</td>
+<td>\00ce</td>
+<td><a href='javascript:alert(&quot;\316&quot;)'>\316</a></td>
+</tr>
+<tr>
+<td><code>&amp;Iuml;</code></td>
+<td>Ï</td>
+<td><code>&amp;#207;</code></td>
+<td>capital I, dieresis or umlaut mark</td>
+<td>%CF</td>
+<td>\00cf</td>
+<td><a href='javascript:alert(&quot;\317&quot;)'>\317</a></td>
+</tr>
+<tr>
+<td><code>&amp;ETH;</code></td>
+<td>Ð</td>
+<td><code>&amp;#208;</code></td>
+<td>capital Eth, Icelandic</td>
+<td>%D0</td>
+<td>\00d0</td>
+<td><a href='javascript:alert(&quot;\320&quot;)'>\320</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ntilde;</code></td>
+<td>Ñ</td>
+<td><code>&amp;#209;</code></td>
+<td>capital N, tilde</td>
+<td>%D1</td>
+<td>\00d1</td>
+<td><a href='javascript:alert(&quot;\321&quot;)'>\321</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ograve;</code></td>
+<td>Ò</td>
+<td><code>&amp;#210;</code></td>
+<td>capital O, grave accent</td>
+<td>%D2</td>
+<td>\00d2</td>
+<td><a href='javascript:alert(&quot;\322&quot;)'>\322</a></td>
+</tr>
+<tr>
+<td><code>&amp;Oacute;</code></td>
+<td>Ó</td>
+<td><code>&amp;#211;</code></td>
+<td>capital O, acute accent</td>
+<td>%D3</td>
+<td>\00d3</td>
+<td><a href='javascript:alert(&quot;\323&quot;)'>\323</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ocirc;</code></td>
+<td>Ô</td>
+<td><code>&amp;#212;</code></td>
+<td>capital O, circumflex accent</td>
+<td>%D4</td>
+<td>\00d4</td>
+<td><a href='javascript:alert(&quot;\324&quot;)'>\324</a></td>
+</tr>
+<tr>
+<td><code>&amp;Otilde;</code></td>
+<td>Õ</td>
+<td><code>&amp;#213;</code></td>
+<td>capital O, tilde</td>
+<td>%D5</td>
+<td>\00d5</td>
+<td><a href='javascript:alert(&quot;\325&quot;)'>\325</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ouml;</code></td>
+<td>Ö</td>
+<td><code>&amp;#214;</code></td>
+<td>capital O, dieresis or umlaut mark</td>
+<td>%D6</td>
+<td>\00d6</td>
+<td><a href='javascript:alert(&quot;\326&quot;)'>\326</a></td>
+</tr>
+<tr>
+<td><code>&amp;times;</code></td>
+<td>×</td>
+<td><code>&amp;#215;</code></td>
+<td>multiply sign</td>
+<td>%D7</td>
+<td>\00d7</td>
+<td><a href='javascript:alert(&quot;\327&quot;)'>\327</a></td>
+</tr>
+<tr>
+<td><code>&amp;Oslash;</code></td>
+<td>Ø</td>
+<td><code>&amp;#216;</code></td>
+<td>capital O, slash</td>
+<td>%D8</td>
+<td>\00d8</td>
+<td><a href='javascript:alert(&quot;\330&quot;)'>\330</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ugrave;</code></td>
+<td>Ù</td>
+<td><code>&amp;#217;</code></td>
+<td>capital U, grave accent</td>
+<td>%D9</td>
+<td>\00d9</td>
+<td><a href='javascript:alert(&quot;\331&quot;)'>\331</a></td>
+</tr>
+<tr>
+<td><code>&amp;Uacute;</code></td>
+<td>Ú</td>
+<td><code>&amp;#218;</code></td>
+<td>capital U, acute accent</td>
+<td>%DA</td>
+<td>\00da</td>
+<td><a href='javascript:alert(&quot;\332&quot;)'>\332</a></td>
+</tr>
+<tr>
+<td><code>&amp;Ucirc;</code></td>
+<td>Û</td>
+<td><code>&amp;#219;</code></td>
+<td>capital U, circumflex accent</td>
+<td>%DB</td>
+<td>\00db</td>
+<td><a href='javascript:alert(&quot;\333&quot;)'>\333</a></td>
+</tr>
+<tr>
+<td><code>&amp;Uuml;</code></td>
+<td>Ü</td>
+<td><code>&amp;#220;</code></td>
+<td>capital U, dieresis or umlaut mark</td>
+<td>%DC</td>
+<td>\00dc</td>
+<td><a href='javascript:alert(&quot;\334&quot;)'>\334</a></td>
+</tr>
+<tr>
+<td><code>&amp;Yacute;</code></td>
+<td>Ý</td>
+<td><code>&amp;#221;</code></td>
+<td>capital Y, acute accent</td>
+<td>%DD</td>
+<td>\00dd</td>
+<td><a href='javascript:alert(&quot;\335&quot;)'>\335</a></td>
+</tr>
+<tr>
+<td><code>&amp;THORN;</code></td>
+<td>Þ</td>
+<td><code>&amp;#222;</code></td>
+<td>capital THORN, Icelandic</td>
+<td>%DE</td>
+<td>\00de</td>
+<td><a href='javascript:alert(&quot;\336&quot;)'>\336</a></td>
+</tr>
+<tr>
+<td><code>&amp;szlig;</code></td>
+<td>ß</td>
+<td><code>&amp;#223;</code></td>
+<td>small sharp s, German (sz ligature)</td>
+<td>%DF</td>
+<td>\00df</td>
+<td><a href='javascript:alert(&quot;\337&quot;)'>\337</a></td>
+</tr>
+<tr>
+<td><code>&amp;agrave;</code></td>
+<td>à</td>
+<td><code>&amp;#224;</code></td>
+<td>small a, grave accent</td>
+<td>%E0</td>
+<td>\00e0</td>
+<td><a href='javascript:alert(&quot;\340&quot;)'>\340</a></td>
+</tr>
+<tr>
+<td><code>&amp;aacute;</code></td>
+<td>á</td>
+<td><code>&amp;#225;</code></td>
+<td>small a, acute accent</td>
+<td>%E1</td>
+<td>\00e1</td>
+<td><a href='javascript:alert(&quot;\341&quot;)'>\341</a></td>
+</tr>
+<tr>
+<td><code>&amp;acirc;</code></td>
+<td>â</td>
+<td><code>&amp;#226;</code></td>
+<td>small a, circumflex accent</td>
+<td>%E2</td>
+<td>\00e2</td>
+<td><a href='javascript:alert(&quot;\342&quot;)'>\342</a></td>
+</tr>
+<tr>
+<td><code>&amp;atilde;</code></td>
+<td>ã</td>
+<td><code>&amp;#227;</code></td>
+<td>small a, tilde</td>
+<td>%E3</td>
+<td>\00e3</td>
+<td><a href='javascript:alert(&quot;\343&quot;)'>\343</a></td>
+</tr>
+<tr>
+<td><code>&amp;auml;</code></td>
+<td>ä</td>
+<td><code>&amp;#228;</code></td>
+<td>small a, dieresis or umlaut mark</td>
+<td>%E4</td>
+<td>\00e4</td>
+<td><a href='javascript:alert(&quot;\344&quot;)'>\344</a></td>
+</tr>
+<tr>
+<td><code>&amp;aring;</code></td>
+<td>å</td>
+<td><code>&amp;#229;</code></td>
+<td>small a, ring</td>
+<td>%E5</td>
+<td>\00e5</td>
+<td><a href='javascript:alert(&quot;\345&quot;)'>\345</a></td>
+</tr>
+<tr>
+<td><code>&amp;aelig;</code></td>
+<td>æ</td>
+<td><code>&amp;#230;</code></td>
+<td>small ae diphthong (ligature)</td>
+<td>%E6</td>
+<td>\00e6</td>
+<td><a href='javascript:alert(&quot;\346&quot;)'>\346</a></td>
+</tr>
+<tr>
+<td><code>&amp;ccedil;</code></td>
+<td>ç</td>
+<td><code>&amp;#231;</code></td>
+<td>small c, cedilla</td>
+<td>%E7</td>
+<td>\00e7</td>
+<td><a href='javascript:alert(&quot;\347&quot;)'>\347</a></td>
+</tr>
+<tr>
+<td><code>&amp;egrave;</code></td>
+<td>è</td>
+<td><code>&amp;#232;</code></td>
+<td>small e, grave accent</td>
+<td>%E8</td>
+<td>\00e8</td>
+<td><a href='javascript:alert(&quot;\350&quot;)'>\350</a></td>
+</tr>
+<tr>
+<td><code>&amp;eacute;</code></td>
+<td>é</td>
+<td><code>&amp;#233;</code></td>
+<td>small e, acute accent</td>
+<td>%E9</td>
+<td>\00e9</td>
+<td><a href='javascript:alert(&quot;\351&quot;)'>\351</a></td>
+</tr>
+<tr>
+<td><code>&amp;ecirc;</code></td>
+<td>ê</td>
+<td><code>&amp;#234;</code></td>
+<td>small e, circumflex accent</td>
+<td>%EA</td>
+<td>\00ea</td>
+<td><a href='javascript:alert(&quot;\352&quot;)'>\352</a></td>
+</tr>
+<tr>
+<td><code>&amp;euml;</code></td>
+<td>ë</td>
+<td><code>&amp;#235;</code></td>
+<td>small e, dieresis or umlaut mark</td>
+<td>%EB</td>
+<td>\00eb</td>
+<td><a href='javascript:alert(&quot;\353&quot;)'>\353</a></td>
+</tr>
+<tr>
+<td><code>&amp;igrave;</code></td>
+<td>ì</td>
+<td><code>&amp;#236;</code></td>
+<td>small i, grave accent</td>
+<td>%EC</td>
+<td>\00ec</td>
+<td><a href='javascript:alert(&quot;\354&quot;)'>\354</a></td>
+</tr>
+<tr>
+<td><code>&amp;iacute;</code></td>
+<td>í</td>
+<td><code>&amp;#237;</code></td>
+<td>small i, acute accent</td>
+<td>%ED</td>
+<td>\00ed</td>
+<td><a href='javascript:alert(&quot;\355&quot;)'>\355</a></td>
+</tr>
+<tr>
+<td><code>&amp;icirc;</code></td>
+<td>î</td>
+<td><code>&amp;#238;</code></td>
+<td>small i, circumflex accent</td>
+<td>%EE</td>
+<td>\00ee</td>
+<td><a href='javascript:alert(&quot;\356&quot;)'>\356</a></td>
+</tr>
+<tr>
+<td><code>&amp;iuml;</code></td>
+<td>ï</td>
+<td><code>&amp;#239;</code></td>
+<td>small i, dieresis or umlaut mark</td>
+<td>%EF</td>
+<td>\00ef</td>
+<td><a href='javascript:alert(&quot;\357&quot;)'>\357</a></td>
+</tr>
+<tr>
+<td><code>&amp;eth;</code></td>
+<td>ð</td>
+<td><code>&amp;#240;</code></td>
+<td>small eth, Icelandic</td>
+<td>%F0</td>
+<td>\00f0</td>
+<td><a href='javascript:alert(&quot;\360&quot;)'>\360</a></td>
+</tr>
+<tr>
+<td><code>&amp;ntilde;</code></td>
+<td>ñ</td>
+<td><code>&amp;#241;</code></td>
+<td>small n, tilde</td>
+<td>%F1</td>
+<td>\00f1</td>
+<td><a href='javascript:alert(&quot;\361&quot;)'>\361</a></td>
+</tr>
+<tr>
+<td><code>&amp;ograve;</code></td>
+<td>ò</td>
+<td><code>&amp;#242;</code></td>
+<td>small o, grave accent</td>
+<td>%F2</td>
+<td>\00f2</td>
+<td><a href='javascript:alert(&quot;\362&quot;)'>\362</a></td>
+</tr>
+<tr>
+<td><code>&amp;oacute;</code></td>
+<td>ó</td>
+<td><code>&amp;#243;</code></td>
+<td>small o, acute accent</td>
+<td>%F3</td>
+<td>\00f3</td>
+<td><a href='javascript:alert(&quot;\363&quot;)'>\363</a></td>
+</tr>
+<tr>
+<td><code>&amp;ocirc;</code></td>
+<td>ô</td>
+<td><code>&amp;#244;</code></td>
+<td>small o, circumflex accent</td>
+<td>%F4</td>
+<td>\00f4</td>
+<td><a href='javascript:alert(&quot;\364&quot;)'>\364</a></td>
+</tr>
+<tr>
+<td><code>&amp;otilde;</code></td>
+<td>õ</td>
+<td><code>&amp;#245;</code></td>
+<td>small o, tilde</td>
+<td>%F5</td>
+<td>\00f5</td>
+<td><a href='javascript:alert(&quot;\365&quot;)'>\365</a></td>
+</tr>
+<tr>
+<td><code>&amp;ouml;</code></td>
+<td>ö</td>
+<td><code>&amp;#246;</code></td>
+<td>small o, dieresis or umlaut mark</td>
+<td>%F6</td>
+<td>\00f6</td>
+<td><a href='javascript:alert(&quot;\366&quot;)'>\366</a></td>
+</tr>
+<tr>
+<td><code>&amp;divide;</code></td>
+<td>÷</td>
+<td><code>&amp;#247;</code></td>
+<td>divide sign</td>
+<td>%F7</td>
+<td>\00f7</td>
+<td><a href='javascript:alert(&quot;\367&quot;)'>\367</a></td>
+</tr>
+<tr>
+<td><code>&amp;oslash;</code></td>
+<td>ø</td>
+<td><code>&amp;#248;</code></td>
+<td>small o, slash</td>
+<td>%F8</td>
+<td>\00f8</td>
+<td><a href='javascript:alert(&quot;\370&quot;)'>\370</a></td>
+</tr>
+<tr>
+<td><code>&amp;ugrave;</code></td>
+<td>ù</td>
+<td><code>&amp;#249;</code></td>
+<td>small u, grave accent</td>
+<td>%F9</td>
+<td>\00f9</td>
+<td><a href='javascript:alert(&quot;\371&quot;)'>\371</a></td>
+</tr>
+<tr>
+<td><code>&amp;uacute;</code></td>
+<td>ú</td>
+<td><code>&amp;#250;</code></td>
+<td>small u, acute accent</td>
+<td>%FA</td>
+<td>\00fa</td>
+<td><a href='javascript:alert(&quot;\372&quot;)'>\372</a></td>
+</tr>
+<tr>
+<td><code>&amp;ucirc;</code></td>
+<td>û</td>
+<td><code>&amp;#251;</code></td>
+<td>small u, circumflex accent</td>
+<td>%FB</td>
+<td>\00fb</td>
+<td><a href='javascript:alert(&quot;\373&quot;)'>\373</a></td>
+</tr>
+<tr>
+<td><code>&amp;uuml;</code></td>
+<td>ü</td>
+<td><code>&amp;#252;</code></td>
+<td>small u, dieresis or umlaut mark</td>
+<td>%FC</td>
+<td>\00fc</td>
+<td><a href='javascript:alert(&quot;\374&quot;)'>\374</a></td>
+</tr>
+<tr>
+<td><code>&amp;yacute;</code></td>
+<td>ý</td>
+<td><code>&amp;#253;</code></td>
+<td>small y, acute accent</td>
+<td>%FD</td>
+<td>\00fd</td>
+<td><a href='javascript:alert(&quot;\375&quot;)'>\375</a></td>
+</tr>
+<tr>
+<td><code>&amp;thorn;</code></td>
+<td>þ</td>
+<td><code>&amp;#254;</code></td>
+<td>small thorn, Icelandic</td>
+<td>%FE</td>
+<td>\00fe</td>
+<td><a href='javascript:alert(&quot;\376&quot;)'>\376</a></td>
+</tr>
+<tr>
+<td><code>&amp;yuml;</code></td>
+<td>ÿ</td>
+<td><code>&amp;#255;</code></td>
+<td>small y, dieresis or umlaut mark</td>
+<td>%FF</td>
+<td>\00ff</td>
+<td><a href='javascript:alert(&quot;\377&quot;)'>\377</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_4">HTML 拉丁文扩展<a class="headerlink" href="#html_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;OElig;</code></td>
+<td>Œ</td>
+<td><code>&amp;#338;</code></td>
+<td>latin capital ligature oe</td>
+<td>u+0152 ISOlat2</td>
+<td>\0152</td>
+<td><a href='javascript:alert(&quot;\u0152&quot;)'>\u0152</a></td>
+</tr>
+<tr>
+<td><code>&amp;oelig;</code></td>
+<td>œ</td>
+<td><code>&amp;#339;</code></td>
+<td>latin small ligature oe</td>
+<td>u+0153 ISOlat2</td>
+<td>\0153</td>
+<td><a href='javascript:alert(&quot;\u0153&quot;)'>\u0153</a></td>
+</tr>
+<tr>
+<td><code>&amp;Scaron;</code></td>
+<td>Š</td>
+<td><code>&amp;#352;</code></td>
+<td>latin capital letter s with caron</td>
+<td>u+0160 ISOlat2</td>
+<td>\0160</td>
+<td><a href='javascript:alert(&quot;\u0160&quot;)'>\u0160</a></td>
+</tr>
+<tr>
+<td><code>&amp;scaron;</code></td>
+<td>š</td>
+<td><code>&amp;#353;</code></td>
+<td>latin small letter s with caron</td>
+<td>u+0161 ISOlat2</td>
+<td>\0161</td>
+<td><a href='javascript:alert(&quot;\u0161&quot;)'>\u0161</a></td>
+</tr>
+<tr>
+<td><code>&amp;Yuml;</code></td>
+<td>Ÿ</td>
+<td><code>&amp;#376;</code></td>
+<td>latin capital letter y with diaeresis</td>
+<td>u+0178 ISOlat2</td>
+<td>\0178</td>
+<td><a href='javascript:alert(&quot;\u0178&quot;)'>\u0178</a></td>
+</tr>
+<tr>
+<td><code>&amp;fnof;</code></td>
+<td>ƒ</td>
+<td><code>&amp;#402;</code></td>
+<td>latin small f with hook</td>
+<td>u+0192 ISOtech</td>
+<td>\0192</td>
+<td><a href='javascript:alert(&quot;\u0192&quot;)'>\u0192</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_5">HTML 间距修饰符字母<a class="headerlink" href="#html_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>Description</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;circ;</code></td>
+<td>ˆ</td>
+<td></td>
+<td>modifier letter circumflex accent</td>
+<td>u+02C6 ISOpub</td>
+<td>\02c6</td>
+<td><a href='javascript:alert(&quot;\u02c6&quot;)'>\u02c6</a></td>
+</tr>
+<tr>
+<td><code>&amp;tilde;</code></td>
+<td>˜</td>
+<td></td>
+<td>small tilde</td>
+<td>u+02DC ISOdia</td>
+<td>\02dc</td>
+<td><a href='javascript:alert(&quot;\u02dc&quot;)'>\u02dc</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_6">HTML 希腊语<a class="headerlink" href="#html_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;Alpha;</code></td>
+<td>Α</td>
+<td><code>&amp;#913;</code></td>
+<td>greek capital letter alpha</td>
+<td>u+0391</td>
+<td>\0391</td>
+<td><a href='javascript:alert(&quot;\u0391&quot;)'>\u0391</a></td>
+</tr>
+<tr>
+<td><code>&amp;Beta;</code></td>
+<td>Β</td>
+<td><code>&amp;#914;</code></td>
+<td>greek capital letter beta</td>
+<td>u+0392</td>
+<td>\0392</td>
+<td><a href='javascript:alert(&quot;\u0392&quot;)'>\u0392</a></td>
+</tr>
+<tr>
+<td><code>&amp;Gamma;</code></td>
+<td>Γ</td>
+<td><code>&amp;#915;</code></td>
+<td>greek capital letter gamma</td>
+<td>u+0393 ISOgrk3</td>
+<td>\0393</td>
+<td><a href='javascript:alert(&quot;\u0395&quot;)'>\u0395</a></td>
+</tr>
+<tr>
+<td><code>&amp;Delta;</code></td>
+<td>Δ</td>
+<td><code>&amp;#916;</code></td>
+<td>greek capital letter delta</td>
+<td>u+0394 ISOgrk3</td>
+<td>\0394</td>
+<td><a href='javascript:alert(&quot;\u0394&quot;)'>\u0394</a></td>
+</tr>
+<tr>
+<td><code>&amp;Epsilon;</code></td>
+<td>Ε</td>
+<td><code>&amp;#917;</code></td>
+<td>greek capital letter epsilon</td>
+<td>u+0395</td>
+<td>\0395</td>
+<td><a href='javascript:alert(&quot;\u0395&quot;)'>\u0395</a></td>
+</tr>
+<tr>
+<td><code>&amp;Zeta;</code></td>
+<td>Ζ</td>
+<td><code>&amp;#918;</code></td>
+<td>greek capital letter zeta</td>
+<td>u+0396</td>
+<td>\0396</td>
+<td><a href='javascript:alert(&quot;\u0396&quot;)'>\u0396</a></td>
+</tr>
+<tr>
+<td><code>&amp;Eta;</code></td>
+<td>Η</td>
+<td><code>&amp;#919;</code></td>
+<td>greek capital letter eta</td>
+<td>u+0397</td>
+<td>\0397</td>
+<td><a href='javascript:alert(&quot;\u0397&quot;)'>\u0397</a></td>
+</tr>
+<tr>
+<td><code>&amp;Theta;</code></td>
+<td>Θ</td>
+<td><code>&amp;#920;</code></td>
+<td>greek capital letter theta</td>
+<td>u+0398 ISOgrk3</td>
+<td>\0398</td>
+<td><a href='javascript:alert(&quot;\u0398&quot;)'>\u0398</a></td>
+</tr>
+<tr>
+<td><code>&amp;Iota;</code></td>
+<td>Ι</td>
+<td><code>&amp;#921;</code></td>
+<td>greek capital letter iota</td>
+<td>u+0399</td>
+<td>\0399</td>
+<td><a href='javascript:alert(&quot;\u0399&quot;)'>\u0399</a></td>
+</tr>
+<tr>
+<td><code>&amp;Kappa;</code></td>
+<td>Κ</td>
+<td><code>&amp;#922;</code></td>
+<td>greek capital letter kappa</td>
+<td>u+039A</td>
+<td>\039a</td>
+<td><a href='javascript:alert(&quot;\u039a&quot;)'>\u039a</a></td>
+</tr>
+<tr>
+<td><code>&amp;Lambda;</code></td>
+<td>Λ</td>
+<td><code>&amp;#923;</code></td>
+<td>greek capital letter lambda</td>
+<td>u+039B ISOgrk3</td>
+<td>\039b</td>
+<td><a href='javascript:alert(&quot;\u039b&quot;)'>\u039b</a></td>
+</tr>
+<tr>
+<td><code>&amp;Mu;</code></td>
+<td>Μ</td>
+<td><code>&amp;#924;</code></td>
+<td>greek capital letter mu</td>
+<td>u+039C</td>
+<td>\039c</td>
+<td><a href='javascript:alert(&quot;\u039c&quot;)'>\u039c</a></td>
+</tr>
+<tr>
+<td><code>&amp;Nu;</code></td>
+<td>Ν</td>
+<td><code>&amp;#925;</code></td>
+<td>greek capital letter nu</td>
+<td>u+039D</td>
+<td>\039d</td>
+<td><a href='javascript:alert(&quot;\u039D&quot;)'>\u039D</a></td>
+</tr>
+<tr>
+<td><code>&amp;Xi;</code></td>
+<td>Ξ</td>
+<td><code>&amp;#926;</code></td>
+<td>greek capital letter xi</td>
+<td>u+039E ISOgrk3</td>
+<td>\039e</td>
+<td><a href='javascript:alert(&quot;\u039e&quot;)'>\u039e</a></td>
+</tr>
+<tr>
+<td><code>&amp;Omicron;</code></td>
+<td>Ο</td>
+<td><code>&amp;#927;</code></td>
+<td>greek capital letter omicron</td>
+<td>u+039F</td>
+<td>\039f</td>
+<td><a href='javascript:alert(&quot;\u039f&quot;)'>\u039f</a></td>
+</tr>
+<tr>
+<td><code>&amp;Pi;</code></td>
+<td>Π</td>
+<td><code>&amp;#928;</code></td>
+<td>greek capital letter pi</td>
+<td>u+03A0 ISOgrk3</td>
+<td>\03a0</td>
+<td><a href='javascript:alert(&quot;\u03a0&quot;)'>\u03a0</a></td>
+</tr>
+<tr>
+<td><code>&amp;Rho;</code></td>
+<td>Ρ</td>
+<td><code>&amp;#929;</code></td>
+<td>greek capital letter rho</td>
+<td>u+03A1</td>
+<td>\03a1</td>
+<td><a href='javascript:alert(&quot;\u03a1&quot;)'>\u03a1</a></td>
+</tr>
+<tr>
+<td><code>&amp;Sigma;</code></td>
+<td>Σ</td>
+<td><code>&amp;#931;</code></td>
+<td>greek capital letter sigma</td>
+<td>u+03A3 ISOgrk3</td>
+<td>\03a3</td>
+<td><a href='javascript:alert(&quot;\u03A3&quot;)'>\u03A3</a></td>
+</tr>
+<tr>
+<td><code>&amp;Tau;</code></td>
+<td>Τ</td>
+<td><code>&amp;#932;</code></td>
+<td>greek capital letter tau</td>
+<td>u+03A4</td>
+<td>\03a4</td>
+<td><a href='javascript:alert(&quot;\u03A4&quot;)'>\u03A4</a></td>
+</tr>
+<tr>
+<td><code>&amp;Upsilon;</code></td>
+<td>Υ</td>
+<td><code>&amp;#933;</code></td>
+<td>greek capital letter upsilon</td>
+<td>u+03A5 ISOgrk3</td>
+<td>\03a5</td>
+<td><a href='javascript:alert(&quot;\u03A5&quot;)'>\u03A5</a></td>
+</tr>
+<tr>
+<td><code>&amp;Phi;</code></td>
+<td>Φ</td>
+<td><code>&amp;#934;</code></td>
+<td>greek capital letter phi</td>
+<td>u+03A6 ISOgrk3</td>
+<td>\03a6</td>
+<td><a href='javascript:alert(&quot;\u03A6&quot;)'>\u03A6</a></td>
+</tr>
+<tr>
+<td><code>&amp;Chi;</code></td>
+<td>Χ</td>
+<td><code>&amp;#935;</code></td>
+<td>greek capital letter chi</td>
+<td>u+03A7</td>
+<td>\03a7</td>
+<td><a href='javascript:alert(&quot;\u03A7&quot;)'>\u03A7</a></td>
+</tr>
+<tr>
+<td><code>&amp;Psi;</code></td>
+<td>Ψ</td>
+<td><code>&amp;#936;</code></td>
+<td>greek capital letter psi</td>
+<td>u+03A8 ISOgrk3</td>
+<td>\03a8</td>
+<td><a href='javascript:alert(&quot;\u03A8&quot;)'>\u03A8</a></td>
+</tr>
+<tr>
+<td><code>&amp;Omega;</code></td>
+<td>Ω</td>
+<td><code>&amp;#937;</code></td>
+<td>greek capital letter omega</td>
+<td>u+03A9 ISOgrk3</td>
+<td>\03a9</td>
+<td><a href='javascript:alert(&quot;\u03A9&quot;)'>\u03A9</a></td>
+</tr>
+<tr>
+<td><code>&amp;alpha;</code></td>
+<td>α</td>
+<td><code>&amp;#945;</code></td>
+<td>greek small letter alpha</td>
+<td>u+03B1 ISOgrk3</td>
+<td>\03b1</td>
+<td><a href='javascript:alert(&quot;\u03b1&quot;)'>\u03b1</a></td>
+</tr>
+<tr>
+<td><code>&amp;beta;</code></td>
+<td>β</td>
+<td><code>&amp;#946;</code></td>
+<td>greek small letter beta</td>
+<td>u+03B2 ISOgrk3</td>
+<td>\03b2</td>
+<td><a href='javascript:alert(&quot;\u03b2&quot;)'>\u03b2</a></td>
+</tr>
+<tr>
+<td><code>&amp;gamma;</code></td>
+<td>γ</td>
+<td><code>&amp;#947;</code></td>
+<td>greek small letter gamma</td>
+<td>u+03B3 ISOgrk3</td>
+<td>\03b3</td>
+<td><a href='javascript:alert(&quot;\u03b3&quot;)'>\u03b3</a></td>
+</tr>
+<tr>
+<td><code>&amp;delta;</code></td>
+<td>δ</td>
+<td><code>&amp;#948;</code></td>
+<td>greek small letter delta</td>
+<td>u+03B4 ISOgrk3</td>
+<td>\03b4</td>
+<td><a href='javascript:alert(&quot;\u03b4&quot;)'>\u03b4</a></td>
+</tr>
+<tr>
+<td><code>&amp;epsilon;</code></td>
+<td>ε</td>
+<td><code>&amp;#949;</code></td>
+<td>greek small letter epsilon</td>
+<td>u+03B5 ISOgrk3</td>
+<td>\03b5</td>
+<td><a href='javascript:alert(&quot;\u03b5&quot;)'>\u03b5</a></td>
+</tr>
+<tr>
+<td><code>&amp;zeta;</code></td>
+<td>ζ</td>
+<td><code>&amp;#950;</code></td>
+<td>greek small letter zeta</td>
+<td>u+03B6 ISOgrk3</td>
+<td>\03b6</td>
+<td><a href='javascript:alert(&quot;\u03b6&quot;)'>\u03b6</a></td>
+</tr>
+<tr>
+<td><code>&amp;eta;</code></td>
+<td>η</td>
+<td><code>&amp;#951;</code></td>
+<td>greek small letter eta</td>
+<td>u+03B7 ISOgrk3</td>
+<td>\03b7</td>
+<td><a href='javascript:alert(&quot;\u03b7&quot;)'>\u03b7</a></td>
+</tr>
+<tr>
+<td><code>&amp;theta;</code></td>
+<td>θ</td>
+<td><code>&amp;#952;</code></td>
+<td>greek small letter theta</td>
+<td>u+03B8 ISOgrk3</td>
+<td>\03b8</td>
+<td><a href='javascript:alert(&quot;\u03b8&quot;)'>\u03b8</a></td>
+</tr>
+<tr>
+<td><code>&amp;iota;</code></td>
+<td>ι</td>
+<td><code>&amp;#953;</code></td>
+<td>greek small letter iota</td>
+<td>u+03B9 ISOgrk3</td>
+<td>\03b9</td>
+<td><a href='javascript:alert(&quot;\u03b9&quot;)'>\u03b9</a></td>
+</tr>
+<tr>
+<td><code>&amp;kappa;</code></td>
+<td>κ</td>
+<td><code>&amp;#954;</code></td>
+<td>greek small letter kappa</td>
+<td>u+03BA ISOgrk3</td>
+<td>\03ba</td>
+<td><a href='javascript:alert(&quot;\u03ba&quot;)'>\u03ba</a></td>
+</tr>
+<tr>
+<td><code>&amp;lambda;</code></td>
+<td>λ</td>
+<td><code>&amp;#955;</code></td>
+<td>greek small letter lambda</td>
+<td>u+03BB ISOgrk3</td>
+<td>\03bb</td>
+<td><a href='javascript:alert(&quot;\u03bb&quot;)'>\u03bb</a></td>
+</tr>
+<tr>
+<td><code>&amp;mu;</code></td>
+<td>μ</td>
+<td><code>&amp;#956;</code></td>
+<td>greek small letter mu</td>
+<td>u+03BC ISOgrk3</td>
+<td>\03bc</td>
+<td><a href='javascript:alert(&quot;\u03bc&quot;)'>\u03bc</a></td>
+</tr>
+<tr>
+<td><code>&amp;nu;</code></td>
+<td>ν</td>
+<td><code>&amp;#957;</code></td>
+<td>greek small letter nu</td>
+<td>u+03BD ISOgrk3</td>
+<td>\03bd</td>
+<td><a href='javascript:alert(&quot;\u03bd&quot;)'>\u03bd</a></td>
+</tr>
+<tr>
+<td><code>&amp;xi;</code></td>
+<td>ξ</td>
+<td><code>&amp;#958;</code></td>
+<td>greek small letter xi</td>
+<td>u+03BE ISOgrk3</td>
+<td>\03be</td>
+<td><a href='javascript:alert(&quot;\u03be&quot;)'>\u03be</a></td>
+</tr>
+<tr>
+<td><code>&amp;omicron;</code></td>
+<td>ο</td>
+<td><code>&amp;#959;</code></td>
+<td>greek small letter omicron</td>
+<td>u+03BF NEW</td>
+<td>\03bf</td>
+<td><a href='javascript:alert(&quot;\u03bf&quot;)'>\u03bf</a></td>
+</tr>
+<tr>
+<td><code>&amp;pi;</code></td>
+<td>π</td>
+<td><code>&amp;#960;</code></td>
+<td>greek small letter pi</td>
+<td>u+03C0 ISOgrk3</td>
+<td>\03c0</td>
+<td><a href='javascript:alert(&quot;\u03c0&quot;)'>\u03c0</a></td>
+</tr>
+<tr>
+<td><code>&amp;rho;</code></td>
+<td>ρ</td>
+<td><code>&amp;#961;</code></td>
+<td>greek small letter rho</td>
+<td>u+03C1 ISOgrk3</td>
+<td>\03c1</td>
+<td><a href='javascript:alert(&quot;\u03c1&quot;)'>\u03c1</a></td>
+</tr>
+<tr>
+<td><code>&amp;sigmaf;</code></td>
+<td>ς</td>
+<td><code>&amp;#962;</code></td>
+<td>greek small letter final sigma</td>
+<td>u+03C2 ISOgrk3</td>
+<td>\03C2</td>
+<td><a href='javascript:alert(&quot;\u03c2&quot;)'>\u03c2</a></td>
+</tr>
+<tr>
+<td><code>&amp;sigma;</code></td>
+<td>σ</td>
+<td><code>&amp;#963;</code></td>
+<td>greek small letter sigma</td>
+<td>u+03C3 ISOgrk3</td>
+<td>\03C3</td>
+<td><a href='javascript:alert(&quot;\u03c3&quot;)'>\u03c3</a></td>
+</tr>
+<tr>
+<td><code>&amp;tau;</code></td>
+<td>τ</td>
+<td><code>&amp;#964;</code></td>
+<td>greek small letter tau</td>
+<td>u+03C4 ISOgrk3</td>
+<td>\03C4</td>
+<td><a href='javascript:alert(&quot;\u03c4&quot;)'>\u03c4</a></td>
+</tr>
+<tr>
+<td><code>&amp;upsilon;</code></td>
+<td>υ</td>
+<td><code>&amp;#965;</code></td>
+<td>greek small letter upsilon</td>
+<td>u+03C5 ISOgrk3</td>
+<td>\03C5</td>
+<td><a href='javascript:alert(&quot;\u03c5&quot;)'>\u03c5</a></td>
+</tr>
+<tr>
+<td><code>&amp;phi;</code></td>
+<td>φ</td>
+<td><code>&amp;#966;</code></td>
+<td>greek small letter phi</td>
+<td>u+03C6 ISOgrk3</td>
+<td>\03C6</td>
+<td><a href='javascript:alert(&quot;\03c6&quot;)'>\03c6</a></td>
+</tr>
+<tr>
+<td><code>&amp;chi;</code></td>
+<td>χ</td>
+<td><code>&amp;#967;</code></td>
+<td>greek small letter chi</td>
+<td>u+03C7 ISOgrk3</td>
+<td>\03C7</td>
+<td><a href='javascript:alert(&quot;\u03c7&quot;)'>\u03c7</a></td>
+</tr>
+<tr>
+<td><code>&amp;psi;</code></td>
+<td>ψ</td>
+<td><code>&amp;#968;</code></td>
+<td>greek small letter psi</td>
+<td>u+03C8 ISOgrk3</td>
+<td>\03C8</td>
+<td><a href='javascript:alert(&quot;\u03c8&quot;)'>\u03c8</a></td>
+</tr>
+<tr>
+<td><code>&amp;omega;</code></td>
+<td>ω</td>
+<td><code>&amp;#969;</code></td>
+<td>greek small letter omega</td>
+<td>u+03C9 ISOgrk3</td>
+<td>\03C9</td>
+<td><a href='javascript:alert(&quot;\u03c9&quot;)'>\u03c9</a></td>
+</tr>
+<tr>
+<td><code>&amp;thetasym;</code></td>
+<td>ϑ</td>
+<td><code>&amp;#977;</code></td>
+<td>greek small letter theta symbol</td>
+<td>u+03D1 NEW</td>
+<td>\03D1</td>
+<td><a href='javascript:alert(&quot;\u03D1&quot;)'>\u03D1</a></td>
+</tr>
+<tr>
+<td><code>&amp;upsih;</code></td>
+<td>ϒ</td>
+<td><code>&amp;#978;</code></td>
+<td>greek upsilon with hook symbol</td>
+<td>u+03D2 NEW</td>
+<td>\03D2</td>
+<td><a href='javascript:alert(&quot;\u03D2&quot;)'>\u03D2</a></td>
+</tr>
+<tr>
+<td><code>&amp;piv;</code></td>
+<td>ϖ</td>
+<td><code>&amp;#982;</code></td>
+<td>greek pi symbol</td>
+<td>u+03D6 ISOgrk3</td>
+<td>\03D6</td>
+<td><a href='javascript:alert(&quot;\u03D6&quot;)'>\u03D6</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html-punctuation">HTML Punctuation<a class="headerlink" href="#html-punctuation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;ensp;</code></td>
+<td> </td>
+<td><code>&amp;#8194;</code></td>
+<td>en space</td>
+<td>u+2002 ISOpub</td>
+<td>\2002</td>
+<td><a href='javascript:alert(&quot;\u2002&quot;)'>\u2002</a></td>
+</tr>
+<tr>
+<td><code>&amp;emsp;</code></td>
+<td> </td>
+<td><code>&amp;#8195;</code></td>
+<td>em space</td>
+<td>u+2003 ISOpub</td>
+<td>\2003</td>
+<td><a href='javascript:alert(&quot;\u2003&quot;)'>\u2003</a></td>
+</tr>
+<tr>
+<td><code>&amp;thinsp;</code></td>
+<td> </td>
+<td><code>&amp;#8201;</code></td>
+<td>thin space</td>
+<td>u+2009 ISOpub</td>
+<td>\2009</td>
+<td><a href='javascript:alert(&quot;\u2009&quot;)'>\u2009</a></td>
+</tr>
+<tr>
+<td><code>&amp;zwnj;</code></td>
+<td>‌</td>
+<td><code>&amp;#8204;</code></td>
+<td>zero width non-joiner</td>
+<td>u+200C NEW RFC 2070</td>
+<td>\200C</td>
+<td><a href='javascript:alert(&quot;\u200C&quot;)'>\u200C</a></td>
+</tr>
+<tr>
+<td><code>&amp;zwj;</code></td>
+<td>‍</td>
+<td><code>&amp;#8205;</code></td>
+<td>zero width joiner</td>
+<td>u+200D NEW RFC 2070</td>
+<td>\200D</td>
+<td><a href='javascript:alert(&quot;\u200d&quot;)'>\u200d</a></td>
+</tr>
+<tr>
+<td><code>&amp;lrm;</code></td>
+<td>‎</td>
+<td><code>&amp;#8206;</code></td>
+<td>left-to-right mark</td>
+<td>u+200E NEW RFC 2070</td>
+<td>\200E</td>
+<td><a href='javascript:alert(&quot;\u200e&quot;)'>\u200e</a></td>
+</tr>
+<tr>
+<td><code>&amp;rlm;</code></td>
+<td>‏</td>
+<td><code>&amp;#8207;</code></td>
+<td>right-to-left mark</td>
+<td>u+200F NEW RFC 2070</td>
+<td>\200F</td>
+<td><a href='javascript:alert(&quot;\u200f&quot;)'>\u200f</a></td>
+</tr>
+<tr>
+<td><code>&amp;ndash;</code></td>
+<td>–</td>
+<td><code>&amp;#8211;</code></td>
+<td>en dash</td>
+<td>u+2013 ISOpub</td>
+<td>\2013</td>
+<td><a href='javascript:alert(&quot;\u2013&quot;)'>\u2013</a></td>
+</tr>
+<tr>
+<td><code>&amp;mdash;</code></td>
+<td>—</td>
+<td><code>&amp;#8212;</code></td>
+<td>em dash</td>
+<td>u+2014 ISOpub</td>
+<td>\2014</td>
+<td><a href='javascript:alert(&quot;\u2014&quot;)'>\u2014</a></td>
+</tr>
+<tr>
+<td><code>&amp;lsquo;</code></td>
+<td>‘</td>
+<td><code>&amp;#8216;</code></td>
+<td>left single quotation mark</td>
+<td>u+2018 ISOnum</td>
+<td>\2018</td>
+<td><a href='javascript:alert(&quot;\u2018&quot;)'>\u2018</a></td>
+</tr>
+<tr>
+<td><code>&amp;rsquo;</code></td>
+<td>’</td>
+<td><code>&amp;#8217;</code></td>
+<td>right single quotation mark</td>
+<td>u+2019 ISOnum</td>
+<td>\2019</td>
+<td><a href='javascript:alert(&quot;\u2019&quot;)'>\u2019</a></td>
+</tr>
+<tr>
+<td><code>&amp;sbquo;</code></td>
+<td>‚</td>
+<td><code>&amp;#8218;</code></td>
+<td>single low-9 quotation mark</td>
+<td>u+201A NEW</td>
+<td>\201A</td>
+<td><a href='javascript:alert(&quot;\u201a&quot;)'>\u201a</a></td>
+</tr>
+<tr>
+<td><code>&amp;ldquo;</code></td>
+<td>“</td>
+<td><code>&amp;#8220;</code></td>
+<td>left double quotation mark</td>
+<td>u+201C ISOnum</td>
+<td>\201C</td>
+<td><a href='javascript:alert(&quot;\u201c&quot;)'>\u201c</a></td>
+</tr>
+<tr>
+<td><code>&amp;rdquo;</code></td>
+<td>”</td>
+<td><code>&amp;#8221;</code></td>
+<td>right double quotation mark</td>
+<td>u+201D ISOnum</td>
+<td>\201D</td>
+<td><a href='javascript:alert(&quot;\u201d&quot;)'>\u201d</a></td>
+</tr>
+<tr>
+<td><code>&amp;bdquo;</code></td>
+<td>„</td>
+<td><code>&amp;#8222;</code></td>
+<td>double low-9 quotation mark</td>
+<td>u+201E NEW</td>
+<td>\201E</td>
+<td><a href='javascript:alert(&quot;\u201e&quot;)'>\u201e</a></td>
+</tr>
+<tr>
+<td><code>&amp;dagger;</code></td>
+<td>†</td>
+<td><code>&amp;#8224;</code></td>
+<td>dagger</td>
+<td>u+2020 ISOpub</td>
+<td>\2020</td>
+<td><a href='javascript:alert(&quot;\u2020&quot;)'>\u2020</a></td>
+</tr>
+<tr>
+<td><code>&amp;Dagger;</code></td>
+<td>‡</td>
+<td><code>&amp;#8225;</code></td>
+<td>double dagger</td>
+<td>u+2021 ISOpub</td>
+<td>\2021</td>
+<td><a href='javascript:alert(&quot;\u2021&quot;)'>\u2021</a></td>
+</tr>
+<tr>
+<td><code>&amp;permil;</code></td>
+<td>‰</td>
+<td><code>&amp;#8240;</code></td>
+<td>per mille sign</td>
+<td>u+2030 ISOtech</td>
+<td>\2030</td>
+<td><a href='javascript:alert(&quot;\u2030&quot;)'>\u2030</a></td>
+</tr>
+<tr>
+<td><code>&amp;lsaquo;</code></td>
+<td>‹</td>
+<td><code>&amp;#8249;</code></td>
+<td>single left-pointing angle quotation mark</td>
+<td>u+2039 ISO proposed</td>
+<td>\2039</td>
+<td><a href='javascript:alert(&quot;\u2039&quot;)'>\u2039</a></td>
+</tr>
+<tr>
+<td><code>&amp;rsaquo;</code></td>
+<td>›</td>
+<td><code>&amp;#8250;</code></td>
+<td>single right-pointing angle quotation mark</td>
+<td>u+203A ISO proposed</td>
+<td>\203A</td>
+<td><a href='javascript:alert(&quot;\u203a&quot;)'>\u203a</a></td>
+</tr>
+<tr>
+<td><code>&amp;bull;</code></td>
+<td>•</td>
+<td><code>&amp;#8226;</code></td>
+<td>bullet, aka. black small circle</td>
+<td>u+2022 ISOpub</td>
+<td>\2022</td>
+<td><a href='javascript:alert(&quot;\u2219&quot;)'>\u2219</a></td>
+</tr>
+<tr>
+<td><code>&amp;hellip;</code></td>
+<td>…</td>
+<td><code>&amp;#8230;</code></td>
+<td>horizontal ellipsis, aka three dot leader</td>
+<td>u+2026 ISOpub</td>
+<td>\2026</td>
+<td><a href='javascript:alert(&quot;\u2026&quot;)'>\u2026</a></td>
+</tr>
+<tr>
+<td><code>&amp;prime;</code></td>
+<td>′</td>
+<td><code>&amp;#8242;</code></td>
+<td>prime, aka minutes, aka feet</td>
+<td>u+2032 ISOtech</td>
+<td>\2032</td>
+<td><a href='javascript:alert(&quot;\u2032&quot;)'>\u2032</a></td>
+</tr>
+<tr>
+<td><code>&amp;Prime;</code></td>
+<td>″</td>
+<td><code>&amp;#8243;</code></td>
+<td>double prime, aka seconds, aka inches</td>
+<td>u+2033 ISOtech</td>
+<td>\2033</td>
+<td><a href='javascript:alert(&quot;\u2033&quot;)'>\u2033</a></td>
+</tr>
+<tr>
+<td><code>&amp;oline;</code></td>
+<td>‾</td>
+<td><code>&amp;#8254;</code></td>
+<td>overline, aka spacing overscore</td>
+<td>u+203E NEW</td>
+<td>\203E</td>
+<td><a href='javascript:alert(&quot;\u203e&quot;)'>\u203e</a></td>
+</tr>
+<tr>
+<td><code>&amp;frasl;</code></td>
+<td>⁄</td>
+<td><code>&amp;#8260;</code></td>
+<td>fraction slash</td>
+<td>u+2044 NEW</td>
+<td>\2044</td>
+<td><a href='javascript:alert(&quot;\u8260&quot;)'>\u8260</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html-letter-like-symbols">HTML Letter-like Symbols<a class="headerlink" href="#html-letter-like-symbols" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;weierp;</code></td>
+<td>℘</td>
+<td><code>&amp;#8472;</code></td>
+<td>script capital P, aka power set, aka Weierstrass p</td>
+<td>u+2118 ISOamso</td>
+<td>\2118</td>
+<td><a href='javascript:alert(&quot;\u2118&quot;)'>\u2118</a></td>
+</tr>
+<tr>
+<td><code>&amp;image;</code></td>
+<td>ℑ</td>
+<td><code>&amp;#8465;</code></td>
+<td>blackletter capital I, aka imaginary part</td>
+<td>u+2111 ISOamso</td>
+<td>\2111</td>
+<td><a href='javascript:alert(&quot;\u2111&quot;)'>\u2111</a></td>
+</tr>
+<tr>
+<td><code>&amp;real;</code></td>
+<td>ℜ</td>
+<td><code>&amp;#8476;</code></td>
+<td>blackletter capital R, aka real part symbol</td>
+<td>u+211C ISOamso</td>
+<td>\211C</td>
+<td><a href='javascript:alert(&quot;\u211c&quot;)'>\u211c</a></td>
+</tr>
+<tr>
+<td><code>&amp;trade;</code></td>
+<td>™</td>
+<td><code>&amp;#8482;</code></td>
+<td>trade mark sign</td>
+<td>u+2122 ISOnum</td>
+<td>\2122</td>
+<td><a href='javascript:alert(&quot;\u2122&quot;)'>\u2122</a></td>
+</tr>
+<tr>
+<td><code>&amp;alefsym;</code></td>
+<td>ℵ</td>
+<td><code>&amp;#8501;</code></td>
+<td>alef symbol</td>
+<td>u+2135 NEW</td>
+<td>\2135</td>
+<td><a href='javascript:alert(&quot;\u&quot;)'>\u</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html-arrows">HTML Arrows<a class="headerlink" href="#html-arrows" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;larr;</code></td>
+<td>←</td>
+<td><code>&amp;#8592;</code></td>
+<td>leftwards arrow</td>
+<td>u+2190 ISOnum</td>
+<td>\2190</td>
+<td><a href='javascript:alert(&quot;\u2190&quot;)'>\u2190</a></td>
+</tr>
+<tr>
+<td><code>&amp;uarr;</code></td>
+<td>↑</td>
+<td><code>&amp;#8593;</code></td>
+<td>upwards arrow</td>
+<td>u+2191 ISOnum</td>
+<td>\2191</td>
+<td><a href='javascript:alert(&quot;\u2191&quot;)'>\u2191</a></td>
+</tr>
+<tr>
+<td><code>&amp;rarr;</code></td>
+<td>→</td>
+<td><code>&amp;#8594;</code></td>
+<td>rightwards arrow</td>
+<td>u+2192 ISOnum</td>
+<td>\2192</td>
+<td><a href='javascript:alert(&quot;\u2192&quot;)'>\u2192</a></td>
+</tr>
+<tr>
+<td><code>&amp;darr;</code></td>
+<td>↓</td>
+<td><code>&amp;#8595;</code></td>
+<td>downwards arrow</td>
+<td>u+2193 ISOnum</td>
+<td>\2193</td>
+<td><a href='javascript:alert(&quot;\u2193&quot;)'>\u2193</a></td>
+</tr>
+<tr>
+<td><code>&amp;harr;</code></td>
+<td>↔</td>
+<td><code>&amp;#8596;</code></td>
+<td>left right arrow</td>
+<td>u+2194 ISOamsa</td>
+<td>\2194</td>
+<td><a href='javascript:alert(&quot;\u2194&quot;)'>\u2194</a></td>
+</tr>
+<tr>
+<td><code>&amp;crarr;</code></td>
+<td>↵</td>
+<td><code>&amp;#8629;</code></td>
+<td>downwards arrow with corner leftwards, aka carriage return</td>
+<td>u+21B5 NEW</td>
+<td>\21B5</td>
+<td><a href='javascript:alert(&quot;\u21b5&quot;)'>\u21b5</a></td>
+</tr>
+<tr>
+<td><code>&amp;lArr;</code></td>
+<td>⇐</td>
+<td><code>&amp;#8656;</code></td>
+<td>leftwards double arrow can be used for ‘is implied by’</td>
+<td>u+21D0 ISOtech</td>
+<td>\21D0</td>
+<td><a href='javascript:alert(&quot;\u21d0&quot;)'>\u21d0</a></td>
+</tr>
+<tr>
+<td><code>&amp;uArr;</code></td>
+<td>⇑</td>
+<td><code>&amp;#8657;</code></td>
+<td>upwards double arrow</td>
+<td>u+21D1 ISOamsa</td>
+<td>\21D1</td>
+<td><a href='javascript:alert(&quot;\u21d1&quot;)'>\u21d1</a></td>
+</tr>
+<tr>
+<td><code>&amp;rArr;</code></td>
+<td>⇒</td>
+<td><code>&amp;#8658;</code></td>
+<td>rightwards double arrow</td>
+<td>u+21D2 ISOtech</td>
+<td>\21D2</td>
+<td><a href='javascript:alert(&quot;\u21d2&quot;)'>\u21d2</a></td>
+</tr>
+<tr>
+<td><code>&amp;dArr;</code></td>
+<td>⇓</td>
+<td><code>&amp;#8659;</code></td>
+<td>downwards double arrow</td>
+<td>u+21D3 ISOamsa</td>
+<td>\21D3</td>
+<td><a href='javascript:alert(&quot;\ud1d3&quot;)'>\ud1d3</a></td>
+</tr>
+<tr>
+<td><code>&amp;hArr;</code></td>
+<td>⇔</td>
+<td><code>&amp;#8660;</code></td>
+<td>left right double arrow</td>
+<td>u+21D4 ISOamsa</td>
+<td>\21D4</td>
+<td><a href='javascript:alert(&quot;\u21d4&quot;)'>\u21d4</a></td>
+</tr>
+<tr>
+<td></td>
+<td>◄</td>
+<td><code>&amp;#9668;</code></td>
+<td>black left pointing triangle</td>
+<td>U+25C0</td>
+<td>\25C0</td>
+<td><a href='javascript:alert(&quot;\u25c0&quot;)'>\u25c0</a></td>
+</tr>
+<tr>
+<td></td>
+<td>►</td>
+<td><code>&amp;#9658;</code></td>
+<td>black right pointing triangle</td>
+<td>u+25B6</td>
+<td>\25b6</td>
+<td><a href='javascript:alert(&quot;\u25b6&quot;)'>\u25b6</a></td>
+</tr>
+<tr>
+<td></td>
+<td>▲</td>
+<td><code>&amp;#9650;</code></td>
+<td>black up pointing triangle</td>
+<td>u+25B2</td>
+<td>\25b2</td>
+<td><a href='javascript:alert(&quot;\25b2&quot;)'>\25b2</a></td>
+</tr>
+<tr>
+<td></td>
+<td>▼</td>
+<td><code>&amp;#9660;</code></td>
+<td>black down pointing triangle</td>
+<td>u+25BC</td>
+<td>\25bc</td>
+<td><a href='javascript:alert(&quot;\25bc&quot;)'>\25bc</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_7">HTML 数学运算符<a class="headerlink" href="#html_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;forall;</code></td>
+<td>∀</td>
+<td><code>&amp;#8704;</code></td>
+<td>for all</td>
+<td>u+2200 ISOtech</td>
+<td>\2200</td>
+<td><a href='javascript:alert(&quot;\u2200&quot;)'>\u2200</a></td>
+</tr>
+<tr>
+<td><code>&amp;part;</code></td>
+<td>∂</td>
+<td><code>&amp;#8706;</code></td>
+<td>partial differential</td>
+<td>u+2202 ISOtech</td>
+<td>\2202</td>
+<td><a href='javascript:alert(&quot;\u2202&quot;)'>\u2202</a></td>
+</tr>
+<tr>
+<td><code>&amp;exist;</code></td>
+<td>∃</td>
+<td><code>&amp;#8707;</code></td>
+<td>there exists</td>
+<td>u+2203 ISOtech</td>
+<td>\2203</td>
+<td><a href='javascript:alert(&quot;\u2203&quot;)'>\u2203</a></td>
+</tr>
+<tr>
+<td><code>&amp;empty;</code></td>
+<td>∅</td>
+<td><code>&amp;#8709;</code></td>
+<td>empty set, aka null set, aka diameter</td>
+<td>u+2205 ISOamso</td>
+<td>\2205</td>
+<td><a href='javascript:alert(&quot;\u2205&quot;)'>\u2205</a></td>
+</tr>
+<tr>
+<td><code>&amp;nabla;</code></td>
+<td>∇</td>
+<td><code>&amp;#8711;</code></td>
+<td>nabla, aka bakad difference</td>
+<td>u+2207 ISOtech</td>
+<td>\2207</td>
+<td><a href='javascript:alert(&quot;\u2207&quot;)'>\u2207</a></td>
+</tr>
+<tr>
+<td><code>&amp;isin;</code></td>
+<td>∈</td>
+<td><code>&amp;#8712;</code></td>
+<td>element of</td>
+<td>u+2208 ISOtech</td>
+<td>\2208</td>
+<td><a href='javascript:alert(&quot;\u2208&quot;)'>\u2208</a></td>
+</tr>
+<tr>
+<td><code>&amp;notin;</code></td>
+<td>∉</td>
+<td><code>&amp;#8713;</code></td>
+<td>not an element of</td>
+<td>u+2209 ISOtech</td>
+<td>\2209</td>
+<td><a href='javascript:alert(&quot;\u2209&quot;)'>\u2209</a></td>
+</tr>
+<tr>
+<td><code>&amp;ni;</code></td>
+<td>∋</td>
+<td><code>&amp;#8715;</code></td>
+<td>contains as member</td>
+<td>u+220B ISOtech</td>
+<td>\220B</td>
+<td><a href='javascript:alert(&quot;\u220b&quot;)'>\u220b</a></td>
+</tr>
+<tr>
+<td><code>&amp;prod;</code></td>
+<td>∏</td>
+<td><code>&amp;#8719;</code></td>
+<td>n-ary product, aka product sign</td>
+<td>u+220F ISOamsb</td>
+<td>\220F</td>
+<td><a href='javascript:alert(&quot;\u03a0&quot;)'>\u03a0</a></td>
+</tr>
+<tr>
+<td><code>&amp;sum;</code></td>
+<td>∑</td>
+<td><code>&amp;#8721;</code></td>
+<td>n-ary sumation</td>
+<td>u+2211 ISOamsb</td>
+<td>\2211</td>
+<td><a href='javascript:alert(&quot;\u03a3&quot;)'>\u03a3</a></td>
+</tr>
+<tr>
+<td><code>&amp;minus;</code></td>
+<td>−</td>
+<td><code>&amp;#8722;</code></td>
+<td>minus sign</td>
+<td>u+2212 ISOtech</td>
+<td>\2212</td>
+<td><a href='javascript:alert(&quot;\u2212&quot;)'>\u2212</a></td>
+</tr>
+<tr>
+<td><code>&amp;lowast;</code></td>
+<td>∗</td>
+<td><code>&amp;#8727;</code></td>
+<td>asterisk operator</td>
+<td>u+2217 ISOtech</td>
+<td>\2217</td>
+<td><a href='javascript:alert(&quot;\u2217&quot;)'>\u2217</a></td>
+</tr>
+<tr>
+<td><code>&amp;radic;</code></td>
+<td>√</td>
+<td><code>&amp;#8730;</code></td>
+<td>square root, aka radical sign</td>
+<td>u+221A ISOtech</td>
+<td>\221A</td>
+<td><a href='javascript:alert(&quot;\u221a&quot;)'>\u221a</a></td>
+</tr>
+<tr>
+<td><code>&amp;prop;</code></td>
+<td>∝</td>
+<td><code>&amp;#8733;</code></td>
+<td>proportional to</td>
+<td>u+221D ISOtech</td>
+<td>\221D</td>
+<td><a href='javascript:alert(&quot;\u221d&quot;)'>\u221d</a></td>
+</tr>
+<tr>
+<td><code>&amp;infin;</code></td>
+<td>∞</td>
+<td><code>&amp;#8734;</code></td>
+<td>infinity</td>
+<td>u+221E ISOtech</td>
+<td>\221E</td>
+<td><a href='javascript:alert(&quot;\u221e&quot;)'>\u221e</a></td>
+</tr>
+<tr>
+<td><code>&amp;ang;</code></td>
+<td>∠</td>
+<td><code>&amp;#8736;</code></td>
+<td>angle</td>
+<td>u+2220 ISOamso</td>
+<td>\2220</td>
+<td><a href='javascript:alert(&quot;\u2220&quot;)'>\u2220</a></td>
+</tr>
+<tr>
+<td><code>&amp;and;</code></td>
+<td>⊥</td>
+<td><code>&amp;#8869;</code></td>
+<td>logical and, aka wedge</td>
+<td>u+2227 ISOtech</td>
+<td>\2227</td>
+<td><a href='javascript:alert(&quot;\u2227&quot;)'>\u2227</a></td>
+</tr>
+<tr>
+<td><code>&amp;or;</code></td>
+<td>⊦</td>
+<td><code>&amp;#8870;</code></td>
+<td>logical or, aka vee</td>
+<td>u+2228 ISOtech</td>
+<td>\2228</td>
+<td><a href='javascript:alert(&quot;\u2228&quot;)'>\u2228</a></td>
+</tr>
+<tr>
+<td><code>&amp;cap;</code></td>
+<td>∩</td>
+<td><code>&amp;#8745;</code></td>
+<td>intersection, aka cap</td>
+<td>u+2229 ISOtech</td>
+<td>\2229</td>
+<td><a href='javascript:alert(&quot;\u2229&quot;)'>\u2229</a></td>
+</tr>
+<tr>
+<td><code>&amp;cup;</code></td>
+<td>∪</td>
+<td><code>&amp;#8746;</code></td>
+<td>union, aka cup</td>
+<td>u+222A ISOtech</td>
+<td>\222A</td>
+<td><a href='javascript:alert(&quot;\u222a&quot;)'>\u222a</a></td>
+</tr>
+<tr>
+<td><code>&amp;int;</code></td>
+<td>∫</td>
+<td><code>&amp;#8747;</code></td>
+<td>integral</td>
+<td>u+222B ISOtech</td>
+<td>\222B</td>
+<td><a href='javascript:alert(&quot;\u222b&quot;)'>\u222b</a></td>
+</tr>
+<tr>
+<td><code>&amp;there4;</code></td>
+<td>∴</td>
+<td><code>&amp;#8756;</code></td>
+<td>therefore</td>
+<td>u+2234 ISOtech</td>
+<td>\2234</td>
+<td><a href='javascript:alert(&quot;\u2234&quot;)'>\u2234</a></td>
+</tr>
+<tr>
+<td><code>&amp;sim;</code></td>
+<td>∼</td>
+<td><code>&amp;#8764;</code></td>
+<td>tilde</td>
+<td>u+223C ISOtech</td>
+<td>\223C</td>
+<td><a href='javascript:alert(&quot;\u223c&quot;)'>\u223c</a></td>
+</tr>
+<tr>
+<td><code>&amp;cong;</code></td>
+<td>≅</td>
+<td><code>&amp;#8773;</code></td>
+<td>approximately equal to</td>
+<td>u+2245 ISOtech</td>
+<td>\2245</td>
+<td><a href='javascript:alert(&quot;\u2245&quot;)'>\u2245</a></td>
+</tr>
+<tr>
+<td><code>&amp;asymp;</code></td>
+<td>≈</td>
+<td><code>&amp;#8776;</code></td>
+<td>almost equal to, aka asymptotic to</td>
+<td>u+2248 ISOamsr</td>
+<td>\2248</td>
+<td><a href='javascript:alert(&quot;\u2248&quot;)'>\u2248</a></td>
+</tr>
+<tr>
+<td><code>&amp;ne;</code></td>
+<td>≠</td>
+<td><code>&amp;#8800;</code></td>
+<td>not equal to</td>
+<td>u+2260 ISOtech</td>
+<td>\2260</td>
+<td><a href='javascript:alert(&quot;\u2260&quot;)'>\u2260</a></td>
+</tr>
+<tr>
+<td><code>&amp;equiv;</code></td>
+<td>≡</td>
+<td><code>&amp;#8801;</code></td>
+<td>identical to</td>
+<td>u+2261 ISOtech</td>
+<td>\2261</td>
+<td><a href='javascript:alert(&quot;\u2261&quot;)'>\u2261</a></td>
+</tr>
+<tr>
+<td><code>&amp;le;</code></td>
+<td>≤</td>
+<td><code>&amp;#8804;</code></td>
+<td>less-than or equal to</td>
+<td>u+2264 ISOtech</td>
+<td>\2264</td>
+<td><a href='javascript:alert(&quot;\u2264&quot;)'>\u2264</a></td>
+</tr>
+<tr>
+<td><code>&amp;ge;</code></td>
+<td>≥</td>
+<td><code>&amp;#8805;</code></td>
+<td>greater-than or equal to</td>
+<td>u+2265 ISOtech</td>
+<td>\2265</td>
+<td><a href='javascript:alert(&quot;\u2265&quot;)'>\u2265</a></td>
+</tr>
+<tr>
+<td><code>&amp;sub;</code></td>
+<td>⊂</td>
+<td><code>&amp;#8834;</code></td>
+<td>subset of</td>
+<td>u+2282 ISOtech</td>
+<td>\2282</td>
+<td><a href='javascript:alert(&quot;\u2282&quot;)'>\u2282</a></td>
+</tr>
+<tr>
+<td><code>&amp;sup;</code></td>
+<td>⊃</td>
+<td><code>&amp;#8835;</code></td>
+<td>superset of</td>
+<td>u+2283 ISOtech</td>
+<td>\2283</td>
+<td><a href='javascript:alert(&quot;\u2283&quot;)'>\u2283</a></td>
+</tr>
+<tr>
+<td><code>&amp;nsub;</code></td>
+<td>⊄</td>
+<td><code>&amp;#8836;</code></td>
+<td>not a subset of</td>
+<td>u+2284 ISOamsn</td>
+<td>\2284</td>
+<td><a href='javascript:alert(&quot;\u2284&quot;)'>\u2284</a></td>
+</tr>
+<tr>
+<td><code>&amp;sube;</code></td>
+<td>⊆</td>
+<td><code>&amp;#8838;</code></td>
+<td>subset of or equal to</td>
+<td>u+2286 ISOtech</td>
+<td>\2286</td>
+<td><a href='javascript:alert(&quot;\u2286&quot;)'>\u2286</a></td>
+</tr>
+<tr>
+<td><code>&amp;supe;</code></td>
+<td>⊇</td>
+<td><code>&amp;#8839;</code></td>
+<td>superset of or equal to</td>
+<td>u+2287 ISOtech</td>
+<td>\2287</td>
+<td><a href='javascript:alert(&quot;\u2287&quot;)'>\u2287</a></td>
+</tr>
+<tr>
+<td><code>&amp;oplus;</code></td>
+<td>⊕</td>
+<td><code>&amp;#8853;</code></td>
+<td>circled plus, aka direct sum</td>
+<td>u+2295 ISOamsb</td>
+<td>\2295</td>
+<td><a href='javascript:alert(&quot;\u2295&quot;)'>\u2295</a></td>
+</tr>
+<tr>
+<td><code>&amp;otimes;</code></td>
+<td>⊗</td>
+<td><code>&amp;#8855;</code></td>
+<td>circled times, aka vector product</td>
+<td>u+2297 ISOamsb</td>
+<td>\2297</td>
+<td><a href='javascript:alert(&quot;\u2297&quot;)'>\u2297</a></td>
+</tr>
+<tr>
+<td><code>&amp;perp;</code></td>
+<td>⊥</td>
+<td><code>&amp;#8869;</code></td>
+<td>up tack</td>
+<td>u+22A5 ISOtech</td>
+<td>\22A5</td>
+<td><a href='javascript:alert(&quot;\u22a5&quot;)'>\u22a5</a></td>
+</tr>
+<tr>
+<td><code>&amp;sdot;</code></td>
+<td>⋅</td>
+<td><code>&amp;#8901;</code></td>
+<td>dot operator</td>
+<td>u+22C5 ISOamsb</td>
+<td>\22C5</td>
+<td><a href='javascript:alert(&quot;\u22c5&quot;)'>\u22c5</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_8">HTML 技术<a class="headerlink" href="#html_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;lceil;</code></td>
+<td>⌈</td>
+<td><code>&amp;#8968;</code></td>
+<td>left ceiling, aka apl upstile</td>
+<td>u+2308 ISOamsc</td>
+<td>\2308</td>
+<td><a href='javascript:alert(&quot;\u2308&quot;)'>\u2308</a></td>
+</tr>
+<tr>
+<td><code>&amp;rceil;</code></td>
+<td>⌉</td>
+<td><code>&amp;#8969;</code></td>
+<td>right ceiling</td>
+<td>u+2309 ISOamsc</td>
+<td>\2309</td>
+<td><a href='javascript:alert(&quot;\u2309&quot;)'>\u2309</a></td>
+</tr>
+<tr>
+<td><code>&amp;lfloor;</code></td>
+<td>⌊</td>
+<td><code>&amp;#8970;</code></td>
+<td>left floor, aka apl downstile</td>
+<td>u+230A ISOamsc</td>
+<td>\230A</td>
+<td><a href='javascript:alert(&quot;\u230a&quot;)'>\u230a</a></td>
+</tr>
+<tr>
+<td><code>&amp;rfloor;</code></td>
+<td>⌋</td>
+<td><code>&amp;#8971;</code></td>
+<td>right floor</td>
+<td>u+230B ISOamsc</td>
+<td>\230B</td>
+<td><a href='javascript:alert(&quot;\u230b&quot;)'>\u230b</a></td>
+</tr>
+<tr>
+<td><code>&amp;lang;</code></td>
+<td>〈</td>
+<td><code>&amp;#9001;</code></td>
+<td>left-pointing angle bracket</td>
+<td>u+2329 ISOtech</td>
+<td>\2329</td>
+<td><a href='javascript:alert(&quot;\u2329&quot;)'>\u2329</a></td>
+</tr>
+<tr>
+<td><code>&amp;rang;</code></td>
+<td>〉</td>
+<td><code>&amp;#9002;</code></td>
+<td>right-pointing angle bracket</td>
+<td>u+232A ISOtech</td>
+<td>\232A</td>
+<td><a href='javascript:alert(&quot;\u232a&quot;)'>\u232a</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h3 id="html_9">HTML 杂项<a class="headerlink" href="#html_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTML</th>
+<th>Symbol</th>
+<th>Numeric</th>
+<th>描述</th>
+<th>Hex</th>
+<th>CSS (ISO)</th>
+<th>JS (Octal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;loz;</code></td>
+<td>◊</td>
+<td><code>&amp;#9674;</code></td>
+<td>菱形</td>
+<td>u+25CA ISOpub</td>
+<td>\25CA</td>
+<td><a href='javascript:alert(&quot;\u25ca&quot;)'>\u25ca</a></td>
+</tr>
+<tr>
+<td><code>&amp;spades;</code></td>
+<td>♠</td>
+<td><code>&amp;#9824;</code></td>
+<td>黑桃</td>
+<td>u+2660 ISOpub</td>
+<td>\2660</td>
+<td><a href='javascript:alert(&quot;\u2660&quot;)'>\u2660</a></td>
+</tr>
+<tr>
+<td><code>&amp;clubs;</code></td>
+<td>♣</td>
+<td><code>&amp;#9827;</code></td>
+<td>梅花</td>
+<td>u+2663 ISOpub</td>
+<td>\2663</td>
+<td><a href='javascript:alert(&quot;\u2663&quot;)'>\u2663</a></td>
+</tr>
+<tr>
+<td><code>&amp;hearts;</code></td>
+<td>♥</td>
+<td><code>&amp;#9829;</code></td>
+<td>黑心套装，又名情人节</td>
+<td>u+2665 ISOpub</td>
+<td>\2665</td>
+<td><a href='javascript:alert(&quot;\u2665&quot;)'>\u2665</a></td>
+</tr>
+<tr>
+<td><code>&amp;diams;</code></td>
+<td>♦</td>
+<td><code>&amp;#9830;</code></td>
+<td>方块</td>
+<td>u+2666 ISOpub</td>
+<td>\2666</td>
+<td><a href='javascript:alert(&quot;\u2666&quot;)'>\u2666</a></td>
+</tr>
+</tbody>
+</table>
+<!--rehype:className=show-header-->
+
+<h2 id="_1">另见<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://jaywcjlove.github.io/html-tutorial/reference/charactersets_entities.html">HTML 字符集实体</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

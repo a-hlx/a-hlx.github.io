@@ -1,0 +1,2859 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/">
+      
+      
+        <link rel="prev" href="../04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+      
+      
+        <link rel="next" href="../06.%E7%B4%A2%E5%BC%95/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>05.表的综合查询 - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-where" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05.表的综合查询
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="true">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        05.表的综合查询
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<ul>
+<li><a href="#1-where-条件约束">1. where 条件约束</a></li>
+<li><a href="#2-group-数据分组">2. group 数据分组</a></li>
+<li><a href="#3-having-筛选数据">3. having 筛选数据</a></li>
+<li><a href="#4-order-by-排序和limit限制取出条目">4. order by 排序和limit限制取出条目</a></li>
+<li><a href="#5-子查询">5. 子查询</a></li>
+<li><a href="#1-where子查询"><strong>(1) where子查询</strong></a></li>
+<li><a href="#2-from子查询"><strong>(2) from子查询</strong></a></li>
+<li><a href="#3-exists子查询"><strong>(3) exists子查询</strong></a></li>
+<li><a href="#子查询练习"><strong>子查询练习</strong></a></li>
+<li><a href="#6-join连接查询">6. join连接查询</a></li>
+<li><a href="#1-inner-join内连接查询"><strong>(1) INNER JOIN内连接查询</strong></a></li>
+<li><a href="#2-left-join左连接查询"><strong>(2) LEFT JOIN左连接查询</strong></a></li>
+<li><a href="#3-right-join右连接查询"><strong>(3) RIGHT JOIN右连接查询</strong></a></li>
+<li><a href="#连接查询练习"><strong>连接查询练习</strong></a></li>
+<li><a href="#7-union查询">7. union查询</a></li>
+</ul>
+<p>MySQL的比较运算和逻辑运算符：</p>
+<table>
+<thead>
+<tr>
+<th align="left">比较运算符号</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">=</td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td align="left">&lt;&gt;, !=</td>
+<td align="left">不等于</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">小于等于</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">大于等于</td>
+</tr>
+<tr>
+<td align="left">BETWEEN</td>
+<td align="left">在两值之间 &gt;=min&amp;&amp;&lt;=max</td>
+</tr>
+<tr>
+<td align="left">NOT BETWEEN</td>
+<td align="left">不在两值之间</td>
+</tr>
+<tr>
+<td align="left">IN</td>
+<td align="left">在集合中</td>
+</tr>
+<tr>
+<td align="left">NOT IN</td>
+<td align="left">不在集合中</td>
+</tr>
+<tr>
+<td align="left">&lt;=, &gt;=</td>
+<td align="left">严格比较两个NULL值是否相等 两个操作码均为NULL时，其所得值为1；而当一个操作码为NULL时，其所得值为0</td>
+</tr>
+<tr>
+<td align="left">LIKE</td>
+<td align="left">模糊匹配</td>
+</tr>
+<tr>
+<td align="left">REGEXP 或 RLIKE</td>
+<td align="left">正则式匹配</td>
+</tr>
+<tr>
+<td align="left">IS NULL</td>
+<td align="left">为空</td>
+</tr>
+<tr>
+<td align="left">IS NOT NULL</td>
+<td align="left">不为空</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">逻辑运算符号</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">NOT 或 !</td>
+<td align="left">逻辑非</td>
+</tr>
+<tr>
+<td align="left">AND</td>
+<td align="left">逻辑与</td>
+</tr>
+<tr>
+<td align="left">OR</td>
+<td align="left">逻辑或</td>
+</tr>
+<tr>
+<td align="left">XOR</td>
+<td align="left">逻辑异或</td>
+</tr>
+</tbody>
+</table>
+<p>注意事项：</p>
+<ul>
+<li>and比or的优先级高，当表达式比较复杂时，习惯使用括号，避免出现歧义。</li>
+<li>in用法：in的后面跟着枚举，例如in (3,11)</li>
+<li>between通常和 and连用，例如 between 100 and 500</li>
+</ul>
+<p>示例表数据如下：</p>
+<p><img alt="" src="https://gitee.com/krislin_zhao/IMGcloud/raw/master/img/20200528090314.png" /></p>
+<p><img alt="" src="https://gitee.com/krislin_zhao/IMGcloud/raw/master/img/20200528090343.png" /></p>
+<h1 id="1-where">1. where 条件约束<a class="headerlink" href="#1-where" title="Permanent link">&para;</a></h1>
+<p>where是针对磁盘数据文件，后面一般都是列变量的表达式。模糊查询时，百分号%表示匹配所有字符，下划线_表示匹配一个字符。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">⑴</span><span class="w"> </span><span class="err">主键为</span><span class="mi">32</span><span class="err">的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_id</span><span class="o">=</span><span class="mi">32</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑵</span><span class="w"> </span><span class="err">不属第</span><span class="mi">3</span><span class="err">栏目的所有商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cat_id</span><span class="o">!=</span><span class="mi">3</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑶</span><span class="w"> </span><span class="err">本店价格高于</span><span class="mi">3000</span><span class="err">元的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&gt;</span><span class="mi">3000</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑷</span><span class="w"> </span><span class="err">本店价格低于或等于</span><span class="mi">100</span><span class="err">元的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&lt;=</span><span class="mi">100</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑸</span><span class="w"> </span><span class="err">取出第</span><span class="mi">4</span><span class="err">栏目或第</span><span class="mi">11</span><span class="err">栏目的商品</span><span class="p">(</span><span class="err">不用</span><span class="k">or</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑹</span><span class="w"> </span><span class="err">取出</span><span class="mi">100</span><span class="o">&lt;=</span><span class="err">价格</span><span class="o">&lt;=</span><span class="mi">500</span><span class="err">的商品</span><span class="p">(</span><span class="err">不许用</span><span class="k">and</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">shop_price</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑺</span><span class="w"> </span><span class="err">不属于第</span><span class="mi">3</span><span class="err">栏目且不属于第</span><span class="mi">11</span><span class="err">栏目的商品</span><span class="p">(</span><span class="k">and</span><span class="p">,</span><span class="err">或</span><span class="k">not</span><span class="w"> </span><span class="n">in分别实现</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">cat_id</span><span class="o">!=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">cat_id</span><span class="o">!=</span><span class="mi">11</span><span class="p">);</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑻</span><span class="w"> </span><span class="err">取出价格大于</span><span class="mi">100</span><span class="err">且小于</span><span class="mi">300</span><span class="p">,</span><span class="err">或者大于</span><span class="mi">3000</span><span class="err">小于</span><span class="mi">4000</span><span class="err">商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">shop_price</span><span class="o">&gt;</span><span class="mi">100</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&lt;</span><span class="mi">300</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">shop_price</span><span class="o">&gt;</span><span class="mi">3000</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&lt;</span><span class="mi">4000</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑼</span><span class="w"> </span><span class="err">取出第</span><span class="mi">3</span><span class="err">个栏目下面价格</span><span class="o">&lt;</span><span class="mi">1000</span><span class="err">或</span><span class="o">&gt;</span><span class="mi">3000</span><span class="p">,</span><span class="err">并且点击量</span><span class="o">&gt;</span><span class="mi">5</span><span class="err">的系列商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="p">,</span><span class="n">click_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">cat_id</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">shop_price</span><span class="o">&lt;</span><span class="mi">1000</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&gt;</span><span class="mi">3000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">click_count</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑽</span><span class="w"> </span><span class="err">取出第</span><span class="mi">1</span><span class="err">个栏目下面的商品</span><span class="p">(</span><span class="err">注意</span><span class="p">:</span><span class="err">第</span><span class="mi">1</span><span class="err">栏目下面没商品</span><span class="p">,</span><span class="err">但其子栏目下有</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span><span class="o">#</span><span class="w"> </span><span class="err">手动查看第</span><span class="mi">1</span><span class="err">栏目的子栏目有</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑾</span><span class="w"> </span><span class="err">取出名字以</span><span class="ss">&quot;诺基亚&quot;</span><span class="err">开头的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;诺基亚%&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑿</span><span class="w"> </span><span class="err">取出诺基亚</span><span class="n">N系列的手机</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;诺基亚N__&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⒀</span><span class="w"> </span><span class="err">取出名字不以</span><span class="ss">&quot;诺基亚&quot;</span><span class="err">开头的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_name</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;诺基亚%&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⒁</span><span class="w"> </span><span class="err">取出第</span><span class="mi">3</span><span class="err">个栏目下面价格在</span><span class="mi">1000</span><span class="err">到</span><span class="mi">3000</span><span class="err">之间</span><span class="p">,</span><span class="err">并且点击量</span><span class="o">&gt;</span><span class="mi">5</span><span class="w"> </span><span class="err">的</span><span class="ss">&quot;诺基亚&quot;</span><span class="err">开头的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="p">,</span><span class="n">click_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">cat_id</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">shop_price</span><span class="o">&gt;</span><span class="mi">1000</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">shop_price</span><span class="o">&lt;</span><span class="mi">3000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">click_count</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">goods_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;诺基亚%&#39;</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⒂</span><span class="w"> </span><span class="err">把</span><span class="n">num值处于</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">29</span><span class="p">]</span><span class="err">之间</span><span class="p">,</span><span class="err">改为</span><span class="mi">20</span><span class="err">，</span><span class="n">num值处于</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">39</span><span class="p">]</span><span class="err">之间的</span><span class="p">,</span><span class="err">改为</span><span class="mi">30</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">mian</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">num</span><span class="o">=</span><span class="n">floor</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">39</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⒃</span><span class="w"> </span><span class="err">把</span><span class="n">good表中商品名为</span><span class="s1">&#39;诺基亚xxxx&#39;</span><span class="err">的商品</span><span class="p">,</span><span class="err">改为</span><span class="s1">&#39;HTCxxxx&#39;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">goods_name</span><span class="o">=</span><span class="k">INSERT</span><span class="p">(</span><span class="n">goods_name</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;HTC&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;诺基亚%&#39;</span><span class="p">;</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">注：字符串位置从</span><span class="mi">1</span><span class="err">开始</span>
+</code></pre></div>
+<h1 id="2-group">2. group 数据分组<a class="headerlink" href="#2-group" title="Permanent link">&para;</a></h1>
+<p>使用group时首先会对该列重新排序，再做统计，所以比较耗资源，尽量避免使用。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">⑴</span><span class="w"> </span><span class="err">查出最贵和最便宜的商品的价格</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">shop_price</span><span class="p">),</span><span class="k">min</span><span class="p">(</span><span class="n">shop_price</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑵</span><span class="w"> </span><span class="err">查出最新和最旧的商品编号</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">goods_id</span><span class="p">),</span><span class="k">min</span><span class="p">(</span><span class="n">goods_id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑶</span><span class="w"> </span><span class="err">查询该店所有商品的库存总量</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">goods_number</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑷</span><span class="w"> </span><span class="err">查询所有商品的平均价格</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">shop_price</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑸</span><span class="w"> </span><span class="err">查询该店一共有多少种商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑹</span><span class="w"> </span><span class="err">查询每个栏目下面最贵商品价格、最便宜商品价格、商品平均价格、商品库存量、商品库存总价格、商品种类</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">shop_price</span><span class="p">),</span><span class="k">min</span><span class="p">(</span><span class="n">shop_price</span><span class="p">),</span><span class="k">avg</span><span class="p">(</span><span class="n">shop_price</span><span class="p">),</span><span class="k">sum</span><span class="p">(</span><span class="n">goods_number</span><span class="p">),</span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="p">;</span>
+</code></pre></div>
+<h1 id="3-having">3. having 筛选数据<a class="headerlink" href="#3-having" title="Permanent link">&para;</a></h1>
+<p>having是针对where条件结果进行筛选，是对内存数据操作，所以having必须用在where之后。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">⑴</span><span class="w"> </span><span class="err">查询该店的商品比市场价所节省的价格</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_name</span><span class="p">,</span><span class="n">market_price</span><span class="o">-</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑵</span><span class="w"> </span><span class="err">查询每个商品所积压的货款</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="o">*</span><span class="n">goods_number</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑶</span><span class="w"> </span><span class="err">查询该店积压的总货款</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">shop_price</span><span class="o">*</span><span class="n">goods</span><span class="p">.</span><span class="n">goods_number</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑷</span><span class="w"> </span><span class="err">查询该店每个栏目下面积压的货款</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">shop_price</span><span class="o">*</span><span class="n">goods_number</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑸</span><span class="w"> </span><span class="err">查询比市场价省钱</span><span class="mi">200</span><span class="err">元以上的商品及该商品所省的钱</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,(</span><span class="n">market_price</span><span class="o">-</span><span class="n">goods</span><span class="p">.</span><span class="n">shop_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">save</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="n">save</span><span class="o">&gt;</span><span class="mi">200</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑹</span><span class="w"> </span><span class="err">查询积压货款超过</span><span class="mi">2</span><span class="n">W元的栏目</span><span class="p">,</span><span class="err">以及该栏目积压的货款</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">shop_price</span><span class="o">*</span><span class="n">goods</span><span class="p">.</span><span class="n">goods_number</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">catPrice</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="n">catPrice</span><span class="o">&gt;</span><span class="mi">20000</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">⑺</span><span class="w"> </span><span class="err">查询出</span><span class="mi">2</span><span class="err">门及</span><span class="mi">2</span><span class="err">门以上不及格者的平均成绩</span>
+<span class="w">  </span><span class="err">成绩表</span><span class="n">result数据如下</span><span class="err">：</span>
+<span class="w">  </span><span class="o">+</span><span class="c1">------+---------+-------+</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">张三</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">数学</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">90</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">张三</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">语文</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">50</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">张三</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">地理</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">40</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">李四</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">语文</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">55</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">李四</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">政治</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">45</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">王五</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="err">政治</span><span class="w">   </span><span class="o">|</span><span class="w">  </span><span class="mi">30</span><span class="w">    </span><span class="o">|</span>
+<span class="w">  </span><span class="o">+</span><span class="c1">------+---------+-------+</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">score</span><span class="p">),</span><span class="k">sum</span><span class="p">(</span><span class="n">score</span><span class="o">&lt;</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="n">fail</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<h1 id="4-order-by-limit">4. order by 排序和limit限制取出条目<a class="headerlink" href="#4-order-by-limit" title="Permanent link">&para;</a></h1>
+<p>当按某列排序(默认asc升序，desc降序)无法满足要求时，可以在列的内部再继续排序。实际使用中oder by经常和limit配合一起使用。 limit有两个参数，分别是limit 偏移量，取出条目，可以使用在分页上。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="err">按价格由高到低排序</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">shop_price</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="err">按发布时间由早到晚排序</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">goods_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="err">接栏目由低到高排序</span><span class="p">,</span><span class="err">栏目内部按价格由高到低排序</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">shop_price</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="err">取出价格最高的前三名商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">shop_price</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="err">取出点击量前三名到前</span><span class="mi">5</span><span class="err">名的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="p">,</span><span class="n">click_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">click_count</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div>
+<h1 id="5">5. 子查询<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<h2 id="1-where_1"><strong>(1) where子查询</strong><a class="headerlink" href="#1-where_1" title="Permanent link">&para;</a></h2>
+<p>内层select查询的结果充当外层select的where条件的查询。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">取出每个栏目下最新的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">goods_id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="2-from"><strong>(2) from子查询</strong><a class="headerlink" href="#2-from" title="Permanent link">&para;</a></h2>
+<p>内层select作为一张表(AS table)，外层select从内层表取出数据。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">取出每个栏目下最新的商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="n">goods_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="3-exists"><strong>(3) exists子查询</strong><a class="headerlink" href="#3-exists" title="Permanent link">&para;</a></h2>
+<p>exists指定一个子查询，检测行的存在。该子查询实际上并不返回任何数据，而是返回值True或False。exists子查询能完成的where子查询 in也能完成。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">取出没有商品的栏目</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">exists</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="_1"><strong>子查询练习</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">查询出最新一行商品</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods_name</span><span class="p">,</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_id</span><span class="o">=</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">goods_id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">查询出编号为</span><span class="mi">19</span><span class="err">的商品的栏目名称</span><span class="p">(</span><span class="n">where和连接查询</span><span class="p">)</span>
+<span class="n">where子查询</span><span class="err">：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="p">,</span><span class="n">cat_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cat_id</span><span class="o">=</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_id</span><span class="o">=</span><span class="mi">19</span><span class="p">);</span>
+<span class="err">连接查询：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="p">,</span><span class="n">category</span><span class="p">.</span><span class="n">cat_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span>
+<span class="w">  </span><span class="n">category</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">goods_id</span><span class="o">=</span><span class="mi">19</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">用</span><span class="n">where和from型子查询方式把每个栏目下面最新的商品取出来</span>
+<span class="n">where子查询</span><span class="err">：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods_id</span><span class="w"> </span><span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">goods_id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="p">);</span>
+<span class="n">from子查询</span><span class="err">：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods_id</span><span class="p">,</span><span class="n">cat_id</span><span class="p">,</span><span class="n">goods_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cat_id</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="n">goods_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">cat_id</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">用</span><span class="n">exists型子查询</span><span class="p">,</span><span class="err">查出所有有商品的栏目</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">exists</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="p">);</span>
+</code></pre></div>
+<h1 id="6-join">6. join连接查询<a class="headerlink" href="#6-join" title="Permanent link">&para;</a></h1>
+<h2 id="1-inner-join"><strong>(1) INNER JOIN内连接查询</strong><a class="headerlink" href="#1-inner-join" title="Permanent link">&para;</a></h2>
+<p>把两张独立代表拼接成一张大表，拼接时指定匹配条件。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">语法：</span>
+<span class="err">表</span><span class="mi">1</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="err">匹配条件</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">把</span><span class="n">boy表和girl表同一组的人取出来</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boy</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">girl</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">boy</span><span class="p">.</span><span class="n">hid</span><span class="o">=</span><span class="n">girl</span><span class="p">.</span><span class="n">hid</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="2-left-join"><strong>(2) LEFT JOIN左连接查询</strong><a class="headerlink" href="#2-left-join" title="Permanent link">&para;</a></h2>
+<p>以左边的表为标准，有匹配条件取出值来，没有则填充默认值。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">以</span><span class="n">boy表为标准</span><span class="err">，把</span><span class="n">boy表和girl表进行同组匹配</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boy</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">girl</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">boy</span><span class="p">.</span><span class="n">hid</span><span class="o">=</span><span class="n">girl</span><span class="p">.</span><span class="n">hid</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="3-right-join"><strong>(3) RIGHT JOIN右连接查询</strong><a class="headerlink" href="#3-right-join" title="Permanent link">&para;</a></h2>
+<p>以右边的表为标准，有匹配条件取出值来，没有则填充默认值。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">以</span><span class="n">girl表为标准</span><span class="err">，把</span><span class="n">boy表和girl表进行同组匹配</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">boy</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">girl</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">boy</span><span class="p">.</span><span class="n">hid</span><span class="o">=</span><span class="n">girl</span><span class="p">.</span><span class="n">hid</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="_2"><strong>连接查询练习</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">取出所有商品的商品名</span><span class="p">,</span><span class="err">栏目名</span><span class="p">,</span><span class="err">价格</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods</span><span class="p">.</span><span class="n">goods_name</span><span class="p">,</span><span class="n">category</span><span class="p">.</span><span class="n">cat_name</span><span class="p">,</span><span class="n">goods</span><span class="p">.</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">取出第</span><span class="mi">4</span><span class="err">个栏目下的商品的商品名</span><span class="p">,</span><span class="err">栏目名</span><span class="p">,</span><span class="err">价格</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">goods_id</span><span class="p">,</span><span class="n">goods</span><span class="p">.</span><span class="n">goods_name</span><span class="p">,</span><span class="n">category</span><span class="p">.</span><span class="n">cat_name</span><span class="p">,</span><span class="n">goods</span><span class="p">.</span><span class="n">shop_price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">goods</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">category</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="n">category</span><span class="p">.</span><span class="n">cat_id</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">goods</span><span class="p">.</span><span class="n">cat_id</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">查出</span><span class="w"> </span><span class="mi">2006</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="err">到</span><span class="mi">2006</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">1</span><span class="err">之间举行的所有比赛，并且用以下形式列出：主队名</span><span class="w">  </span><span class="err">比分</span><span class="w"> </span><span class="err">客队</span><span class="w"> </span><span class="err">比赛时间</span>
+<span class="err">表名：</span><span class="n">m</span>
+<span class="o">+</span><span class="c1">-----+------+------+------+------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">hid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">gid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">mres</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">matime</span><span class="w">     </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+------+------+------+------------+</span>
+<span class="o">|</span><span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">0</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2006</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w">   </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2006</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w">   </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2006</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">25</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w">   </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2006</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">21</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+------+------+------+------------+</span>
+
+<span class="err">队名：</span><span class="n">t</span>
+<span class="o">+</span><span class="c1">------+----------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">tid</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">tname</span><span class="w">    </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">------+----------+</span>
+<span class="o">|</span><span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">国安</span><span class="w">     </span><span class="o">|</span>
+<span class="o">|</span><span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">申花</span><span class="w">     </span><span class="o">|</span>
+<span class="o">|</span><span class="w">    </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">公益联队</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">------+----------+</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">写法一：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">ttb</span><span class="p">.</span><span class="n">tname</span><span class="p">,</span><span class="n">ttb</span><span class="p">.</span><span class="n">mres</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">tname</span><span class="p">,</span><span class="n">ttb</span><span class="p">.</span><span class="n">matime</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">hid</span><span class="o">=</span><span class="n">t</span><span class="p">.</span><span class="n">tid</span><span class="p">)</span><span class="k">AS</span><span class="w"> </span><span class="n">ttb</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ttb</span><span class="p">.</span><span class="n">gid</span><span class="o">=</span><span class="n">t</span><span class="p">.</span><span class="n">tid</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ttb</span><span class="p">.</span><span class="n">matime</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2006-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2006-07-01&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">写法二：</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">tname</span><span class="p">,</span><span class="n">mres</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="n">tname</span><span class="p">,</span><span class="n">matime</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">hid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">tid</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">gid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">tid</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">matime</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2006-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2006-07-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h1 id="7-union">7. union查询<a class="headerlink" href="#7-union" title="Permanent link">&para;</a></h1>
+<p>把两条或多条sql查询的结果合并成一个结果集。主要用途：两张不同的表中有相同的列时，把结果集合并，或者简化两个复杂的where条件， 使用条件：两个表的列必须相同，但是例外的是列名称可以不相同。</p>
+<p>注意事项：</p>
+<ul>
+<li>完全相等的行将会合并，合并是耗时的操作，一般不让union合并，使用union all则不合并。</li>
+<li>union子句中一般不用order by，在union合并后可以再order by。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="err">合并表</span><span class="n">a和表b</span><span class="err">，不合并相同的行</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="err">对两个表相同</span><span class="n">id的行进行num列求和</span><span class="err">。</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tmp</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">tmp</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

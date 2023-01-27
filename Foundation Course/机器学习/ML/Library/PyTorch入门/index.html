@@ -1,0 +1,3760 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ML/Library/PyTorch%E5%85%A5%E9%97%A8/">
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>PyTorch入门 - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pytorch" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PyTorch入门
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pytorch" class="md-nav__link">
+    Pytorch 介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensors" class="md-nav__link">
+    张量(Tensors)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1 声明和定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-operations" class="md-nav__link">
+    1.2.2 操作(Operations)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-numpy" class="md-nav__link">
+    1.3 和 Numpy 数组的转换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131-tensor-numpy" class="md-nav__link">
+    1.3.1 Tensor 转换为 Numpy 数组
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-numpy-tensor" class="md-nav__link">
+    1.3.2 Numpy 数组转换为 Tensor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-cuda" class="md-nav__link">
+    1.4. CUDA 张量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-autograd" class="md-nav__link">
+    2. autograd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 张量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 梯度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 神经网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 定义网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 损失函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 反向传播
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 更新权重
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 训练分类器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 训练数据
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 训练图片分类器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#421-cifar10" class="md-nav__link">
+    4.2.1 加载和归一化 CIFAR10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#422" class="md-nav__link">
+    4.2.2 构建一个卷积神经网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#423" class="md-nav__link">
+    4.2.3 定义损失函数和优化器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#424" class="md-nav__link">
+    4.2.4 训练网络
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#425" class="md-nav__link">
+    4.2.5 测试模型性能
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-gpu" class="md-nav__link">
+    4.3 在 GPU 上训练
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 数据并行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 导入和参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 构建一个假数据集
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 简单的模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 创建模型和数据平行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    5.5 运行模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    5.6 运行结果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gpus" class="md-nav__link">
+    2 GPUs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gpus" class="md-nav__link">
+    3 GPUs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-gpus" class="md-nav__link">
+    8 GPUs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    5.7 总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+  <h1>PyTorch入门</h1>
+
+<blockquote>
+<p>PyTorch 是由 Facebook 开发，基于 <strong>Torch</strong> 开发，从并不常用的 Lua 语言转为 Python 语言开发的深度学习框架，Torch 是 TensorFlow 开源前非常出名的一个深度学习框架，而 PyTorch 在开源后由于其使用简单，动态计算图的特性得到非常多的关注，并且成为了 TensorFlow 的 最大竞争对手。目前其 Github 也有 2w8+ 关注。<br />
+Github 地址： <a href="https://link.zhihu.com/?target=https%3A//github.com/pytorch/pytorch">https://github.com/pytorch/pytorch</a><br />
+官网： <a href="https://link.zhihu.com/?target=https%3A//pytorch.org/">https://pytorch.org/</a><br />
+论坛：<a href="https://link.zhihu.com/?target=https%3A//discuss.pytorch.org/">https://discuss.pytorch.org/</a></p>
+</blockquote>
+<p>本文是翻译自官方版教程--<a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ</a>，一份 60 分钟带你快速入门 PyTorch 的官方教程。</p>
+<hr />
+<h3 id="pytorch">Pytorch 介绍<a class="headerlink" href="#pytorch" title="Permanent link">&para;</a></h3>
+<p>Pytorch 是一个基于 Python 的科学计算库，它面向以下两种人群：</p>
+<ul>
+<li>希望将其代替 Numpy 来利用 GPUs 的威力；</li>
+<li>一个可以提供更加灵活和快速的深度学习研究平台。</li>
+</ul>
+<h3 id="tensors">张量(Tensors)<a class="headerlink" href="#tensors" title="Permanent link">&para;</a></h3>
+<p>Pytorch 的一大作用就是可以代替 Numpy 库，所以首先介绍 Tensors ，也就是张量，它相当于 Numpy 的多维数组(ndarrays)。两者的区别就是 Tensors 可以应用到 GPU 上加快计算速度。</p>
+<p>首先导入必须的库，主要是 torch</p>
+<div class="highlight"><pre><span></span><code>from __future__ import print_function
+import torch
+</code></pre></div>
+<h3 id="121"><strong>1.2.1 声明和定义</strong><a class="headerlink" href="#121" title="Permanent link">&para;</a></h3>
+<p>首先是对 Tensors 的声明和定义方法，分别有以下几种：</p>
+<ul>
+<li><strong>torch.empty()</strong>: 声明一个未初始化的矩阵。</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 创建一个 5*3 的矩阵
+x = torch.empty(5, 3)
+print(x)
+</code></pre></div>
+<p>输出结果如下：</p>
+<div class="highlight"><pre><span></span><code>tensor([[9.2737e-41, 8.9074e-01, 1.9286e-37],
+        [1.7228e-34, 5.7064e+01, 9.2737e-41],
+        [2.2803e+02, 1.9288e-37, 1.7228e-34],
+        [1.4609e+04, 9.2737e-41, 5.8375e+04],
+        [1.9290e-37, 1.7228e-34, 3.7402e+06]])
+</code></pre></div>
+<ul>
+<li><strong>torch.rand()</strong>：随机初始化一个矩阵</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 创建一个随机初始化的 5*3 矩阵
+rand_x = torch.rand(5, 3)
+print(rand_x)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[0.4311, 0.2798, 0.8444],
+        [0.0829, 0.9029, 0.8463],
+        [0.7139, 0.4225, 0.5623],
+        [0.7642, 0.0329, 0.8816],
+        [1.0000, 0.9830, 0.9256]])
+</code></pre></div>
+<ul>
+<li><strong>torch.zeros()</strong>：创建数值皆为 0 的矩阵</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 创建一个数值皆是 0，类型为 long 的矩阵
+zero_x = torch.zeros(5, 3, dtype=torch.long)
+print(zero_x)
+</code></pre></div>
+<p>输出结果如下：</p>
+<div class="highlight"><pre><span></span><code>tensor([[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]])
+</code></pre></div>
+<p>类似的也可以创建数值都是 1 的矩阵，调用 <code>torch.ones</code></p>
+<ul>
+<li><strong>torch.tensor()</strong>：直接传递 tensor 数值来创建</li>
+</ul>
+<div class="highlight"><pre><span></span><code># tensor 数值是 [5.5, 3]
+tensor1 = torch.tensor([5.5, 3])
+print(tensor1)
+</code></pre></div>
+<p>输出结果：</p>
+<p>除了上述几种方法，还可以根据已有的 tensor 变量创建新的 tensor 变量，这种做法的好处就是可以保留已有 tensor 的一些属性，包括尺寸大小、数值属性，除非是重新定义这些属性。相应的实现方法如下：</p>
+<ul>
+<li><strong>tensor.new_ones()</strong>：new_*() 方法需要输入尺寸大小</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 显示定义新的尺寸是 5*3，数值类型是 torch.double
+tensor2 = tensor1.new_ones(5, 3, dtype=torch.double)  # new_* 方法需要输入 tensor 大小
+print(tensor2)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+</code></pre></div>
+<ul>
+<li><strong>torch.randn_like(old_tensor)</strong>：保留相同的尺寸大小</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 修改数值类型
+tensor3 = torch.randn_like(tensor2, dtype=torch.float)
+print(&#39;tensor3: &#39;, tensor3)
+</code></pre></div>
+<p>输出结果，这里是根据上个方法声明的 <code>tensor2</code> 变量来声明新的变量，可以看出尺寸大小都是 5*3，但是数值类型是改变了的。</p>
+<div class="highlight"><pre><span></span><code>tensor3:  tensor([[-0.4491, -0.2634, -0.0040],
+        [-0.1624,  0.4475, -0.8407],
+        [-0.6539, -1.2772,  0.6060],
+        [ 0.2304,  0.0879, -0.3876],
+        [ 1.2900, -0.7475, -1.8212]])
+</code></pre></div>
+<p>最后，对 tensors 的尺寸大小获取可以采用 <code>tensor.size()</code> 方法：</p>
+<div class="highlight"><pre><span></span><code>print(tensor3.size())  
+# 输出: torch.Size([5, 3])
+</code></pre></div>
+<p><strong>注意</strong>： <code>torch.Size</code> 实际上是<strong>元组(tuple)类型，所以支持所有的元组操作</strong>。</p>
+<h3 id="122-operations"><strong>1.2.2 操作(Operations)</strong><a class="headerlink" href="#122-operations" title="Permanent link">&para;</a></h3>
+<p>操作也包含了很多语法，但这里作为快速入门，仅仅以加法操作作为例子进行介绍，更多的操作介绍可以点击下面网址查看官方文档，包括转置、索引、切片、数学计算、线性代数、随机数等等：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/torch.html">https://pytorch.org/docs/stable/torch.html</a></p>
+<p>对于加法的操作，有几种实现方式：</p>
+<ul>
+<li><strong>+</strong> 运算符</li>
+<li><strong>torch.add(tensor1, tensor2, [out=tensor3])</strong></li>
+<li><strong>tensor1.add_(tensor2)</strong>：直接修改 tensor 变量</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tensor4 = torch.rand(5, 3)
+print(&#39;tensor3 + tensor4= &#39;, tensor3 + tensor4)
+print(&#39;tensor3 + tensor4= &#39;, torch.add(tensor3, tensor4))
+# 新声明一个 tensor 变量保存加法操作的结果
+result = torch.empty(5, 3)
+torch.add(tensor3, tensor4, out=result)
+print(&#39;add result= &#39;, result)
+# 直接修改变量
+tensor3.add_(tensor4)
+print(&#39;tensor3= &#39;, tensor3)
+</code></pre></div>
+<p>输出结果</p>
+<div class="highlight"><pre><span></span><code>tensor3 + tensor4=  tensor([[ 0.1000,  0.1325,  0.0461],
+        [ 0.4731,  0.4523, -0.7517],
+        [ 0.2995, -0.9576,  1.4906],
+        [ 1.0461,  0.7557, -0.0187],
+        [ 2.2446, -0.3473, -1.0873]])
+
+tensor3 + tensor4=  tensor([[ 0.1000,  0.1325,  0.0461],
+        [ 0.4731,  0.4523, -0.7517],
+        [ 0.2995, -0.9576,  1.4906],
+        [ 1.0461,  0.7557, -0.0187],
+        [ 2.2446, -0.3473, -1.0873]])
+
+add result=  tensor([[ 0.1000,  0.1325,  0.0461],
+        [ 0.4731,  0.4523, -0.7517],
+        [ 0.2995, -0.9576,  1.4906],
+        [ 1.0461,  0.7557, -0.0187],
+        [ 2.2446, -0.3473, -1.0873]])
+
+tensor3=  tensor([[ 0.1000,  0.1325,  0.0461],
+        [ 0.4731,  0.4523, -0.7517],
+        [ 0.2995, -0.9576,  1.4906],
+        [ 1.0461,  0.7557, -0.0187],
+        [ 2.2446, -0.3473, -1.0873]])
+</code></pre></div>
+<p><strong>注意</strong>：可以改变 tensor 变量的操作都带有一个后缀 <code>_</code>, 例如 <code>x.copy_(y), x.t_()</code> 都可以改变 x 变量</p>
+<p>除了加法运算操作，对于 Tensor 的访问，和 Numpy 对数组类似，可以使用索引来访问某一维的数据，如下所示：</p>
+<div class="highlight"><pre><span></span><code># 访问 tensor3 第一列数据
+print(tensor3[:, 0])
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([0.1000, 0.4731, 0.2995, 1.0461, 2.2446])
+</code></pre></div>
+<p>对 Tensor 的尺寸修改，可以采用 <code>torch.view()</code> ，如下所示：</p>
+<div class="highlight"><pre><span></span><code>x = torch.randn(4, 4)
+y = x.view(16)
+# -1 表示除给定维度外的其余维度的乘积
+z = x.view(-1, 8)
+print(x.size(), y.size(), z.size())
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])
+</code></pre></div>
+<p>如果 tensor 仅有一个元素，可以采用 <code>.item()</code> 来获取类似 Python 中整数类型的数值：</p>
+<div class="highlight"><pre><span></span><code>x = torch.randn(1)
+print(x)
+print(x.item())
+</code></pre></div>
+<p>输出结果:</p>
+<div class="highlight"><pre><span></span><code>tensor([0.4549])
+0.4549027979373932
+</code></pre></div>
+<p>更多的运算操作可以查看官方文档的介绍：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/torch.html">https://pytorch.org/docs/stable/torch.html</a></p>
+<h3 id="13-numpy"><strong>1.3 和 Numpy 数组的转换</strong><a class="headerlink" href="#13-numpy" title="Permanent link">&para;</a></h3>
+<p>Tensor 和 Numpy 的数组可以相互转换，并且两者转换后共享在 CPU 下的内存空间，即改变其中一个的数值，另一个变量也会随之改变。</p>
+<h3 id="131-tensor-numpy"><strong>1.3.1 Tensor 转换为 Numpy 数组</strong><a class="headerlink" href="#131-tensor-numpy" title="Permanent link">&para;</a></h3>
+<p>实现 Tensor 转换为 Numpy 数组的例子如下所示，调用 <code>tensor.numpy()</code> 可以实现这个转换操作。</p>
+<div class="highlight"><pre><span></span><code>a = torch.ones(5)
+print(a)
+b = a.numpy()
+print(b)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([1., 1., 1., 1., 1.])
+[1. 1. 1. 1. 1.]
+</code></pre></div>
+<p>此外，刚刚说了两者是共享同个内存空间的，例子如下所示，修改 <code>tensor</code> 变量 <code>a</code>，看看从 <code>a</code> 转换得到的 Numpy 数组变量 <code>b</code> 是否发生变化。</p>
+<div class="highlight"><pre><span></span><code>a.add_(1)
+print(a)
+print(b)
+</code></pre></div>
+<p>输出结果如下，很明显，<code>b</code> 也随着 <code>a</code> 的改变而改变。</p>
+<div class="highlight"><pre><span></span><code>tensor([2., 2., 2., 2., 2.])
+[2. 2. 2. 2. 2.]
+</code></pre></div>
+<h3 id="132-numpy-tensor"><strong>1.3.2 Numpy 数组转换为 Tensor</strong><a class="headerlink" href="#132-numpy-tensor" title="Permanent link">&para;</a></h3>
+<p>转换的操作是调用 <code>torch.from_numpy(numpy_array)</code> 方法。例子如下所示：</p>
+<div class="highlight"><pre><span></span><code>import numpy as np
+a = np.ones(5)
+b = torch.from_numpy(a)
+np.add(a, 1, out=a)
+print(a)
+print(b)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>[2. 2. 2. 2. 2.]
+tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
+</code></pre></div>
+<p>在 <code>CPU</code> 上，除了 <code>CharTensor</code> 外的所有 <code>Tensor</code> 类型变量，都支持和 <code>Numpy</code>数组的相互转换操作。</p>
+<h3 id="14-cuda"><strong>1.4. CUDA 张量</strong><a class="headerlink" href="#14-cuda" title="Permanent link">&para;</a></h3>
+<p><code>Tensors</code> 可以通过 <code>.to</code> 方法转换到不同的设备上，即 CPU 或者 GPU 上。例子如下所示：</p>
+<div class="highlight"><pre><span></span><code># 当 CUDA 可用的时候，可用运行下方这段代码，采用 torch.device() 方法来改变 tensors 是否在 GPU 上进行计算操作
+if torch.cuda.is_available():
+    device = torch.device(&quot;cuda&quot;)          # 定义一个 CUDA 设备对象
+    y = torch.ones_like(x, device=device)  # 显示创建在 GPU 上的一个 tensor
+    x = x.to(device)                       # 也可以采用 .to(&quot;cuda&quot;) 
+    z = x + y
+    print(z)
+    print(z.to(&quot;cpu&quot;, torch.double))       # .to() 方法也可以改变数值类型
+</code></pre></div>
+<p>输出结果，第一个结果就是在 GPU 上的结果，打印变量的时候会带有 <code>device='cuda:0'</code>，而第二个是在 CPU 上的变量。</p>
+<div class="highlight"><pre><span></span><code>tensor([1.4549], device=&#39;cuda:0&#39;)
+tensor([1.4549], dtype=torch.float64)
+</code></pre></div>
+<p>本小节教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html">https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html</a></p>
+<p>本小节的代码：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/basic_practise.ipynb">https://github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/basic_practise.ipynb</a></p>
+<h3 id="2-autograd"><strong>2. autograd</strong><a class="headerlink" href="#2-autograd" title="Permanent link">&para;</a></h3>
+<p>对于 Pytorch 的神经网络来说，非常关键的一个库就是 <code>autograd</code> ，它主要是提供了对 Tensors 上所有运算操作的自动微分功能，也就是计算梯度的功能。它属于 <code>define-by-run</code> 类型框架，即反向传播操作的定义是根据代码的运行方式，因此每次迭代都可以是不同的。</p>
+<p>接下来会简单介绍一些例子来说明这个库的作用。</p>
+<h3 id="21"><strong>2.1 张量</strong><a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p><code>torch.Tensor</code> 是 Pytorch 最主要的库，当设置它的属性 <code>.requires_grad=True</code>，那么就会开始追踪在该变量上的所有操作，而完成计算后，可以调用 <code>.backward()</code> 并自动计算所有的梯度，得到的梯度都保存在属性 <code>.grad</code> 中。</p>
+<p>调用 <code>.detach()</code> 方法分离出计算的历史，可以停止一个 tensor 变量继续追踪其历史信息 ，同时也防止未来的计算会被追踪。</p>
+<p>而如果是希望防止跟踪历史（以及使用内存），可以将代码块放在 <code>with torch.no_grad():</code> 内，这个做法在使用一个模型进行评估的时候非常有用，因为模型会包含一些带有 <code>requires_grad=True</code> 的训练参数，但实际上并不需要它们的梯度信息。</p>
+<p>对于 <code>autograd</code> 的实现，还有一个类也是非常重要-- <code>Function</code> 。</p>
+<p><code>Tensor</code> 和 <code>Function</code> 两个类是有关联并建立了一个非循环的图，可以编码一个完整的计算记录。每个 tensor 变量都带有属性 <code>.grad_fn</code> ，该属性引用了创建了这个变量的 <code>Function</code> （除了由用户创建的 Tensors，它们的 <code>grad_fn=None</code> )。</p>
+<p>如果要进行求导运算，可以调用一个 <code>Tensor</code> 变量的方法 <code>.backward()</code> 。如果该变量是一个标量，即仅有一个元素，那么不需要传递任何参数给方法 <code>.backward()</code>，当包含多个元素的时候，就必须指定一个 <code>gradient</code> 参数，表示匹配尺寸大小的 tensor，这部分见第二小节介绍梯度的内容。</p>
+<p>接下来就开始用代码来进一步介绍。</p>
+<p>首先导入必须的库：</p>
+<p>开始创建一个 tensor， 并让 <code>requires_grad=True</code> 来追踪该变量相关的计算操作：</p>
+<div class="highlight"><pre><span></span><code>x = torch.ones(2, 2, requires_grad=True)
+print(x)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[1., 1.],
+        [1., 1.]], requires_grad=True)
+</code></pre></div>
+<p>执行任意计算操作，这里进行简单的加法运算：</p>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[3., 3.],
+        [3., 3.]], grad_fn=&lt;AddBackward&gt;)
+</code></pre></div>
+<p><code>y</code> 是一个操作的结果，所以它带有属性 <code>grad_fn</code>：</p>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>&lt;AddBackward object at 0x00000216D25DCC88&gt;
+</code></pre></div>
+<p>继续对变量 <code>y</code> 进行操作：</p>
+<div class="highlight"><pre><span></span><code>z = y * y * 3
+out = z.mean()
+
+print(&#39;z=&#39;, z)
+print(&#39;out=&#39;, out)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>z= tensor([[27., 27.],
+        [27., 27.]], grad_fn=&lt;MulBackward&gt;)
+
+out= tensor(27., grad_fn=&lt;MeanBackward1&gt;)
+</code></pre></div>
+<p>实际上，一个 <code>Tensor</code> 变量的默认 <code>requires_grad</code> 是 <code>False</code> ，可以像上述定义一个变量时候指定该属性是 <code>True</code>，当然也可以定义变量后，调用 <code>.requires_grad_(True)</code> 设置为 <code>True</code> ，这里带有后缀 <code>_</code> 是会改变变量本身的属性，在上一节介绍加法操作 <code>add_()</code> 说明过，下面是一个代码例子：</p>
+<div class="highlight"><pre><span></span><code>a = torch.randn(2, 2)
+a = ((a * 3) / (a - 1))
+print(a.requires_grad)
+a.requires_grad_(True)
+print(a.requires_grad)
+b = (a * a).sum()
+print(b.grad_fn)
+</code></pre></div>
+<p>输出结果如下，第一行是为设置 <code>requires_grad</code> 的结果，接着显示调用 <code>.requires_grad_(True)</code>，输出结果就是 <code>True</code> 。</p>
+<div class="highlight"><pre><span></span><code>False
+
+True
+
+&lt;SumBackward0 object at 0x00000216D25ED710&gt;
+</code></pre></div>
+<h3 id="22"><strong>2.2 梯度</strong><a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>接下来就是开始计算梯度，进行反向传播的操作。<code>out</code> 变量是上一小节中定义的，它是一个标量，因此 <code>out.backward()</code> 相当于 <code>out.backward(torch.tensor(1.))</code> ，代码如下：</p>
+<div class="highlight"><pre><span></span><code>out.backward()
+# 输出梯度 d(out)/dx
+print(x.grad)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[4.5000, 4.5000],
+        [4.5000, 4.5000]])
+</code></pre></div>
+<p>结果应该就是得到数值都是 4.5 的矩阵。这里我们用 <code>o</code> 表示 <code>out</code> 变量，那么根据之前的定义会有：<br />
+<span class="arithmatex">\(o = \frac{1}{4}\sum_iz_i,\\ z_i = 3(x_i + 2)^2, \\ z_i|_{x_i=1} = 27\)</span>o = \frac{1}{4}\sum_iz_i,\\ z_i = 3(x_i + 2)^2, \\ z_i|_{x_i=1} = 27</p>
+<p>详细来说，初始定义的 <code>x</code> 是一个全为 1 的矩阵，然后加法操作 <code>x+2</code> 得到 <code>y</code> ，接着 <code>y*y*3</code>， 得到 <code>z</code> ，并且此时 <code>z</code> 是一个 2*2 的矩阵，所以整体求平均得到 <code>out</code> 变量应该是除以 4，所以得到上述三条公式。</p>
+<p>因此，计算梯度：<br />
+<span class="arithmatex">\(\frac{\partial o}{\partial x_i} = \frac{3}{2}(x_i+2),\\ \frac{\partial o}{\partial x_i}|_{x_i=1} = \frac{9}{2} = 4.5\)</span>\frac{\partial o}{\partial x_i} = \frac{3}{2}(x_i+2),\\ \frac{\partial o}{\partial x_i}|_{x_i=1} = \frac{9}{2} = 4.5</p>
+<p>从数学上来说，如果你有一个向量值函数：<br />
+<span class="arithmatex">\(\vec{y}=f(\vec{x})\)</span>\vec{y}=f(\vec{x})</p>
+<p>那么对应的梯度是一个雅克比矩阵(Jacobian matrix)：  </p>
+<p><span class="arithmatex">\(\begin{split}J=\left(\begin{array}{ccc}  \frac{\partial y_{1}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial x_{n}}\\  \vdots &amp; \ddots &amp; \vdots\\  \frac{\partial y_{m}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{n}}  \end{array}\right)\end{split}\)</span>\begin{split}J=\left(\begin{array}{ccc} \frac{\partial y_{1}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial x_{n}}\\ \vdots &amp; \ddots &amp; \vdots\\ \frac{\partial y_{m}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{m}}{\partial x_{n}} \end{array}\right)\end{split}<br />
+一般来说，<code>torch.autograd</code> 就是用于计算雅克比向量(vector-Jacobian)乘积的工具。这里略过数学公式，直接上代码例子介绍：</p>
+<div class="highlight"><pre><span></span><code>x = torch.randn(3, requires_grad=True)
+
+y = x * 2
+while y.data.norm() &lt; 1000:
+    y = y * 2
+
+print(y)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([ 237.5009, 1774.2396,  274.0625], grad_fn=&lt;MulBackward&gt;)
+</code></pre></div>
+<p>这里得到的变量 <code>y</code> 不再是一个标量，<code>torch.autograd</code> 不能直接计算完整的雅克比行列式，但我们可以通过简单的传递向量给 <code>backward()</code> 方法作为参数得到雅克比向量的乘积，例子如下所示：</p>
+<div class="highlight"><pre><span></span><code>v = torch.tensor([0.1, 1.0, 0.0001], dtype=torch.float)
+y.backward(v)
+
+print(x.grad)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([ 102.4000, 1024.0000,    0.1024])
+</code></pre></div>
+<p>最后，加上 <code>with torch.no_grad()</code> 就可以停止追踪变量历史进行自动梯度计算：</p>
+<div class="highlight"><pre><span></span><code>print(x.requires_grad)
+print((x ** 2).requires_grad)
+
+with torch.no_grad():
+    print((x ** 2).requires_grad)
+</code></pre></div>
+<p>输出结果：</p>
+<p>更多有关 <code>autograd</code> 和 <code>Function</code> 的介绍：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/docs/autograd">https://pytorch.org/docs/autograd</a></p>
+<p>本小节教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html</a></p>
+<p>本小节的代码：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/autograd.ipynb">https://github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/autograd.ipynb</a></p>
+<h3 id="3"><strong>3. 神经网络</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>在 PyTorch 中 <code>torch.nn</code> 专门用于实现神经网络。其中 <code>nn.Module</code> 包含了网络层的搭建，以及一个方法-- <code>forward(input)</code> ，并返回网络的输出 <code>outptu</code> .</p>
+<p>下面是一个经典的 LeNet 网络，用于对字符进行分类。</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-06a914f4ee93f25c0d6c924df9b4b4cb_b.jpg" /></p>
+<p>对于神经网络来说，一个标准的训练流程是这样的：</p>
+<ul>
+<li>定义一个多层的神经网络</li>
+<li>对数据集的预处理并准备作为网络的输入</li>
+<li>将数据输入到网络</li>
+<li>计算网络的损失</li>
+<li>反向传播，计算梯度</li>
+<li>更新网络的梯度，一个简单的更新规则是 <code>weight = weight - learning_rate * gradient</code></li>
+</ul>
+<h3 id="31"><strong>3.1 定义网络</strong><a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>首先定义一个神经网络，下面是一个 5 层的卷积神经网络，包含两层卷积层和三层全连接层：</p>
+<div class="highlight"><pre><span></span><code>import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class Net(nn.Module):
+
+    def __init__(self):
+        super(Net, self).__init__()
+        # 输入图像是单通道，conv1 kenrnel size=5*5，输出通道 6
+        self.conv1 = nn.Conv2d(1, 6, 5)
+        # conv2 kernel size=5*5, 输出通道 16
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        # 全连接层
+        self.fc1 = nn.Linear(16*5*5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        # max-pooling 采用一个 (2,2) 的滑动窗口
+        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
+        # 核(kernel)大小是方形的话，可仅定义一个数字，如 (2,2) 用 2 即可
+        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
+        x = x.view(-1, self.num_flat_features(x))
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+    def num_flat_features(self, x):
+        # 除了 batch 维度外的所有维度
+        size = x.size()[1:]
+        num_features = 1
+        for s in size:
+            num_features *= s
+        return num_features
+
+net = Net()
+print(net)
+</code></pre></div>
+<p>打印网络结构：</p>
+<div class="highlight"><pre><span></span><code>Net(
+  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=400, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre></div>
+<p>这里必须实现 <code>forward</code> 函数，而 <code>backward</code> 函数在采用 <code>autograd</code> 时就自动定义好了，在 <code>forward</code> 方法可以采用任何的张量操作。</p>
+<p><code>net.parameters()</code> 可以返回网络的训练参数，使用例子如下：</p>
+<div class="highlight"><pre><span></span><code>params = list(net.parameters())
+print(&#39;参数数量: &#39;, len(params))
+# conv1.weight
+print(&#39;第一个参数大小: &#39;, params[0].size())
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>参数数量:  10
+第一个参数大小:  torch.Size([6, 1, 5, 5])
+</code></pre></div>
+<p>然后简单测试下这个网络，随机生成一个 32*32 的输入：</p>
+<div class="highlight"><pre><span></span><code># 随机定义一个变量输入网络
+input = torch.randn(1, 1, 32, 32)
+out = net(input)
+print(out)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>tensor([[ 0.1005,  0.0263,  0.0013, -0.1157, -0.1197, -0.0141,  0.1425, -0.0521,
+          0.0689,  0.0220]], grad_fn=&lt;ThAddmmBackward&gt;)
+</code></pre></div>
+<p>接着反向传播需要先清空梯度缓存，并反向传播随机梯度：</p>
+<div class="highlight"><pre><span></span><code># 清空所有参数的梯度缓存，然后计算随机梯度进行反向传播
+net.zero_grad()
+out.backward(torch.randn(1, 10))
+</code></pre></div>
+<p><strong>注意</strong>：</p>
+<blockquote>
+<p><code>torch.nn</code> 只支持<strong>小批量(mini-batches)</strong>数据，也就是输入不能是单个样本，比如对于 <code>nn.Conv2d</code> 接收的输入是一个 4 维张量--<code>nSamples * nChannels * Height * Width</code> 。<br />
+所以，如果你输入的是单个样本，<strong>需要采用</strong> <code>**input.unsqueeze(0)**</code> <strong>来扩充一个假的 batch 维度，即从 3 维变为 4 维</strong>。</p>
+</blockquote>
+<h3 id="32"><strong>3.2 损失函数</strong><a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>损失函数的输入是 <code>(output, target)</code> ，即网络输出和真实标签对的数据，然后返回一个数值表示网络输出和真实标签的差距。</p>
+<p>PyTorch 中其实已经定义了不少的<a href="https://link.zhihu.com/?target=https%3A//pytorch.org/docs/nn.html%23loss-functions">损失函数</a>，这里仅采用简单的均方误差：<code>nn.MSELoss</code> ，例子如下：</p>
+<div class="highlight"><pre><span></span><code>output = net(input)
+# 定义伪标签
+target = torch.randn(10)
+# 调整大小，使得和 output 一样的 size
+target = target.view(1, -1)
+criterion = nn.MSELoss()
+
+loss = criterion(output, target)
+print(loss)
+</code></pre></div>
+<p>输出如下：</p>
+<div class="highlight"><pre><span></span><code>tensor(0.6524, grad_fn=&lt;MseLossBackward&gt;)
+</code></pre></div>
+<p>这里，整个网络的数据输入到输出经历的计算图如下所示，其实也就是数据从输入层到输出层，计算 <code>loss</code> 的过程。</p>
+<div class="highlight"><pre><span></span><code>input -&gt; conv2d -&gt; relu -&gt; maxpool2d -&gt; conv2d -&gt; relu -&gt; maxpool2d
+      -&gt; view -&gt; linear -&gt; relu -&gt; linear -&gt; relu -&gt; linear
+      -&gt; MSELoss
+      -&gt; loss
+</code></pre></div>
+<p>如果调用 <code>loss.backward()</code> ，那么整个图都是可微分的，也就是说包括 <code>loss</code> ，图中的所有张量变量，只要其属性 <code>requires_grad=True</code> ，那么其梯度 <code>.grad</code>张量都会随着梯度一直累计。</p>
+<p>用代码来说明：</p>
+<div class="highlight"><pre><span></span><code># MSELoss
+print(loss.grad_fn)
+# Linear layer
+print(loss.grad_fn.next_functions[0][0])
+# Relu
+print(loss.grad_fn.next_functions[0][0].next_functions[0][0])
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>&lt;MseLossBackward object at 0x0000019C0C349908&gt;
+
+&lt;ThAddmmBackward object at 0x0000019C0C365A58&gt;
+
+&lt;ExpandBackward object at 0x0000019C0C3659E8&gt;
+</code></pre></div>
+<h3 id="33"><strong>3.3 反向传播</strong><a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>反向传播的实现只需要调用 <code>loss.backward()</code> 即可，当然首先需要清空当前梯度缓存，即<code>.zero_grad()</code> 方法，否则之前的梯度会累加到当前的梯度，这样会影响权值参数的更新。</p>
+<p>下面是一个简单的例子，以 <code>conv1</code> 层的偏置参数 <code>bias</code> 在反向传播前后的结果为例：</p>
+<div class="highlight"><pre><span></span><code># 清空所有参数的梯度缓存
+net.zero_grad()
+print(&#39;conv1.bias.grad before backward&#39;)
+print(net.conv1.bias.grad)
+
+loss.backward()
+
+print(&#39;conv1.bias.grad after backward&#39;)
+print(net.conv1.bias.grad)
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>conv1.bias.grad before backward
+tensor([0., 0., 0., 0., 0., 0.])
+
+conv1.bias.grad after backward
+tensor([ 0.0069,  0.0021,  0.0090, -0.0060, -0.0008, -0.0073])
+</code></pre></div>
+<p>了解更多有关 <code>torch.nn</code> 库，可以查看官方文档：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/nn.html">https://pytorch.org/docs/stable/nn.html</a></p>
+<h3 id="34"><strong>3.4 更新权重</strong><a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<p>采用随机梯度下降(Stochastic Gradient Descent, SGD)方法的最简单的更新权重规则如下：</p>
+<p><code>weight = weight - learning_rate * gradient</code></p>
+<p>按照这个规则，代码实现如下所示：</p>
+<div class="highlight"><pre><span></span><code># 简单实现权重的更新例子
+learning_rate = 0.01
+for f in net.parameters():
+    f.data.sub_(f.grad.data * learning_rate)
+</code></pre></div>
+<p>但是这只是最简单的规则，深度学习有很多的优化算法，不仅仅是 <code>SGD</code>，还有 <code>Nesterov-SGD, Adam, RMSProp</code> 等等，为了采用这些不同的方法，这里采用 <code>torch.optim</code> 库，使用例子如下所示：</p>
+<div class="highlight"><pre><span></span><code>import torch.optim as optim
+# 创建优化器
+optimizer = optim.SGD(net.parameters(), lr=0.01)
+
+# 在训练过程中执行下列操作
+optimizer.zero_grad() # 清空梯度缓存
+output = net(input)
+loss = criterion(output, target)
+loss.backward()
+# 更新权重
+optimizer.step()
+</code></pre></div>
+<p><strong>注意</strong>，同样需要调用 <code>optimizer.zero_grad()</code> 方法清空梯度缓存。</p>
+<p>本小节教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html">https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html</a></p>
+<p>本小节的代码：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/neural_network.ipynb">https://github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/neural_network.ipynb</a></p>
+<h3 id="4"><strong>4. 训练分类器</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>上一节介绍了如何构建神经网络、计算 <code>loss</code> 和更新网络的权值参数，接下来需要做的就是实现一个图片分类器。</p>
+<h3 id="41"><strong>4.1 训练数据</strong><a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>在训练分类器前，当然需要考虑数据的问题。通常在处理如图片、文本、语音或者视频数据的时候，一般都采用标准的 Python 库将其加载并转成 Numpy 数组，然后再转回为 PyTorch 的张量。</p>
+<ul>
+<li>对于图像，可以采用 <code>Pillow, OpenCV</code> 库；</li>
+<li>对于语音，有 <code>scipy</code> 和 <code>librosa</code>;</li>
+<li>对于文本，可以选择原生 Python 或者 Cython 进行加载数据，或者使用 <code>NLTK</code> 和 <code>SpaCy</code> 。</li>
+</ul>
+<p>PyTorch 对于计算机视觉，特别创建了一个 <code>torchvision</code> 的库，它包含一个数据加载器(data loader)，可以加载比较常见的数据集，比如 <code>Imagenet, CIFAR10, MNIST</code> 等等，然后还有一个用于图像的数据转换器(data transformers)，调用的库是 <code>torchvision.datasets</code> 和 <code>torch.utils.data.DataLoader</code> 。</p>
+<p>在本教程中，将采用 <code>CIFAR10</code> 数据集，它包含 10 个类别，分别是飞机、汽车、鸟、猫、鹿、狗、青蛙、马、船和卡车。数据集中的图片都是 <code>3x32x32</code>。一些例子如下所示：</p>
+<p><img alt="" src="https://pic2.zhimg.com/v2-2dcc41f9079d1abf5883a113c0d1ca31_b.jpg" /></p>
+<h3 id="42"><strong>4.2 训练图片分类器</strong><a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>训练流程如下：</p>
+<ol>
+<li>通过调用 <code>torchvision</code> 加载和归一化 <code>CIFAR10</code> 训练集和测试集；</li>
+<li>构建一个卷积神经网络；</li>
+<li>定义一个损失函数；</li>
+<li>在训练集上训练网络；</li>
+<li>在测试集上测试网络性能。</li>
+</ol>
+<h3 id="421-cifar10"><strong>4.2.1 加载和归一化 CIFAR10</strong><a class="headerlink" href="#421-cifar10" title="Permanent link">&para;</a></h3>
+<p>首先导入必须的包：</p>
+<div class="highlight"><pre><span></span><code>import torch
+import torchvision
+import torchvision.transforms as transforms
+</code></pre></div>
+<p><code>torchvision</code> 的数据集输出的图片都是 <code>PILImage</code> ，即取值范围是 <code>[0, 1]</code> ，这里需要做一个转换，变成取值范围是 <code>[-1, 1]</code> , 代码如下所示：</p>
+<div class="highlight"><pre><span></span><code># 将图片数据从 [0,1] 归一化为 [-1, 1] 的取值范围
+transform = transforms.Compose(
+    [transforms.ToTensor(),
+     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+trainset = torchvision.datasets.CIFAR10(root=&#39;./data&#39;, train=True,
+                                        download=True, transform=transform)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4,
+                                          shuffle=True, num_workers=2)
+
+testset = torchvision.datasets.CIFAR10(root=&#39;./data&#39;, train=False,
+                                       download=True, transform=transform)
+testloader = torch.utils.data.DataLoader(testset, batch_size=4,
+                                         shuffle=False, num_workers=2)
+
+classes = (&#39;plane&#39;, &#39;car&#39;, &#39;bird&#39;, &#39;cat&#39;,
+           &#39;deer&#39;, &#39;dog&#39;, &#39;frog&#39;, &#39;horse&#39;, &#39;ship&#39;, &#39;truck&#39;)
+</code></pre></div>
+<p>这里下载好数据后，可以可视化部分训练图片，代码如下：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+# 展示图片的函数
+def imshow(img):
+    img = img / 2 + 0.5     # 非归一化
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
+
+
+# 随机获取训练集图片
+dataiter = iter(trainloader)
+images, labels = dataiter.next()
+
+# 展示图片
+imshow(torchvision.utils.make_grid(images))
+# 打印图片类别标签
+print(&#39; &#39;.join(&#39;%5s&#39; % classes[labels[j]] for j in range(4)))
+</code></pre></div>
+<p>展示图片如下所示：</p>
+<p><img alt="" src="https://pic2.zhimg.com/v2-736499796b713d873d1f9ae72fbc66f5_b.jpg" /></p>
+<p>其类别标签为：</p>
+<h3 id="422"><strong>4.2.2 构建一个卷积神经网络</strong><a class="headerlink" href="#422" title="Permanent link">&para;</a></h3>
+<p>这部分内容其实直接采用上一节定义的网络即可，除了修改 <code>conv1</code> 的输入通道，从 1 变为 3，因为这次接收的是 3 通道的彩色图片。</p>
+<div class="highlight"><pre><span></span><code>import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+
+net = Net()
+</code></pre></div>
+<h3 id="423"><strong>4.2.3 定义损失函数和优化器</strong><a class="headerlink" href="#423" title="Permanent link">&para;</a></h3>
+<p>这里采用类别交叉熵函数和带有动量的 SGD 优化方法：</p>
+<div class="highlight"><pre><span></span><code>import torch.optim as optim
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+</code></pre></div>
+<h3 id="424"><strong>4.2.4 训练网络</strong><a class="headerlink" href="#424" title="Permanent link">&para;</a></h3>
+<p>第四步自然就是开始训练网络，指定需要迭代的 epoch，然后输入数据，指定次数打印当前网络的信息，比如 <code>loss</code> 或者准确率等性能评价标准。</p>
+<div class="highlight"><pre><span></span><code>import time
+start = time.time()
+for epoch in range(2):
+
+    running_loss = 0.0
+    for i, data in enumerate(trainloader, 0):
+        # 获取输入数据
+        inputs, labels = data
+        # 清空梯度缓存
+        optimizer.zero_grad()
+
+        outputs = net(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        # 打印统计信息
+        running_loss += loss.item()
+        if i % 2000 == 1999:
+            # 每 2000 次迭代打印一次信息
+            print(&#39;[%d, %5d] loss: %.3f&#39; % (epoch + 1, i+1, running_loss / 2000))
+            running_loss = 0.0
+print(&#39;Finished Training! Total cost time: &#39;, time.time()-start)
+</code></pre></div>
+<p>这里定义训练总共 2 个 epoch，训练信息如下，大概耗时为 77s。</p>
+<div class="highlight"><pre><span></span><code>[1,  2000] loss: 2.226
+[1,  4000] loss: 1.897
+[1,  6000] loss: 1.725
+[1,  8000] loss: 1.617
+[1, 10000] loss: 1.524
+[1, 12000] loss: 1.489
+[2,  2000] loss: 1.407
+[2,  4000] loss: 1.376
+[2,  6000] loss: 1.354
+[2,  8000] loss: 1.347
+[2, 10000] loss: 1.324
+[2, 12000] loss: 1.311
+
+Finished Training! Total cost time:  77.24696755409241
+</code></pre></div>
+<h3 id="425"><strong>4.2.5 测试模型性能</strong><a class="headerlink" href="#425" title="Permanent link">&para;</a></h3>
+<p>训练好一个网络模型后，就需要用测试集进行测试，检验网络模型的泛化能力。对于图像分类任务来说，一般就是用准确率作为评价标准。</p>
+<p>首先，我们先用一个 <code>batch</code> 的图片进行小小测试，这里 <code>batch=4</code> ，也就是 4 张图片，代码如下：</p>
+<div class="highlight"><pre><span></span><code>dataiter = iter(testloader)
+images, labels = dataiter.next()
+
+# 打印图片
+imshow(torchvision.utils.make_grid(images))
+print(&#39;GroundTruth: &#39;, &#39; &#39;.join(&#39;%5s&#39; % classes[labels[j]] for j in range(4)))
+</code></pre></div>
+<p>图片和标签分别如下所示：</p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-ddb522e45f298b8da5ab6d3a48ac470b_b.jpg" /></p>
+<div class="highlight"><pre><span></span><code>GroundTruth:    cat  ship  ship plane
+</code></pre></div>
+<p>然后用这四张图片输入网络，看看网络的预测结果：</p>
+<div class="highlight"><pre><span></span><code># 网络输出
+outputs = net(images)
+
+# 预测结果
+_, predicted = torch.max(outputs, 1)
+print(&#39;Predicted: &#39;, &#39; &#39;.join(&#39;%5s&#39; % classes[predicted[j]] for j in range(4)))
+</code></pre></div>
+<p>输出为：</p>
+<div class="highlight"><pre><span></span><code>Predicted:    cat  ship  ship  ship
+</code></pre></div>
+<p>前面三张图片都预测正确了，第四张图片错误预测飞机为船。</p>
+<p>接着，让我们看看在整个测试集上的准确率可以达到多少吧！</p>
+<div class="highlight"><pre><span></span><code>correct = 0
+total = 0
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print(&#39;Accuracy of the network on the 10000 test images: %d %%&#39; % (100 * correct / total))
+</code></pre></div>
+<p>输出结果如下</p>
+<div class="highlight"><pre><span></span><code>Accuracy of the network on the 10000 test images: 55 %
+</code></pre></div>
+<p>这里可能准确率并不一定一样，教程中的结果是 <code>51%</code> ，因为权重初始化问题，可能多少有些浮动，相比随机猜测 10 个类别的准确率(即 10%)，这个结果是不错的，当然实际上是非常不好，不过我们仅仅采用 5 层网络，而且仅仅作为教程的一个示例代码。</p>
+<p>然后，还可以再进一步，查看每个类别的分类准确率，跟上述代码有所不同的是，计算准确率部分是 <code>c = (predicted == labels).squeeze()</code>，这段代码其实会根据预测和真实标签是否相等，输出 1 或者 0，表示真或者假，因此在计算当前类别正确预测数量时候直接相加，预测正确自然就是加 1，错误就是加 0，也就是没有变化。</p>
+<div class="highlight"><pre><span></span><code>class_correct = list(0. for i in range(10))
+class_total = list(0. for i in range(10))
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs, 1)
+        c = (predicted == labels).squeeze()
+        for i in range(4):
+            label = labels[i]
+            class_correct[label] += c[i].item()
+            class_total[label] += 1
+
+
+for i in range(10):
+    print(&#39;Accuracy of %5s : %2d %%&#39; % (classes[i], 100 * class_correct[i] / class_total[i]))
+</code></pre></div>
+<p>输出结果，可以看到猫、鸟、鹿是错误率前三，即预测最不准确的三个类别，反倒是船和卡车最准确。</p>
+<div class="highlight"><pre><span></span><code>Accuracy of plane : 58 %
+Accuracy of   car : 59 %
+Accuracy of  bird : 40 %
+Accuracy of   cat : 33 %
+Accuracy of  deer : 39 %
+Accuracy of   dog : 60 %
+Accuracy of  frog : 54 %
+Accuracy of horse : 66 %
+Accuracy of  ship : 70 %
+Accuracy of truck : 72 %
+</code></pre></div>
+<h3 id="43-gpu"><strong>4.3 在 GPU 上训练</strong><a class="headerlink" href="#43-gpu" title="Permanent link">&para;</a></h3>
+<p>深度学习自然需要 GPU 来加快训练速度的。所以接下来介绍如果是在 GPU 上训练，应该如何实现。</p>
+<p>首先，需要检查是否有可用的 GPU 来训练，代码如下：</p>
+<div class="highlight"><pre><span></span><code>device = torch.device(&quot;cuda:0&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+print(device)
+</code></pre></div>
+<p>输出结果如下，这表明你的第一块 GPU 显卡或者唯一的 GPU 显卡是空闲可用状态，否则会打印 <code>cpu</code> 。</p>
+<p>既然有可用的 GPU ，接下来就是在 GPU 上进行训练了，其中需要修改的代码如下，分别是需要将网络参数和数据都转移到 GPU 上：</p>
+<div class="highlight"><pre><span></span><code>net.to(device)
+inputs, labels = inputs.to(device), labels.to(device)
+</code></pre></div>
+<p>修改后的训练部分代码：</p>
+<div class="highlight"><pre><span></span><code>import time
+# 在 GPU 上训练注意需要将网络和数据放到 GPU 上
+net.to(device)
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+start = time.time()
+for epoch in range(2):
+
+    running_loss = 0.0
+    for i, data in enumerate(trainloader, 0):
+        # 获取输入数据
+        inputs, labels = data
+        inputs, labels = inputs.to(device), labels.to(device)
+        # 清空梯度缓存
+        optimizer.zero_grad()
+
+        outputs = net(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        # 打印统计信息
+        running_loss += loss.item()
+        if i % 2000 == 1999:
+            # 每 2000 次迭代打印一次信息
+            print(&#39;[%d, %5d] loss: %.3f&#39; % (epoch + 1, i+1, running_loss / 2000))
+            running_loss = 0.0
+print(&#39;Finished Training! Total cost time: &#39;, time.time() - start)
+</code></pre></div>
+<p>注意，这里调用 <code>net.to(device)</code> 后，需要定义下优化器，即传入的是 CUDA 张量的网络参数。训练结果和之前的类似，而且其实因为这个网络非常小，转移到 GPU 上并不会有多大的速度提升，而且我的训练结果看来反而变慢了，也可能是因为我的笔记本的 GPU 显卡问题。</p>
+<p>如果需要进一步提升速度，可以考虑采用多 GPUs，也就是下一节的内容。</p>
+<p>本小节教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html</a></p>
+<p>本小节的代码：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/train_classifier_example.ipynb">https://github.com/ccc013/DeepLearning_Notes/blob/master/Pytorch/practise/train_classifier_example.ipynb</a></p>
+<h3 id="5"><strong>5. 数据并行</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>这部分教程将学习如何使用 <code>DataParallel</code> 来使用多个 GPUs 训练网络。</p>
+<p>首先，在 GPU 上训练模型的做法很简单，如下代码所示，定义一个 <code>device</code> 对象，然后用 <code>.to()</code> 方法将网络模型参数放到指定的 GPU 上。</p>
+<div class="highlight"><pre><span></span><code>device = torch.device(&quot;cuda:0&quot;)
+model.to(device)
+</code></pre></div>
+<p>接着就是将所有的张量变量放到 GPU 上：</p>
+<div class="highlight"><pre><span></span><code>mytensor = my_tensor.to(device)
+</code></pre></div>
+<p>注意，这里 <code>my_tensor.to(device)</code> 是返回一个 <code>my_tensor</code> 的新的拷贝对象，而不是直接修改 <code>my_tensor</code> 变量，因此你需要将其赋值给一个新的张量，然后使用这个张量。</p>
+<p>Pytorch 默认只会采用一个 GPU，因此需要使用多个 GPU，需要采用 <code>DataParallel</code> ，代码如下所示：</p>
+<div class="highlight"><pre><span></span><code>model = nn.DataParallel(model)
+</code></pre></div>
+<p>这代码也就是本节教程的关键，接下来会继续详细介绍。</p>
+<h3 id="51"><strong>5.1 导入和参数</strong><a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>首先导入必须的库以及定义一些参数：</p>
+<div class="highlight"><pre><span></span><code>import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+
+# Parameters and DataLoaders
+input_size = 5
+output_size = 2
+
+batch_size = 30
+data_size = 100
+
+device = torch.device(&quot;cuda:0&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+</code></pre></div>
+<p>这里主要定义网络输入大小和输出大小，<code>batch</code> 以及图片的大小，并定义了一个 <code>device</code> 对象。</p>
+<h3 id="52"><strong>5.2 构建一个假数据集</strong><a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>接着就是构建一个假的(随机)数据集。实现代码如下：</p>
+<div class="highlight"><pre><span></span><code>class RandomDataset(Dataset):
+
+    def __init__(self, size, length):
+        self.len = length
+        self.data = torch.randn(length, size)
+
+    def __getitem__(self, index):
+        return self.data[index]
+
+    def __len__(self):
+        return self.len
+
+rand_loader = DataLoader(dataset=RandomDataset(input_size, data_size),
+                         batch_size=batch_size, shuffle=True)
+</code></pre></div>
+<h3 id="53"><strong>5.3 简单的模型</strong><a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>接下来构建一个简单的网络模型，仅仅包含一层全连接层的神经网络，加入 <code>print()</code> 函数用于监控网络输入和输出 <code>tensors</code> 的大小：</p>
+<div class="highlight"><pre><span></span><code>class Model(nn.Module):
+    # Our model
+
+    def __init__(self, input_size, output_size):
+        super(Model, self).__init__()
+        self.fc = nn.Linear(input_size, output_size)
+
+    def forward(self, input):
+        output = self.fc(input)
+        print(&quot;\tIn Model: input size&quot;, input.size(),
+              &quot;output size&quot;, output.size())
+
+        return output
+</code></pre></div>
+<h3 id="54"><strong>5.4 创建模型和数据平行</strong><a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<p>这是本节的核心部分。首先需要定义一个模型实例，并且检查是否拥有多个 GPUs，如果是就可以将模型包裹在 <code>nn.DataParallel</code> ，并调用 <code>model.to(device)</code> 。代码如下：</p>
+<div class="highlight"><pre><span></span><code>model = Model(input_size, output_size)
+if torch.cuda.device_count() &gt; 1:
+  print(&quot;Let&#39;s use&quot;, torch.cuda.device_count(), &quot;GPUs!&quot;)
+  # dim = 0 [30, xxx] -&gt; [10, ...], [10, ...], [10, ...] on 3 GPUs
+  model = nn.DataParallel(model)
+
+model.to(device)
+</code></pre></div>
+<h3 id="55"><strong>5.5 运行模型</strong><a class="headerlink" href="#55" title="Permanent link">&para;</a></h3>
+<p>接着就可以运行模型，看看打印的信息：</p>
+<div class="highlight"><pre><span></span><code>for data in rand_loader:
+    input = data.to(device)
+    output = model(input)
+    print(&quot;Outside: input size&quot;, input.size(),
+          &quot;output_size&quot;, output.size())
+</code></pre></div>
+<p>输出如下：</p>
+<div class="highlight"><pre><span></span><code>In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+        In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+        In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+        In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+        In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+        In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+        In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+        In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
+</code></pre></div>
+<h3 id="56"><strong>5.6 运行结果</strong><a class="headerlink" href="#56" title="Permanent link">&para;</a></h3>
+<p>如果仅仅只有 1 个或者没有 GPU ，那么 <code>batch=30</code> 的时候，模型会得到输入输出的大小都是 30。但如果有多个 GPUs，那么结果如下：</p>
+<h3 id="2-gpus"><strong>2 GPUs</strong><a class="headerlink" href="#2-gpus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># on 2 GPUs
+Let&#39;s use 2 GPUs!
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+    In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
+</code></pre></div>
+<h3 id="3-gpus"><strong>3 GPUs</strong><a class="headerlink" href="#3-gpus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Let&#39;s use 3 GPUs!
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+    In Model: input size torch.Size([10, 5]) output size torch.Size([10, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
+</code></pre></div>
+<h3 id="8-gpus"><strong>8 GPUs</strong><a class="headerlink" href="#8-gpus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Let&#39;s use 8 GPUs!
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([4, 5]) output size torch.Size([4, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+    In Model: input size torch.Size([2, 5]) output size torch.Size([2, 2])
+Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
+</code></pre></div>
+<h3 id="57"><strong>5.7 总结</strong><a class="headerlink" href="#57" title="Permanent link">&para;</a></h3>
+<p><code>DataParallel</code> 会自动分割数据集并发送任务给多个 GPUs 上的多个模型。然后等待每个模型都完成各自的工作后，它又会收集并融合结果，然后返回。</p>
+<p>更详细的数据并行教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html">https://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html</a></p>
+<p>本小节教程：</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html">https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html</a></p>
+<hr />
+<h3 id="_1"><strong>小结</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>教程从最基础的张量开始介绍，然后介绍了非常重要的自动求梯度的 <code>autograd</code> ，接着介绍如何构建一个神经网络，如何训练图像分类器，最后简单介绍使用多 GPUs 加快训练速度的方法。</p>
+<p>快速入门教程就介绍完了，接下来你可以选择：</p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">训练一个神经网络来玩视频游戏</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/pytorch/examples/tree/master/imagenet">在 imagenet 上训练 ResNet</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/pytorch/examples/tree/master/dcgan">采用 GAN 训练一个人脸生成器</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/pytorch/examples/tree/master/word_language_model">采用循环 LSTM 网络训练一个词语级别的语言模型</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/pytorch/examples">更多的例子</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials">更多的教程</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//discuss.pytorch.org/">在 Forums 社区讨论 PyTorch</a></li>
+</ul>
+<hr />
+<p><strong>2020-5-23 更新</strong>：</p>
+<p>最后，看到评论区有人说文章标题的问题，其实文章标题是直接翻译官方教程的标题--<a href="https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html">DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ</a>，官方标题如果直译的话应该是一个 60 分钟的闪电战。</p>
+<p>当然真正要能入门肯定需要不止一个 60 分钟，特别是对于没有深度学习基础的，可能需要先补充一些机器学习或者深度学习基础内容，所以我也更新一下，推荐我之前写的关于机器学习和深度学习的入门资料的文章，主要是这几个方面的介绍：</p>
+<ul>
+<li><strong>编程语言</strong>：实现机器学习，主要是介绍 Python 方面的语言；</li>
+<li><strong>书籍</strong>：看书通常是入门的一种方法，比较适合自律性强的同学；</li>
+<li><strong>视频</strong>：入门的第二种方法就是看视频，虽然会比看书慢一些，但是胜在详细，对完全零基础者是非常友好的；</li>
+<li><strong>教程</strong>：主要是一些教程文章；</li>
+<li><strong>博客网站</strong>：常去的网站，包括一些大神博客；</li>
+<li><strong>Github 项目</strong>：Github 上的一些项目；</li>
+<li><strong>比赛</strong>：最好的学习方法还是通过项目实战来加深理解，机器学习还有很多公开的比赛；</li>
+<li><strong>论文</strong>：无论是学生还是工作，看论文都是为了紧跟大牛的步伐，了解研究领域最先进最好的算法。</li>
+</ul>
+<p>如果是想了解计算机视觉和进一步了解 PyTorch的教程，之前也有进行回答：</p>
+<p>如果你看完本文还有其他问，欢迎留言告诉我。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

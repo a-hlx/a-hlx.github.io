@@ -1,0 +1,2694 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/DeepLearning_LHY21_Notes-master/27_Domain%20Adaptation/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>27 Domain Adaptation - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#27-domain-adaptation" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              27 Domain Adaptation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#domain-shift" class="md-nav__link">
+    Domain Shift
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-adaptation" class="md-nav__link">
+    Domain Adaptation
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain Adaptation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea" class="md-nav__link">
+    Basic Idea
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-adversarial-training" class="md-nav__link">
+    Domain Adversarial Training
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain Adversarial Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation" class="md-nav__link">
+    Limitation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considering-decision-boundary" class="md-nav__link">
+    Considering Decision Boundary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<h1 id="27-domain-adaptation">27 Domain Adaptation<a class="headerlink" href="#27-domain-adaptation" title="Permanent link">&para;</a></h1>
+<p>到目前為止,我们已经训练了很多,Machine Learning 的 Model,所以对大家来说,训练一个 Classifier 完全不是一个问题</p>
+<p>所以假设要你训练一个数字的 Classifier,你只要有给你训练资料,你训练好一个模型,然后 Apply 在 用在测试资料上就结束了,那像数字辨识这麼简单的问题,你在 Benchmark Corpus,在MNIST Benchmark Corpus 上,随便做一做,可能都会做到 99.5% 的正确率</p>
+<p>但是假设今天<strong>测试资料,跟训练资料的分布不一样</strong>,怎麼办呢</p>
+<p>我们举一个简单的例子,假设<strong>训练</strong>的时候,你的<strong>数字是黑白</strong>的,但<strong>测试</strong>的时候,你的<strong>数字是彩色</strong>的,会发生什麼样的事情呢</p>
+<p>你可能会觉得说,一边是黑白的 一边是,虽然一边是黑白的 一边是彩色的,但是对 Model 来说,数字的形状是一样的,它能够在黑白的图片上认出数字来,在彩色的图片上,会不会应该也可以认出数字来呢</p>
+<p>但实际上不是,如果你今天在这样子黑白的数字上面,训练一个模型,直接用到彩色的数字上,你得到的正确率会非常地低,会低到只有 57%,不能算是一个及格的分数</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210910220128165.png" alt="image-20210910220128165" style="zoom: 67%;" /></p>
+<p>所以我们今天知道说,一旦训练资料跟测试资料,它中间有一些差异,它们中间的分布是不一样的,你在训练资料上训练出来的模型,在测试资料上面可能就会坏掉,那这种问题 叫做 ==Domain Shift==,也就是当你的训练资料跟测试资料,它的分布有些不同的时候,这种状况叫做 Domain Shift</p>
+<p>在多数的这种作业裡面,或者是 Benchmark Corpus 裡面,我们都假设无视 Domain Shift 这个问题,我们的训练资料跟测试资料,往往有著一样的分布,那这样都会给大家一个错误的印象就是,哇 这个今天的什麼人工智慧,真的是很厉害,都超越人类啦,在很多任务上面都有极高的正确率,但是实际上用在真实的应用上,当你的训练资料跟测试资料的中间,有一点差异的时候,机器能不能够做得好,就是一个未知数了</p>
+<p>那我们今天就是要来讲说,假设训练资料跟测试资料,有一点差异的时候,有没有什麼方法可以让我们,能够做得比什麼都不做结果还要好</p>
+<p>那今天就是要讲 ==Domain Adaptation== 的技术,那 Domain Adaptation 的技术,也可以看做是 ==Transfer Learning== 的一种</p>
+<p>Transfer Learning 就是,你在 A 任务上学到的技能,可以被用在 B 任务上,那对於 Domain Adaptation 来说,你的训练资料是一个 Domain,你的测试资料是另外一个 Domain,你在训练资料上面,某一个 Domain 上学到的资讯,你要把它用到另外一个 Domain,用到测试资料上面,所以你是把一个 Domain 学到的知识,用在另外一个 Domain 上,所以它可以看做是,Transfer Learning 的其中一个环节,那在过去上课的录影裡面,有完整的讲了 Transfer Learning 相关的技术,那因為今天时间有限,我们就只 Focus 在,Domain Adaptation 的部分就好,如果你有兴趣的话,你可以再看一下过去上课的录影</p>
+<h2 id="domain-shift">Domain Shift<a class="headerlink" href="#domain-shift" title="Permanent link">&para;</a></h2>
+<p>Domain Shift,其实有很<strong>多种不同的类型</strong>,我们刚才看到的,只是 Domain Shift 的其中一种可能,是模型输入的资料的分布有变化的状况,那输入分布有变化是一种可能性</p>
+<p>其实还有另外一种可能性是,<strong>输出的分布也可能有变化</strong>,举例来说 在你的训练资料上面,可能每一个数字它出现的机率都是一样的,但是在测试资料上面,可能每一个输出的机率是不一样的,有可能某一个数字它输出的机率特别大,有没有可能有这种事情发生呢,这也是有可能的</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210910220642626.png" alt="image-20210910220642626" style="zoom:67%;" /></p>
+<p>那这也是一种 Domain Shift,还有一种更罕 比较罕见,但也不是完全不可能发生的状况是,<strong>输入跟输出虽然分布可能是一样的,但它们之间的关係变了</strong></p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210910220714133.png" alt="image-20210910220714133" style="zoom:67%;" /></p>
+<p>也许在你的训练资料裡面,这种东西叫做 0,但是在你的测试资料裡面,这种东西叫做 1,这也不是不可能的,也是有可能发生这种状况嘛,也是有可能发生说,输入跟输出它们的关係不一样,在训练跟测试资料不一样的状况,那这又是另外一种 Domain Shift</p>
+<p>那我们今天呢 只专注在,输入资料不同的 Domain Shift 的上面,好 那在等一下的课程裡面,这个<strong>测试的资料</strong>,我们说它来自 ==Target Domain== <strong>训练的资料</strong>,我们说它来自 ==Source Domain==,所以 <strong>Source Domain 是我们的训练资料,Target Domain 是我们的测试资料</strong></p>
+<h2 id="domain-adaptation">Domain Adaptation<a class="headerlink" href="#domain-adaptation" title="Permanent link">&para;</a></h2>
+<p>在 Domain Adaptation 裡面,我们的这个情境是这个样子的,我们有一堆训练资料,那这边我们就直接拿手写数字辨识,来当作我们的例子啦</p>
+<p>我们有一堆训练资料,那这些资料来自 Source Domain,而且这些训练资料是有标註的,我们知道每张图片对应的数字是什麼,但是我们希望再用这些资料,训练出一个模型,这个模型可以用在不一样的 Domain 上</p>
+<p><img alt="image-20210910222206884" src="C:\Users\10131\AppData\Roaming\Typora\typora-user-images\image-20210910222206884.png" /></p>
+<p>那要<strong>把这个模型用在不一样的 Domain 上</strong>,在训练的时候,我们就必须要对另外一个 Domain,也就是现在测试资料所在的 Target Domain,有一些了解,那随著了解的程度不同,我们就有不同的 Domain Adaptation 的方法</p>
+<ul>
+<li>
+<p>那了解最多的是,假设我们在 Target Domain 上,我们有<strong>一点资料</strong>,而且这些资料居然还有 Label,那这是一种情况</p>
+</li>
+<li>
+<p>但还有另外一种更好的状况是,也许你根本在 Target Domain 上,就有<strong>一大堆的资料</strong>,那些资料也都有 Label,那你其实就不需要做 Domain Adaptation,你直接拿 Target Domain 的资料来训练就好了</p>
+</li>
+</ul>
+<p>所以如果你在 Target Domain 上,已经有一大堆的资料,而且它们还有标註,那你不需要做 Domain Adaptation</p>
+<p>那要做 Domain Adaptation 的情境可能是,你有 <strong>Target Domain 的资料 也有标註,但是量非常地少</strong>,那在这种状况下怎麼办呢</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210910222347878.png" alt="image-20210910222347878" style="zoom:67%;" /></p>
+<p>那这种状况还算是在 Domain Adaptation 裡面,比较容易处理的状况,如果你今天遇到的是,有标註资料 只是资料量很少的情况下,你可以用这些有标註的资料,来<strong>微调你在 Source Domain 上训练出来的模型</strong>,那这边所谓的微调,就跟你在做 BERT 的时候的行為很像,就是你已经有一个在 Source Domain 上,训练好的 Model,那你拿 Target Domain 的 Data,只稍微跑个两 三个（Epoch）就足够了</p>
+<p>那在这一种情境下,你需要注意的问题就是,因為你的 Target Domain 的资料量非常少,所以你要小心 不要 Overfit,也就是说 你<strong>不要在 Target Domain 上的资料上,跑太多的  Iteration,</strong>那如果你跑太多的 Iteration,可能会 Overfit 到 Target 的这些少量的资料上,然后呢 你在你真正的 Testing Set 上就做不好,这是有可能的</p>
+<p>那為了避免 Overfitting 的情况,过去就有很多的 Solution,比如说 把 Learning Rate 调小一点,举例来说 你要让（fine tune）前,跟（fine tune）后的模型的参数,不要差很多,或者是让（fine tune）前,跟（fine tune）后的模型,它的输入跟输出的关係,不要差很多 等等,那有很多不同的方法,那这边呢 我们就不细讲</p>
+<p>那今天主要想要跟大家分享的情境,也是我们作业要处理的情境是,我们在 <strong>Targe Domain 上有大量的资料</strong>,但是这些资料是<strong>没有标註</strong>的,你的 Targe Domain 是有顏色的数字,你也蒐集到了一大堆有顏色的数字的图片,但是没有人标註说,每一张图片裡面的数字是什麼</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911162419412.png" alt="image-20210911162419412" style="zoom:67%;" /></p>
+<p>那我们在作业裡面要处理的就是,遇到这种状况的时候,到底应该要怎麼解呢,好 到底应该要怎麼解呢</p>
+<p>那像这种情境,其实是蛮符合你在真实的系统上,有可能会发生的情境,举例来说 你在实验室裡面训练了一个模型,你想要把它用在真实的场域裡面,你就把你的模型上线,那确实有一些人来用,但是你发现你得到的 Feedback 很差,大家都嫌弃你的系统正确率很低,那怎麼办,但是你这个时候,你也许就可以用 Domain Adaptation 的技术,那因為你的系统已经上线,也真的有人使用,所以你可以蒐集到一大堆的资料,只是这些资料它们是没有标註的</p>
+<p>那现在要问的问题是,<strong>怎麼用这些没有标註的资料,来帮助我们在 Source Domain 上,训练出一个模型</strong>,它可以用在 Targe Domain 上呢</p>
+<h3 id="basic-idea">Basic Idea<a class="headerlink" href="#basic-idea" title="Permanent link">&para;</a></h3>
+<p>那这边最 Basic 的想法是这个样子的,这边基本的概念是这个样子,我们想要<strong>找一个 Feature Extractor</strong></p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911162648850.png" alt="image-20210911162648850" style="zoom:67%;" /></p>
+<p>这个 Feature Extractor,它其实也是一个 Network,这个 Network 呢 吃一张图片作為输入,它吐出一个 vector,吐出一个 Feature,虽然 Source Domain 跟 Target Domain,它们的 Image 表面上看起来不一样,但是 Feature Extractor,会<strong>把它们不一样的部分拿掉,只抽取出它们共同的部分</strong></p>
+<p>所以虽然从图片上看起来,这两组图片一个有顏色 一个没有顏色,它本来就很不一样,但是我们期待说,这个 Feature Extractor 可以学到,就无视顏色这件事情,把顏色的资讯滤掉,那今天不管是来自 Source Domain 的图片,还是来自 Target Domain 的图片,只要通过这个 Feature Extractor 以后,它得到的 Feature 看起来是没有差异的,它们看起来有一样的分布,那这样你就可以用这些 Feature,训练一个模型,在 Source Domain 上训练一个模型,直接用在 Target Domain 上,那接下来的问题就是,怎麼找出这样一个 Feature Extractor</p>
+<h3 id="domain-adversarial-training">Domain Adversarial Training<a class="headerlink" href="#domain-adversarial-training" title="Permanent link">&para;</a></h3>
+<p>怎麼找出这样的一个 Feature Extractor 呢,那其实我们可以<strong>把一个一般的 Classifier,就分成 Feature Extractor,跟 Label Predictor 两个部分</strong></p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911163352331.png" alt="image-20210911163352331" style="zoom:67%;" /></p>
+<p>我们知道一个 Image 的 Classifier,就是输入一张 Image Output,就是分类的结果,那假设这个 Image 的 Classifier 有 10 层,那我们就说,前 5 层算是 Feature Extractor,后 5 层算是 Label Predictor,因為前 5 层,你一个 Image 通过前 5 层,它输出就是一个 vector 嘛,那如果你上 CNN 的话,它输出其实是 Feature Map 啦,但 Feature Map 拉直,也可以看做是一个 vector 嘛,那这个 vector,再丢到 Label Predictor 的后面 5 层,它会產生 Class,那所以我们可以把前 5 层,看做是 Feature Extractor</p>
+<p>那你可能会问说,那為什麼是前 5 层呢,為什麼不是前 4 层 前 3 层 前 2 层 前 1 层呢,可以是前 4 前 3 前 2 前 1,这个是你自己决定的,<strong>一个 Classifier 裡面,哪些部分算 Feature Extractor,哪些部分算是 Label Predictor,这个是你自己决定的,那这个也算是一个 Hyper Paramete</strong>r 啦,就跟 Network 架构要调一下一样,要调一样</p>
+<p>那如果你今天呢,用 Domain Adaptation 的方法,那这边等一下要用的方法叫,==Domain Adversarial Training==</p>
+<p>用 Domain Adversarial Training,你要把 Classifier 裡面的哪个部分 哪几层,当做 Feature Extractor,这个也要问你自己,那这个也是你自己要决定的</p>
+<p>那我们现在要怎麼来训练这个,Feature Extractor 跟 Label Predictor 呢,今天对於 Source Domain 上的资料,Source Domain 上的资料是有标註的,我们就期待把 Source Domain 的资料丢进去,那就去跟训练一个一般的分类器一样,它通过 Feature Extractor,再通过 Label Predictor,可以產生正确的答案</p>
+<p>但不一样的地方是,Target Domain 的这些资料,我们有一堆 Target Domain 的资料,但这些资料是没有任何的标註的,这些资料是没有任何的标註的,所以我们<strong>不能说把这些资料丢进去以后,期待 Label Predictor 会 Output 什麼数字</strong>,因為我们根本不知道 Label Predictor,要 Output 什麼数字才是对的</p>
+<p>但是这些资料可以怎麼被使用呢,这些资料的使用方式就是,我们把这些图片丢到这个 Image,丢进这个 Image Classifier,然后我们把,Feature Extractor 的 Output 拿出来看,拿出来看以后,我们希望 <strong>Source Domain 的图片,丢进去的 Feature,跟 Target Domain 的图片丢进去的 Feature,它们看起来要分不出差异</strong></p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911163602009.png" alt="image-20210911163602009" style="zoom:67%;" /></p>
+<p>就是这个 Source Domain 的图片,我们用它的 Feature,我们用蓝色的点来表示,Target Domain 的图片,它的 Feature 我们用红色的点来表示,我们要这些蓝色的点跟这些红色的点,分不出差异,那怎麼让蓝色的点跟红色的点,分不出差异呢,那这个就要藉由,Domain Adversarial Training 的技术</p>
+<p>那我们现在要做的事情就是,训练一个 Domain 的 Classifier,这个 Domain 的 Classifier,它就是一个<strong>二元的分类器</strong>,它吃这个 vector 当作输入,它要做的事情就是判断说,<strong>这个 vector 是来自於 Source Domain,还是来自於 Target Domain</strong></p>
+<p>而 Feature Extractor 它学习的目标,就是要去想办法骗过这个 Domain Classifier,那听到骗过这件事情</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911164939478.png" alt="image-20210911164939478" style="zoom: 50%;" /></p>
+<p>是不是让你脑中就浮现了,Gan 这个东西,是不是就浮现了,Generative Adversaria Network 这个东西呢,没错 Domain Adversarial Training,就非常像是 Gan,你可以把 Feature Extractor,想成是 Generator,把 Domain Classifier,想成是 Discriminator,那其实 Domain Adversarial Training,最早的 Paper,我记得是发表在 2015 年的 ICML 上面,比那个 Gan 还要稍微晚一点点啦,不过它们几乎可以说是同时期的作品,在 Domain Adversarial Training 那篇 Paper 裡面,是有引用到 Gan 那篇 Paper,但那时候 Gan 那篇 Paper,还没有上<a href="https://neurips.cc/">NeurIPS</a>,所以它只说,欸 有一篇 有另外一篇 Paper,它提了一个叫 Gan 的想法,然后它是 Technical report 放在网路上的,还跟我的想法有点像,所以它们算是一个同时期的作品</p>
+<p>但是讲到这边,这个 Domain Adversarial Training,跟 Gan 还是有一点不一样,那在这个游戏裡面,对 <strong>Generator 好像优势太大了</strong>,那对 Generator 来说,它要骗过 Discriminator,完全不需要花什麼力气,有一个非常无脑的做法,就是你的 Feature Extractor,也就是你的 <strong>Generator,不管看到什麼输入,永远都输出 0 就好了</strong></p>
+<p>看到什麼输入我都输出一个 Zero vector,那对 Domain Classifier 来说,它完全不知道 Input 的 Image 是什麼,它永远都看到 Zero vector,它就完全无法分辨这个 vector,来自於哪一个 Domain,但是这显然不是我们要的状况,如果 Feature Extractor 只会输出 Zero vector,那这样子等於根本就什麼事都没有做是一样的</p>
+<p>那这件事情会发生吗,其实<strong>这件事情是不会发生的</strong>,為什麼,因為 <strong>Label Predictor 也需要这个 Feature</strong></p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911165220437.png" alt="image-20210911165220437" style="zoom:50%;" /></p>
+<p>Label Predictor 它也需要这个 Feature,让它可以去判断,输入的图片属於哪一个类别,所以假设 Generator 它就直接放一个大绝说,今天不管输入什麼样的 Image,我输出都是 Zero vector,那对於 Label Predictor 来说,它就没有办法判断是哪一张图片,那在这个情况下,因為 Feature Extractor,它还是需要產生这个 vector,让 Label Predictor 可以產生正确的图片,所以 Feature Extractor 它就不能放大绝,它就不能看到什麼东西,永远都输出 Zero vector</p>
+<p>那这边呢,我们用符号再稍微把我们刚才讲过的事情,再重新说 说得更清楚一点</p>
+<ul>
+<li>假设 Label Predictor 的参数,我们就叫它 <span class="arithmatex">\(θ_p\)</span></li>
+<li>Domain Classifier 的参数 叫做 <span class="arithmatex">\(θ_d\)</span></li>
+<li>然后 Feature Extractor 的参数 叫做 <span class="arithmatex">\(θ_f\)</span></li>
+</ul>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911172941695.png" alt="image-20210911172941695" style="zoom:50%;" /></p>
+<p>然后呢 这个 Source Domain 上的这些 Image,它的 Classification 的这个 Cross Entropy,就 Source Domain 这些 Image,它是有 Label 的,所以你可以算它们的 Cross Entropy,你根据它们的 Cross Entropy,订出一个 Loss</p>
+<p>这边是有一个 L,L 是这个 Domain 的这个,这个 Source Domain 上的那些 Image,它有 Label,你可以算出 Cross Entropy,然后对於这个 Domain 的 Classifier 而言,它要去想办法分辨,Source 跟 Target Domain 的差距,它要去做一个,Binary 的 Classification 的问题,它要去做一个二元分类的问题,这个分类的问题有一个 Loss 叫做<span class="arithmatex">\(L_d\)</span></p>
+<p>那我们现在要去找一个  <span class="arithmatex">\(θ_p\)</span>,它可以让这个 L 越小越好</p>
+<p>我们要去找一个 <span class="arithmatex">\(θ_d\)</span>,它可以让这个<span class="arithmatex">\(L_d\)</span>  越小越好</p>
+<p>你说 Label Predictor 它要做的事情,就是让这个 Source Domain 的 Image,分类越正确越好,Domain Classifier 要做的事情,就是让 Domain 的分类越正确越好</p>
+<p>而 Feature Extractor 呢,Feature Extractor 它要做的事情是,它站在 Label Predictor 这边,然后呢 它要去捅 Domain Classifier 一刀,它要去做 Domain Classifier 相反的事情,所以这个 Feature Extractor,它的 Loss 是 Label Predictor 的 Loss L,去减掉 Domain Classifier 的 Loss,叫做 <span class="arithmatex">\(L_d\)</span></p>
+<p>所以 Feature Extractor 它的 Loss,就是大 L 减掉<span class="arithmatex">\(L_d\)</span>,你要去找一个参数 找一组参数 <span class="arithmatex">\(θ_f\)</span>,它可以让大 L 减 <span class="arithmatex">\(L_d\)</span>的值越小越好</p>
+<p>这个是最原始的,Domain Adversarial Training 的做法,但这真的是最好的做法吗,你可以想想看喔,那这个详情我们就不细讲,这个留给大家自己思考 自己发觉,你想想看喔,假设 Domain Classifier 它的工作,是要把 Source Domain 跟 Target Domain 分开,是要看到这种图片,它知道它的 Feature 来自 Source Domain,看到这种图片,它知道它的 Feature 来自 Target Domain,它要把这两组 Feature 分开</p>
+<p>而 <strong>Feature Extractor 如果它的 Loss是 Domain Classifier 直接加一个负号</strong>,那意味著什麼,意味著说 它要做的事情,就是跟 Domain Classifier 相反,本来 Domain Classifier 看到这张图片的 Feature,它说是 Source,那现在 Feature Extractor,是要让 Domain Classifier 看到这个图片以后,它说是 Target,看到这个图片 反过来要说是 Source,如果你这麼做,不是也把两组 Feature 分开来了吗</p>
+<p>我们说我们现在要做的事情,是要让 Domain 跟,这个 Source 跟 Target Domain 没有差别,但是你今天不管是用 <span class="arithmatex">\(L_d\)</span>,还是负的 <span class="arithmatex">\(L_d\)</span>,其实都是要,把 Source 跟 Target Domain 分开呀,你去让 <span class="arithmatex">\(L_d\)</span> 的值,本来 Domain Classifier,是要让 <span class="arithmatex">\(L_d\)</span> 的值越小越好,你现在是负的<span class="arithmatex">\(L_d\)</span>,Feature Extractor 要让 <span class="arithmatex">\(L_d\)</span> 的值越大越好,其实也是把 Source 跟 Target Domain分开,所以这未必是最好的做法,至於怎麼做,当然这招是有用的,这招是有用的,那但是怎麼做可以做得更好,欸 这个留给大家慢慢思考</p>
+<p>好 那我们来看一下,Domain Adversarial Training,最原始的 Paper,它做的结果怎麼样呢,当年看到这个 Paper 的时候,真的觉得结果非常地惊人</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911180533698.png" alt="image-20210911180533698" style="zoom:67%;" /></p>
+<p>那这边呢 它做了四个任务,那上半部 是 Source Domain 的图片,这边其实都是数字辨识啦,那下半部呢 都是 Target Domain 的图片,好 如果今天呢,我们是拿 Target Domain 的图片来做 Training,Target Domain 的图片来做 Testing,那结果像是这个样子,每一个任务正确率都是 90% 以上,但如果说,我们今天是 Source Domain Training,Target Domain Testing,Train 在黑白的数字上,测试在彩色的数字上,结果直接惨掉,哇 这直接惨掉 没办法做啦,结果直接惨掉</p>
+<p>那如果加上 Domain Adversarial Training 的话,结果怎麼样呢,你会发现说本来如果只 Train 在黑白的图片上,测试在彩色的图片上,正确率 57.5</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911180619681.png" alt="image-20210911180619681" style="zoom:50%;" /></p>
+<p>那如果今天有做 Domain Adversarial Training,正确率就飆升到 81%,在很多其他任务上进步量都挺明显的,59 到 71,74 到 88.7,这个进步量都是挺明显的,那这个就是 Domain Adversarial Training</p>
+<h4 id="limitation">Limitation<a class="headerlink" href="#limitation" title="Permanent link">&para;</a></h4>
+<p>那刚才这整套想法,还是有一个限制,有一个小小的问题,什麼样小小的问题呢</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911181003396.png" alt="image-20210911181003396" style="zoom:67%;" /></p>
+<p>我们来看看哦,今天 蓝色的圈圈跟蓝色的三角形,代表 Source Domain 上的两个 Class,那我们当然可以找一个 Boundary,去把这两组 Class 把它分开来,对於 Target Domain 上的 Data,我们没有任何的 Class 的 Label,我们就只能说所有 Target Domain 的 Data,我们都用这个正方形来表示它</p>
+<p>那我们今天训练的目标,就是要让这些正方形它的分布,跟这个圈圈三角形合起来的分布越接近越好,但是什麼叫做越接近越好呢,左边这个 Case,红色的点跟蓝色的点,它们也算是蛮 Align 在一起的,也算是分布蛮接近的,右边这个 Case,红色的点跟蓝色的点,它们也算是分布蛮接近的,但是你觉得左边比较好,还是右边比较好呢,</p>
+<p>没错 很多人也觉得是右边,所以我们是不是<strong>应该要让右边的状况发生</strong>,而避免让左边的状况发生呢,好 怎麼做呢,怎麼让右边的状况发生,左边的状况不要发生呢</p>
+<p>也许一个可能的想法是,我们既然知道蓝色的圈圈跟蓝色的三角形,它们的<strong>分界点</strong>在哪裡,这个分界点我们是知道的,那我们应该要让这些方形,虽然我们不知道它是哪一个类别,但我们让这些方形远离这一个分界点,怎麼让方形远离这个分界点呢,那在文献上就有很多不同的做法啦,你可以参考一下文献,看看你觉得怎麼做比较好</p>
+<h4 id="considering-decision-boundary">Considering Decision Boundary<a class="headerlink" href="#considering-decision-boundary" title="Permanent link">&para;</a></h4>
+<p>举例来说一个最简单的做法是说,呃 今天我有很多 Unlabeled 的图片,丢到 Feature Extractor,再丢到 Label Predictor 以后,我不知道它是哪一个类别,但是我希望<strong>它离 Boundary 越远越好</strong>,那什麼叫做离 Boundary 越远越好呢</p>
+<ul>
+<li>如果今天输出的结果非常地集中,叫做离 Boundary 远</li>
+<li>如果今天输出的结果每一个类别都非常地接近,叫做离 Boundary 近</li>
+</ul>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911181351557.png" alt="image-20210911181351557" style="zoom:67%;" /></p>
+<p>所以我希望说把 unLabled 的 Image,丢进 Feature Extractor,再丢进 Label Predictor,输出的结果,它离 Boundary 越远越好,也就是说这<strong>集中在某一个类别上</strong>,我们虽然不知道它应该算是哪一个类别,但至少应该集中在某一个类别上</p>
+<p>那这只是一种招数,并不是全部,那你可以参考一下文献,比如说有一个知名的方法叫做 DIRT-T,DIRT-T,这个 DIRT-T  它其实,它 Paper 裡面还特别告诉你说,这个要唸 Dirty,要唸 Dirty,这个大家都是这个模型命名大师,都会命名一些很有创意的名字,好 这个 DIRT-T 是一个招数,还有另外一个招数叫这个,Maximum Classifier Discrepancy,如果你要在这个 Domain Adaptation 座位裡面,得到最好的结果的话,那这些招数是不可或缺的,那实际上这些招数怎麼进行,还挺复杂,这个就留给大家自己研究</p>
+<p>那这边还有一个问题,什麼样的问题呢,我们到目前為止,好像都假设说,<strong>Source Domain 跟 Target Domain,它的类别都要是一模一样</strong>,Source Domain 假设是影像分类的问题,Source Domain 有老虎 狮子跟狗,Target Domain 也应该要有老虎 狮子跟狗,但是真的一定会这样吗</p>
+<p>Target Domain 是没有 Label 的,我们根本不知道 Target Domain 裡面,有什麼样的类别</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911181655614.png" alt="image-20210911181655614" style="zoom:67%;" /></p>
+<p>而在这个图示裡面 这个实心的,实线的圈圈代表,Source Domain 裡面有的东西,这个虚实线的圈圈,代表 Target Domain 裡面有的东西,所以呢 有没有可能是,这个 <strong>Source Domain 裡面的东西比较多,Target Domain 裡面的东西比较少</strong>呢,有没有可能是,<strong>Source Domain 裡面的东西比较少,Target Domain 的东西比较多</strong>呢,有没有可能两者虽然有交集,但是各自都有独特的类别呢,这都是有可能发生的</p>
+<p>所以在这个前提之下,你说 Source Domain 跟 Target Domain,你硬要把它们完全 Align 在一起,听起来有点问题呀,因為举例来说在这个 Case 裡面,哦 你说你要让 Source Domain 的 Data,跟 Target Domain 的 Data,它们的 Feature 完全 Match 在一起,那意味著说,你硬是要让老虎去变得跟狗像,或者是老虎硬是要变得跟狮子像,到时候你就分不出老虎这个类别了</p>
+<p>听起来就是有问题的方法,那怎麼解决这个问题,怎麼解决 Source Domain 跟 Target Domain,它可能有不一样的 Label 的问题,那你可以参见这个,Universal Domain Adaptation 这篇文章</p>
+<p>好 那我们来看看有没有同学有问题要问的,好 有同学问说</p>
+<p><strong>如果 Feature Extractor 是 CNN,而不是 Linear Layer,那 Domain Classifier Input,就是 Feature Map,拉直的 Latent Embedding,这样 Latent Space 学到的东西,把两个 Domain 分部弥平会不会有影响,因為 Feature Map 本来就有 Space 的关係,现在却硬是被拉直</strong></p>
+<p>答：</p>
+<p>你说得非常对,真的 你说得非常对,就是 Feature Extractor,它是一个复杂的 Network,然后我们硬是要,把两个 Domain 的东西拉在一起,会不会变成它只是為了拉在一起而拉在一起,它根本就没有学到,我们本来希望,这个 Feature Space 学到的东西呢,简单的回答就是 会,会,所以 Domain Adaptation,没有大家想像得那麼容易 Train 起来,虽然好像刚才讲得都非常地顺利,那作业裡面可以自己体验一下啦,这个 Domain Adaptation,算是偏难做的一个作业,所以 呃 这一个,你知道我们在 Train 的时候,我们有两件事情,有两件事互相结抗,一个是要去骗过 Domain Classifier,另外一个是要让分类变正确,那我们期待说这两件事情都可以同时做好,也就是说一方面既骗过 Domain Classifier,一方面又分类分得好,那就同时把两个 Domain Align 在一起,同时 Latent Space,我们又希望它的分布是正确的,比如说我们觉得 1 跟 7 比较像,那他们為了要让 Classifier 做好,那今天你的 Feature Extractor,就会让 1 跟 7 比较像,然后 1 跟,比如说 1 跟 4 比较不像,它就让 1 跟 4 拉得比较远一点,我们期待说,藉由需要把 Label Predictor 的 Performance,冲高这件事情,latent representation 裡面的这个 Space,仍然是保留一个比较好的 Latent Space,但是不一定 这件事不一定总是会成功了,如果你今天你给 Domain Classifier,就是要骗过 Domain Classifier,这件事情的权重太大,你的 Model 就会学到说,它都只想骗过 Domain Classifier,它就不会產生好的 Latent Space,所以刚才同学问的问题,确实是有可能会发生的,所以大家在实做的时候,这个也是有些参数要调的,好,好 希望这样有回答到同学的问题</p>
+<p>那接下来 还有一个更严峻的状况,刚才我们是假设说没有 Labeled Data,但至少有一大堆,这个时候你还可以说,我要把两个 Space 呢 把它拉在一起</p>
+<p>但是有一个可能是,假设不只没有 Label,而且 Data 还很少,比如说我就只有一张而已</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911182233057.png" alt="image-20210911182233057" style="zoom:67%;" /></p>
+<p>这个时候你只有一张,你的这个 Target Domain 只有一张,只有一个点,你根本没有办法跟那个 Source Domain,把它 Align 在一起,这个时候怎麼办呢,假设 Target Domain 的 Data 非常少的时候,怎麼办呢,也不是没有方法啦</p>
+<p>有一个方法叫做 ==Testing Time Training==,它的缩写是 TTT,这个我们就把连结附在这边给大家参考,Testing Time Training 就是想要处理,假设我的 Target Domain 没有 Lable,而且还只有一张的时候,到底应该要怎麼办</p>
+<p>但其实还有一个更严峻的状况,这个状况是,如果我什麼都不知道怎麼办呢,如果我们对 Target Domain 一无所知的话,怎麼办呢</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911182329234.png" alt="image-20210911182329234" style="zoom:67%;" /></p>
+<p>这个时候又分成两种情形,对 Target Domain 一无所知的这种问题,这个时候我们就不叫 Domain 的 Adaptation,通常就叫 ==Domain Generalization==</p>
+<p><img src="https://gitee.com/unclestrong/deep-learning21_note/raw/master/imgbed/image-20210911182517320.png" alt="image-20210911182517320" style="zoom:67%;" /></p>
+<p>因為我们并不是要,Adapt 到某一个特定的 Domain 上,我们对那个特定的 Domain 已经一无所知了,我们是期待今天机器学到,Domain Generalization,在 Testing 的时候,不管来什麼神奇的 Domain,它都可以处理,那 Domain Generalization,又分成两种状况</p>
+<ul>
+<li>
+<p>一种状况是我的训练资料非常地丰富,本来就包含了各式各样不同的 Domain,假设你要做猫狗的分类器,那你现在呢 在训练资料裡面,有真实的猫跟狗的照片,有素描的猫跟狗的照片,然后有这个水彩画的猫跟狗的照片,期待因為训练资料有多个 Domain,模型可以学到如何弥平 Domain 间的差异,今天有测试资料是卡通的猫跟狗,它也可以处理,这是一种状况,那这种状况你还比较能够想像要怎麼处理,那我们这边就不细讲,我们都只各放一些有代表性的论文,给大家参考</p>
+</li>
+<li>
+<p>但还有另外一种,你会觉得真的不知如何下手的状况是,假设训练资料只有一个 Domain 呢,假设你的训练资料只有一个 Domain,而测试资料有多种不同的 Domain 的话,怎麼处理呢,在文献上也不是没有人试,也是有人试著去解惑这种问题的,那他怎麼做呢,这细节我们就不讲啦,在概念上就是有点像是 Data Augmentation,虽然你只有一个 Domain 的资料,想个 Data Augmentation 的方法,去產生多个 Domain 的资料,然后你就可以套上面这个 Secnario 来做做看,看能不能够在测试的时候,新的 Domain 都可以做好,好 这个是 Domain Generalization</p>
+</li>
+</ul>
+<p>那这个部分就是很简短的跟大家带过,这个 Domain Adaptation 的种种技术,更多的细节,在下一堂课助教的说明裡面</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

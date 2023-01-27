@@ -1,0 +1,3189 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Coursera-ML-AndrewNg-Notes-master/2.CS229-Prob/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>2.CS229 Prob - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cs229-" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.CS229 Prob
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概率论复习和参考
+  </a>
+  
+    <nav class="md-nav" aria-label="概率论复习和参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 概率的基本要素
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 概率的基本要素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 条件概率和独立性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 随机变量
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 随机变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 累积分布函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 概率质量函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 概率密度函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 期望
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 方差
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 一些常见的随机变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 两个随机变量
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 两个随机变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 联合分布和边缘分布
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 联合概率和边缘概率质量函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 联合概率和边缘概率密度函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 条件概率分布
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 贝叶斯定理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    3.6 独立性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    3.7 期望和协方差
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 多个随机变量
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 多个随机变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 基本性质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 随机向量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 多元高斯分布
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 其他资源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+<blockquote>
+<p>本文是斯坦福大学CS229机器学习课程的基础材料，<a href="http://cs229.stanford.edu/summer2019/cs229-prob.pdf">原始文件下载</a></p>
+<p>原文作者：Arian Maleki ， Tom Do</p>
+<p>翻译：<a href="https://github.com/szy2120109">石振宇</a></p>
+<p>审核和修改制作：<a href="https://github.com/fengdu78">黄海广</a></p>
+<p>备注：请关注<a href="https://github.com/fengdu78/Data-Science-Notes/tree/master/0.math">github</a>的更新。</p>
+</blockquote>
+<h1 id="cs229-">CS229 机器学习课程复习材料-概率论<a class="headerlink" href="#cs229-" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#cs229-">CS229 机器学习课程复习材料-概率论</a><ul>
+<li><a href="#_1">概率论复习和参考</a><ul>
+<li><a href="#1">1. 概率的基本要素</a><ul>
+<li><a href="#11">1.1 条件概率和独立性</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 随机变量</a><ul>
+<li><a href="#21">2.1 累积分布函数</a></li>
+<li><a href="#22">2.2 概率质量函数</a></li>
+<li><a href="#23">2.3 概率密度函数</a></li>
+<li><a href="#24">2.4 期望</a></li>
+<li><a href="#25">2.5 方差</a></li>
+<li><a href="#26">2.6 一些常见的随机变量</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 两个随机变量</a><ul>
+<li><a href="#31">3.1 联合分布和边缘分布</a></li>
+<li><a href="#32">3.2 联合概率和边缘概率质量函数</a></li>
+<li><a href="#33">3.3 联合概率和边缘概率密度函数</a></li>
+<li><a href="#34">3.4 条件概率分布</a></li>
+<li><a href="#35">3.5 贝叶斯定理</a></li>
+<li><a href="#36">3.6 独立性</a></li>
+<li><a href="#37">3.7 期望和协方差</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 多个随机变量</a><ul>
+<li><a href="#41">4.1 基本性质</a></li>
+<li><a href="#42">4.2 随机向量</a></li>
+<li><a href="#43">4.3 多元高斯分布</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 其他资源</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">概率论复习和参考<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>概率论是对不确定性的研究。通过这门课，我们将依靠概率论中的概念来推导机器学习算法。这篇笔记试图涵盖适用于<strong>CS229</strong>的概率论基础。概率论的数学理论非常复杂，并且涉及到“分析”的一个分支：测度论。在这篇笔记中，我们提供了概率的一些基本处理方法，但是不会涉及到这些更复杂的细节。</p>
+<h3 id="1">1. 概率的基本要素<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>为了定义集合上的概率，我们需要一些基本元素，
+-  样本空间$\Omega $：随机实验的所有结果的集合。在这里，每个结果 $w \in \Omega $ 可以被认为是实验结束时现实世界状态的完整描述。</p>
+<ul>
+<li>事件集（事件空间）<span class="arithmatex">\(\mathcal{F}\)</span>：元素 <span class="arithmatex">\(A \in \mathcal{F}\)</span> 的集合（称为事件）是 $\Omega $ 的子集（即每个 <span class="arithmatex">\(A \subseteq \Omega\)</span> 是一个实验可能结果的集合）。</li>
+</ul>
+<p>备注：<span class="arithmatex">\(\mathcal{F}\)</span>需要满足以下三个条件：</p>
+<p>(1) <span class="arithmatex">\(\emptyset  \in \mathcal{F}\)</span></p>
+<p>(2) <span class="arithmatex">\(A \in \mathcal{F} \Longrightarrow \Omega \backslash A \in \mathcal{F}\)</span></p>
+<p>(3) <span class="arithmatex">\(A_1,A_2,\cdots A_{i} \in \mathcal{F}\Longrightarrow\cup_{i} A_{i} \in \mathcal{F}\)</span></p>
+<ul>
+<li>概率度量<span class="arithmatex">\(P\)</span>：函数<span class="arithmatex">\(P\)</span>是一个$  \mathcal{F} \rightarrow \mathbb{R}$的映射，满足以下性质：</li>
+<li>
+<p>对于每个 <span class="arithmatex">\(A \in \mathcal{F}\)</span>，<span class="arithmatex">\(P(A) \geq 0\)</span>, </p>
+</li>
+<li>
+<p><span class="arithmatex">\(P(\Omega) = 1\)</span></p>
+</li>
+<li>
+<p>如果<span class="arithmatex">\(A_1 ,A_2 ,\cdots\)</span> 是互不相交的事件 (即 当$ i \neq j<span class="arithmatex">\(时，\)</span>A_{i} \cap A_{j}=\emptyset$ ), 那么：
+$$
+P\left(\cup_{i} A_{i}\right)=\sum_{i} P\left(A_{i}\right)
+$$</p>
+</li>
+</ul>
+<p>以上三条性质被称为<strong>概率公理</strong>。</p>
+<p><strong>举例</strong>：</p>
+<p>考虑投掷六面骰子的事件。样本空间为<span class="arithmatex">\(\Omega= \{1，2，3，4，5，6\}\)</span>。最简单的事件空间是平凡事件空间<span class="arithmatex">\(\mathcal{F} = \{\emptyset,\Omega\}\)</span>.另一个事件空间是<span class="arithmatex">\(\Omega\)</span>的所有子集的集合。对于第一个事件空间，满足上述要求的唯一概率度量由<span class="arithmatex">\(P(\emptyset) = 0\)</span>，<span class="arithmatex">\(p(\Omega)= 1\)</span>给出。对于第二个事件空间，一个有效的概率度量是将事件空间中每个事件的概率分配为<span class="arithmatex">\(i/6\)</span>，这里<span class="arithmatex">\(i\)</span> 是这个事件集合中元素的数量；例如<span class="arithmatex">\(P(\{1,2,3,4\}) =4/6\)</span>，<span class="arithmatex">\(P(\{1,2,3\}) =3/6\)</span>。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li>如果<span class="arithmatex">\(A \subseteq B\)</span>，则：$ P(A) \leq P(B)$</li>
+<li><span class="arithmatex">\(P(A \cap B) \leq min(P(A),P(B) )\)</span></li>
+<li>(布尔不等式)：<span class="arithmatex">\(P(A \cup B) \leq P(A)+P(B)\)</span></li>
+<li><span class="arithmatex">\(P(\Omega |A ) =1-P(A)\)</span></li>
+<li>(全概率定律)：如果<span class="arithmatex">\(A_1，\cdots，A_k\)</span>是一些互不相交的事件并且它们的并集是<span class="arithmatex">\(\Omega\)</span>，那么它们的概率之和是1</li>
+</ul>
+<h4 id="11">1.1 条件概率和独立性<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<p>假设<span class="arithmatex">\(B\)</span>是一个概率非0的事件，我们定义在给定<span class="arithmatex">\(B\)</span>的条件下<span class="arithmatex">\(A\)</span> 的条件概率为：
+$$
+P(A | B) \triangleq \frac{P(A \cap B)}{P(B)}
+$$
+换句话说，<span class="arithmatex">\(P(A|B\)</span>)是度量已经观测到<span class="arithmatex">\(B\)</span>事件发生的情况下<span class="arithmatex">\(A\)</span>事件发生的概率，两个事件被称为独立事件当且仅当<span class="arithmatex">\(P(A \cap B) = P(A)P(B)\)</span>（或等价地，<span class="arithmatex">\(P(A|B) = P(A)\)</span>)。因此，独立性相当于是说观察到事件<span class="arithmatex">\(B\)</span>对于事件<span class="arithmatex">\(A\)</span>的概率没有任何影响。</p>
+<h3 id="2">2. 随机变量<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>考虑一个实验，我们翻转10枚硬币，我们想知道正面硬币的数量。这里，样本空间<span class="arithmatex">\(\Omega\)</span>的元素是长度为10的序列。例如，我们可能有<span class="arithmatex">\(w_0 = \{H，H，T，H，T，H，H，T，T，T\}\in\Omega\)</span>。然而，在实践中，我们通常不关心获得任何特定正反序列的概率。相反，我们通常关心结果的实值函数，比如我们10次投掷中出现的正面数，或者最长的背面长度。在某些技术条件下，这些函数被称为<strong>随机变量</strong>。</p>
+<p>更正式地说，随机变量<span class="arithmatex">\(X\)</span>是一个的<span class="arithmatex">\(\Omega \longrightarrow \mathbb{R}\)</span>函数。通常，我们将使用大写字母<span class="arithmatex">\(X(\omega)\)</span>或更简单的<span class="arithmatex">\(X\)</span>(其中隐含对随机结果<span class="arithmatex">\(\omega\)</span>的依赖)来表示随机变量。我们将使用小写字母<span class="arithmatex">\(x\)</span>来表示随机变量的值。</p>
+<p><strong>举例：</strong>
+在我们上面的实验中，假设<span class="arithmatex">\(X(\omega)\)</span>是在投掷序列<span class="arithmatex">\(\omega\)</span>中出现的正面的数量。假设投掷的硬币只有10枚，那么<span class="arithmatex">\(X(\omega)\)</span>只能取有限数量的值，因此它被称为<strong>离散随机变量</strong>。这里，与随机变量<span class="arithmatex">\(X\)</span>相关联的集合取某个特定值<span class="arithmatex">\(k\)</span>的概率为：
+$$
+P(X=k) :=P({\omega : X(\omega) =k})
+$$
+<strong>举例：</strong>
+假设<span class="arithmatex">\(X(\omega)\)</span>是一个随机变量，表示放射性粒子衰变所需的时间。在这种情况下，<span class="arithmatex">\(X(\omega)\)</span>具有无限多的可能值，因此它被称为<strong>连续随机变量</strong>。我们将<span class="arithmatex">\(X\)</span>在两个实常数<span class="arithmatex">\(a\)</span>和<span class="arithmatex">\(b\)</span>之间取值的概率(其中<span class="arithmatex">\(a &lt; b\)</span>)表示为：
+$$
+P(a \leq X \leq b) :=P({\omega : a \leq X(\omega) \leq b})
+$$</p>
+<h4 id="21">2.1 累积分布函数<a class="headerlink" href="#21" title="Permanent link">&para;</a></h4>
+<p>为了指定处理随机变量时使用的概率度量，通常可以方便地指定替代函数(<strong>CDF</strong>、<strong>PDF</strong>和<strong>PMF</strong>)，在本节和接下来的两节中，我们将依次描述这些类型的函数。</p>
+<p><strong>累积分布函数(CDF)</strong>是函数<span class="arithmatex">\(F_{X} : \mathbb{R} \rightarrow[0,1]\)</span>，它将概率度量指定为：
+$$
+F_{X}(x) \triangleq P(X \leq x)
+$$
+通过使用这个函数，我们可以计算任意事件发生的概率。图1显示了一个样本<strong>CDF</strong>函数。</p>
+<p><img alt="" src="images/c89fd93c5d6dccce89762d57fcd66dac.png" /></p>
+<p><center>图1：一个累计分布函数(CDF)</center>
+<strong>性质：</strong></p>
+<ul>
+<li><span class="arithmatex">\(0 \leq F_{X}(x)\leq 1\)</span></li>
+<li><span class="arithmatex">\(\lim _{x \rightarrow-\infty} F_{X}(x)=0\)</span></li>
+<li><span class="arithmatex">\(\lim _{x \rightarrow\infty} F_{X}(x)=1\)</span></li>
+<li><span class="arithmatex">\(x \leq y \Longrightarrow  F_{X}(x)\leq F_{X}(y)\)</span></li>
+</ul>
+<h4 id="22">2.2 概率质量函数<a class="headerlink" href="#22" title="Permanent link">&para;</a></h4>
+<p>当随机变量<span class="arithmatex">\(X\)</span>取有限种可能值(即，<span class="arithmatex">\(X\)</span>是离散随机变量)时，表示与随机变量相关联的概率度量的更简单的方法是直接指定随机变量可以假设的每个值的概率。特别地，概率质量函数(<strong>PMF</strong>)是函数 <span class="arithmatex">\(p_{X} : \Omega \rightarrow \mathbb{R}\)</span>，这样：
+$$
+p_{X}(x) \triangleq P(X=x)
+$$</p>
+<p>在离散随机变量的情况下，我们使用符号<span class="arithmatex">\(Val(X)\)</span>表示随机变量<span class="arithmatex">\(X\)</span>可能假设的一组可能值。例如，如果<span class="arithmatex">\(X(\omega)\)</span>是一个随机变量，表示十次投掷硬币中的正面数，那么<span class="arithmatex">\(Val(X) =\{0，1，2，...，10\}\)</span>。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><span class="arithmatex">\(0 \leq p_{X}(x)\leq 1\)</span></li>
+<li><span class="arithmatex">\(\sum_{x \in V \text { al }(X)} p_{X}(x)=1\)</span></li>
+<li><span class="arithmatex">\(\sum_{x \in A} p_{X}(x)=P(X \in A)\)</span></li>
+</ul>
+<h4 id="23">2.3 概率密度函数<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
+<p>对于一些连续随机变量，累积分布函数<span class="arithmatex">\(F_X (x)\)</span>处可微。在这些情况下，我们将<strong>概率密度函数(PDF)</strong>定义为累积分布函数的导数，即：
+$$
+f_{X}(x) \triangleq \frac{d F_{X}(x)}{d x}
+$$</p>
+<p>请注意，连续随机变量的概率密度函数可能并不总是存在的(即，如果它不是处处可微)。 </p>
+<p>根据微分的性质，对于很小的<span class="arithmatex">\(\Delta x\)</span>，
+$$
+P(x \leq X \leq x+\Delta x) \approx f_{X}(x) \Delta x
+$$
+<strong>CDF</strong>和<strong>PDF(</strong>当它们存在时！)都可用于计算不同事件的概率。但是应该强调的是，任意给定点的<strong>概率密度函数(PDF)</strong>的值不是该事件的概率，即<span class="arithmatex">\(f _X (x) \not = P(X = x)\)</span>。例如，<span class="arithmatex">\(f _X (x)\)</span>可以取大于1的值(但是<span class="arithmatex">\(f _X (x)\)</span>在<span class="arithmatex">\(\mathbb{R}\)</span>的任何子集上的积分最多为1)。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><span class="arithmatex">\(f_X(x)\geq 0\)</span></li>
+<li><span class="arithmatex">\(\int_{-\infty}^{\infty} f_{X}(x)=1\)</span></li>
+<li><span class="arithmatex">\(\int_{x \in A} f_{X}(x) d x=P(X \in A)\)</span></li>
+</ul>
+<h4 id="24">2.4 期望<a class="headerlink" href="#24" title="Permanent link">&para;</a></h4>
+<p>假设<span class="arithmatex">\(X\)</span>是一个离散随机变量，其<strong>PMF</strong>为 <span class="arithmatex">\(p_X (x)\)</span>，<span class="arithmatex">\(g : \mathbb{R} \longrightarrow \mathbb{R}\)</span>是一个任意函数。在这种情况下，<span class="arithmatex">\(g(X)\)</span>可以被视为随机变量，我们将<span class="arithmatex">\(g(X)\)</span>的期望值定义为：
+$$
+E[g(X)] \triangleq \sum_{x \in V a l(X)} g(x) p_{X}(x)
+$$
+如果<span class="arithmatex">\(X\)</span>是一个连续的随机变量，其<strong>PDF</strong> 为<span class="arithmatex">\(f _X (x)\)</span>，那么<span class="arithmatex">\(g(X)\)</span>的期望值被定义为：
+$$
+E[g(X)] \triangleq \int_{-\infty}^{\infty} g(x) f_{X}(x) d x
+$$</p>
+<p>直觉上，<span class="arithmatex">\(g(X)\)</span>的期望值可以被认为是<span class="arithmatex">\(g(x)\)</span>对于不同的<span class="arithmatex">\(x\)</span>值可以取的值的“加权平均值”，其中权重由<span class="arithmatex">\(p_X(x)\)</span>或<span class="arithmatex">\(f_X(x)\)</span>给出。作为上述情况的特例，请注意，随机变量本身的期望值，是通过令<span class="arithmatex">\(g(x) = x\)</span>得到的，这也被称为随机变量的平均值。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li>对于任意常数 <span class="arithmatex">\(a \in \mathbb{R}\)</span>，<span class="arithmatex">\(E[a]=a\)</span></li>
+<li>对于任意常数 <span class="arithmatex">\(a \in \mathbb{R}\)</span>，<span class="arithmatex">\(E[af(X)]=aE[f(X)]\)</span></li>
+<li>(线性期望)：<span class="arithmatex">\(E[f(X)+g(X)]=E[f(X)]+E[g(X)]\)</span></li>
+<li>对于一个离散随机变量<span class="arithmatex">\(X\)</span>，<span class="arithmatex">\(E[1\{X=k\}]=P(X=k)\)</span></li>
+</ul>
+<h4 id="25">2.5 方差<a class="headerlink" href="#25" title="Permanent link">&para;</a></h4>
+<p>随机变量<span class="arithmatex">\(X\)</span>的<strong>方差</strong>是随机变量<span class="arithmatex">\(X\)</span>的分布围绕其平均值集中程度的度量。形式上，随机变量<span class="arithmatex">\(X\)</span>的方差定义为：
+$$
+\operatorname{Var}[X] \triangleq E\left[(X-E(X))^{2}\right]
+$$
+使用上一节中的性质，我们可以导出方差的替代表达式:
+$$
+\begin{aligned} E\left[(X-E[X])^{2}\right] &amp;=E\left[X^{2}-2 E[X] X+E[X]^{2}\right] \ &amp;=E\left[X^{2}\right]-2 E[X] E[X]+E[X]^{2} \ &amp;=E\left[X^{2}\right]-E[X]^{2} \end{aligned}
+$$</p>
+<p>其中第二个等式来自期望的线性，以及<span class="arithmatex">\(E[X]\)</span>相对于外层期望实际上是常数的事实。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li>对于任意常数 <span class="arithmatex">\(a \in \mathbb{R}\)</span>，<span class="arithmatex">\(Val[a]=0\)</span></li>
+<li>对于任意常数 <span class="arithmatex">\(a \in \mathbb{R}\)</span>，<span class="arithmatex">\(Var[af(X)]=a^2Var[f(X)]\)</span></li>
+</ul>
+<p><strong>举例：</strong></p>
+<p>计算均匀随机变量<span class="arithmatex">\(X\)</span>的平均值和方差，任意<span class="arithmatex">\(x \in [0，1]\)</span>，其<strong>PDF</strong>为 <span class="arithmatex">\(p_X(x)= 1\)</span>，其他地方为0。
+$$
+E[X]=\int_{-\infty}^{\infty} x f_{X}(x) d x=\int_{0}^{1} x d x=\frac{1}{2}
+$$
+$$
+E\left[X^{2}\right]=\int_{-\infty}^{\infty} x^{2} f_{X}(x) d x=\int_{0}^{1} x^{2} d x=\frac{1}{3}
+$$
+$$
+Var[X]=E[X^2]-E[X]^2=\frac{1}{3}-\frac{1}{4}=\frac{1}{12}
+$$
+<strong>举例：</strong></p>
+<p>假设对于一些子集<span class="arithmatex">\(A \subseteq \Omega\)</span>，有<span class="arithmatex">\(g(x) = 1\{x \in A\}\)</span>，计算<span class="arithmatex">\(E[g(X)]\)</span>?</p>
+<p><strong>离散情况：</strong>
+$$
+E[g(X)]=\sum_{x \in V a l(X)} 1{x \in A} P_{X}(x) d x=\sum_{x \in A} P_{X}(x) d x=P(x \in A)
+$$</p>
+<p><strong>连续情况：</strong>
+$$
+E[g(X)]=\int_{-\infty}^{\infty} 1{x \in A} f_{X}(x) d x=\int_{x \in A} f_{X}(x) d x=P(x \in A)
+$$</p>
+<h4 id="26">2.6 一些常见的随机变量<a class="headerlink" href="#26" title="Permanent link">&para;</a></h4>
+<p><strong>离散随机变量</strong></p>
+<ul>
+<li>
+<p>伯努利分布：硬币掷出正面的概率为<span class="arithmatex">\(p\)</span>（其中：<span class="arithmatex">\(0 \leq p \leq 1\)</span>），如果正面发生，则为1，否则为0。
+  $$
+  p(x)=\left{\begin{array}{ll}{p} &amp; {\text { if } p=1} \ {1-p} &amp; {\text { if } p=0}\end{array}\right.
+  $$</p>
+</li>
+<li>
+<p>二项式分布：掷出正面概率为<span class="arithmatex">\(p\)</span>（其中：<span class="arithmatex">\(0 \leq p \leq 1\)</span>）的硬币<span class="arithmatex">\(n\)</span>次独立投掷中正面的数量。
+$$
+p(x)=\left(\begin{array}{l}{n} \ {x}\end{array}\right) p^{x}(1-p)^{n-x}
+$$</p>
+</li>
+<li>
+<p>几何分布：掷出正面概率为<span class="arithmatex">\(p\)</span>（其中：<span class="arithmatex">\(p &gt;0\)</span>）的硬币第一次掷出正面所需要的次数。</p>
+</li>
+<li>
+<p>泊松分布：用于模拟罕见事件频率的非负整数的概率分布（其中：<span class="arithmatex">\(\lambda &gt;0\)</span>）。
+$$
+p(x)=e^{-\lambda} \frac{\lambda^{x}}{x !}
+$$</p>
+</li>
+</ul>
+<p><strong>连续随机变量</strong></p>
+<ul>
+<li>
+<p>均匀分布：在<span class="arithmatex">\(a\)</span>和<span class="arithmatex">\(b\)</span>之间每个点概率密度相等的分布（其中：<span class="arithmatex">\(a&lt;b\)</span>）。
+$$
+f(x)=\left{\begin{array}{ll}{\frac{1}{b-a}} &amp; {\text { if } a \leq x \leq b} \ {0} &amp; {\text { otherwise }}\end{array}\right.
+$$</p>
+</li>
+<li>
+<p>指数分布：在非负实数上有衰减的概率密度（其中：<span class="arithmatex">\(\lambda &gt;0\)</span>）。
+$$
+f(x)=\left{\begin{array}{ll}{\lambda e^{-\lambda x}} &amp; {\text { if } x \geq 0} \ {0} &amp; {\text { otherwise }}\end{array}\right.
+$$</p>
+</li>
+<li>
+<p>正态分布：又被称为高斯分布。
+$$
+f(x)=\frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}}
+$$</p>
+</li>
+</ul>
+<p>一些随机变量的概率密度函数和累积分布函数的形状如图2所示。</p>
+<p><img alt="" src="images/b958c16cfdce9e6bd2b810b10d71416e.png" /></p>
+<p><center>图2：一些随机变量的概率密度函数(PDF)和累积分布函数(CDF)</center>
+下表总结了这些分布的一些特性：</p>
+<table>
+<thead>
+<tr>
+<th align="center">分布</th>
+<th align="center">概率密度函数(PDF)或者概率质量函数(<strong>PMF</strong>)</th>
+<th align="center">均值</th>
+<th align="center">方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><span class="arithmatex">\(Bernoulli(p)\)</span>(伯努利分布)</td>
+<td align="center"><span class="arithmatex">\(\left\{\begin{array}{ll}{p} &amp; {\text { if } x=1} \\ {1-p} &amp; {\text { if } x=0}\end{array}\right.\)</span></td>
+<td align="center"><span class="arithmatex">\(p\)</span></td>
+<td align="center"><span class="arithmatex">\(p(1-p)\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Binomial(n,p)\)</span>(二项式分布)</td>
+<td align="center"><span class="arithmatex">\(\left(\begin{array}{l}{n} \\ {k}\end{array}\right) p^{k}(1-p)^{n-k}\)</span>  其中：<span class="arithmatex">\(0 \leq k \leq n\)</span></td>
+<td align="center"><span class="arithmatex">\(np\)</span></td>
+<td align="center"><span class="arithmatex">\(npq\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Geometric(p)\)</span>(几何分布)</td>
+<td align="center"><span class="arithmatex">\(p(1-p)^{k-1}\)</span>  其中：<span class="arithmatex">\(k=1,2,\cdots\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac{1}{p}\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac {1-p}{p^2}\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Poisson(\lambda)\)</span>(泊松分布)</td>
+<td align="center"><span class="arithmatex">\(e^{-\lambda} \lambda^{x} / x !\)</span>  其中：<span class="arithmatex">\(k=1,2,\cdots\)</span></td>
+<td align="center"><span class="arithmatex">\(\lambda\)</span></td>
+<td align="center"><span class="arithmatex">\(\lambda\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Uniform(a,b)\)</span>(均匀分布)</td>
+<td align="center"><span class="arithmatex">\(\frac{1}{b-a}\)</span> 存在<span class="arithmatex">\(x \in (a,b)\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac{a+b}{2}\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac{(b-a)^2}{12}\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Gaussian(\mu,\sigma^2)\)</span>(高斯分布)</td>
+<td align="center"><span class="arithmatex">\(\frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}}\)</span></td>
+<td align="center"><span class="arithmatex">\(\mu\)</span></td>
+<td align="center"><span class="arithmatex">\(\sigma^2\)</span></td>
+</tr>
+<tr>
+<td align="center"><span class="arithmatex">\(Exponential(\lambda)\)</span>(指数分布)</td>
+<td align="center"><span class="arithmatex">\(\lambda e^{-\lambda x}\)</span>   <span class="arithmatex">\(x\geq0,\lambda&gt;0\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac{1}{\lambda}\)</span></td>
+<td align="center"><span class="arithmatex">\(\frac{1}{\lambda^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3">3. 两个随机变量<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>到目前为止，我们已经考虑了单个随机变量。然而，在许多情况下，在随机实验中，我们可能有不止一个感兴趣的量。例如，在一个我们掷硬币十次的实验中，我们可能既关心<span class="arithmatex">\(X(\omega) =\)</span>出现的正面数量，也关心<span class="arithmatex">\(Y (\omega) =\)</span>连续最长出现正面的长度。在本节中，我们考虑两个随机变量的设置。</p>
+<h4 id="31">3.1 联合分布和边缘分布<a class="headerlink" href="#31" title="Permanent link">&para;</a></h4>
+<p>假设我们有两个随机变量，一个方法是分别考虑它们。如果我们这样做，我们只需要<span class="arithmatex">\(F_X (x)\)</span>和<span class="arithmatex">\(F_Y (y)\)</span>。但是如果我们想知道在随机实验的结果中，<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>同时假设的值，我们需要一个更复杂的结构，称为<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>的<strong>联合累积分布函数</strong>，定义如下:
+$$
+F_{XY}(x,y)=P(X \leq x,Y \leq y)
+$$</p>
+<p>可以证明，通过了解联合累积分布函数，可以计算出任何涉及到<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>的事件的概率。</p>
+<p>联合<strong>CDF</strong>: <span class="arithmatex">\(F_{XY }(x,y)\)</span>和每个变量的联合分布函数<span class="arithmatex">\(F_X(x)\)</span>和<span class="arithmatex">\(F_Y (y)\)</span>分别由下式关联:
+$$
+F_{X}(x)=\lim <em X="X" Y="Y">{y \rightarrow \infty} F</em>(x, y) d y
+$$</p>
+<p>$$
+F_{Y}(y)=\lim <em X="X" Y="Y">{y \rightarrow \infty} F</em>(x, y) dx
+$$
+这里我们称<span class="arithmatex">\(F_X(x)\)</span>和<span class="arithmatex">\(F_Y (y)\)</span>为 <span class="arithmatex">\(F_{XY }(x,y)\)</span>的<strong>边缘累积概率分布函数</strong>。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><span class="arithmatex">\(0 \leq F_{XY }(x,y) \leq 1\)</span></li>
+<li><span class="arithmatex">\(\lim _{x, y \rightarrow \infty} F_{X Y}(x, y)=1\)</span></li>
+<li><span class="arithmatex">\(\lim _{x, y \rightarrow -\infty} F_{X Y}(x, y)=0\)</span></li>
+<li><span class="arithmatex">\(F_{X}(x)=\lim _{y \rightarrow \infty} F_{X Y}(x, y)\)</span></li>
+</ul>
+<h4 id="32">3.2 联合概率和边缘概率质量函数<a class="headerlink" href="#32" title="Permanent link">&para;</a></h4>
+<p>如果<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>是离散随机变量，那么<strong>联合概率质量函数</strong>  <span class="arithmatex">\(p_{X Y} : \mathbb{R} \times \mathbb{R} \rightarrow [0,1]\)</span>由下式定义：</p>
+<div class="arithmatex">\[
+p_{X Y}(x,y)=P(X=x,Y=y)
+\]</div>
+<p>这里, 对于任意<span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(y\)</span>，<span class="arithmatex">\(0 \leq P_{XY} (x,y) \leq 1\)</span>, 并且 <span class="arithmatex">\(\sum_{x \in V a l(X)} \sum_{y \in V a l(Y)} P_{X Y}(x, y)=1\)</span></p>
+<p>两个变量上的<strong>联合PMF</strong>分别与每个变量的概率质量函数有什么关系？事实上：
+$$
+p_{X}(x)=\sum_{y} p_{X Y}(x, y)
+$$</p>
+<p>对于<span class="arithmatex">\(p_Y (y)\)</span>类似。在这种情况下，我们称<span class="arithmatex">\(p_X(x)\)</span>为<span class="arithmatex">\(X\)</span>的边际概率质量函数。在统计学中，将一个变量相加形成另一个变量的边缘分布的过程通常称为“边缘化”。</p>
+<h4 id="33">3.3 联合概率和边缘概率密度函数<a class="headerlink" href="#33" title="Permanent link">&para;</a></h4>
+<p>假设<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>是两个连续的随机变量，具有联合分布函数<span class="arithmatex">\(F_{XY}\)</span>。在<span class="arithmatex">\(F_{XY}(x,y)\)</span>在<span class="arithmatex">\(x\)</span>和<span class="arithmatex">\(y\)</span>中处处可微的情况下，我们可以定义<strong>联合概率密度函数</strong>：
+$$
+f_{X Y}(x, y)=\frac{\partial^{2} F_{X Y}(x, y)}{\partial x \partial y}
+$$
+如同在一维情况下，<span class="arithmatex">\(f_{XY}(x,y)\not= P(X = x,Y = y)\)</span>，而是：
+$$
+\iint_{x \in A} f_{X Y}(x, y) d x d y=P((X, Y) \in A)
+$$</p>
+<p>请注意，概率密度函数<span class="arithmatex">\(f_{XY}(x,y)\)</span>的值总是非负的，但它们可能大于1。尽管如此，可以肯定的是 <span class="arithmatex">\(\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X Y}(x, y)=1\)</span></p>
+<p>与离散情况相似，我们定义:
+$$
+f_{X}(x)=\int_{-\infty}^{\infty} f_{X Y}(x, y) d y
+$$
+作为<span class="arithmatex">\(X\)</span>的<strong>边际概率密度函数</strong>(或<strong>边际密度</strong>)，对于<span class="arithmatex">\(f_Y (y)\)</span>也类似。</p>
+<h4 id="34">3.4 条件概率分布<a class="headerlink" href="#34" title="Permanent link">&para;</a></h4>
+<p>条件分布试图回答这样一个问题，当我们知道<span class="arithmatex">\(X\)</span>必须取某个值<span class="arithmatex">\(x\)</span>时，<span class="arithmatex">\(Y\)</span>上的概率分布是什么？在离散情况下，给定<span class="arithmatex">\(Y\)</span>的条件概率质量函数是简单的：
+$$
+p_{Y | X}(y | x)=\frac{p_{X Y}(x, y)}{p_{X}(x)}
+$$
+假设分母不等于0。</p>
+<p>在连续的情况下，在技术上要复杂一点，因为连续随机变量的概率等于零。忽略这一技术点，我们通过类比离散情况，简单地定义给定<span class="arithmatex">\(X = x\)</span>的条件概率密度为：
+$$
+f_{Y | X}(y | x)=\frac{f_{X Y}(x, y)}{f_{X}(x)}
+$$
+假设分母不等于0。</p>
+<h4 id="35">3.5 贝叶斯定理<a class="headerlink" href="#35" title="Permanent link">&para;</a></h4>
+<p>当试图推导一个变量给定另一个变量的条件概率表达式时，经常出现的一个有用公式是<strong>贝叶斯定理</strong>。</p>
+<p>对于离散随机变量<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>：
+$$
+P_{Y | X}(y | x)=\frac{{P_{XY}}(x, y)}{P_{X}(x)}=\frac{P_{X | Y}(x | y) P_{Y}(y)}{\sum_{y^{\prime} \in V a l(Y)} P_{X | Y}\left(x | y^{\prime}\right) P_{Y}\left(y^{\prime}\right)}
+$$</p>
+<p>对于连续随机变量<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>：</p>
+<div class="arithmatex">\[
+f_{Y | X}(y | x)=\frac{f_{X Y}(x, y)}{f_{X}(x)}=\frac{f_{X | Y}(x | y) f_{Y}(y)}{\int_{-\infty}^{\infty} f_{X | Y}\left(x | y^{\prime}\right) f_{Y}\left(y^{\prime}\right) d y^{\prime}}
+\]</div>
+<h4 id="36">3.6 独立性<a class="headerlink" href="#36" title="Permanent link">&para;</a></h4>
+<p>如果对于<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>的所有值，<span class="arithmatex">\(F_{XY}(x,y) = F_X(x)F_Y(y)\)</span>，则两个随机变量<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>是独立的。等价地，</p>
+<ul>
+<li>对于离散随机变量, 对于任意<span class="arithmatex">\(x \in Val(X)\)</span>, <span class="arithmatex">\(y \in Val(Y)\)</span> ，<span class="arithmatex">\(p_{XY}(x,y) = p_X (x)p_Y (y)\)</span>。</li>
+<li>对于离散随机变量, <span class="arithmatex">\(p_Y |X (y|x) = p_Y (y)\)</span>当对于任意<span class="arithmatex">\(y \in Val(Y)\)</span>且<span class="arithmatex">\(p_X (x) \not= 0\)</span>。</li>
+<li>对于连续随机变量, <span class="arithmatex">\(f_{XY}(x,y) = f_X (x)f_Y(y)\)</span> 对于任意 <span class="arithmatex">\(x,y \in \mathbb{R}\)</span>。</li>
+<li>对于连续随机变量, <span class="arithmatex">\(f_{Y |X} (y|x) = f_Y (y)\)</span> ，当<span class="arithmatex">\(f_X (x)\not = 0\)</span>对于任意<span class="arithmatex">\(y \in \mathbb{R}\)</span>。</li>
+</ul>
+<p>非正式地说，如果“知道”一个变量的值永远不会对另一个变量的条件概率分布有任何影响，那么两个随机变量<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>是独立的，也就是说，你只要知道<span class="arithmatex">\(f(x)\)</span>和<span class="arithmatex">\(f(y)\)</span>就知道关于这对变量<span class="arithmatex">\((X，Y)\)</span>的所有信息。以下引理将这一观察形式化:</p>
+<p><strong>引理3.1</strong> </p>
+<p>如果<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>是独立的，那么对于任何<span class="arithmatex">\(A，B⊆ \mathbb{R}\)</span>，我们有：
+$$
+P(X \in A, Y \in B)=P(X \in A) P(Y \in B)
+$$
+利用上述引理，我们可以证明如果<span class="arithmatex">\(X\)</span>与<span class="arithmatex">\(Y\)</span>无关，那么<span class="arithmatex">\(X\)</span>的任何函数都与<span class="arithmatex">\(Y\)</span>的任何函数无关。</p>
+<h4 id="37">3.7 期望和协方差<a class="headerlink" href="#37" title="Permanent link">&para;</a></h4>
+<p>假设我们有两个离散的随机变量<span class="arithmatex">\(X\)</span>，<span class="arithmatex">\(Y\)</span>并且<span class="arithmatex">\(g : \mathbf{R}^{2} \longrightarrow \mathbf{R}\)</span>是这两个随机变量的函数。那么<span class="arithmatex">\(g\)</span>的期望值以如下方式定义：
+$$
+E[g(X, Y)] \triangleq \sum_{x \in V a l(X)} \sum_{y \in V a l(Y)} g(x, y) p_{X Y}(x, y)
+$$
+对于连续随机变量<span class="arithmatex">\(X\)</span>，<span class="arithmatex">\(Y\)</span>，类似的表达式是：
+$$
+E[g(X, Y)]=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x, y) f_{X Y}(x, y) d x d y
+$$
+我们可以用期望的概念来研究两个随机变量之间的关系。特别地，两个随机变量的<strong>协方差</strong>定义为：
+$$
+{Cov}[X, Y] \triangleq E[(X-E[X])(Y-E[Y])]
+$$
+使用类似于方差的推导，我们可以将它重写为：
+$$
+\begin{aligned} {Cov}[X, Y] &amp;=E[(X-E[X])(Y-E[Y])] \ &amp;=E[X Y-X E[Y]-Y E[X]+E[X] E[Y]] \ &amp;=E[X Y]-E[X] E[Y]-E[Y] E[X]+E[X] E[Y]] \ &amp;=E[X Y]-E[X] E[Y] \end{aligned}
+$$</p>
+<p>在这里，说明两种协方差形式相等的关键步骤是第三个等号，在这里我们使用了这样一个事实，即<span class="arithmatex">\(E[X]\)</span>和<span class="arithmatex">\(E[Y]\)</span>实际上是常数，可以被提出来。当<span class="arithmatex">\(cov[X，Y] = 0\)</span>时，我们说<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>不相关。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li>(期望线性) <span class="arithmatex">\(E[f(X,Y ) + g(X,Y)] = E[f(X,Y )] + E[g(X,Y)]\)</span></li>
+<li><span class="arithmatex">\(V ar[X + Y ] = V ar[X] + V ar[Y ] + 2Cov[X,Y]\)</span></li>
+<li>如果<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>相互独立, 那么 <span class="arithmatex">\(Cov[X,Y ] = 0\)</span></li>
+<li>如果<span class="arithmatex">\(X\)</span>和<span class="arithmatex">\(Y\)</span>相互独立, 那么 <span class="arithmatex">\(E[f(X)g(Y )] = E[f(X)]E[g(Y)]\)</span>.</li>
+</ul>
+<h3 id="4">4. 多个随机变量<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>上一节介绍的概念和想法可以推广到两个以上的随机变量。特别是，假设我们有<span class="arithmatex">\(n\)</span>个连续随机变量，<span class="arithmatex">\(X _1 (\omega),X_2 (\omega),\cdots X_n (\omega)\)</span>。在本节中，为了表示简单，我们只关注连续的情况，对离散随机变量的推广工作类似。</p>
+<h4 id="41">4.1 基本性质<a class="headerlink" href="#41" title="Permanent link">&para;</a></h4>
+<p>我们可以定义<span class="arithmatex">\(X_1,X_2,\cdots,X_n\)</span>的<strong>联合累积分布函数</strong>、<strong>联合概率密度函数</strong>，以及给定<span class="arithmatex">\(X_2,\cdots,X_n\)</span>时<span class="arithmatex">\(X_1\)</span>的<strong>边缘概率密度函数</strong>为：
+$$
+F_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right)=P\left(X_{1} \leq x_{1}, X_{2} \leq x_{2}, \ldots, X_{n} \leq x_{n}\right)
+$$</p>
+<div class="arithmatex">\[
+f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right)=\frac{\partial^{n} F_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right)}{\partial x_{1} \ldots \partial x_{n}}
+$$
+$$
+f_{X_{1}}\left(X_{1}\right)=\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right) d x_{2} \ldots d x_{n}
+\]</div>
+<div class="arithmatex">\[
+f_{X_{1} | X_{2}, \ldots, X_{n}}\left(x_{1} | x_{2}, \dots x_{n}\right)=\frac{f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \dots x_{n}\right)}{f_{X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right)}
+\]</div>
+<p>为了计算事件<span class="arithmatex">\(A \subseteq \mathbb{R}^{n}\)</span>的概率，我们有：
+$$
+P\left(\left(x_{1}, x_{2}, \ldots x_{n}\right) \in A\right)=\int_{\left(x_{1}, x_{2}, \ldots x_{n}\right) \in A} f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right) d x_{1} d x_{2} \ldots d x_{n}
+$$
+<strong>链式法则：</strong></p>
+<p>从多个随机变量的条件概率的定义中，可以看出：
+$$
+\begin{aligned} f\left(x_{1}, x_{2}, \ldots, x_{n}\right) &amp;=f\left(x_{n} | x_{1}, x_{2} \ldots, x_{n-1}\right) f\left(x_{1}, x_{2} \ldots, x_{n-1}\right) \ &amp;=f\left(x_{n} | x_{1}, x_{2} \ldots, x_{n-1}\right) f\left(x_{n-1} | x_{1}, x_{2} \ldots, x_{n-2}\right) f\left(x_{1}, x_{2} \ldots, x_{n-2}\right) \ &amp;=\cdots=f\left(x_{1}\right) \prod_{i=2}^{n} f\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \end{aligned}
+$$</p>
+<p>独立性:对于多个事件，<span class="arithmatex">\(A_1,\cdots ,A_k\)</span>,我们说<span class="arithmatex">\(A_1,\cdots ,A_k\)</span> 是相互独立的,当对于任何子集<span class="arithmatex">\(S \subseteq \{1，2,\cdots,k\}\)</span>，我们有：
+$$
+P\left(\cap_{i \in S} A_{i}\right)=\prod_{i \in S} P\left(A_{i}\right)
+$$</p>
+<p>同样，我们说随机变量<span class="arithmatex">\(X_1,X_2,\cdots,X_n\)</span>是独立的，如果：</p>
+<p>$$
+f(x_1,\cdots,x_n)=f(x_1)f(x_2)\cdots f(x_n)
+$$
+这里，相互独立性的定义只是两个随机变量独立性到多个随机变量的自然推广。 </p>
+<p>独立随机变量经常出现在机器学习算法中，其中我们假设属于训练集的训练样本代表来自某个未知概率分布的独立样本。为了明确独立性的重要性，考虑一个“坏的”训练集，我们首先从某个未知分布中抽取一个训练样本<span class="arithmatex">\((x^{ (1)},y^{(1)})\)</span>，然后将完全相同的训练样本的<span class="arithmatex">\(m-1\)</span>个副本添加到训练集中。在这种情况下，我们有：
+$$
+P\left(\left(x^{(1)}, y^{(1)}\right), \ldots .\left(x^{(m)}, y^{(m)}\right)\right) \neq \prod_{i=1}^{m} P\left(x^{(i)}, y^{(i)}\right)
+$$</p>
+<p>尽管训练集的大小为<span class="arithmatex">\(m\)</span>，但这些例子并不独立！虽然这里描述的过程显然不是为机器学习算法建立训练集的明智方法，但是事实证明，在实践中，样本的不独立性确实经常出现，并且它具有减小训练集的“有效大小”的效果。</p>
+<h4 id="42">4.2 随机向量<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<p>假设我们有n个随机变量。当把所有这些随机变量放在一起工作时，我们经常会发现把它们放在一个向量中是很方便的...我们称结果向量为随机向量(更正式地说，随机向量是从<span class="arithmatex">\(\Omega\)</span>到<span class="arithmatex">\(\mathbb{R}^n\)</span>的映射)。应该清楚的是，随机向量只是处理<span class="arithmatex">\(n\)</span>个随机变量的一种替代符号，因此联合概率密度函数和综合密度函数的概念也将适用于随机向量。</p>
+<p><strong>期望:</strong></p>
+<p>考虑<span class="arithmatex">\(g : \mathbb{R}^n \rightarrow \mathbb{R}\)</span>中的任意函数。这个函数的期望值 被定义为
+$$
+E[g(X)]=\int_{\mathbb{R}^{n}} g\left(x_{1}, x_{2}, \ldots, x_{n}\right) f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right) d x_{1} d x_{2} \ldots d x_{n}E[g(X)]\=\int_{\mathbb{R}^{n}} g\left(x_{1}, x_{2}, \ldots, x_{n}\right) f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots x_{n}\right) d x_{1} d x_{2} \ldots d x_{n}
+$$
+其中，<span class="arithmatex">\(\int_{\mathbb{R}^{n}}\)</span>是从<span class="arithmatex">\(-\infty\)</span>到<span class="arithmatex">\(\infty\)</span>的<span class="arithmatex">\(n\)</span>个连续积分。如果<span class="arithmatex">\(g\)</span>是从<span class="arithmatex">\(\mathbb{R}^n\)</span>到<span class="arithmatex">\(\mathbb{R}^m\)</span>的函数，那么<span class="arithmatex">\(g\)</span>的期望值是输出向量的元素期望值，即，如果<span class="arithmatex">\(g\)</span>是：</p>
+<div class="arithmatex">\[
+g(x)=\left[\begin{array}{c}{g_{1}(x)} \\ {g_{2}(x)} \\ {\vdots} \\ {g_{m}(x)}\end{array}\right]
+$$
+那么，
+$$
+E[g(X)]=\left[\begin{array}{c}{E\left[g_{1}(X)\right]} \\ {E\left[g_{2}(X)\right]} \\ {\vdots} \\ {E\left[g_{m}(X)\right]}\end{array}\right]
+\]</div>
+<p>协方差矩阵：对于给定的随机向量<span class="arithmatex">\(X:\Omega\rightarrow \mathbb{R}^n\)</span>，其协方差矩阵<span class="arithmatex">\(\Sigma\)</span>是<span class="arithmatex">\(n \times n\)</span>平方矩阵，其输入由<span class="arithmatex">\(\Sigma_{i j}={Cov}\left[X_{i}, X_{j}\right]\)</span>给出。从协方差的定义来看，我们有：
+$$
+\begin{aligned}
+\begin{equation}
+\Sigma=\left[\begin{array}{ccc}{{Cov}\left[X_{1}, X_{1}\right]} &amp; {\cdots} &amp; {{Cov}\left[X_{1}, X_{n}\right]} \ {\vdots} &amp; {\ddots} &amp; {\vdots} \ {{Cov}\left[X_{n}, X_{1}\right]} &amp; {\cdots} &amp; {{Cov}\left[X_{n}, X_{n}\right]}\end{array}\right]\</p>
+<p>=\left[\begin{array}{ccc}{E\left[X_{1}^{2}\right]-E\left[X_{1}\right] E\left[X_{1}\right]} &amp; {\cdots} &amp; {E\left[X_{1} X_{n}\right]-E\left[X_{1}\right] E\left[X_{n}\right]} \ {\vdots} &amp; {\ddots} &amp; {\vdots} \ {E\left[X_{n} X_{1}\right]-E\left[X_{n}\right] E\left[X_{1}\right]} &amp; {\cdots} &amp; {E\left[X_{n}^{2}\right]-E\left[X_{n}\right] E\left[X_{n}\right]}\end{array}\right]\</p>
+<p>=\left[\begin{array}{ccc}{E\left[X_{1}^{2}\right]} &amp; {\cdots} &amp; {E\left[X_{1} X_{n}\right]} \ {\vdots} &amp; {\ddots} &amp; {\vdots} \ {E\left[X_{n} X_{1}\right]} &amp; {\cdots} &amp; {E\left[X_{n}^{2}\right]}\end{array}\right]-\left[\begin{array}{ccc}{E\left[X_{1}\right] E\left[X_{1}\right]} &amp; {\cdots} &amp; {E\left[X_{1}\right] E\left[X_{n}\right]} \ {\vdots} &amp; {\ddots} &amp; {\vdots} \ {E\left[X_{n}\right] E\left[X_{1}\right]} &amp; {\cdots} &amp; {E\left[X_{n}\right] E\left[X_{n}\right]}\end{array}\right]\
+=E\left[X X^{T}\right]-E[X] E[X]^{T}=\ldots=E\left[(X-E[X])(X-E[X])^{T}\right]</p>
+<p>\end{equation}
+\end{aligned}
+$$
+其中矩阵期望以明显的方式定义。 
+协方差矩阵有许多有用的属性:</p>
+<ul>
+<li><span class="arithmatex">\(\Sigma \succeq 0\)</span>；也就是说，<span class="arithmatex">\(\Sigma\)</span>是正半定的。 </li>
+<li><span class="arithmatex">\(\Sigma=\Sigma^T\)</span>；也就是说，<span class="arithmatex">\(\Sigma\)</span>是对称的。</li>
+</ul>
+<h4 id="43">4.3 多元高斯分布<a class="headerlink" href="#43" title="Permanent link">&para;</a></h4>
+<p>随机向量上概率分布的一个特别重要的例子叫做多元高斯或多元正态分布。随机向量<span class="arithmatex">\(X\in \mathbb{R}^n\)</span>被认为具有多元正态(或高斯)分布，当其具有均值<span class="arithmatex">\(\mu \in \mathbb{R}^n\)</span>和协方差矩阵<span class="arithmatex">\(\Sigma \in \mathbb{S}_{++}^{n}\)</span>(其中$ \mathbb{S}_{++}^{n}<span class="arithmatex">\(指对称正定\)</span>n \times n$矩阵的空间)</p>
+<p><span class="arithmatex">\(f_{X_{1}, X_{2}, \ldots, X_{n}}\left(x_{1}, x_{2}, \ldots, x_{n} ; \mu, \Sigma\right)=\frac{1}{(2 \pi)^{n / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}(x-\mu)^{T} \Sigma^{-1}(x-\mu)\right)\)</span></p>
+<p>我们把它写成<span class="arithmatex">\(X \sim \mathcal{N}(\mu, \Sigma)\)</span>。请注意，在<span class="arithmatex">\(n = 1\)</span>的情况下，它降维成普通正态分布，其中均值参数为<span class="arithmatex">\(\mu_1\)</span>，方差为<span class="arithmatex">\(\Sigma_{11}\)</span>。 </p>
+<p>一般来说，高斯随机变量在机器学习和统计中非常有用，主要有两个原因：</p>
+<p>首先，在统计算法中对“噪声”建模时，它们非常常见。通常，噪声可以被认为是影响测量过程的大量小的独立随机扰动的累积；根据中心极限定理，独立随机变量的总和将趋向于“看起来像高斯”。</p>
+<p>其次，高斯随机变量便于许多分析操作，因为实际中出现的许多涉及高斯分布的积分都有简单的封闭形式解。我们将在本课程稍后遇到这种情况。</p>
+<h3 id="5">5. 其他资源<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>一本关于<strong>CS229</strong>所需概率水平的好教科书是谢尔顿·罗斯的《概率第一课》(﻿<em>A First Course on Probability</em> by Sheldon Ross)。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

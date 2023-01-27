@@ -1,0 +1,3223 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ML/Library/Python-matplotlib%E7%94%BB%E5%9B%BE/">
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Python matplotlib画图 - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python matplotlib画图
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.前言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.简单的使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3figure" class="md-nav__link">
+    3.Figure对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4.设置坐标轴
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5legend" class="md-nav__link">
+    5.legend图例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6annotation" class="md-nav__link">
+    6.在图片上加一些标注annotation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.画图的种类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8.多图合并展示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9animation" class="md-nav__link">
+    9.animation动画
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+  <h1>Python matplotlib画图</h1>
+
+<p><strong><em>这个是我对于莫烦老师的matplotlib模块的视频做的一个笔记。</em></strong></p>
+<h2 id="1">1.前言<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Matplotlib是一个python的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。通过Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等。</p>
+<h2 id="2">2.简单的使用<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-1,1,50)#从(-1,1)均匀取50个点
+y = 2 * x
+
+plt.plot(x,y)
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-8abfbfe4cf36035d281f5850634feb29_b.jpg" /></p>
+<p>y = 2x图像</p>
+<blockquote>
+<p><strong>注意：</strong><br />
+1.如果不使用plo.show()图表是显示不出来的，因为可能你要对图表进行多种的描述，所以通过显式的调用show()可以避免不必要的错误。</p>
+</blockquote>
+<h2 id="3figure">3.Figure对象<a class="headerlink" href="#3figure" title="Permanent link">&para;</a></h2>
+<p>我这里单拿出一个一个的对象，然后后面在进行总结。在matplotlib中，整个图表为一个figure对象。其实对于每一个弹出的小窗口就是一个Figure对象，那么如何在一个代码中创建多个Figure对象，也就是多个小窗口呢？</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-1,1,50)
+y1 = x ** 2 
+y2 = x * 2
+#这个是第一个figure对象,下面的内容都会在第一个figure中显示
+plt.figure()
+plt.plot(x,y1)
+#这里第二个figure对象
+plt.figure(num = 3,figsize = (10,5))
+plt.plot(x,y2)
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-2f6305c73ebf0e69fd7278cf3937dfcb_b.jpg" /></p>
+<p>这里需要注意的是：</p>
+<ol>
+<li>我们看上面的每个图像的窗口，可以看出figure并没有从1开始然后到2，这是因为我们在创建第二个figure对象的时候，指定了一个num = 3的参数，所以第二个窗口标题上显示的figure3。</li>
+<li>对于每一个窗口，我们也可以对他们分别去指定窗口的大小。也就是figsize参数。</li>
+<li>若我们想让他们的线有所区别，我们可以用下面语句进行修改</li>
+</ol>
+<div class="highlight"><pre><span></span><code>plt.plot(x,y2,color = &#39;red&#39;,linewidth = 3.0,linestyle = &#39;--&#39;)
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-dcecaa30684c5721c6769864357b7e2f_b.jpg" /></p>
+<h2 id="4">4.设置坐标轴<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>我们想更改在图表上显示x，y的取值范围：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-1,1,50)
+y = x *2
+
+plt.plot(x,y)
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-f9f0e731cbb7c69ad33a31e506f8c0f1_b.jpg" /></p>
+<p>默认的横纵坐标</p>
+<div class="highlight"><pre><span></span><code>#在plt.show()之前添加
+plt.xlim((0,2))
+plt.ylim((-2,2))
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-d9e3490b629535087494c55d9605fd82_b.jpg" /></p>
+<p>更改横纵坐标的取值范围之后</p>
+<p>给横纵坐标设置名称：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-1,1,50)
+y = x * 2
+
+plt.xlabel(&quot;x&#39;slabel&quot;)#x轴上的名字
+plt.ylabel(&quot;y&#39;s;abel&quot;)#y轴上的名字
+plt.plot(x,y,color=&#39;green&#39;,linewidth = 3)
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-57f3436636529a58abd1fbedcb94f8ea_b.jpg" /></p>
+<p>把坐标轴换成不同的单位：</p>
+<div class="highlight"><pre><span></span><code>new_ticks = np.linspace(-1,2,5)
+plt.xticks(new_ticks)
+#在对应坐标处更换名称
+plt.yticks([-2,-1,0,1,2],[&#39;really bad&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;good&#39;])
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-296dea8997c04d282cd99e8472c945a0_b.jpg" /></p>
+<p>更换后的坐标名称</p>
+<p>那么如果我想把坐标轴上的字体更改成数学的那种形式：</p>
+<div class="highlight"><pre><span></span><code>#在对应坐标处更换名称
+plt.yticks([-2,-1,0,1,2],[r&#39;$really\ bad$&#39;,r&#39;$b$&#39;,r&#39;$c\ \alpha$&#39;,&#39;d&#39;,&#39;good&#39;])
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-8388a7c3098631990ee04254934808e3_b.jpg" /></p>
+<p>将单位改成数学的字体格式</p>
+<p>注意：</p>
+<ol>
+<li>我们如果要使用空格的话需要进行对空格的转义"\ "这种转义才能输出空格；</li>
+<li>我们可以在里面加一些数学的公式，如"\alpha"来表示 <span class="arithmatex">\(\alpha\)</span>。</li>
+</ol>
+<p>如何去更换坐标原点，坐标轴呢？我们在plt.show()之前：</p>
+<div class="highlight"><pre><span></span><code>#gca = &#39;get current axis&#39;
+#获取当前的这四个轴
+ax = plt.gca()
+#设置脊梁(也就是包围在图标四周的默认黑线)
+#所以设置脊梁的时候，一共有四个方位
+ax.spines[&#39;right&#39;].set_color(&#39;r&#39;)
+ax.spines[&#39;top&#39;].set_color(&#39;none&#39;)
+
+#将底部脊梁作为x轴
+ax.xaxis.set_ticks_position(&#39;bottom&#39;)
+#ACCEPTS:[&#39;top&#39; | &#39;bottom&#39; | &#39;both&#39;|&#39;default&#39;|&#39;none&#39;]
+
+#设置x轴的位置(设置底的时候依据的是y轴)
+ax.spines[&#39;bottom&#39;].set_position((&#39;data&#39;,0))
+#the 1st is in &#39;outward&#39; |&#39;axes&#39; | &#39;data&#39;
+#axes : precentage of y axis
+#data : depend on y data
+
+ax.yaxis.set_ticks_position(&#39;left&#39;)
+# #ACCEPTS:[&#39;top&#39; | &#39;bottom&#39; | &#39;both&#39;|&#39;default&#39;|&#39;none&#39;]
+
+#设置左脊梁(y轴)依据的是x轴的0位置
+ax.spines[&#39;left&#39;].set_position((&#39;data&#39;,0))
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-67940da91ca9d9639bfbae22faffa472_b.jpg" /></p>
+<p>更改坐标轴位置</p>
+<h2 id="5legend">5.legend图例<a class="headerlink" href="#5legend" title="Permanent link">&para;</a></h2>
+<p>我们很多时候会再一个figures中去添加多条线，那我们如何去区分多条线呢？这里就用到了legend。</p>
+<div class="highlight"><pre><span></span><code>#简单的使用
+l1, = plt.plot(x, y1, label=&#39;linear line&#39;)
+l2, = plt.plot(x, y2, color=&#39;red&#39;, linewidth=1.0, linestyle=&#39;--&#39;, label=&#39;square line&#39;)
+
+#简单的设置legend(设置位置)
+#位置在右上角
+plt.legend(loc = &#39;upper right&#39;)
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-003f4f9566b26abbd56d1da61687120b_b.jpg" /></p>
+<div class="highlight"><pre><span></span><code>l1, = plt.plot(x, y1, label=&#39;linear line&#39;)
+l2, = plt.plot(x, y2, color=&#39;red&#39;, linewidth=1.0, linestyle=&#39;--&#39;, label=&#39;square line&#39;)
+
+
+plt.legend(handles = [l1,l2],labels = [&#39;up&#39;,&#39;down&#39;],loc = &#39;best&#39;)
+#the &#39;,&#39; is very important in here l1, = plt...and l2, = plt...for this step
+&quot;&quot;&quot;legend( handles=(line1, line2, line3),
+           labels=(&#39;label1&#39;, &#39;label2&#39;, &#39;label3&#39;),
+           &#39;upper right&#39;)
+    shadow = True 设置图例是否有阴影
+    The *loc* location codes are::
+          &#39;best&#39; : 0,         
+          &#39;upper right&#39;  : 1,
+          &#39;upper left&#39;   : 2,
+          &#39;lower left&#39;   : 3,
+          &#39;lower right&#39;  : 4,
+          &#39;right&#39;        : 5,
+          &#39;center left&#39;  : 6,
+          &#39;center right&#39; : 7,
+          &#39;lower center&#39; : 8,
+          &#39;upper center&#39; : 9,
+          &#39;center&#39;       : 10,&quot;&quot;&quot;
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-4d1f55506baed018f55bfcdd3bd324c2_b.jpg" /></p>
+<p>这里需要注意的是：</p>
+<ol>
+<li>如果我们没有在legend方法的参数中设置labels，那么就会使用画线的时候，也就是plot方法中的指定的label参数所指定的名称，当然如果都没有的话就会抛出异常；</li>
+<li>其实我们plt.plot的时候返回的是一个线的对象，如果我们想在handle中使用这个对象，就必须在返回的名字的后面加一个","号；</li>
+</ol>
+<div class="highlight"><pre><span></span><code>legend = plt.legend(handles = [l1,l2],labels = [&#39;hu&#39;,&#39;tang&#39;],loc = &#39;upper center&#39;,shadow = True)
+frame = legend.get_frame()
+frame.set_facecolor(&#39;r&#39;)#或者0.9...
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-3013158493506053994aaa04a90f56d3_b.jpg" /></p>
+<p>更改后的图例样式</p>
+<h2 id="6annotation">6.在图片上加一些标注annotation<a class="headerlink" href="#6annotation" title="Permanent link">&para;</a></h2>
+<p>在图片上加注解有两种方式：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-3,3,50)
+y = 2*x + 1
+
+plt.figure(num = 1,figsize =(8,5))
+plt.plot(x,y)
+
+ax = plt.gca()
+ax.spines[&#39;right&#39;].set_color(&#39;none&#39;)
+ax.spines[&#39;top&#39;].set_color(&#39;none&#39;)
+
+#将底下的作为x轴
+ax.xaxis.set_ticks_position(&#39;bottom&#39;)
+#并且data，以y轴的数据为基本
+ax.spines[&#39;bottom&#39;].set_position((&#39;data&#39;,0))
+
+#将左边的作为y轴
+ax.yaxis.set_ticks_position(&#39;left&#39;)
+ax.spines[&#39;left&#39;].set_position((&#39;data&#39;,0))
+
+print(&quot;-----方式一-----&quot;)
+x0 = 1
+y0 = 2*x0 + 1
+plt.plot([x0,x0],[0,y0],&#39;k--&#39;,linewidth = 2.5)
+plt.scatter([x0],[y0],s = 50,color=&#39;b&#39;)
+plt.annotate(r&#39;$2x+1 = %s$&#39;% y0,xy = (x0,y0),xycoords = &#39;data&#39;,
+             xytext=(+30,-30),textcoords = &#39;offset points&#39;,fontsize = 16
+             ,arrowprops = dict(arrowstyle=&#39;-&gt;&#39;,
+                                connectionstyle=&quot;arc3,rad=.2&quot;))
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-f3c1e4f3c0fe17ce6f81f2f8ae8ba6d8_b.jpg" /></p>
+<p>第一种annotation</p>
+<div class="highlight"><pre><span></span><code>plt.annotate(r&#39;$2x+1 = %s$&#39;% y0,xy = (x0,y0),xycoords = &#39;data&#39;,
+             xytext=(+30,-30),textcoords = &#39;offset points&#39;,fontsize = 16
+             ,arrowprops = dict(arrowstyle=&#39;-&gt;&#39;,
+                                connectionstyle=&quot;arc3,rad=.2&quot;))
+</code></pre></div>
+<p>注意：</p>
+<ol>
+<li>xy就是需要进行注释的点的横纵坐标；</li>
+<li>xycoords = 'data'说明的是要注释点的xy的坐标是以横纵坐标轴为基准的；</li>
+<li>xytext=(+30,-30)和textcoords='data'说明了这里的文字是基于标注的点的x坐标的偏移+30以及标注点y坐标-30位置，就是我们要进行注释文字的位置；</li>
+<li>fontsize = 16就说明字体的大小；</li>
+<li>arrowprops = dict()这个是对于这个箭头的描述，arrowstyle='-&gt;'这个是箭头的类型，connectionstyle="arc3,rad=.2"这两个是描述我们的箭头的弧度以及角度的。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>print(&quot;-----方式二-----&quot;)
+plt.text(-3.7,3,r&#39;$this\ is\ the\ some\ text. \mu\ \sigma_i\ \alpha_t$&#39;,
+         fontdict={&#39;size&#39;:16,&#39;color&#39;:&#39;r&#39;})
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-51d0e6a59885dfa60c8dc46743647291_b.jpg" /></p>
+<p>第二种标注方式</p>
+<p>这里先介绍一下plot中的一个参数：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-3,3,50)
+y1 = 0.1*x
+y2 = x**2
+
+plt.figure()
+#zorder控制绘图顺序
+plt.plot(x,y1,linewidth = 10,zorder = 2,label = r&#39;$y_1\ =\ 0.1*x$&#39;)
+plt.plot(x,y2,linewidth = 10,zorder = 1,label = r&#39;$y_2\ =\ x^{2}$&#39;)
+
+plt.legend(loc = &#39;lower right&#39;)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-852a068180d08dbbae1e81d494081af5_b.jpg" /></p>
+<p>如果改成：</p>
+<div class="highlight"><pre><span></span><code>#zorder控制绘图顺序
+plt.plot(x,y1,linewidth = 10,zorder = 1,label = r&#39;$y_1\ =\ 0.1*x$&#39;)
+plt.plot(x,y2,linewidth = 10,zorder = 2,label = r&#39;$y_2\ =\ x^{2}$&#39;)
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-9e1ed872b3ba1806e61c13e74aa38b3b_b.jpg" /></p>
+<p>下面我们看一下这个图：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-3,3,50)
+y1 = 0.1*x
+y2 = x**2
+
+plt.figure()
+#zorder控制绘图顺序
+plt.plot(x,y1,linewidth = 10,zorder = 1,label = r&#39;$y_1\ =\ 0.1*x$&#39;)
+plt.plot(x,y2,linewidth = 10,zorder = 2,label = r&#39;$y_2\ =\ x^{2}$&#39;)
+
+plt.ylim(-2,2)
+
+ax = plt.gca()
+ax.spines[&#39;right&#39;].set_color(&#39;none&#39;)
+ax.spines[&#39;top&#39;].set_color(&#39;none&#39;)
+
+ax.xaxis.set_ticks_position(&#39;bottom&#39;)
+ax.spines[&#39;bottom&#39;].set_position((&#39;data&#39;,0))
+ax.yaxis.set_ticks_position(&#39;left&#39;)
+ax.spines[&#39;left&#39;].set_position((&#39;data&#39;,0))
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-2b1ccdffb8dd2056d67a0129a1920ebf_b.jpg" /></p>
+<p>执行效果</p>
+<p>从上面看，我们可以看见我们轴上的坐标被掩盖住了，那么我们怎么去修改他呢？</p>
+<div class="highlight"><pre><span></span><code>print(ax.get_xticklabels())
+print(ax.get_yticklabels())
+
+for label in ax.get_xticklabels() + ax.get_yticklabels():
+    label.set_fontsize(12)
+    label.set_bbox(dict(facecolor = &#39;white&#39;,edgecolor=&#39;none&#39;,alpha = 0.8,zorder = 2))
+
+&lt;a list of 9 Text xticklabel objects&gt;
+&lt;a list of 9 Text yticklabel objects&gt;
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-d2f6f7cbacc2a232da492aa401d9b8b4_b.jpg" /></p>
+<p>让坐标轴显示出来</p>
+<p>这里需要注意：</p>
+<ol>
+<li>ax.get_xticklabels()获取得到就是坐标轴上的数字；</li>
+<li>set_bbox()这个bbox就是那坐标轴上的数字的那一小块区域，从结果我们可以很明显的看出来；</li>
+<li>facecolor = 'white',edgecolor='none，第一个参数表示的这个box的前面的背景，边上的颜色。</li>
+</ol>
+<h2 id="7">7.画图的种类<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><strong>1.scatter散点图</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+n = 1024
+X = np.random.normal(0,1,n)
+Y = np.random.normal(0,1,n)
+T = np.arctan2(Y,X)#for color later on
+
+plt.scatter(X,Y,s = 75,c = T,alpha = .5)
+
+plt.xlim((-1.5,1.5))
+plt.xticks([])#ignore xticks
+plt.ylim((-1.5,1.5))
+plt.yticks([])#ignore yticks
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-a0ca957450f29e7552b33dc87e74f5f6_b.jpg" /></p>
+<p>散点图</p>
+<p><strong>2.柱状图</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+n = 12
+X = np.arange(n)
+Y1 = (1 - X/float(n)) * np.random.uniform(0.5,1.0,n)
+Y2 = (1 - X/float(n)) * np.random.uniform(0.5,1.0,n)
+#facecolor:表面的颜色;edgecolor:边框的颜色
+plt.bar(X,+Y1,facecolor = &#39;#9999ff&#39;,edgecolor = &#39;white&#39;)
+plt.bar(X,-Y2,facecolor = &#39;#ff9999&#39;,edgecolor = &#39;white&#39;)
+#描绘text在图表上
+# plt.text(0 + 0.4, 0 + 0.05,&quot;huhu&quot;)
+for x,y in zip(X,Y1):
+    #ha : horizontal alignment
+    #va : vertical alignment
+    plt.text(x + 0.01,y+0.05,&#39;%.2f&#39;%y,ha = &#39;center&#39;,va=&#39;bottom&#39;)
+
+for x,y in zip(X,Y2):
+    # ha : horizontal alignment
+    # va : vertical alignment
+    plt.text(x+0.01,-y-0.05,&#39;%.2f&#39;%(-y),ha=&#39;center&#39;,va=&#39;top&#39;)
+
+plt.xlim(-.5,n)
+plt.yticks([])
+plt.ylim(-1.25,1.25)
+plt.yticks([])
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-c7e6309bc583cc925f8a3b781eed3d68_b.jpg" /></p>
+<p>柱状图</p>
+<p><strong>3.Contours等高线图</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x,y):
+    #the height function
+    return (1-x/2 + x**5+y**3) * np.exp(-x **2 -y**2)
+
+n = 256
+x = np.linspace(-3,3,n)
+y = np.linspace(-3,3,n)
+#meshgrid函数用两个坐标轴上的点在平面上画网格。
+X,Y = np.meshgrid(x,y)
+
+#use plt.contourf to filling contours
+#X Y and value for (X,Y) point
+#这里的8就是说明等高线分成多少个部分，如果是0则分成2半
+#则8是分成10半
+#cmap找对应的颜色，如果高=0就找0对应的颜色值，
+plt.contourf(X,Y,f(X,Y),8,alpha = .75,cmap = plt.cm.hot)
+
+#use plt.contour to add contour lines
+C = plt.contour(X,Y,f(X,Y),8,colors = &#39;black&#39;,linewidth = .5)
+
+#adding label
+plt.clabel(C,inline = True,fontsize = 10)
+
+#ignore ticks
+plt.xticks([])
+plt.yticks([])
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-a0623cae9763bfcd571b6e7560f668ac_b.jpg" /></p>
+<p>等高线</p>
+<p><strong>4.image图片</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+import numpy as np
+
+#image data
+a = np.array([0.313660827978, 0.365348418405, 0.423733120134,
+              0.365348418405, 0.439599930621, 0.525083754405,
+              0.423733120134, 0.525083754405, 0.651536351379]).reshape(3,3)
+
+&#39;&#39;&#39;
+for the value of &quot;interpolation&quot;，check this:
+http://matplotlib.org/examples/images_contours_and_fields/interpolation_methods.html
+for the value of &quot;origin&quot;= [&#39;upper&#39;, &#39;lower&#39;], check this:
+http://matplotlib.org/examples/pylab_examples/image_origin.html
+&#39;&#39;&#39;
+#显示图像
+#这里的cmap=&#39;bone&#39;等价于plt.cm.bone
+plt.imshow(a,interpolation = &#39;nearest&#39;,cmap = &#39;bone&#39; ,origin = &#39;up&#39;)
+#显示右边的栏
+plt.colorbar(shrink = .92)
+
+#ignore ticks
+plt.xticks([])
+plt.yticks([])
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-a8f404663cf3409f3315afe1226e3b68_b.jpg" /></p>
+<p>显示图片</p>
+<p><strong>5.3D数据</strong></p>
+<div class="highlight"><pre><span></span><code>import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = Axes3D(fig)
+#X Y value
+X = np.arange(-4,4,0.25)
+Y = np.arange(-4,4,0.25)
+X,Y = np.meshgrid(X,Y)
+R = np.sqrt(X**2 + Y**2)
+#hight value
+Z = np.sin(R)
+
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=plt.get_cmap(&#39;rainbow&#39;))
+&quot;&quot;&quot;
+============= ================================================
+        Argument      Description
+        ============= ================================================
+        *X*, *Y*, *Z* Data values as 2D arrays
+        *rstride*     Array row stride (step size), defaults to 10
+        *cstride*     Array column stride (step size), defaults to 10
+        *color*       Color of the surface patches
+        *cmap*        A colormap for the surface patches.
+        *facecolors*  Face colors for the individual patches
+        *norm*        An instance of Normalize to map values to colors
+        *vmin*        Minimum value to map
+        *vmax*        Maximum value to map
+        *shade*       Whether to shade the facecolors
+        ============= ================================================
+&quot;&quot;&quot;
+
+# I think this is different from plt12_contours
+ax.contourf(X, Y, Z, zdir=&#39;z&#39;, offset=-2, cmap=plt.get_cmap(&#39;rainbow&#39;))
+&quot;&quot;&quot;
+==========  ================================================
+        Argument    Description
+        ==========  ================================================
+        *X*, *Y*,   Data values as numpy.arrays
+        *Z*
+        *zdir*      The direction to use: x, y or z (default)
+        *offset*    If specified plot a projection of the filled contour
+                    on this position in plane normal to zdir
+        ==========  ================================================
+&quot;&quot;&quot;
+ax.set_zlim(-2, 2)
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-03b37dd9be9f943442f44591f608a9b9_b.jpg" /></p>
+<h2 id="8">8.多图合并展示<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p><strong>1.使用subplot函数</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+
+plt.figure(figsize = (6,5))
+
+ax1 = plt.subplot(3,1,1)
+ax1.set_title(&quot;ax1 title&quot;)
+plt.plot([0,1],[0,1])
+
+#这种情况下如果再数的话以334为标准了，
+#把上面的第一行看成是3个列
+ax2 = plt.subplot(334)
+ax2.set_title(&quot;ax2 title&quot;)
+
+ax3 = plt.subplot(335)
+ax4 = plt.subplot(336)
+ax5 = plt.subplot(325)
+ax6 = plt.subplot(326)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-4209e4c100fca8fbccbcfea950a54e50_b.jpg" /></p>
+<p>案例一</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+
+plt.figure(figsize = (6,4))
+#plt.subplot(n_rows,n_cols,plot_num)
+plt.subplot(211)
+# figure splits into 2 rows, 1 col, plot to the 1st sub-fig
+plt.plot([0, 1], [0, 1])
+
+plt.subplot(234)
+# figure splits into 2 rows, 3 col, plot to the 4th sub-fig
+plt.plot([0, 1], [0, 2])
+
+plt.subplot(235)
+# figure splits into 2 rows, 3 col, plot to the 5th sub-fig
+plt.plot([0, 1], [0, 3])
+
+plt.subplot(236)
+# figure splits into 2 rows, 3 col, plot to the 6th sub-fig
+plt.plot([0, 1], [0, 4])
+
+plt.tight_layout()
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-26ad00e7e9718c0a17d5be831260131d_b.jpg" /></p>
+<p>案例二</p>
+<p><strong>2.分格显示</strong></p>
+<div class="highlight"><pre><span></span><code>#method 1: subplot2grid
+import matplotlib.pyplot as plt
+plt.figure()
+#第一个参数shape也就是我们网格的形状
+#第二个参数loc,位置,这里需要注意位置是从0开始索引的
+#第三个参数colspan跨多少列,默认是1
+#第四个参数rowspan跨多少行,默认是1
+ax1 = plt.subplot2grid((3,3),(0,0),colspan = 3,rowspan = 1)
+#如果为他设置一些属性的话，如plt.title,则用ax1的话
+#ax1.set_title(),同理可设置其他属性
+ax1.set_title(&quot;ax1_title&quot;)
+
+ax2 = plt.subplot2grid((3,3),(1,0),colspan = 2,rowspan = 1)
+ax3 = plt.subplot2grid((3,3),(1,2),colspan = 1,rowspan = 2)
+ax4 = plt.subplot2grid((3,3),(2,0),colspan = 1,rowspan = 1)
+ax5 = plt.subplot2grid((3,3),(2,1),colspan = 1,rowspan = 1)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-719a7bdfac6c623bb6f2da9597e3b735_b.jpg" /></p>
+<p>method1 result</p>
+<div class="highlight"><pre><span></span><code>#method 2:gridspec
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+
+plt.figure()
+gs = gridspec.GridSpec(3,3)
+#use index from 0
+ax1 = plt.subplot(gs[0,:])
+ax1.set_title(&quot;ax1 title&quot;)
+
+ax2 = plt.subplot(gs[1,:2])
+ax2.plot([1,2],[3,4],&#39;r&#39;)
+
+ax3 = plt.subplot(gs[1:,2:])
+ax4 = plt.subplot(gs[-1,0])
+ax5 = plt.subplot(gs[-1,-2])
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-66e8dd6524ccdb48973f3cd62b2f944a_b.jpg" /></p>
+<p>method2 result</p>
+<div class="highlight"><pre><span></span><code>#method 3 :easy to define structure
+#这种方式不能生成指定跨行列的那种
+import matplotlib.pyplot as plt
+#(ax11,ax12),(ax13,ax14)代表了两行
+#f就是figure对象,
+#sharex：是否共享x轴
+#sharey:是否共享y轴
+f,((ax11,ax12),(ax13,ax14)) = plt.subplots(2,2,sharex = True,sharey = True)
+ax11.set_title(&quot;a11 title&quot;)
+ax12.scatter([1,2],[1,2])
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-5dc057c3742fb774aa96bfbb5b901a19_b.jpg" /></p>
+<p>method3 result</p>
+<p><strong>3.图中图</strong></p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as plt
+
+fig = plt.figure()
+x = [1,2,3,4,5,6,7]
+y = [1,3,4,2,5,8,6]
+
+#below are all percentage
+left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
+#使用plt.figure()显示的是一个空的figure
+#如果使用fig.add_axes会添加轴
+ax1 = fig.add_axes([left, bottom, width, height])# main axes
+ax1.plot(x,y,&#39;r&#39;)
+ax1.set_xlabel(&#39;x&#39;)
+ax1.set_ylabel(&#39;y&#39;)
+ax1.set_title(&#39;title&#39;)
+
+ax2 = fig.add_axes([0.2, 0.6, 0.25, 0.25])  # inside axes
+ax2.plot(y, x, &#39;b&#39;)
+ax2.set_xlabel(&#39;x&#39;)
+ax2.set_ylabel(&#39;y&#39;)
+ax2.set_title(&#39;title inside 1&#39;)
+
+# different method to add axes
+####################################
+plt.axes([0.6, 0.2, 0.25, 0.25])
+plt.plot(y[::-1], x, &#39;g&#39;)
+plt.xlabel(&#39;x&#39;)
+plt.ylabel(&#39;y&#39;)
+plt.title(&#39;title inside 2&#39;)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-655825a973841e5e037dd640a72ad3cf_b.jpg" /></p>
+<p>画中画</p>
+<p><strong>4.次坐标轴</strong></p>
+<div class="highlight"><pre><span></span><code># 使用twinx是添加y轴的坐标轴
+# 使用twiny是添加x轴的坐标轴
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0,10,0.1)
+y1 = 0.05 * x ** 2
+y2 = -1 * y1
+
+fig,ax1 = plt.subplots()
+
+ax2 = ax1.twinx()
+ax1.plot(x,y1,&#39;g-&#39;)
+ax2.plot(x,y2,&#39;b-&#39;)
+
+ax1.set_xlabel(&#39;X data&#39;)
+ax1.set_ylabel(&#39;Y1 data&#39;,color = &#39;g&#39;)
+ax2.set_ylabel(&#39;Y2 data&#39;,color = &#39;b&#39;)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-496b249765c3587cfeb5de7f149e8be5_b.jpg" /></p>
+<p>次坐标</p>
+<h2 id="9animation">9.animation动画<a class="headerlink" href="#9animation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib import animation
+
+fig,ax = plt.subplots()
+
+x = np.arange(0,2*np.pi,0.01)
+#因为这里返回的是一个列表，但是我们只想要第一个值
+#所以这里需要加,号
+line, = ax.plot(x,np.sin(x))
+
+def animate(i):
+    line.set_ydata(np.sin(x + i/10.0))#updata the data
+    return line,
+
+def init():
+    line.set_ydata(np.sin(x))
+    return line,
+
+
+# call the animator.  blit=True means only re-draw the parts that have changed.
+# blit=True dose not work on Mac, set blit=False
+# interval= update frequency
+#frames帧数
+ani = animation.FuncAnimation(fig=fig, func=animate, frames=100, init_func=init,
+                              interval=20, blit=False)
+
+plt.show()
+</code></pre></div>
+<p><img alt="动图封面" src="https://pic4.zhimg.com/v2-c2a851472cced8c36d9f4d09b2b6feeb_b.jpg" /></p>
+<p>animation</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

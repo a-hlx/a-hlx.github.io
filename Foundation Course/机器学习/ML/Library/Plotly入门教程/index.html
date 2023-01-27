@@ -1,0 +1,3337 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ML/Library/Plotly%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Plotly入门教程 - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plotly入门教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    数据加载与特征说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-charts" class="md-nav__link">
+    Line Charts（折线图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scatter-charts" class="md-nav__link">
+    Scatter Charts（散点图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bar-charts" class="md-nav__link">
+    Bar Charts（柱状图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bubble-charts" class="md-nav__link">
+    Bubble Charts（冒泡图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#histogram" class="md-nav__link">
+    Histogram（直方图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#word-cloud" class="md-nav__link">
+    Word Cloud（词云）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#box-plots" class="md-nav__link">
+    Box Plots（箱型图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scatterplot-matrix" class="md-nav__link">
+    ScatterPlot Matrix（散点图矩阵）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inset-plots" class="md-nav__link">
+    Inset Plots（内置图）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-scatter-plot-3d" class="md-nav__link">
+    3D Scatter Plot (3D散点图)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-subplots" class="md-nav__link">
+    Multiple Subplots（多子图）
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+  <h1>Plotly入门教程</h1>
+
+<p>（Github 源代码地址：https://github.com/WillKoehrsen/Data-Analysis/blob/master/plotly/Plotly%20Whirlwind%20Introduction.ipynb）</p>
+<p>Plotly是一个非常著名且强大的开源数据可视化框架，它通过构建基于浏览器显示的web形式的可交互图表来展示信息，可创建多达数十种精美的图表和地图，本文以ModelWhale为开发工具，详细介绍Plotly的基础内容。</p>
+<p>// 本文所使用的数据集为 <a href="https://link.zhihu.com/?target=https%3A//www.heywhale.com/mw/dataset/5bfe4c5e954d6e0010682700">世界大学排行榜</a></p>
+<div class="highlight"><pre><span></span><code># 加载numpy和pandas包
+import numpy as np 
+import pandas as pd 
+
+# 加载plotly包
+import plotly.plotly as py
+from plotly.offline import init_notebook_mode, iplot
+init_notebook_mode(connected=True)
+import plotly.graph_objs as go
+
+# 云词库
+from wordcloud import WordCloud
+
+# 加载matplotlib包
+import matplotlib.pyplot as plt
+</code></pre></div>
+<h2 id="_1">数据加载与特征说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>timesData数据包含以下14个特征:</p>
+</li>
+<li>
+<p>world_rank</p>
+</li>
+<li>university_name</li>
+<li>country</li>
+<li>teaching</li>
+<li>international</li>
+<li>research</li>
+<li>citations</li>
+<li>income</li>
+<li>total_score</li>
+<li>num_students</li>
+<li>student_staff_ratio</li>
+<li>international_students</li>
+<li>female_male_ratio</li>
+<li>year</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 加载数据
+timesData = pd.read_csv(&quot;/home/mw/input/dataset8837/timesData.csv&quot;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># timesData相关信息
+timesData.info()
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-3c050071e11346e885bf8b7375d00781_b.jpg" /></p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-c667ae2ed3a1c281cad503b17a469bfb_b.jpg" /></p>
+<h2 id="line-charts">Line Charts（折线图）<a class="headerlink" href="#line-charts" title="Permanent link">&para;</a></h2>
+<p>plotly中的graph_objs是plotly下的子模块，用于导入plotly中所有图形对象。在根据绘图需求从graph_objs中导入相应的obj之后，接下来需要做的事情是基于待展示的数据，为指定的obj配置相关参数，这在plotly中称为构造traces(create traces)。</p>
+<p>1、Import graph_objs as go</p>
+<p>2、构造traces：</p>
+<ul>
+<li>x ： x轴</li>
+<li>y ： y轴</li>
+<li>mode ： plot的类型（如marker, line ， line + markers）</li>
+<li>name ： plot的名称</li>
+<li>
+<p>marker ： 定义点的性质，字典型</p>
+</li>
+<li>
+<p>color ： 线的颜色，包括RGB(红，绿，蓝)和不透明度(alpha)</p>
+</li>
+<li>
+<p>text ： 悬停文本</p>
+</li>
+</ul>
+<p>3、data ： 保存trace的list</p>
+<p>4、定义layout ： 布局，字典型</p>
+<ul>
+<li>title ： 图像的主标题</li>
+<li>
+<p>x axis ： 字典型</p>
+</li>
+<li>
+<p>title ： x轴标题</p>
+</li>
+<li>ticklen ： x轴刻度线的长度</li>
+<li>zeroline ： 是否显示零线</li>
+</ul>
+<p>5、fig ： 将graph部分和layout部分组合成figure对象</p>
+<p>6、iplot() ： 绘制由data和layout创建的图</p>
+<p>示例图像：'Citation and Teaching<strong>vs</strong>World Rank of Top 100 Universities'</p>
+<div class="highlight"><pre><span></span><code># 创建 data frame
+df = timesData.iloc[:100,:]
+
+# import graph objects as &quot;go&quot;
+import plotly.graph_objs as go
+
+# 设置第一条折线trace1
+# go.Scatter可以创建一个散点图或者折线图的对象，我们将其命名为trace1
+trace1 = go.Scatter(
+                    x = df.world_rank,   # 定义坐标轴的映射关系，将world_rank这一列作为x轴
+                    y = df.citations,    # 同理，将citations这一列作为y轴
+                    mode = &quot;lines&quot;,      # 我们要绘制折线图，所以将mode设置为“lines”
+                    name = &quot;citations&quot;,  # 将这条折线命名为citations
+                    marker = dict(color = &#39;rgba(16, 112, 2, 0.8)&#39;), 
+                    # maker用来定义点的性质，如颜色、大小等
+                    text= df.university_name)
+                    # 将university_name一列设置为悬停文本（鼠标悬停在图片上方显示的内容）
+
+# 设置第二条折线trace2
+trace2 = go.Scatter(
+                    x = df.world_rank,
+                    y = df.teaching,
+                    mode = &quot;lines+markers&quot;, #绘制的折线图由散点连接而成，即lines+markers
+                    name = &quot;teaching&quot;,
+                    marker = dict(color = &#39;rgba(80, 26, 80, 0.8)&#39;),
+                    text= df.university_name)
+
+data = [trace1, trace2]
+
+# 添加图层layout
+layout = dict(title = &#39;Citation and Teaching vs World Rank of Top 100 Universities&#39;,
+              # 设置图像的标题
+              xaxis= dict(title= &#39;World Rank&#39;,ticklen= 5,zeroline= False)
+              # 设置x轴名称，x轴刻度线的长度，不显示零线
+             ) 
+
+# 将data与layout组合为一个图像
+fig = dict(data = data, layout = layout)
+# 绘制图像
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-f9a6cb3dfca0fa898ba087b87d10ba1e_b.jpg" /></p>
+<h2 id="scatter-charts">Scatter Charts（散点图）<a class="headerlink" href="#scatter-charts" title="Permanent link">&para;</a></h2>
+<p>示例图像: Citation<strong>vs</strong>world rank of top 100 universities with 2014, 2015 and 2016 years</p>
+<div class="highlight"><pre><span></span><code># 创建 data frames
+df2014 = timesData[timesData.year == 2014].iloc[:100,:]
+df2015 = timesData[timesData.year == 2015].iloc[:100,:]
+df2016 = timesData[timesData.year == 2016].iloc[:100,:]
+# import graph objects as &quot;go&quot;
+import plotly.graph_objs as go
+# 创建 trace1
+trace1 =go.Scatter(
+                    x = df2014.world_rank,
+                    y = df2014.citations,
+                    mode = &quot;markers&quot;,
+                    name = &quot;2014&quot;,
+                    marker = dict(color = &#39;rgba(255, 128, 255, 0.8)&#39;),
+                    text= df2014.university_name)
+# 创建 trace2
+trace2 =go.Scatter(
+                    x = df2015.world_rank,
+                    y = df2015.citations,
+                    mode = &quot;markers&quot;,
+                    name = &quot;2015&quot;,
+                    marker = dict(color = &#39;rgba(255, 128, 2, 0.8)&#39;),
+                    text= df2015.university_name)
+# 创建 trace3
+trace3 =go.Scatter(
+                    x = df2016.world_rank,
+                    y = df2016.citations,
+                    mode = &quot;markers&quot;,
+                    name = &quot;2016&quot;,
+                    marker = dict(color = &#39;rgba(0, 255, 200, 0.8)&#39;),
+                    text= df2016.university_name)
+data = [trace1, trace2, trace3]
+layout = dict(title = &#39;Citation vs world rank of top 100 universities with 2014, 2015 and 2016 years&#39;,
+              xaxis= dict(title= &#39;World Rank&#39;,ticklen= 5,zeroline= False),
+              yaxis= dict(title= &#39;Citation&#39;,ticklen= 5,zeroline= False)
+             )
+fig = dict(data = data, layout = layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-4d7f3a2115e18d980268979be7a03ad4_b.jpg" /></p>
+<h2 id="bar-charts">Bar Charts（柱状图）<a class="headerlink" href="#bar-charts" title="Permanent link">&para;</a></h2>
+<p>示例图像一: 2014年全国大学排名前三名的引文与教学情况(style1)</p>
+<div class="highlight"><pre><span></span><code># 准备 data frames
+df2014 = timesData[timesData.year == 2014].iloc[:3,:]
+df2014
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-0d6544dfd552adc7c3f72a4032376216_b.jpg" /></p>
+<div class="highlight"><pre><span></span><code># 准备 data frames
+df2014 = timesData[timesData.year == 2014].iloc[:3,:]
+# import graph objects as &quot;go&quot;
+import plotly.graph_objs as go
+
+# go.Bar可以创建一个柱状图对象，我们将其命名为trace1
+# 构造 trace1 
+trace1 = go.Bar(
+                x = df2014.university_name,
+                y = df2014.citations,
+                name = &quot;citations&quot;,
+                marker = dict(color = &#39;rgba(255, 174, 255, 0.5)&#39;,
+                             line=dict(color=&#39;rgb(0,0,0)&#39;,width=1.5)),
+                text = df2014.country)
+# 构造 trace2 
+trace2 = go.Bar(
+                x = df2014.university_name,
+                y = df2014.teaching,
+                name = &quot;teaching&quot;,
+                marker = dict(color = &#39;rgba(255, 255, 128, 0.5)&#39;,
+                              line=dict(color=&#39;rgb(0,0,0)&#39;,width=1.5)),
+                text = df2014.country)
+data = [trace1, trace2]
+# barmode：设置条形图的形式，“group”为分组条形图
+layout = go.Layout(barmode = &quot;group&quot;)   
+fig = go.Figure(data = data, layout = layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-28aa17e13255c09f073d5f176293e228_b.jpg" /></p>
+<p>示例图像二: 2014年全国大学排名前三名的引文与教学情况(style2)</p>
+<p>PS:实际上，在前面的示例中只将<code>barmode</code>从<code>group</code>更改为<code>stack</code>，就可以实现在这里所做的操作。本例使用了不同的语法。</p>
+<div class="highlight"><pre><span></span><code># 准备 data frames
+df2014 = timesData[timesData.year == 2014].iloc[:3,:]
+# import graph objects as &quot;go&quot;
+import plotly.graph_objs as go
+
+x = df2014.university_name
+
+trace1 = {
+  &#39;x&#39;: x,
+  &#39;y&#39;: df2014.citations,
+  &#39;name&#39;: &#39;citation&#39;,
+  &#39;type&#39;: &#39;bar&#39;
+};
+trace2 = {
+  &#39;x&#39;: x,
+  &#39;y&#39;: df2014.teaching,
+  &#39;name&#39;: &#39;teaching&#39;,
+  &#39;type&#39;: &#39;bar&#39;
+};
+data = [trace1, trace2];
+layout = {
+  &#39;xaxis&#39;: {&#39;title&#39;: &#39;Top 3 universities&#39;},
+  &#39;barmode&#39;: &#39;stack&#39;,   # 条形图形式设置为堆积条形图
+  &#39;title&#39;: &#39;citations and teaching of top 3 universities in 2014&#39;
+};
+fig = go.Figure(data = data, layout = layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-56385f4650dc359eb00fee2a3e7b31f4_b.jpg" /></p>
+<p>示例三: 水平条形图(style3)， Citation <strong>vs</strong> income for universities</p>
+<ul>
+<li>
+<p>Import graph_objs as go 并且 import tools</p>
+</li>
+<li>
+<p>Tools: 用于创建子图</p>
+</li>
+<li>
+<p>构造 trace1</p>
+</li>
+<li>
+<p>bar: 柱状图</p>
+</li>
+<li>
+<p>x = x 轴</p>
+</li>
+<li>y = y 轴</li>
+<li>
+<p>marker</p>
+</li>
+<li>
+<p>color: 每个bar的颜色</p>
+</li>
+<li>
+<p>line: bar的边框颜色和宽度</p>
+</li>
+<li>
+<p>name: bar的名称</p>
+</li>
+<li>
+<p>orientation: bar的方向：例如水平（horizontal）</p>
+</li>
+<li>
+<p>构造 trace2</p>
+</li>
+<li>
+<p>scatter: 散点图</p>
+</li>
+<li>
+<p>x = x 轴</p>
+</li>
+<li>y = y 轴</li>
+<li>mode: 设置散点图类型为 <code>'line + markers'</code></li>
+<li>line: 线的属性</li>
+<li>color: 线的颜色</li>
+<li>
+<p>name: 散点图的名称</p>
+</li>
+<li>
+<p>layout: 添加 axis, legend(图例), margin（旁注）, paper 和 plot properties</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code># import graph objects as &quot;go&quot; and import tools
+import plotly.graph_objs as go
+from plotly import tools
+import matplotlib.pyplot as plt
+# 准备 data frames
+df2016 = timesData[timesData.year == 2016].iloc[:7,:]
+
+y_saving = [each for each in df2016.research]
+y_net_worth  = [float(each) for each in df2016.income]
+x_saving = [each for each in df2016.university_name]
+x_net_worth  = [each for each in df2016.university_name]
+trace0 = go.Bar(
+                x=y_saving,
+                y=x_saving,
+                marker=dict(color=&#39;rgba(171, 50, 96, 0.6)&#39;,line=dict(color=&#39;rgba(171, 50, 96, 1.0)&#39;,width=1)),
+                name=&#39;research&#39;,
+                orientation=&#39;h&#39;,    # Bar的方向设置为水平（horizontal）
+)
+trace1 = go.Scatter(
+                x=y_net_worth,
+                y=x_net_worth,
+                mode=&#39;lines+markers&#39;,
+                line=dict(color=&#39;rgb(63, 72, 204)&#39;),
+                name=&#39;income&#39;,
+)
+layout = dict(
+                title=&#39;Citations and income&#39;,
+                yaxis=dict(showticklabels=True,domain=[0, 0.85]),  # showticklables用来决定是否显示每个bar的旁注，domain用来设置y轴长度
+                yaxis2=dict(showline=True,showticklabels=False,linecolor=&#39;rgba(102, 102, 102, 0.8)&#39;,linewidth=2,domain=[0, 0.85]),
+                xaxis=dict(zeroline=False,showline=False,showticklabels=True,showgrid=True,domain=[0, 0.42]),
+                xaxis2=dict(zeroline=False,showline=False,showticklabels=True,showgrid=True,domain=[0.47, 1],side=&#39;top&#39;,dtick=25),
+                legend=dict(x=0.029,y=1.038,font=dict(size=10) ),  #设置图例标志的大小和位置
+                margin=dict(l=200, r=20,t=70,b=70), # 设置bar旁注的长度、大小等
+                paper_bgcolor=&#39;rgb(248, 248, 255)&#39;, # 设置整个面板的背景色
+                plot_bgcolor=&#39;rgb(248, 248, 255)&#39;,  # 设置图像部份的背景色
+)
+annotations = []
+y_s = np.round(y_saving, decimals=2)
+y_nw = np.rint(y_net_worth)
+# 添加 labels
+for ydn, yd, xd in zip(y_nw, y_s, x_saving):
+    # 标注散点图
+    annotations.append(dict(xref=&#39;x2&#39;, yref=&#39;y2&#39;, y=xd, x=ydn - 4,text=&#39;{:,}&#39;.format(ydn),font=dict(family=&#39;Arial&#39;, size=12,color=&#39;rgb(63, 72, 204)&#39;),showarrow=False))
+    # 标注条形图
+    annotations.append(dict(xref=&#39;x1&#39;, yref=&#39;y1&#39;, y=xd, x=yd + 3,text=str(yd),font=dict(family=&#39;Arial&#39;, size=12,color=&#39;rgb(171, 50, 96)&#39;),showarrow=False))
+
+layout[&#39;annotations&#39;] = annotations
+
+# 创建两个子图
+fig = tools.make_subplots(rows=1, cols=2, specs=[[{}, {}]], shared_xaxes=True,
+                          shared_yaxes=False, vertical_spacing=0.001)
+
+fig.append_trace(trace0, 1, 1)
+fig.append_trace(trace1, 1, 2)
+
+fig[&#39;layout&#39;].update(layout)
+iplot(fig)
+</code></pre></div>
+<p>This is the format of your plot grid:<br />
+[ (1,1) x1,y1 ] [ (1,2) x2,y2 ]  </p>
+<p><img alt="" src="https://pic4.zhimg.com/v2-6bf92365fa6a0288aab4feb8d6148bbb_b.jpg" /></p>
+<p>Pie Charts（饼图）</p>
+<p>示例: Students rate of top 7 universities in 2016</p>
+<ul>
+<li>
+<p>fig: 创建图形</p>
+</li>
+<li>
+<p>data:</p>
+</li>
+<li>
+<p>values: 值</p>
+</li>
+<li>labels: 标签</li>
+<li>name: 名称</li>
+<li>hoverinfo: 悬停文本</li>
+<li>hole: 孔宽</li>
+<li>
+<p>type: 图像类型，如pie</p>
+</li>
+<li>
+<p>layout: 布局</p>
+</li>
+<li>
+<p>title: 标题</p>
+</li>
+<li>annotations: font, showarrow, text, x, y</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 准备数据
+df2016 = timesData[timesData.year == 2016].iloc[:7,:]
+pie1 = df2016.num_students
+pie1_list = [float(each.replace(&#39;,&#39;, &#39;.&#39;)) for each in df2016.num_students]  # str(2,4) =&gt; str(2.4) = &gt; float(2.4) = 2.4
+labels = df2016.university_name
+# figure
+fig = {
+  &quot;data&quot;: [
+    {
+      &quot;values&quot;: pie1_list,
+      &quot;labels&quot;: labels,
+      &quot;domain&quot;: {&quot;x&quot;: [0, .5]},
+      &quot;name&quot;: &quot;Number Of Students Rates&quot;,
+      &quot;hoverinfo&quot;:&quot;label+percent+name&quot;,
+      &quot;hole&quot;: .3,
+      &quot;type&quot;: &quot;pie&quot;
+    },],
+  &quot;layout&quot;: {
+        &quot;title&quot;:&quot;Universities Number of Students rates&quot;,
+        &quot;annotations&quot;: [
+            { &quot;font&quot;: { &quot;size&quot;: 20},
+              &quot;showarrow&quot;: False,
+              &quot;text&quot;: &quot;Number of Students&quot;,
+                &quot;x&quot;: 0.20,
+                &quot;y&quot;: 1
+            },
+        ]
+    }
+}
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic3.zhimg.com/v2-8d3d9cf33bcd65e2635451356cadd60e_b.jpg" /></p>
+<h2 id="bubble-charts">Bubble Charts（冒泡图）<a class="headerlink" href="#bubble-charts" title="Permanent link">&para;</a></h2>
+<p>冒泡图示例: University world rank (first 20) <strong>vs</strong> teaching score with number of students(size) and international score (color) in 2016</p>
+<ul>
+<li>x ：x 轴</li>
+<li>y ：y 轴</li>
+<li>mode ：markers(scatter)</li>
+<li>
+<p>marker ：marker的属性</p>
+</li>
+<li>
+<p>color</p>
+</li>
+<li>
+<p>size</p>
+</li>
+<li>
+<p>text: university names</p>
+</li>
+</ul>
+<p><class 'pandas.core.frame.DataFrame'><br />
+Int64Index: 7 entries, 1803 to 1809<br />
+Data columns (total 14 columns):<br />
+world_rank 7 non-null object<br />
+university_name 7 non-null object<br />
+country 7 non-null object<br />
+teaching 7 non-null float64<br />
+international 7 non-null object<br />
+research 7 non-null float64<br />
+citations 7 non-null float64<br />
+income 7 non-null object<br />
+total_score 7 non-null object<br />
+num_students 7 non-null object<br />
+student_staff_ratio 7 non-null float64<br />
+international_students 7 non-null object<br />
+female_male_ratio 6 non-null object<br />
+year 7 non-null int64<br />
+dtypes: float64(4), int64(1), object(9)<br />
+memory usage: 840.0+ bytes</p>
+<div class="highlight"><pre><span></span><code># 准备数据
+df2016 = timesData[timesData.year == 2016].iloc[:20,:]
+num_students_size  = [float(each.replace(&#39;,&#39;, &#39;.&#39;)) for each in df2016.num_students]
+international_color = [float(each) for each in df2016.international]
+data = [
+    {
+        &#39;y&#39;: df2016.teaching,
+        &#39;x&#39;: df2016.world_rank,
+        &#39;mode&#39;: &#39;markers&#39;,
+        &#39;marker&#39;: {
+            &#39;color&#39;: international_color,
+            &#39;size&#39;: num_students_size,
+            &#39;showscale&#39;: True
+        },
+        &quot;text&quot; :  df2016.university_name    
+    }
+]
+iplot(data)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-660d3666cad36f73f5716b89294f2724_b.jpg" /></p>
+<h2 id="histogram">Histogram（直方图）<a class="headerlink" href="#histogram" title="Permanent link">&para;</a></h2>
+<p>让我们看一下2011年和2012年学生与员工比例的直方图：'students-staff ratio in 2011 and 2012 years'</p>
+<ul>
+<li>
+<p>trace1 ： 第一个直方图</p>
+</li>
+<li>
+<p>x ： x 轴</p>
+</li>
+<li>y ： y 轴</li>
+<li>opacity ： histogram的不透明度</li>
+<li>name ： 图例名称</li>
+<li>
+<p>marker ： histogram的颜色</p>
+</li>
+<li>
+<p>trace2 ： 第二个直方图</p>
+</li>
+<li>
+<p>layout ： 布局</p>
+</li>
+<li>
+<p>barmode ： 直方图模式，如<code>overlay</code>，<code>stack</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 准备数据
+x2011 = timesData.student_staff_ratio[timesData.year == 2011]
+x2012 = timesData.student_staff_ratio[timesData.year == 2012]
+
+trace1 = go.Histogram(
+    x=x2011,
+    opacity=0.75,
+    name = &quot;2011&quot;,
+    marker=dict(color=&#39;rgba(171, 50, 96, 0.6)&#39;))
+trace2 = go.Histogram(
+    x=x2012,
+    opacity=0.75,
+    name = &quot;2012&quot;,
+    marker=dict(color=&#39;rgba(12, 50, 196, 0.6)&#39;))
+
+data = [trace1, trace2]
+layout = go.Layout(barmode=&#39;overlay&#39;,
+                   title=&#39; students-staff ratio in 2011 and 2012&#39;,
+                   xaxis=dict(title=&#39;students-staff ratio&#39;),
+                   yaxis=dict( title=&#39;Count&#39;),
+)
+fig = go.Figure(data=data, layout=layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-dbef01e584b26da34138dbd2468335f3_b.jpg" /></p>
+<h2 id="word-cloud">Word Cloud（词云）<a class="headerlink" href="#word-cloud" title="Permanent link">&para;</a></h2>
+<p>不是pyplot，但学习词云对于可视化很有帮助。让我们看看2011年哪个国家被提及最多。</p>
+<ul>
+<li>
+<p>WordCloud ： 导入的词云库</p>
+</li>
+<li>
+<p>background_color ：背景颜色</p>
+</li>
+<li>generate ： 生成国家/地区名称列表（x2011）词云</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 准备数据
+x2011 = timesData.country[timesData.year == 2011]
+plt.subplots(figsize=(8,8))
+wordcloud = WordCloud(
+                          background_color=&#39;white&#39;,
+                          width=512,
+                          height=384
+                         ).generate(&quot; &quot;.join(x2011))
+plt.imshow(wordcloud)
+plt.axis(&#39;off&#39;)
+plt.savefig(&#39;graph.png&#39;)
+
+plt.show()
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-49701112fb1d544e117173055bc3afc8_b.jpg" /></p>
+<h2 id="box-plots">Box Plots（箱型图）<a class="headerlink" href="#box-plots" title="Permanent link">&para;</a></h2>
+<p>盒图(boxplot)对于显示数据的离散的分布情况效果不错</p>
+<p><img alt="" src="https://pic2.zhimg.com/v2-7fa1f6c6910175c34482a0d86f1b9691_b.jpg" /></p>
+<p>盒图是在1977年由美国的统计学家约翰·图基(John Tukey)发明的。它由五个数值点组成：最小值(min)，下四分位数(Q1)，中位数(median)，上四分位数(Q3)，最大值(max)。也可以往盒图里面加入平均值(mean)。如上图。下四分位数、中位数、上四分位数组成一个“带有隔间的盒子”。上四分位数到最大值之间建立一条延伸线，这个延伸线成为“胡须(whisker)”。</p>
+<p>由于现实数据中总是存在各式各样地“脏数据”，也成为“离群点”，于是为了不因这些少数的离群数据导致整体特征的偏移，将这些离群点单独汇出，而盒图中的胡须的两级修改成最小观测值与最大观测值。这里有个经验，就是最大(最小)观测值设置为与四分位数值间距离为1.5个IQR(中间四分位数极差)。即：</p>
+<p><img alt="" src="https://pic1.zhimg.com/v2-4b7aff49a173e0e6b529a7afdc0cdc7c_b.jpg" /></p>
+<ul>
+<li>IQR = Q3-Q1，即上四分位数与下四分位数之间的差，也就是盒子的长度。</li>
+<li>最小观测值为min = Q1 - 1.5* IQR，如果存在离群点小于最小观测值，则胡须下限为最小观测值，离群点单独以点汇出。如果没有比最小观测值小的数，则胡须下限为最小值。</li>
+<li>最大观测值为max = Q3 -1.5* IQR，如果存在离群点大于最大观测值，则胡须上限为最大观测值，离群点单独以点汇出。如果没有比最大观测值大的数，则胡须上限为最大值。</li>
+</ul>
+<p>通过盒图，在分析数据的时候，盒图能够有效地帮助我们识别数据的特征：</p>
+<ul>
+<li>直观地识别数据集中的异常值(查看离群点)。</li>
+<li>判断数据集的数据离散程度和偏向(观察盒子的长度，上下隔间的形状，以及胡须的长度)</li>
+</ul>
+<p><em>以上内容引自该博客：<a href="https://link.zhihu.com/?target=https%3A//www.cnblogs.com/tsingke/p/6565605.html">https://www.cnblogs.com/tsingke/p/6565605.html</a></em></p>
+<div class="highlight"><pre><span></span><code># 准备数据
+x2015 = timesData[timesData.year == 2015]
+
+trace0 = go.Box(
+    y=x2015.total_score,
+    name = &#39;total score of universities in 2015&#39;,
+    marker = dict(
+        color = &#39;rgb(12, 12, 140)&#39;,
+    )
+)
+trace1 = go.Box(
+    y=x2015.research,
+    name = &#39;research of universities in 2015&#39;,
+    marker = dict(
+        color = &#39;rgb(12, 128, 128)&#39;,
+    )
+)
+data = [trace0, trace1]
+iplot(data)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-529eee18978c7c80020430388b596374_b.jpg" /></p>
+<h2 id="scatterplot-matrix">ScatterPlot Matrix（散点图矩阵）<a class="headerlink" href="#scatterplot-matrix" title="Permanent link">&para;</a></h2>
+<p>Scatter Matrix ： 散点图矩阵允许同时看到多个单独变量的分布和它们两两之间的关系</p>
+<ul>
+<li>import figure factory as ff</li>
+<li>
+<p>create_scatterplotmatrix ：创建散点图</p>
+</li>
+<li>
+<p>data2015 ：用到的数据，即索引1-401之间的 <code>research</code>, <code>international</code> 和 <code>total scores</code> 三个变量</p>
+</li>
+<li>colormap ：色盘</li>
+<li>colormap_type ：色盘类型</li>
+<li>
+<p>height</p>
+</li>
+<li>
+<p>weight</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code># import figure factory
+import plotly.figure_factory as ff
+# 准备数据
+dataframe = timesData[timesData.year == 2015]
+data2015 = dataframe.loc[:,[&quot;research&quot;,&quot;international&quot;, &quot;total_score&quot;]]
+data2015[&quot;index&quot;] = np.arange(1,len(data2015)+1)
+# 绘制散点图矩阵
+fig = ff.create_scatterplotmatrix(data2015, diag=&#39;box&#39;, index=&#39;index&#39;,colormap=&#39;Portland&#39;,
+                                  colormap_type=&#39;cat&#39;,
+                                  height=700, width=700)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic2.zhimg.com/v2-a06fe3d928c046d6d3bf8ea5cd27e595_b.jpg" /></p>
+<h2 id="inset-plots">Inset Plots（内置图）<a class="headerlink" href="#inset-plots" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Inset Matrix ： 2个图在一个窗口中</li>
+</ul>
+<p>内置图示例：'Income and Teaching <strong>vs</strong> World Rank of Universities'</p>
+<div class="highlight"><pre><span></span><code># 第一个线型图
+trace1 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.teaching,
+    name = &quot;teaching&quot;,
+    marker = dict(color = &#39;rgba(16, 112, 2, 0.8)&#39;),
+)
+# 第二个线型图
+trace2 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.income,
+    xaxis=&#39;x2&#39;,
+    yaxis=&#39;y2&#39;,
+    name = &quot;income&quot;,
+    marker = dict(color = &#39;rgba(160, 112, 20, 0.8)&#39;),
+)
+data = [trace1, trace2]
+layout = go.Layout(
+    xaxis2=dict(
+        domain=[0.6, 0.95],
+        anchor=&#39;y2&#39;,        
+    ),
+    yaxis2=dict(
+        domain=[0.6, 0.95],
+        anchor=&#39;x2&#39;,
+    ),
+    title = &#39;Income and Teaching vs World Rank of Universities&#39;
+
+)
+
+fig = go.Figure(data=data, layout=layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic4.zhimg.com/v2-1580d3ace99c9171337f5028329d8c6b_b.jpg" /></p>
+<h2 id="3d-scatter-plot-3d">3D Scatter Plot (3D散点图)<a class="headerlink" href="#3d-scatter-plot-3d" title="Permanent link">&para;</a></h2>
+<p>3D Scatter: 有时2D不足以理解数据。因此，添加一个维度会增加数据的可懂度。</p>
+<ul>
+<li>go.Scatter3d: 创建三维散点图</li>
+<li>x,y,z: 图像的3个轴</li>
+<li>mode: 设置为scatter</li>
+<li>size: marker的大小</li>
+<li>color: 色卡</li>
+</ul>
+<div class="highlight"><pre><span></span><code># 构造3D散点图trace1
+trace1 = go.Scatter3d(
+    x=dataframe.world_rank,
+    y=dataframe.research,
+    z=dataframe.citations,
+    mode=&#39;markers&#39;,
+    marker=dict(
+        size=10,
+        color=&#39;rgb(72,61,139)&#39;,     # RGB颜色对照表可参考：https://tool.oschina.net/commons?type=3    
+    )
+)
+
+data = [trace1]
+layout = go.Layout(
+    margin=dict(
+        l=0,
+        r=0,
+        b=0,
+        t=0  
+    )
+
+)
+fig = go.Figure(data=data, layout=layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-2f67d26dff5964df9452262351aba2b0_b.jpg" /></p>
+<h2 id="multiple-subplots">Multiple Subplots（多子图）<a class="headerlink" href="#multiple-subplots" title="Permanent link">&para;</a></h2>
+<p>Multiple Subplots: 在比较多个特征时，多个子图很有效。</p>
+<div class="highlight"><pre><span></span><code>trace1 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.research,
+    name = &quot;research&quot;
+)
+trace2 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.citations,
+    xaxis=&#39;x2&#39;,
+    yaxis=&#39;y2&#39;,
+    name = &quot;citations&quot;
+)
+trace3 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.income,
+    xaxis=&#39;x3&#39;,
+    yaxis=&#39;y3&#39;,
+    name = &quot;income&quot;
+)
+trace4 = go.Scatter(
+    x=dataframe.world_rank,
+    y=dataframe.total_score,
+    xaxis=&#39;x4&#39;,
+    yaxis=&#39;y4&#39;,
+    name = &quot;total_score&quot;
+)
+data = [trace1, trace2, trace3, trace4]
+layout = go.Layout(
+    xaxis=dict(
+        domain=[0, 0.45]
+    ),
+    yaxis=dict(
+        domain=[0, 0.45]
+    ),
+    xaxis2=dict(
+        domain=[0.55, 1]
+    ),
+    xaxis3=dict(
+        domain=[0, 0.45],
+        anchor=&#39;y3&#39;
+    ),
+    xaxis4=dict(
+        domain=[0.55, 1],
+        anchor=&#39;y4&#39;
+    ),
+    yaxis2=dict(
+        domain=[0, 0.45],
+        anchor=&#39;x2&#39;
+    ),
+    yaxis3=dict(
+        domain=[0.55, 1]
+    ),
+    yaxis4=dict(
+        domain=[0.55, 1],
+        anchor=&#39;x4&#39;
+    ),
+    title = &#39;Research, citation, income and total score VS World Rank of Universities&#39;
+)
+fig = go.Figure(data=data, layout=layout)
+iplot(fig)
+</code></pre></div>
+<p><img alt="" src="https://pic1.zhimg.com/v2-07fcd952e4b5049552a48ee1dc466fdc_b.jpg" /></p>
+<p>本项目根据<a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/artemseleznev/plotly-tutorial-for-beginners">Plotly Tutorial for Beginners</a>进行编译，若有错误，欢迎大家在评论区指出。</p>
+<p>欢迎进入<a href="https://link.zhihu.com/?target=https%3A//www.kesci.com/">和鲸社区</a>使用K-Lab进行调试学习。</p>
+<p>转载本文请联系<strong><a href="https://link.zhihu.com/?target=https%3A//www.heywhale.com/">和鲸</a></strong>取得授权，<strong><a href="https://link.zhihu.com/?target=https%3A//www.heywhale.com/about">和鲸社区</a></strong>是聚合数据人才和行业问题的在线社区，率先打造国内首款K-Lab 在线数据分析协作平台，为数据工作者的学习与工作带来全新的体验。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

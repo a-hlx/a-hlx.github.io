@@ -1,0 +1,3543 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hlx的个人网站">
+      
+      
+        <meta name="author" content="lix">
+      
+      
+        <link rel="canonical" href="https://a-hlx.github.io/Foundation%20Course/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%BE%85%E5%88%86/11%E7%A7%8D%20Matplotlib%20%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87%E5%9B%BE%E8%A1%A8%E6%95%99%E7%A8%8B%28%E9%99%84%E4%BB%A3%E7%A0%81%29/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>11种 Matplotlib 科研论文图表教程(附代码) - hlx个人网站</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="hlx个人网站" class="md-header__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hlx个人网站
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11种 Matplotlib 科研论文图表教程(附代码)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Foundation Course
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../cornerstone/" class="md-tabs__link">
+        cornerstone
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../LECTURE/" class="md-tabs__link">
+        augment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../BLOG/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../REPRODUCE/" class="md-tabs__link">
+        转载
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ABOUT/" class="md-tabs__link">
+        关于
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="hlx个人网站" class="md-nav__button md-logo" aria-label="hlx个人网站" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    hlx个人网站
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/a-hlx/a-hlx.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    a-hlx.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Foundation Course</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Foundation Course" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Foundation Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2" tabindex="0" aria-expanded="false">
+          python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_2_1" type="checkbox" id="__nav_1_2_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_2_1" tabindex="0" aria-expanded="false">
+          python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="python基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_1_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day01%20python%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        01 绪论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day02%20if%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        02 if判断与循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day03%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        03 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day04%20%E5%AD%97%E5%85%B8%E4%B8%8E%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        04 字典与函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day05%20%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        05 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day06%20%E5%87%BD%E6%95%B0%E4%B8%8E%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        06 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day07%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        07 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day08%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1_%E5%B0%81%E8%A3%85/" class="md-nav__link">
+        08 面向对象_封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day09%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        09 面向对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%E5%9F%BA%E7%A1%80/Day10%20%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        10 异常与模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_3" tabindex="0" aria-expanded="false">
+          MATLAB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MATLAB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          MATLAB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/02Array_Operation/" class="md-nav__link">
+        02Array_Operation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/03Structured_Programming_%26_Function/" class="md-nav__link">
+        03Structured_Programming_&_Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/04Data_Structure_%26_File_Access/" class="md-nav__link">
+        04Data_Structure_&_File_Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/05Basic_Plotting/" class="md-nav__link">
+        05Basic_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/06Advanced_Plotting/" class="md-nav__link">
+        06Advanced_Plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/08Image_Processing%20I/" class="md-nav__link">
+        08Image_Processing I
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/09Image_Processing%20II/" class="md-nav__link">
+        09Image_Processing II
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/10Integration_%26_Differentiation/" class="md-nav__link">
+        10Integration_&_Differentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/11Root_Finding/" class="md-nav__link">
+        11Root_Finding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/12Linear_Equations/" class="md-nav__link">
+        12Linear_Equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/13Statistics_%26_Data_Analysis/" class="md-nav__link">
+        13Statistics_&_Data_Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/14Curve_Fitting_%26_Interpolation/" class="md-nav__link">
+        14Curve_Fitting_&_Interpolation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MATLAB/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3/" class="md-nav__link">
+        微分方程数值解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_1_4" tabindex="0" aria-expanded="false">
+          MYSQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MYSQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          MYSQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        00.目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/01.mysql%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        01.mysql安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/02.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        02.数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/03.%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8/" class="md-nav__link">
+        03.库和数据表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/04.%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="md-nav__link">
+        04.表的增删改查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/05.%E8%A1%A8%E7%9A%84%E7%BB%BC%E5%90%88%E6%9F%A5%E8%AF%A2/" class="md-nav__link">
+        05.表的综合查询
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/06.%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        06.索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/07.%E4%BA%8B%E5%8A%A1/" class="md-nav__link">
+        07.事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/08.mysql%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        08.mysql用户与权限管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/09.mysql%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        09.mysql优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/10.mysql%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90/" class="md-nav__link">
+        10.mysql优化分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/11.%E8%A1%A8%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        11.表分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/12.mysql%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        12.mysql集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/13.%E5%BC%80%E5%8F%91%E4%B8%AD%E6%AF%94%E8%BE%83%E5%B0%91%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD/" class="md-nav__link">
+        13.开发中比较少用的功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/14.%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="md-nav__link">
+        14.数据库导入导出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/15.%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        15.客户端和服务端安全传输数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MySQL/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../cornerstone/">cornerstone</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="cornerstone" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          cornerstone
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" tabindex="0" aria-expanded="false">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/10%20%E4%B8%AA%E8%8A%82%E7%9C%81%E6%97%B6%E9%97%B4%E5%92%8C%E6%94%B9%E5%96%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%20Git%20%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        Git技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/Git%28%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7%29/" class="md-nav__link">
+        Git基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Git/git%E9%80%9F%E6%9F%A5/" class="md-nav__link">
+        Git速查
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" tabindex="0" aria-expanded="false">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Markdown" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/markdown/" class="md-nav__link">
+        Markdown讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/vscode-extension/" class="md-nav__link">
+        VSCode及插件安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/grammars/" class="md-nav__link">
+        Markdown语法初学习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/ExMark-spec-zh.txt" class="md-nav__link">
+        TODO ExMark规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cornerstone/Markdown/MarkDown%E8%B6%85%E7%BA%A7%E6%95%99%E7%A8%8B%20Obsidian%E7%89%88%202022.1.12/" class="md-nav__link">
+        MarkDown教程Ob版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../LECTURE/">augment</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="augment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          augment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/linux/" class="md-nav__link">
+        Linux讲座
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../LECTURE/Linux/commands-concise/" class="md-nav__link">
+        命令行入门精简版
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../BLOG/">Blog</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" tabindex="0" aria-expanded="false">
+          software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/%E5%85%8D%E8%B4%B9%E6%BF%80%E6%B4%BBTypora/" class="md-nav__link">
+        免费激活Typora
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/software/Obsidian%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        Obsidian介绍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" tabindex="0" aria-expanded="false">
+          Fun learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fun learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fun learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/Fun%20learning/ChatGPT%E4%B8%AD%E6%96%87%E8%B0%83%E6%95%99%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        ChatGPT中文调教指南
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" tabindex="0" aria-expanded="false">
+          速查表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="速查表" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          速查表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/bash/" class="md-nav__link">
+        bash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/c/" class="md-nav__link">
+        c
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/cmd/" class="md-nav__link">
+        cmd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/docker/" class="md-nav__link">
+        docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/emoji/" class="md-nav__link">
+        emoji
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/git/" class="md-nav__link">
+        git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github-actions/" class="md-nav__link">
+        github-actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab-ci/" class="md-nav__link">
+        gitlab-ci
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gitlab/" class="md-nav__link">
+        gitlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/gmail/" class="md-nav__link">
+        gmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html-char/" class="md-nav__link">
+        html-char
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/html/" class="md-nav__link">
+        html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/java/" class="md-nav__link">
+        java
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/javascript/" class="md-nav__link">
+        javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/latex/" class="md-nav__link">
+        latex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/markdown/" class="md-nav__link">
+        markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/matlab/" class="md-nav__link">
+        matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/mysql/" class="md-nav__link">
+        mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pycharm/" class="md-nav__link">
+        pycharm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/pytorch/" class="md-nav__link">
+        pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/ssh/" class="md-nav__link">
+        ssh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../BLOG/%E9%80%9F%E6%9F%A5%E8%A1%A8/vscode/" class="md-nav__link">
+        vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../REPRODUCE/">转载</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="转载" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          转载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/how-to-ask-questions-the-smart-way/" class="md-nav__link">
+        提问的智慧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/tim-cook-at-duke/" class="md-nav__link">
+        Tim Cook's Commencement Address at Duke University, 2018
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../REPRODUCE/my-best-teacher/" class="md-nav__link">
+        我最好的老师
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ABOUT/">关于</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="关于" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          关于
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/help/" class="md-nav__link">
+        文章编写帮助
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/build/" class="md-nav__link">
+        网站构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ABOUT/test/" class="md-nav__link">
+        测试文档
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.简单的折线图
+  </a>
+  
+    <nav class="md-nav" aria-label="1.简单的折线图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    调整折线图：线条颜色和风格
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    调整折线图：坐标轴范围
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    折线图标签
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.简单散点图
+  </a>
+  
+    <nav class="md-nav" aria-label="2.简单散点图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pltplot" class="md-nav__link">
+    使用 plt.plot 绘制散点图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pltscatter" class="md-nav__link">
+    使用plt.scatter绘制散点图=
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-scatter" class="md-nav__link">
+    plot 和 scatter 对比：性能提醒
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.误差可视化
+  </a>
+  
+    <nav class="md-nav" aria-label="3.误差可视化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基础误差条
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    连续误差
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4.密度和轮廓图
+  </a>
+  
+    <nav class="md-nav" aria-label="4.密度和轮廓图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    三维可视化函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5.直方图，分桶和密度
+  </a>
+  
+    <nav class="md-nav" aria-label="5.直方图，分桶和密度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    二维直方图和分桶
+  </a>
+  
+    <nav class="md-nav" aria-label="二维直方图和分桶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plthist2d" class="md-nav__link">
+    plt.hist2d：二维直方图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plthexbin" class="md-nav__link">
+    plt.hexbin：六角形分桶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    核密度估计
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.自定义图标图例
+  </a>
+  
+    <nav class="md-nav" aria-label="6.自定义图标图例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    选择设置图例的元素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    散点大小的图例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    多重图例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.个性化颜色条
+  </a>
+  
+    <nav class="md-nav" aria-label="7.个性化颜色条">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    自定义颜色条
+  </a>
+  
+    <nav class="md-nav" aria-label="自定义颜色条">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    选择色图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    颜色限制和扩展
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    离散颜色条
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    例子：手写数字
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8.多个子图表
+  </a>
+  
+    <nav class="md-nav" aria-label="8.多个子图表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pltaxes" class="md-nav__link">
+    plt.axes：手动构建子图表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pltsubplot" class="md-nav__link">
+    plt.subplot：简单网格的子图表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pltsubplots" class="md-nav__link">
+    plt.subplots：一句代码设置所有网格子图表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pltgridspec" class="md-nav__link">
+    plt.GridSpec：更复杂的排列
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9.文本和标注
+  </a>
+  
+    <nav class="md-nav" aria-label="9.文本和标注">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    例子：节假日对美国出生率的影响
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    转换和文本位置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    箭头和标注
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10.自定义刻度
+  </a>
+  
+    <nav class="md-nav" aria-label="10.自定义刻度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    主要的和次要的刻度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    隐藏刻度和标签
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    减少或增加刻度的数量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    复杂的刻度格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatter-locator" class="md-nav__link">
+    Formatter 和 Locator 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-matplotlib" class="md-nav__link">
+    11.在 matplotlib 中创建三维图表
+  </a>
+  
+    <nav class="md-nav" aria-label="11.在 matplotlib 中创建三维图表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    三维的点和线
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    三维轮廓图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    框线图和表面图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    表面三角剖分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    例子：绘制莫比乌斯环
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+
+  <h1>11种 Matplotlib 科研论文图表教程(附代码)</h1>
+
+<p>以下内容来自Github，<br />
+为《PythonDataScienceHandbook[1]》(Python 数据科学手册[2])第四章Matplotlib介绍部分。全部内容都在以下环境演示通过：</p>
+<ul>
+<li>
+<p>numpy:1.18.5</p>
+</li>
+<li>
+<p>pandas:1.0.5</p>
+</li>
+<li>
+<p>matplotlib:3.2.1</p>
+</li>
+</ul>
+<h2 id="1"><strong>1.简单的折线图</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>对于图表来说，最简单的莫过于作出一个单一函数 的图像。本节中我们首先来介绍创建这种类型图表。本节和后续小节中，我们都会使用下面的代码将我们需要的包载入到 notebook 中：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-whitegrid&#39;)import numpy as np
+</code></pre></div>
+<p>对于所有的 Matplotlib 图表来说，我们都需要从创建图形和维度开始。图形和维度可以使用下面代码进行最简形式的创建：</p>
+<div class="highlight"><pre><span></span><code>fig = plt.figure()ax = plt.axes()
+</code></pre></div>
+<p>在 Matplotlib 中，图形（类 <code>plt.Figure</code> 的一个实例）可以被认为是一个包括所有维度、图像、文本和标签对象的容器。维度（类<code>plt.Axes</code>的一个实例）就是你上面看到的图像，一个有边界的格子包括刻度和标签，最终还有我们画在上面的图表元素。在本书中，我们会使用变量名fig来指代图形对象，以及变量名ax来指代维度变量。</p>
+<p>一旦我们创建了维度，我们可以使用<code>ax.plot</code>方法将数据绘制在图表上。下面是一个简单的正弦函数图形：</p>
+<div class="highlight"><pre><span></span><code>fig = plt.figure()ax = plt.axes()x = np.linspace(0, 10, 1000)ax.plot(x, np.sin(x));
+</code></pre></div>
+<p>同样的，我们可以使用 pylab 接口（MATLAB 风格的接口）帮我们在后台自动创建这两个对象：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x));
+</code></pre></div>
+<p>如果我们需要在同一幅图形中绘制多根线条，只需要多次调用<code>plot</code>函数即可：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.plot(x, np.cos(x));
+</code></pre></div>
+<p>这就是在 Matplotlib 中绘制简单函数图像的所有接口了。下面我们深入了解一下控制坐标轴和线条外观的细节。</p>
+<h3 id="_1"><strong>调整折线图：线条颜色和风格</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>你可能第一个想到需要进行调整的部分就是线条的颜色和风格。<code>plt.plot()</code>函数接受额外的参数可以用来指定它们。通过指定color关键字参数可以调整颜色，这个字符串类型参数基本上能用来代表任何你能想到的颜色。可以通过多种方式指定颜色参数：</p>
+<p>所有 HTML 颜色名称可以在这里[3]找到。</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x - 0), color=&#39;blue&#39;)        # 通过颜色名称指定plt.plot(x, np.sin(x - 1), color=&#39;g&#39;)           # 通过颜色简写名称指定(rgbcmyk)plt.plot(x, np.sin(x - 2), color=&#39;0.75&#39;)        # 介于0-1之间的灰阶值plt.plot(x, np.sin(x - 3), color=&#39;#FFDD44&#39;)     # 16进制的RRGGBB值plt.plot(x, np.sin(x - 4), color=(1.0,0.2,0.3)) # RGB元组的颜色值，每个值介于0-1plt.plot(x, np.sin(x - 5), color=&#39;chartreuse&#39;); # 能支持所有HTML颜色名称值
+</code></pre></div>
+<p>如果没有指定颜色，Matplotlib 会在一组默认颜色值中循环使用来绘制每一条线条。</p>
+<p>类似的，通过linestyle关键字参数可以指定线条的风格：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, x + 0, linestyle=&#39;solid&#39;)plt.plot(x, x + 1, linestyle=&#39;dashed&#39;)plt.plot(x, x + 2, linestyle=&#39;dashdot&#39;)plt.plot(x, x + 3, linestyle=&#39;dotted&#39;);# 还可以用形象的符号代表线条风格plt.plot(x, x + 4, linestyle=&#39;-&#39;)  # 实线plt.plot(x, x + 5, linestyle=&#39;--&#39;) # 虚线plt.plot(x, x + 6, linestyle=&#39;-.&#39;) # 长短点虚线plt.plot(x, x + 7, linestyle=&#39;:&#39;);  # 点线
+</code></pre></div>
+<p>如果你喜欢更简洁的代码，这些linestyle和color参数能够合并成一个非关键字参数，传递给<code>plt.plot()</code>函数：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, x + 0, &#39;-g&#39;)  # 绿色实线plt.plot(x, x + 1, &#39;--c&#39;) # 天青色虚线plt.plot(x, x + 2, &#39;-.k&#39;) # 黑色长短点虚线plt.plot(x, x + 3, &#39;:r&#39;);  # 红色点线
+</code></pre></div>
+<p>上面的单字母颜色码是 RGB 颜色系统以及 CMYK 颜色系统的缩写，被广泛应用在数字化图像的颜色系统中。</p>
+<p>还有很多其他的关键字参数可以对折线图的外观进行精细调整；可以通过在 IPython 中使用帮助工具查看<code>plt.plot()</code>函数的文档来获得更多细节内容。</p>
+<h3 id="_2"><strong>调整折线图：坐标轴范围</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Matplotlib 会自动选择非常合适的坐标轴范围来绘制你的图像，但是有些情况下你也需要自己进行相关调整。使用<code>plt.xlim()</code>和<code>plt.ylim()</code>函数可以调整坐标轴的范围：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.xlim(-1, 11)plt.ylim(-1.5, 1.5);
+</code></pre></div>
+<p>如果某些情况下你希望将坐标轴反向，你可以通过上面的函数实现，将参数顺序颠倒即可：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.xlim(10, 0)plt.ylim(1.2, -1.2);
+</code></pre></div>
+<p>相关的函数还有<code>plt.axis()</code>（注意：这不是<code>plt.axes()</code>函数，函数名称是 i 而不是 e）。这个函数可以在一个函数调用中就完成 x 轴和 y 轴范围的设置，传递一个[xmin, xmax, ymin, ymax]的列表参数即可：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.axis([-1, 11, -1.5, 1.5]);
+</code></pre></div>
+<p>当然<code>plt.axis()</code>函数不仅能设置范围，还能像下面代码一样将坐标轴压缩到刚好足够绘制折线图像的大小：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.axis(&#39;tight&#39;);
+</code></pre></div>
+<p>还可以通过设置<code>'equal'</code>参数设置x轴与y轴使用相同的长度单位：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.axis(&#39;equal&#39;);
+</code></pre></div>
+<p>更多关于设置 axis 属性的内容请查阅<code>plt.axis</code>函数的文档字符串。</p>
+<h3 id="_3"><strong>折线图标签</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>本节最后介绍一下在折线图上绘制标签：标题、坐标轴标签和简单的图例。</p>
+<p>标题和坐标轴标签是最简单的这类标签，Matplotlib 提供了函数用来方便的设置它们：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x))plt.title(&quot;A Sine Curve&quot;)plt.xlabel(&quot;x&quot;)plt.ylabel(&quot;sin(x)&quot;);
+</code></pre></div>
+<p>这些标签的位置、大小和风格可以通过上面函数的可选参数进行设置。参阅 Matplotlib 在线文档和这些函数的文档字符串可以获得更多的信息。</p>
+<p>当一幅图中绘制了多条折线时，如果能够绘制一个线条对应的图例能让图表更加清晰。Matplotlib 也内建了函数来快速创建图例。估计你也猜到了，通过<code>plt.legend()</code>函数可以实现这个需求。虽然有很多种正确的方法来指定图例，作者认为最简单的方法是通过在绘制每条线条时指定对应的label关键字参数来使用这个函数：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, np.sin(x), &#39;-g&#39;, label=&#39;sin(x)&#39;)plt.plot(x, np.cos(x), &#39;:b&#39;, label=&#39;cos(x)&#39;)plt.axis(&#39;equal&#39;)plt.legend();
+</code></pre></div>
+<p>上图可见，<code>plt.legend()</code>函数绘制的图例线条与图中的折线无论风格和颜色都保持一致。查阅<code>plt.legend</code>文档字符串可以获得更多相关信息；我们在[自定义图表图例]一节中也会讨论更高级的图例应用。</p>
+<p><em><strong>*额外内容：Matplotlib 的坑*</strong></em></p>
+<p>虽然大多数的plt函数都可以直接转换为ax的方法进行调用（例如<code>plt.plot() → ax.plot()，plt.legend() → ax.legend()</code>等），但是并不是所有的命令都能应用这种情况。特别是用于设置极值、标签和标题的函数都有一定的改变。下表列出了将 MATLAB 风格的函数转换为面向对象的方法的区别：</p>
+<ul>
+<li>
+<p>plt.xlabel() → ax.set_xlabel()</p>
+</li>
+<li>
+<p>plt.ylabel() → ax.set_ylabel()</p>
+</li>
+<li>
+<p>plt.xlim() → ax.set_xlim()</p>
+</li>
+<li>
+<p>plt.ylim() → ax.set_ylim()</p>
+</li>
+<li>
+<p>plt.title() → ax.set_title()</p>
+</li>
+</ul>
+<p>在面向对象接口中，与其逐个调用上面的方法来设置属性，更常见的使用<code>ax.set()</code>方法来一次性设置所有的属性：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes()ax.plot(x, np.sin(x))ax.set(xlim=(0, 10), ylim=(-2, 2),       xlabel=&#39;x&#39;, ylabel=&#39;sin(x)&#39;,       title=&#39;A Simple Plot&#39;);
+</code></pre></div>
+<h2 id="2"><strong>2.简单散点图</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>另一种常用的图表类型是简单散点图，它是折线图的近亲。不像折线图，图中的点连接起来组成连线，散点图中的点都是独立分布的点状、圆圈或其他形状。本节开始我们也是首先将需要用到的图表工具和函数导入到 notebook 中：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-whitegrid&#39;)import numpy as np
+</code></pre></div>
+<h3 id="pltplot">使用 plt.plot 绘制散点图<a class="headerlink" href="#pltplot" title="Permanent link">&para;</a></h3>
+<p>在上一节中，我们介绍了<code>plt.plot/ax.plot</code>方法绘制折线图。这两个方法也可以同样用来绘制散点图：</p>
+<div class="highlight"><pre><span></span><code>x = np.linspace(0, 10, 30)y = np.sin(x)plt.plot(x, y, &#39;o&#39;, color=&#39;black&#39;);
+</code></pre></div>
+<p>传递给函数的第三个参数是使用一个字符代表的图表绘制点的类型。就像你可以使用<code>'-'</code>或<code>'--'</code>来控制线条的风格那样，点的类型风格也可以使用短字符串代码来表示。所有可用的符号可以通过<code>plt.plot</code>文档或 Matplotlib 在线文档进行查阅。大多数的代码都是非常直观的，我们使用下面的例子可以展示那些最通用的符号：</p>
+<div class="highlight"><pre><span></span><code>rng = np.random.RandomState(0)for marker in [&#39;o&#39;, &#39;.&#39;, &#39;,&#39;, &#39;x&#39;, &#39;+&#39;, &#39;v&#39;, &#39;^&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, &#39;s&#39;, &#39;d&#39;]:    plt.plot(rng.rand(5), rng.rand(5), marker,             label=&quot;marker=&#39;{0}&#39;&quot;.format(marker))plt.legend(numpoints=1)plt.xlim(0, 1.8);
+</code></pre></div>
+<p>而且这些符号代码可以和线条、颜色代码一起使用，这会在折线图的基础上绘制出散点：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, y, &#39;-ok&#39;);
+</code></pre></div>
+<p><code>plt.plot</code>还有很多额外的关键字参数用来指定广泛的线条和点的属性：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, y, &#39;-p&#39;, color=&#39;gray&#39;,         markersize=15, linewidth=4,         markerfacecolor=&#39;white&#39;,         markeredgecolor=&#39;gray&#39;,         markeredgewidth=2)plt.ylim(-1.2, 1.2);
+</code></pre></div>
+<p><code>plt.plot</code>函数的这种灵活性提供了很多的可视化选择。查阅<code>plt.plot</code>帮助文档获得完整的选项说明。</p>
+<h3 id="pltscatter">使用plt.scatter绘制散点图=<a class="headerlink" href="#pltscatter" title="Permanent link">&para;</a></h3>
+<p>第二种更强大的绘制散点图的方法是使用<code>plt.scatter</code>函数，它的使用方法和<code>plt.plot</code>类似：</p>
+<div class="highlight"><pre><span></span><code>plt.scatter(x, y, marker=&#39;o&#39;);
+</code></pre></div>
+<p><code>plt.scatter</code>和<code>plt.plot</code>的主要区别在于，<code>plt.scatter</code>可以针对每个点设置不同属性（大小、填充颜色、边缘颜色等），还可以通过数据集合对这些属性进行设置。</p>
+<p>让我们通过一个随机值数据集绘制不同颜色和大小的散点图来说明。为了更好的查看重叠的结果，我们还使用了alpha关键字参数对点的透明度进行了调整：</p>
+<div class="highlight"><pre><span></span><code>rng = np.random.RandomState(0)x = rng.randn(100)y = rng.randn(100)colors = rng.rand(100)sizes = 1000 * rng.rand(100)plt.scatter(x, y, c=colors, s=sizes, alpha=0.3,            cmap=&#39;viridis&#39;)plt.colorbar();  # 显示颜色对比条
+</code></pre></div>
+<p>注意图表右边有一个颜色对比条（这里通过<code>colormap()</code>函数输出），图表中的点大小的单位是像素。使用这种方法，散点的颜色和大小都能用来展示数据信息，在希望展示多个维度数据集合的情况下很直观。</p>
+<p>例如，当我们使用 Scikit-learn 中的鸢尾花数据集，里面的每个样本都是三种鸢尾花中的其中一种，并带有仔细测量的花瓣和花萼的尺寸数据：</p>
+<div class="highlight"><pre><span></span><code>from sklearn.datasets import load_irisiris = load_iris()features = iris.data.Tplt.scatter(features[0], features[1], alpha=0.2,            s=100*features[3], c=iris.target, cmap=&#39;viridis&#39;)plt.xlabel(iris.feature_names[0])plt.ylabel(iris.feature_names[1]);
+</code></pre></div>
+<p>我们可以从上图中看出，可以通过散点图同时展示该数据集的四个不同维度：图中的<code>(x, y)</code>位置代表每个样本的花萼的长度和宽度，散点的大小代表每个样本的花瓣的宽度，而散点的颜色代表一种特定的鸢尾花类型。如上图的多种颜色和多种属性的散点图对于我们分析和展示数据集时都非常有帮助。</p>
+<h3 id="plot-scatter"><strong>plot 和 scatter 对比：性能提醒</strong><a class="headerlink" href="#plot-scatter" title="Permanent link">&para;</a></h3>
+<p>除了上面说的<code>plt.plot</code>和<code>plt.scatter</code>对于每个散点不同属性的支持不同之外，还有别的因素影响对这两个函数的选择吗？对于小的数据集来说，两者并无差别，当数据集增长到几千个点时，<code>plt.plot</code>会明显比<code>plt.scatter</code>的性能要高。造成这个差异的原因是<code>plt.scatter</code>支持每个点使用不同的大小和颜色，因此渲染每个点时需要完成更多额外的工作。而<code>plt.plot</code>来说，每个点都是简单的复制另一个点产生，因此对于整个数据集来说，确定每个点的展示属性的工作仅需要进行一次即可。对于很大的数据集来说，这个差异会导致两者性能的巨大区别，因此，对于大数据集应该优先使用<code>plt.plot</code>函数。</p>
+<h2 id="3"><strong>3.误差可视化</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>对于任何的科学测量来说，精确计算误差与精确报告测量值基本上同等重要。例如，设想我正在使用一些天文物理学观测值来估算哈勃常数，即本地观测的宇宙膨胀系数。我从一些文献中知道这个值大概是 <code>71 (km/s)/Mpc</code>，而我测量得到的值是 <code>74 (km/s)/Mpc,</code>。这两个值是否一致？在仅给定这些数据的情况下，这个问题的答案是，无法回答。</p>
+<p>Mpc（百万秒差距）参见秒差距[4]</p>
+<p>如果我们将信息增加一些，给出不确定性：最新的文献表示哈勃常数的值大约是 <code>71 2.5 (km/s)/Mpc</code>，我的测量值是 <code>74 5 (km/s)/Mpc</code>。这两个值是一致的吗？这就是一个可以准确回答的问题了。</p>
+<p>在数据和结果的可视化中，有效地展示这些误差能使你的图表涵盖和提供更加完整的信息。</p>
+<h3 id="_4"><strong>基础误差条</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>调用一个 Matplotlib 函数就能创建一个基础的误差条：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-whitegrid&#39;)import numpy as npx = np.linspace(0, 10, 50)dy = 0.8y = np.sin(x) + dy * np.random.randn(50)plt.errorbar(x, y, yerr=dy, fmt=&#39;.k&#39;);
+</code></pre></div>
+<p>这里的fmt参数是用来控制线条和点风格的代码，与<code>plt.plot</code>有着相同的语法，参见[简单的折线图]和[简单的散点图]。</p>
+<p>除了上面的基本参数，errorbar函数还有很多参数可以用来精细调节图表输出。使用这些参数你可以很容易的个性化调整误差条的样式。作者发现通常将误差线条颜色调整为浅色会更加清晰，特别是在数据点比较密集的情况下：</p>
+<div class="highlight"><pre><span></span><code>plt.errorbar(x, y, yerr=dy, fmt=&#39;o&#39;, color=&#39;black&#39;,             ecolor=&#39;lightgray&#39;, elinewidth=3, capsize=0);
+</code></pre></div>
+<p>除了上面介绍的参数，你还可以指定水平方向的误差条（xerr），单边误差条和其他很多的参数。参阅<code>plt.errorbar</code>的帮助文档获得更多信息。</p>
+<h3 id="_5"><strong>连续误差</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>在某些情况下可能需要对连续值展示误差条。虽然 Matplotlib 没有內建的函数能直接完成这个任务，但是你可以通过简单将<code>plt.plot</code>和<code>plt.fill_between</code>函数结合起来达到目标。</p>
+<p>这里我们会采用简单的高斯过程回归方法，Scikit-Learn 提供了 API。这个方法非常适合在非参数化的函数中获得连续误差。我们在这里不会详细介绍高斯过程回归，仅仅聚焦在如何绘制连续误差本身：</p>
+<p>译者注：新版的 sklearn 修改了高斯过程回归实现方法，下面代码做了相应修改。</p>
+<div class="highlight"><pre><span></span><code>from sklearn.gaussian_process import GaussianProcessRegressor# 定义模型和一些符合模型的点model = lambda x: x * np.sin(x)xdata = np.array([1, 3, 5, 6, 8])ydata = model(xdata)# 计算高斯过程回归，使其符合 fit 数据点gp = GaussianProcessRegressor()gp.fit(xdata[:, np.newaxis], ydata)xfit = np.linspace(0, 10, 1000)yfit, std = gp.predict(xfit[:, np.newaxis], return_std=True)dyfit = 2 * std  # 两倍sigma ~ 95% 确定区域
+</code></pre></div>
+<p>我们现在有了xfit、yfit和dyfit，作为对我们数据的连续拟合值以及误差限。当然我们也可以像上面一样使用<code>plt.errorbar</code>绘制误差条，但是事实上我们不希望在图标上绘制 1000 个点的误差条。于是我们可以使用<code>plt.fill_between</code>函数在误差限区域内填充一道浅色的误差带来展示连续误差：</p>
+<div class="highlight"><pre><span></span><code># 可视化结果plt.plot(xdata, ydata, &#39;or&#39;)plt.plot(xfit, yfit, &#39;-&#39;, color=&#39;gray&#39;)plt.fill_between(xfit, yfit - dyfit, yfit + dyfit,                 color=&#39;gray&#39;, alpha=0.2)plt.xlim(0, 10);
+</code></pre></div>
+<p>注意上面我们调用fill_between函数：我们传递了的参数包括 x 值，y 值的低限，然后是 y 值的高限，结果是图表中介于低限和高限之间的区域会被填充。</p>
+<p>上图为我们提供了一个非常直观的高斯过程回归展示：在观测点的附近，模型会被限制在一个很小的区域内，反映了这些数据的误差比较小。在远离观测点的区域，模型开始发散，反映了这时的数据误差比较大。</p>
+<p>如果需要获得<code>plt.fill_between</code>（以及类似的<code>plt.fill</code>函数）更多参数的信息，请查阅函数的帮助文档或 Matplotlib 在线文档。</p>
+<h2 id="4"><strong>4.密度和轮廓图</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>有些情况下，我们需要在二维图表中使用轮廓或颜色区域来展示三维的数据（可以设想等高线地图或温度分布图）。Matplotlib 提供了三个有用的函数来处理这项任务：<code>plt.contour</code>绘制轮廓图，<code>plt.contourf</code>来绘制填充区域颜色的图表以及<code>plt.imshow</code>来展示图像。本节会介绍几个使用它们的例子。当然我们还是首先从将需要使用的包导入 notebook 和初始化工作开始：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-white&#39;)import numpy as np
+</code></pre></div>
+<h3 id="_6"><strong>三维可视化函数</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>我们首先使用一个简单的函数 绘制一个轮廓图来进行说明，我们用来作为数组广播运算的例子：</p>
+<div class="highlight"><pre><span></span><code>def f(x, y):    return np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
+</code></pre></div>
+<p>轮廓图可以使用<code>plt.contour</code>函数进行创建。它接收三个参数：x参数代表三维网格的平面横轴坐标，y参数代表三维网格的平面纵轴坐标，而z参数代表三维网格的高度坐标。最容易用来准备这种网格数据的是<code>np.meshgrid</code>函数，可以将两个一维的数组构造成一个二维的网格：</p>
+<div class="highlight"><pre><span></span><code>x = np.linspace(0, 5, 50)y = np.linspace(0, 5, 40)X, Y = np.meshgrid(x, y)Z = f(X, Y)
+</code></pre></div>
+<p>下面我们可以绘制标准的轮廓线图表：</p>
+<div class="highlight"><pre><span></span><code>plt.contour(X, Y, Z, colors=&#39;black&#39;);
+</code></pre></div>
+<p>图中值得注意的是，当使用单色绘制轮廓图时，虚线代表的是负数的数值，而实线代表的是正数。而轮廓线可以通过指定cmap参数来设置线条的色图。下例中展示了使用色图且绘制了更多的轮廓线的例子，会在整个数据范围区域内等距分布有 20 条轮廓线：</p>
+<div class="highlight"><pre><span></span><code>plt.contour(X, Y, Z, 20, cmap=&#39;RdGy&#39;);
+</code></pre></div>
+<p>上例中我们选择了RdGy（Red-Gray的缩写）色图，这对于聚集的数据来说是一个不错的选择。Matplotlib 有大量的颜色图可供使用，你可以通过在 IPython 中对<code>plt.cm</code>模块使用 TAB 自动补全方法就可以看到：</p>
+<div class="highlight"><pre><span></span><code>plt.cm.&lt;TAB&gt;
+</code></pre></div>
+<p>上面的图看起来比第一幅图好多了，但是线条之间的空隙还是有点让人混淆。我们可以将上面的图改为填充轮廓图来解决这个问题，使用<code>plt.contourf()</code>函数（注意函数名最后有个 f，代表填充 fill），这个函数的语法基本上与<code>plt.contour()</code>保持一致。</p>
+<p>并且我们加上了<code>plt.colorbar()</code>函数，这个函数会在图表边上创建一个颜色图例用以展示颜色所表示的数值区域：</p>
+<div class="highlight"><pre><span></span><code>plt.contourf(X, Y, Z, 20, cmap=&#39;RdGy&#39;)plt.colorbar();
+</code></pre></div>
+<p>有了图例，很容易可以看出黑色区域代表着“峰”，而红色区域代表这“谷”。</p>
+<p>上图有一个缺点，那就是图中颜色的阶梯是离散的而不是连续的，这通常不是我们想要的。我们可以通过设置很高的轮廓线数量来改善，但是这会导致绘制图表的性能降低：Matplotlib 必须在每个颜色阶梯上绘制一条新的轮廓多边形。更好的办法是使用<code>plt.imshow()</code>函数，它会将一个二维的网格图表转换为一张图像。</p>
+<p>下面的例子展示了该方法：</p>
+<div class="highlight"><pre><span></span><code>plt.imshow(Z, extent=[0, 5, 0, 5], origin=&#39;lower&#39;,           cmap=&#39;RdGy&#39;)plt.colorbar()plt.axis(aspect=&#39;image&#39;);C:\Users\gdc\Anaconda3\lib\site-packages\ipykernel_launcher.py:4: MatplotlibDeprecationWarning: Passing unsupported keyword arguments to axis() will raise a TypeError in 3.3.  after removing the cwd from sys.path.
+</code></pre></div>
+<p>然而，在使用imshow()的时候也有一些坑：</p>
+<ul>
+<li>
+<p><code>plt.imshow()</code>不接受 x 和 y 网格值作为参数，因此你需要手动指定extent参数[xmin, xmax, ymin, ymax]来设置图表的数据范围。</p>
+</li>
+<li>
+<p><code>plt.imshow()</code>使用的是默认的图像坐标，即左上角坐标点是原点，而不是通常图表的左下角坐标点。这可以通过设置origin参数来设置。</p>
+</li>
+<li>
+<p><code>plt.imshow()</code>会自动根据输入数据调整坐标轴的比例；这可以通过参数来设置，例如，<code>plt.axis(aspect='image')</code>能让 x 和 y 轴的单位一致。</p>
+</li>
+</ul>
+<p>最后，有时可能需要将轮廓图和图像结合起来。例如，下例中我们使用了半透明的背景图像（通过alpha参数设置透明度），然后在背景图层之上绘制了轮廓图，并带有每个轮廓的数值标签（使用<code>plt.clabel()</code>函数绘制标签）：</p>
+<div class="highlight"><pre><span></span><code>contours = plt.contour(X, Y, Z, 3, colors=&#39;black&#39;)plt.clabel(contours, inline=True, fontsize=8)plt.imshow(Z, extent=[0, 5, 0, 5], origin=&#39;lower&#39;,           cmap=&#39;RdGy&#39;, alpha=0.5)plt.colorbar();
+</code></pre></div>
+<p>通过组合使用<code>plt.contour、plt.contourf和plt.imshow</code>这三个函数，基本可以满足我们绘制所有这种在二维图标上的三维数据的需求。需要了解更多函数的参数信息，参考它们的文档字符串。如果你对于使用三维图表展示这种数据感兴趣，参见[在 matplotlib 中创建三维图表]。</p>
+<h2 id="5"><strong>5.直方图，分桶和密度</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>一个简单的直方图可以是我们开始理解数据集的第一步。前面我们看到了 Matplotlib 的直方图函数，我们可以用一行代码绘制基础的直方图，当然首先需要将需要用的包导入 notebook：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport numpy as npimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-white&#39;)data = np.random.randn(1000)plt.hist(data);
+</code></pre></div>
+<p><code>hist()</code>函数有很多的参数可以用来调整运算和展示；下面又一个更加个性化的直方图展示：</p>
+<p>译者注：normed 参数已经过时，此处对代码进行了相应修改，使用了替代的 density 参数。</p>
+<div class="highlight"><pre><span></span><code>plt.hist(data, bins=30, density=True, alpha=0.5,         histtype=&#39;stepfilled&#39;, color=&#39;steelblue&#39;,         edgecolor=&#39;none&#39;);
+</code></pre></div>
+<p><code>plt.hist</code>文档中有更多关于个性化参数的信息。作者发现联合使用<code>histtype='stepfilled'</code>和alpha参数设置透明度在对不同分布的数据集进行比较展示时很有用：</p>
+<div class="highlight"><pre><span></span><code>x1 = np.random.normal(0, 0.8, 1000)x2 = np.random.normal(-2, 1, 1000)x3 = np.random.normal(3, 2, 1000)kwargs = dict(histtype=&#39;stepfilled&#39;, alpha=0.3, density=True, bins=40)plt.hist(x1, **kwargs)plt.hist(x2, **kwargs)plt.hist(x3, **kwargs);
+</code></pre></div>
+<p>如果你只是需要计算直方图的数值（即每个桶的数据点数量）而不是展示图像，<code>np.histogram()</code>函数可以完成这个目标：</p>
+<div class="highlight"><pre><span></span><code>counts, bin_edges = np.histogram(data, bins=5)print(counts)[ 49 273 471 183  24]
+</code></pre></div>
+<h3 id="_7"><strong>二维直方图和分桶</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>正如前面我们可以在一维上使用数值对应的直线划分桶一样，我们也可以在二维上使用数据对应的点来划分桶。本节我们介绍几种实现的方法。首先定义数据集，从多元高斯分布中获得x和y数组：</p>
+<div class="highlight"><pre><span></span><code>mean = [0, 0]cov = [[1, 1], [1, 2]]x, y = np.random.multivariate_normal(mean, cov, 10000).T
+</code></pre></div>
+<h4 id="plthist2d">plt.hist2d：二维直方图<a class="headerlink" href="#plthist2d" title="Permanent link">&para;</a></h4>
+<p>绘制二维直方图最直接的方法是使用 Matplotlib 的<code>plt.hist2d</code>函数：</p>
+<div class="highlight"><pre><span></span><code>plt.hist2d(x, y, bins=30, cmap=&#39;Blues&#39;)cb = plt.colorbar()cb.set_label(&#39;counts in bin&#39;)
+</code></pre></div>
+<p>类似<code>plt.hist</code>，<code>plt.hist2d</code>有许多额外的参数来调整分桶计算和图表展示，可以通过文档了解更多信息。而且，<code>plt.hist</code>有<code>np.histogram</code>，<code>plt.hist2d</code>也有其对应的函数<code>np.histogram2d</code>。如下例：</p>
+<div class="highlight"><pre><span></span><code>counts, xedges, yedges = np.histogram2d(x, y, bins=30)
+</code></pre></div>
+<p>如果要获得更高维度的分桶结果，参见<code>np.histogramd</code>函数文档。</p>
+<h4 id="plthexbin">plt.hexbin：六角形分桶<a class="headerlink" href="#plthexbin" title="Permanent link">&para;</a></h4>
+<p>刚才的二维分桶是沿着坐标轴将每个桶分为正方形。另一个很自然的分桶形状就是正六边形。对于这个需求，Matplotlib 提供了<code>plt.hexbin</code>函数，它也是在二维平面上分桶展示，不过每个桶（即图表上的每个数据格）将会是六边形：</p>
+<div class="highlight"><pre><span></span><code>plt.hexbin(x, y, gridsize=30, cmap=&#39;Blues&#39;)cb = plt.colorbar(label=&#39;count in bin&#39;)
+</code></pre></div>
+<p><code>plt.hexbin</code>有许多有趣的参数，包括能对每个点设置权重和将每个桶的输出数据结果改为任意的 NumPy 聚合结果（带权重的平均值，带权重的标准差等）。</p>
+<h4 id="_8">核密度估计<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>另外一个常用来统计多维数据密度的工具是核密度估计（KDE）。目前我们只需要知道 KDE 被认为是一种可以用来填补数据的空隙并补充上平滑变化数据的方法就足够了。快速和简单的 KDE 算法已经在<code>scipy.stats</code>模块中有了成熟的实现。下面我们就一个简单的例子来说明如何使用 KDE 和绘制相应的二维直方图：</p>
+<div class="highlight"><pre><span></span><code>from scipy.stats import gaussian_kde# 产生和处理数据，初始化KDEdata = np.vstack([x, y])kde = gaussian_kde(data)# 在通用的网格中计算得到Z的值xgrid = np.linspace(-3.5, 3.5, 40)ygrid = np.linspace(-6, 6, 40)Xgrid, Ygrid = np.meshgrid(xgrid, ygrid)Z = kde.evaluate(np.vstack([Xgrid.ravel(), Ygrid.ravel()]))# 将图表绘制成一张图像plt.imshow(Z.reshape(Xgrid.shape),           origin=&#39;lower&#39;, aspect=&#39;auto&#39;,           extent=[-3.5, 3.5, -6, 6],           cmap=&#39;Blues&#39;)cb = plt.colorbar()cb.set_label(&quot;density&quot;)
+</code></pre></div>
+<p>KDE 有着光滑的长度，可以在细节和光滑度中有效的进行调节（一个例子是方差偏差权衡）。这方面有大量的文献介绍：高斯核密度估计gaussian_kde使用了经验法则来寻找输入数据附近的优化光滑长度值。</p>
+<p>其他的 KDE 实现也可以在 SciPy 中找到，每一种都有它的优点和缺点；参见 <code>sklearn.neighbors.KernelDensity和statsmodels.nonparametric.kernel_density.KDEMultivariate</code>。要绘制基于 KDE 进行可视化的图表，Matplotlib 写出的代码会比较冗长。</p>
+<h2 id="6"><strong>6.自定义图标图例</strong><a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>图例可以为可视化赋予实际含义，为不同的图标元素附上明确说明。我们前面看到了一些简单的图例创建例子；本小节中我们来介绍一下在 Matplotlib 中自定义图例的位置和进行美化的方法。</p>
+<p>可以使用<code>plt.legend()</code>函数来创建最简单的图例，这个函数能自动创建任何带有标签属性的图表元素的图例：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as pltplt.style.use(&#39;classic&#39;)%matplotlib inlineimport numpy as npx = np.linspace(0, 10, 1000)fig, ax = plt.subplots()ax.plot(x, np.sin(x), &#39;-b&#39;, label=&#39;Sine&#39;)ax.plot(x, np.cos(x), &#39;--r&#39;, label=&#39;Cosine&#39;)ax.axis(&#39;equal&#39;)leg = ax.legend();
+</code></pre></div>
+<p>但除此之外还有很多能自定义图例的方法。例如，我们可以指定图例位置并且去除边框：</p>
+<div class="highlight"><pre><span></span><code>ax.legend(loc=&#39;upper left&#39;, frameon=False)fig
+</code></pre></div>
+<p>我们可以使用ncol属性设置图例中每行的列数：</p>
+<div class="highlight"><pre><span></span><code>ax.legend(frameon=False, loc=&#39;lower center&#39;, ncol=2)fig
+</code></pre></div>
+<p>还可以使用圆角方框（fancybox）或者增加阴影，设置方框的透明度（alpha 值）或修改文字的边距：</p>
+<div class="highlight"><pre><span></span><code>ax.legend(fancybox=True, framealpha=1, shadow=True, borderpad=1)fig
+</code></pre></div>
+<p>要获取更多 legend 函数的可用选项信息，请参考<code>plt.legend</code>的文档字符串。</p>
+<h3 id="_9"><strong>选择设置图例的元素</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>正如我们前面例子所示，绘制的图例默认包括所有带标签的元素。如果这不是想要的效果，我们可以调整哪些元素和标签会出现在图例当中，这可以通过设置 plot 函数或方法返回的对象实现。<code>plt.plot</code>函数能够同时产生多条折线，然后将这些线条的实例列表返回。将其中的部分实例传递到<code>plt.legend()</code>函数就能设置哪些线条会出现在图例中，再通过一个标签的列表指定图例的名称：</p>
+<div class="highlight"><pre><span></span><code>y = np.sin(x[:, np.newaxis] + np.pi * np.arange(0, 2, 0.5))lines = plt.plot(x, y)# lines是一个线条实例的列表plt.legend(lines[:2], [&#39;first&#39;, &#39;second&#39;]);
+</code></pre></div>
+<p>作者更加倾向于使用第一种方式，因为更加清晰。通过将标签应用在图表元素上，然后绘制到图例中：</p>
+<div class="highlight"><pre><span></span><code>plt.plot(x, y[:, 0], label=&#39;first&#39;)plt.plot(x, y[:, 1], label=&#39;second&#39;)plt.plot(x, y[:, 2:])plt.legend(framealpha=1, frameon=True);
+</code></pre></div>
+<p>请注意默认情况下，legend 会忽略所有不带标签的元素。</p>
+<h3 id="_10"><strong>散点大小的图例</strong><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>某些情况下默认的图例不足以满足特定的可视化需求。例如，你在使用散点的大小来标记数据的某个特征，然后希望创建一个相应的图例。下面的例子是加州城市人口的散点图，我们使用散点的大小表现该城市的面积，散点的颜色来表现城市的人口数量（自然对数值）。我们希望使用一个图例来指明散点尺寸的比例，同时用一个颜色条来说明人口数量，我们可以通过自定义绘制一些标签数据来实现尺寸图例：</p>
+<p>译者注：新版 Matplotlib 已经取消 aspect 参数，此处改为使用新的<code>'scaled'</code>参数调用 axis 函数。</p>
+<div class="highlight"><pre><span></span><code>import pandas as pdcities = pd.read_csv(r&#39;D:\python\Github学习材料\Python数据科学手册\data\california_cities.csv&#39;)# 提取我们感兴趣的数据lat, lon = cities[&#39;latd&#39;], cities[&#39;longd&#39;]population, area = cities[&#39;population_total&#39;], cities[&#39;area_total_km2&#39;]# 绘制散点图，使用尺寸代表面积，颜色代表人口，不带标签plt.scatter(lon, lat, label=None,            c=np.log10(population), cmap=&#39;viridis&#39;,            s=area, linewidth=0, alpha=0.5)plt.axis(&#39;scaled&#39;)plt.xlabel(&#39;longitude&#39;)plt.ylabel(&#39;latitude&#39;)plt.colorbar(label=&#39;log$_{10}$(population)&#39;)plt.clim(3, 7)# 下面我们创建图例：# 使用空列表绘制图例中的散点，使用不同面积和标签，带透明度for area in [100, 300, 500]:    plt.scatter([], [], c=&#39;k&#39;, alpha=0.3, s=area,                label=str(area) + &#39; km$^2$&#39;)plt.legend(scatterpoints=1, frameon=False, labelspacing=1, title=&#39;City Area&#39;)plt.title(&#39;California Cities: Area and Population&#39;);
+</code></pre></div>
+<p>之前的图例都关联着图表上的一些对象，因此如果我们需要展示图例的话我们首先需要绘制图表元素。在上例中，我们需要的图例对象（灰色圆圈）不在图表上，因此我们采用绘制空列表的方式将它们仿造在图表上（实际上图上没有点），但是还是需要注意，只有那些带标签的元素才会出现在图例中。</p>
+<p>通过绘制空列表，我们创建了三个带标签的对象，然后就可以出现在图例当中，这个图例就能表示出有关城市面积的相关信息。这个策略在很多复杂可视化图表构建过程中都被用到。</p>
+<p>最后我们注意到这个图表实际上是一个地理位置图表，如果我们能在上面绘制州界线或其他地图相关的元素的话，会更加清晰。Matplotlib 提供了一个 Basemap 额外工具集来实现这个目标。</p>
+<h3 id="_11"><strong>多重图例</strong><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>有时候我们可能需要在同一个图表维度中设计多个图例。不幸的是，Matplotlib 并没有提供很简单的方式实现：通过标准的legend接口，只能在整张图表上创建一个图例。如果你试图使用<code>plt.legend()</code>或<code>ax.legend()</code>创建第二个图例，那么第二条语句创建的图例会覆盖第一条语句创建的。我们只能通过从底层开始来创建一个新的图例 artist 这种方法来解决这个问题，然后使用<code>ax.add_artist()</code>的底层方法手动将第二个作者加到图表上：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots()lines = []styles = [&#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;]x = np.linspace(0, 10, 1000)for i in range(4):    lines += ax.plot(x, np.sin(x - i * np.pi / 2),                     styles[i], color=&#39;black&#39;)ax.axis(&#39;equal&#39;)# 指定第一个图例的线条和标签ax.legend(lines[:2], [&#39;line A&#39;, &#39;line B&#39;],          loc=&#39;upper right&#39;, frameon=False)# 手动创建第二个图例，并将作者添加到图表中from matplotlib.legend import Legendleg = Legend(ax, lines[2:], [&#39;line C&#39;, &#39;line D&#39;],             loc=&#39;lower right&#39;, frameon=False)ax.add_artist(leg);
+</code></pre></div>
+<p>上例展示了用来组成任何 Matplotlib 图表的底层 artist 对象的简单说明。如果你去查看<code>ax.legend()</code>的源代码（你可以通过 IPython 的<code>ax.legend</code>帮助工具做到），你可以看到这个方法包含了用来构建合适Legend的 artist 对象的逻辑，构建的对象被保存在legend属性当中，当绘制时被添加到图表上进行展示。</p>
+<h2 id="7"><strong>7.个性化颜色条</strong><a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>图例可以将离散的点标示为离散的标签。对于建立在不同颜色之上的连续的值（点线面）来说，标注了的颜色条是非常方便的工具。Matplotlib 的颜色条是独立于图表之外的一个类似于比色卡的图形，用来展示图表中不同颜色的数值含义。因为本书是使用黑白打印的，本节内容中的所有带色彩的图都可以在(https://github.com/wangyingsm/Python-Data-Science-Handbook)中找到。我们还是首先导入本节需要的包和模块：</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as pltplt.style.use(&#39;classic&#39;)%matplotlib inlineimport numpy as np
+</code></pre></div>
+<p>通过plt.colorbar函数可以创建最简单的颜色条，在本节中我们会多次看到：</p>
+<div class="highlight"><pre><span></span><code>x = np.linspace(0, 10, 1000)I = np.sin(x) * np.cos(x[:, np.newaxis])plt.imshow(I)plt.colorbar();
+</code></pre></div>
+<p>我们下面来讨论如何个性化颜色条以及在不同的场合高效的使用它们。</p>
+<h3 id="_12">自定义颜色条<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>颜色条可以通过cmap参数指定使用的色谱系统（或叫色图）：</p>
+<div class="highlight"><pre><span></span><code>plt.imshow(I, cmap=&#39;gray&#39;);
+</code></pre></div>
+<p>所有可用的色图都可以在<code>plt.cm</code>模块中找到；在 IPython 中使用 Tab 自动补全功能能列出所有的色图列表：</p>
+<div class="highlight"><pre><span></span><code>plt.cm.&lt;TAB&gt;
+</code></pre></div>
+<p>但是知道在哪里选择色图只是第一步，更重要的是在各种选项中选出合适的色图。这个选择比你预料的要微妙的多。</p>
+<h4 id="_13">选择色图<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>在可视化方案中选择颜色完整的介绍说明超出了本书的范围，如果你对这个课题和相关内容有兴趣，可以参考文章"绘制更漂亮图表的 10 个简单规则"。Matplotlib 的在线文档也有一章关于色图选择的有趣讨论[5]。</p>
+<p>通常来说，你应该注意以下三种不同类型的色图：</p>
+<ul>
+<li>
+<p>序列色图：这类型的色谱只包括一个连续序列的色系（例如binary或viridis）。</p>
+</li>
+<li>
+<p>分化色图：这类型的色谱包括两种独立的色系，这两种颜色有着非常大的对比度（例如RdBu或PuOr）。</p>
+</li>
+<li>
+<p>定性色图：这类型的色图混合了非特定连续序列的颜色（例如rainbow或jet）。</p>
+</li>
+</ul>
+<p>jet色图，在 Matplotlib 2.0 版本之前都是默认的色图，是定性色图的一个例子。jet作为默认色图的位置其实有点尴尬，因为定性图通常都不是对定量数据进行展示的好选择。原因是定性图通常都不能在范围增加时提供亮度的均匀增长。</p>
+<p>我们可以通过将jet颜色条转换为黑白来看到这点：</p>
+<div class="highlight"><pre><span></span><code>from matplotlib.colors import LinearSegmentedColormapdef grayscale_cmap(cmap):    &quot;&quot;&quot;返回给定色图的灰度版本&quot;&quot;&quot;    cmap = plt.cm.get_cmap(cmap) # 使用名称获取色图对象    colors = cmap(np.arange(cmap.N)) # 将色图对象转为RGBA矩阵，形状为N×4    # 将RGBA颜色转换为灰度    # 参考 http://alienryderflex.com/hsp.html    RGB_weight = [0.299, 0.587, 0.114] # RGB三色的权重值    luminance = np.sqrt(np.dot(colors[:, :3] ** 2, RGB_weight)) # RGB平方值和权重的点积开平方根    colors[:, :3] = luminance[:, np.newaxis] # 得到灰度值矩阵    # 返回相应的灰度值色图    return LinearSegmentedColormap.from_list(cmap.name + &quot;_gray&quot;, colors, cmap.N)def view_colormap(cmap):    &quot;&quot;&quot;将色图对应的灰度版本绘制出来&quot;&quot;&quot;    cmap = plt.cm.get_cmap(cmap)    colors = cmap(np.arange(cmap.N))    cmap = grayscale_cmap(cmap)    grayscale = cmap(np.arange(cmap.N))    fig, ax = plt.subplots(2, figsize=(6, 2),                           subplot_kw=dict(xticks=[], yticks=[]))    ax[0].imshow([colors], extent=[0, 10, 0, 1])    ax[1].imshow([grayscale], extent=[0, 10, 0, 1])view_colormap(&#39;jet&#39;)
+</code></pre></div>
+<p>注意一下上面的灰度图中亮条纹的位置。即使在上述彩色图中，也出现了这种不规则的亮条纹，这会导致眼睛被区域中亮条纹所吸引，这很可能造成阅读者被不重要的数据集部分干扰了。更好的选择是使用类似viridis这样的色图（Matplotlib 2.0 后默认色图），它们被设计为有着均匀的亮度变化。因此它们无论是在彩色图中还是在灰度图中都有着同样的亮度变化：</p>
+<div class="highlight"><pre><span></span><code>view_colormap(&#39;viridis&#39;)
+</code></pre></div>
+<p>如果你更喜欢彩虹方案，另一个好的选择是使用cubehelix色图：</p>
+<div class="highlight"><pre><span></span><code>view_colormap(&#39;cubehelix&#39;)
+</code></pre></div>
+<p>对于其他的情况，例如某种正负分布的数据集，双色颜色条如RdBu（Red-Blue）会很常用。然而正如你从下面例子看到的，如果将双色颜色条转化为灰度的话，正负或两级的信息就会丢失：</p>
+<div class="highlight"><pre><span></span><code>view_colormap(&#39;RdBu&#39;)
+</code></pre></div>
+<p>后面我们会看到更多使用这些色图的例子。</p>
+<p>Matplotlib 中有大量可用的色图；要看到它们的列表，你可以使用 IPython 来探索<code>plt.cm</code>模块。要在 Python 中更加正规的使用颜色，你可以查看 Seaborn 库的工具和文档。</p>
+<h3 id="_14"><strong>颜色限制和扩展</strong><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>Matplotlib 允许你对颜色条进行大量的自定义。颜色条本身就是一个<code>plt.Axes</code>对象，因此所有轴和刻度定制的技巧都可以应用在上面。颜色条也有着一些有趣的自定义行为：例如，我们可以缩小颜色的范围并且通过设置extend参数将超出范围之外的数值展示为顶部和底部的三角箭头形状。这对于展示一些受到噪声干扰的数据时非常方便：</p>
+<div class="highlight"><pre><span></span><code># 在I数组中人为生成不超过1%的噪声speckles = (np.random.random(I.shape) &lt; 0.01)I[speckles] = np.random.normal(0, 3, np.count_nonzero(speckles))plt.figure(figsize=(10, 3.5))# 不考虑去除噪声时的颜色分布plt.subplot(1, 2, 1)plt.imshow(I, cmap=&#39;RdBu&#39;)plt.colorbar()# 设置去除噪声时的颜色分布plt.subplot(1, 2, 2)plt.imshow(I, cmap=&#39;RdBu&#39;)plt.colorbar(extend=&#39;both&#39;)plt.clim(-1, 1);
+</code></pre></div>
+<p>注意到在左边的图表中，默认的颜色阈值是包括了噪声的，因此整体的条纹形状都被噪声数据冲刷淡化了。而右边的图表，我们手动设置了颜色的阈值，并在绘制颜色条是加上了extend参数来表示超出阈值的数据。对于我们的数据来说，右图比左图要好的多。</p>
+<h3 id="_15"><strong>离散颜色条</strong><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>色图默认是连续的，但是在某些情况下你可能需要展示离散值。最简单的方法是使用<code>plt.cm.get_cmap()</code>函数，在传递某个色图名称的同时，还额外传递一个颜色分桶的数量值参数给该函数：</p>
+<div class="highlight"><pre><span></span><code>plt.imshow(I, cmap=plt.cm.get_cmap(&#39;Blues&#39;, 6))plt.colorbar()plt.clim(-1, 1);
+</code></pre></div>
+<p>离散色图的使用方式和其他色图没有任何区别。</p>
+<h3 id="_16">例子：手写数字<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>最后我们来看一个很有实用价值的例子，让我们实现对一些手写数字图像数据的可视化分析。这个数据包含在 Sciki-Learn 中，以供包含有将近 2,000 张 大小的不同笔迹的手写数字缩略图。</p>
+<p>首先，我们下载这个数据集，然后使用<code>plt.imshow()</code>将其中部分数据展示出来：</p>
+<div class="highlight"><pre><span></span><code># 读取数字0-5的手写图像，然后使用Matplotlib展示头64张缩略图from sklearn.datasets import load_digitsdigits = load_digits(n_class=6)fig, ax = plt.subplots(8, 8, figsize=(6, 6))for i, axi in enumerate(ax.flat):    axi.imshow(digits.images[i], cmap=&#39;binary&#39;)    axi.set(xticks=[], yticks=[])
+</code></pre></div>
+<p>因为每个数字都是使用 64 个像素点渲染出来的，我们可以认为每个数字是一个 64 维空间中的点：每个维度代表这其中一个像素的灰度值。但是要在图表中将这么高维度空间的联系可视化出来是非常困难的。有一种做法是使用降维技术，比方说使用流形学习来减少数据的维度然而不会丢失数据中有效的信息。</p>
+<p>我们来看一下将这些手写数字图像数据映射到二维流形学习当中：</p>
+<div class="highlight"><pre><span></span><code># 使用Isomap将手写数字图像映射到二维流形学习中from sklearn.manifold import Isomapiso = Isomap(n_components=2)projection = iso.fit_transform(digits.data)
+</code></pre></div>
+<p>我们使用离散颜色条来展示结果，设置ticks和clim来进一步美化结果的颜色条：</p>
+<div class="highlight"><pre><span></span><code># 绘制图表结果plt.scatter(projection[:, 0], projection[:, 1], lw=0.1,            c=digits.target, cmap=plt.cm.get_cmap(&#39;cubehelix&#39;, 6))plt.colorbar(ticks=range(6), label=&#39;digit value&#39;)plt.clim(-0.5, 5.5)
+</code></pre></div>
+<p>我们从流形学习中的映射中可以观察到一些有趣现象：例如，图表中 5 和 3 有一些重叠的部分，这表示一些手写体中 5 和 3 是比较难以辨别的，因此对于自动识别算法来说这是比较容易混淆的部分。而 0 和 1，它们在图表中距离很远，这表示两者比较容易辨别，不太可能造成混淆。这个图表分析与我们的直觉一致，因为 5 和 3 显然比 0 和 1 看起来更加接近。</p>
+<h2 id="8"><strong>8.多个子图表</strong><a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<p>在一些情况中，如果能将不同的数据图表并列展示，对于我们进行数据分析和比较会很有帮助。Matplotlib 提供了子图表的概念来实现这一点：单个图表中可以包括一组小的 axes 用来展示多个子图表。这些子图表可以是插图，网格状分布或其他更复杂的布局。在本节中我们会介绍 Matplotlib 中用来构建子图表的四个函数。</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use(&#39;seaborn-white&#39;)import numpy as np
+</code></pre></div>
+<h3 id="pltaxes"><strong>plt.axes：手动构建子图表</strong><a class="headerlink" href="#pltaxes" title="Permanent link">&para;</a></h3>
+<p>构建 axes 作为子图表的最基础方法就是使用<code>plt.axes</code>函数。正如我们前面已经看到，默认情况下，这个函数够创建一个标准的 axes 对象填满整个图表区域。<code>plt.axes</code>函数也可以接收一个可选的列表参数用来指定在 axes 在整个图表中的坐标点位置。列表中有四个数值分别为[left, bottom, width, height]（取值都是 0-1），代表着子图表的左边、底部、宽度、高度在整个图表中左边、底部、宽度、高度所占的比例值。</p>
+<p>例如，我们可以在距离左边和底部 65%的位置，以插图的形式放置一个宽度和高度都是 20%子图表，上述数值应该为[0.65, 0.65, 0.2, 0.2]：</p>
+<div class="highlight"><pre><span></span><code>ax1 = plt.axes()  # 标准图表ax2 = plt.axes([0.65, 0.65, 0.2, 0.2]) #子图表
+</code></pre></div>
+<p>与上述等价的面向对象接口的语法是<code>fig.add_axes()</code>。我们使用这个方法来创建两个垂直堆叠的子图表：</p>
+<div class="highlight"><pre><span></span><code>fig = plt.figure() # 获得figure对象ax1 = fig.add_axes([0.1, 0.5, 0.8, 0.4],                   xticklabels=[], ylim=(-1.2, 1.2)) # 左边10% 底部50% 宽80% 高40%ax2 = fig.add_axes([0.1, 0.1, 0.8, 0.4],                   ylim=(-1.2, 1.2)) # 左边10% 底部10% 宽80% 高40%x = np.linspace(0, 10)ax1.plot(np.sin(x))ax2.plot(np.cos(x));
+</code></pre></div>
+<p>这样我们就有两个子图表（上面的子图表没有 x 轴刻度），这两个子图表正好吻合：上面图表的底部是整个图表高度 50%位置，而下面图表的顶部也是整个图表的 50%位置（0.1+0.4）。</p>
+<h3 id="pltsubplot"><strong>plt.subplot：简单网格的子图表</strong><a class="headerlink" href="#pltsubplot" title="Permanent link">&para;</a></h3>
+<p>将子图表的行与列对齐是一个很常见的需求，因此 Matplotlib 提供了一些简单的函数来实现它们。这些函数当中最底层的是<code>plt.subplot()</code>，它会在网格中创建一个子图表。函数接受三个整数参数，网格行数，网格列数以及该网格子图表的序号（从左上角向右下角递增）：</p>
+<div class="highlight"><pre><span></span><code>for i in range(1, 7):    plt.subplot(2, 3, i)    plt.text(0.5, 0.5, str((2, 3, i)),             fontsize=18, ha=&#39;center&#39;)
+</code></pre></div>
+<p><code>plt.subplots_adjust</code>函数用来调整这些子图表之间的距离。下面的代码使用了与<code>plt.subplot()</code>等价的面向对象接口方法<code>fig.add_subplot()</code>：</p>
+<div class="highlight"><pre><span></span><code>fig = plt.figure()fig.subplots_adjust(hspace=0.4, wspace=0.4)for i in range(1, 7):    ax = fig.add_subplot(2, 3, i)    ax.text(0.5, 0.5, str((2, 3, i)),           fontsize=18, ha=&#39;center&#39;)
+</code></pre></div>
+<p>上例中我们指定了<code>plt.subplots_adjust</code>函数的hspace和wspace参数，它们代表这沿着高度和宽度方向子图表之间的距离，单位是子图表的大小（在本例中，距离是子图表宽度和高度的 40%）。</p>
+<h3 id="pltsubplots"><strong>plt.subplots：一句代码设置所有网格子图表</strong><a class="headerlink" href="#pltsubplots" title="Permanent link">&para;</a></h3>
+<p>上面的方法在我们需要创建大量的子图表网格时会变得非常冗长乏味，特别是如果我们需要将内部图表 x 轴和 y 轴标签隐藏的情况下。因此，<code>plt.subplots</code>在这种情况下是一个合适的工具（注意末尾有个 s）。这个函数会一次性创建所有的网格子图表，而不是单个网格，并将它们存储在一个 NumPy 数组中返回。参数是行数和列数，还有两个可选的关键字参数sharex和sharey，可以让你指定不同子图表之间的关联。</p>
+<p>下面我们来创建一个 网格的子图表，其中每一行的子图表共享它们的 y 轴，而每一列的子图表共享它们的 x 轴：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(2, 3, sharex=&#39;col&#39;, sharey=&#39;row&#39;)
+</code></pre></div>
+<p>注意上面我们设置了sharex和sharey之后，内部子图表的 x 轴和 y 轴的标签就自动被去掉了。返回值中 ax 是一个 NumPy 数组，里面含有每一个子图表的实例，你可以使用 NumPy 索引的语法很简单的获得它们：</p>
+<div class="highlight"><pre><span></span><code># axes是一个2×3的数组，可以通过[row, col]进行索引访问for i in range(2):    for j in range(3):        ax[i, j].text(0.5, 0.5, str((i, j)),                      fontsize=18, ha=&#39;center&#39;)fig
+</code></pre></div>
+<p>并且相对于<code>plt.subplot</code>，<code>plt.subplots()</code>更复合 Python 从 0 开始进行索引的习惯。</p>
+<h3 id="pltgridspec"><strong>plt.GridSpec：更复杂的排列</strong><a class="headerlink" href="#pltgridspec" title="Permanent link">&para;</a></h3>
+<p>当你需要子图表在网格中占据多行或多列时，<code>plt.GridSpec()</code>正是你所需要的。<code>plt.GridSpec()</code>对象并不自己创建图表；它只是一个可以被传递给<code>plt.subplot()</code>的参数。例如，一个两行三列并带有指定的宽度高度间隔的 gridspec 可以如下创建：</p>
+<div class="highlight"><pre><span></span><code>grid = plt.GridSpec(2, 3, wspace=0.4, hspace=0.3)
+</code></pre></div>
+<p>使用这个对象我们可以指定子图表的位置和占据的网格，仅需要使用熟悉的 Python 切片语法即可：</p>
+<div class="highlight"><pre><span></span><code>plt.subplot(grid[0, 0])plt.subplot(grid[0, 1:])plt.subplot(grid[1, :2])plt.subplot(grid[1, 2]);
+</code></pre></div>
+<p>这种灵活的网格对齐控制方式有着广泛的应用。作者经常在需要创建多个直方图的联合图表中使用这种方法，如下例：</p>
+<div class="highlight"><pre><span></span><code># 构建二维正态分布数据mean = [0, 0]cov = [[1, 1], [1, 2]]x, y = np.random.multivariate_normal(mean, cov, 3000).T# 使用GridSpec创建网格并加入子图表fig = plt.figure(figsize=(6, 6))grid = plt.GridSpec(4, 4, hspace=0.2, wspace=0.2)main_ax = fig.add_subplot(grid[:-1, 1:])y_hist = fig.add_subplot(grid[:-1, 0], xticklabels=[], sharey=main_ax)x_hist = fig.add_subplot(grid[-1, 1:], yticklabels=[], sharex=main_ax)# 在主图表中绘制散点图main_ax.plot(x, y, &#39;ok&#39;, markersize=3, alpha=0.2)# 分别在x轴和y轴方向绘制直方图x_hist.hist(x, 40, histtype=&#39;stepfilled&#39;,            orientation=&#39;vertical&#39;, color=&#39;gray&#39;)x_hist.invert_yaxis() # x轴方向（右下）直方图倒转y轴方向y_hist.hist(y, 40, histtype=&#39;stepfilled&#39;,            orientation=&#39;horizontal&#39;, color=&#39;gray&#39;)y_hist.invert_xaxis() # y轴方向（左上）直方图倒转x轴方向
+</code></pre></div>
+<p>这种沿着数据各自方向分布并绘制相应图表的需求是很通用的，因此在 Seaborn 包中它们有专门的 API 来实现。</p>
+<h2 id="9"><strong>9.文本和标注</strong><a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<p>创建一个优秀的可视化图表的关键在于引导读者，让他们能理解图表所讲述的故事。在一些情况下，这个故事可以通过纯图像的方式表达，不需要额外添加文字，但是在另外一些情况中，图表需要文字的提示和标签才能将故事讲好。也许标注最基本的类型就是图表的标签和标题，但是其中的选项参数却有很多。让我们在本节中使用一些数据来创建可视化图表并标注这些图表来表达这些有趣的信息。首先还是需要将要用到的模块和包导入 notebook：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport matplotlib.pyplot as pltimport matplotlib as mplplt.style.use(&#39;seaborn-whitegrid&#39;)import numpy as npimport pandas as pd
+</code></pre></div>
+<h3 id="_17"><strong>例子：节假日对美国出生率的影响</strong><a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>本例中的数据可以在 https://raw.githubusercontent.com/jakevdp/data-CDCbirths/master/births.csv 下载。</p>
+<p>我们先按照前面的方式进行同样的数据清洗程序，然后以图表展示这个结果：</p>
+<div class="highlight"><pre><span></span><code>births = pd.read_csv(r&#39;D:\python\Github学习材料\Python数据科学手册\data\births.csv&#39;)quartiles = np.percentile(births[&#39;births&#39;], [25, 50, 75])mu, sig = quartiles[1], 0.74 * (quartiles[2] - quartiles[0])births = births.query(&#39;(births &gt; @mu - 5 * @sig) &amp; (births &lt; @mu + 5 * @sig)&#39;)births[&#39;day&#39;] = births[&#39;day&#39;].astype(int)births.index = pd.to_datetime(10000 * births.year +                              100 * births.month +                              births.day, format=&#39;%Y%m%d&#39;)births_by_date = births.pivot_table(&#39;births&#39;,                                    [births.index.month, births.index.day])births_by_date.index = [pd.datetime(2012, month, day)                        for (month, day) in births_by_date.index]C:\Users\gdc\Anaconda3\lib\site-packages\ipykernel_launcher.py:15: FutureWarning: The pandas.datetime class is deprecated and will be removed from pandas in a future version. Import from datetime module instead.  from ipykernel import kernelapp as appfig, ax = plt.subplots(figsize=(12, 4))births_by_date.plot(ax=ax);
+</code></pre></div>
+<p>当我们绘制了这样的图表来表达数据时，如果我们能对一些图表的特性作出标注来，这对吸引读者的注意力通常是非常有帮助的。这可以通过调用<code>plt.text</code>或<code>ax.text</code>函数来实现，它们可以在某个特定的 x，y 轴位置输出一段文字：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(figsize=(12, 4))births_by_date.plot(ax=ax)# 在折线的特殊位置标注文字style = dict(size=10, color=&#39;gray&#39;)ax.text(&#39;2012-1-1&#39;, 3950, &quot;New Year&#39;s Day&quot;, **style)ax.text(&#39;2012-7-4&#39;, 4250, &quot;Independence Day&quot;, ha=&#39;center&#39;, **style)ax.text(&#39;2012-9-4&#39;, 4850, &quot;Labor Day&quot;, ha=&#39;center&#39;, **style)ax.text(&#39;2012-10-31&#39;, 4600, &quot;Halloween&quot;, ha=&#39;right&#39;, **style)ax.text(&#39;2012-11-25&#39;, 4450, &quot;Thanksgiving&quot;, ha=&#39;center&#39;, **style)ax.text(&#39;2012-12-25&#39;, 3850, &quot;Christmas &quot;, ha=&#39;right&#39;, **style)# 设置标题和y轴标签ax.set(title=&#39;USA births by day of year (1969-1988)&#39;,       ylabel=&#39;average daily births&#39;)# 设置x轴标签月份居中ax.xaxis.set_major_locator(mpl.dates.MonthLocator())ax.xaxis.set_minor_locator(mpl.dates.MonthLocator(bymonthday=15))ax.xaxis.set_major_formatter(plt.NullFormatter())ax.xaxis.set_minor_formatter(mpl.dates.DateFormatter(&#39;%h&#39;));
+</code></pre></div>
+<p><code>ax.text</code>方法接收 x 位置、y 位置、一个字符串和额外可选的关键字参数可以用来设置颜色、大小、样式、对齐等文本格式。上面我们使用了<code>ha='right'</code>和<code>ha='center'</code>，这里的ha是hirizonal alignment（水平对齐）的缩写。要查阅更多的可用参数，请查看<code>plt.text()</code>和<code>mpl.text.Text()</code>的文档字符串内容。</p>
+<h3 id="_18">转换和文本位置<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>在刚才的例子中，我们将文字标注根据数据位置进行了定位。有些时候我们需要将文字标注独立于数据位置而根据图表位置进行定位。Matplotlib 通过转换完成这项工作。</p>
+<p>任何的图形显示框架都需要在坐标系统之间进行转换的机制。例如，一个数据点位于 被转换为图表中的某个位置，进而转换为屏幕上显示的像素。这样的坐标转换在数学上都相对来说比较直接，而且 Matplotlib 提供了一系列的工具实现了转换（这些工具可以在<code>matplotlib.transforms</code>模块中找到）。</p>
+<p>一般来说，用户很少需要关注这些转换的细节，但是当考虑将文本在图表上展示时，这些知识却比较有用。在这种情况中，下面三种定义好的转换是比较有用的：</p>
+<ul>
+<li>
+<p>ax.transData：与数据坐标相关的转换</p>
+</li>
+<li>
+<p>ax.tranAxes：与 Axes 尺寸相关的转换（单位是 axes 的宽和高）</p>
+</li>
+<li>
+<p>ax.tranFigure：与 figure 尺寸相关的转换（单位是 figure 的宽和高）</p>
+</li>
+</ul>
+<p>下面我们来看看使用这些转换将文字写在图表中不同位置的例子：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(facecolor=&#39;lightgray&#39;)ax.axis([0, 10, 0, 10])# transform=ax.transData是默认的，这里写出来是为了明确对比ax.text(1, 5, &quot;. Data: (1, 5)&quot;, transform=ax.transData)ax.text(0.5, 0.1, &quot;. Axes: (0.5, 0.1)&quot;, transform=ax.transAxes)ax.text(0.2, 0.2, &quot;. Figure: (0.2, 0.2)&quot;, transform=fig.transFigure);
+</code></pre></div>
+<p>注意默认情况下，文字是在指定坐标位置靠左对齐的：这里每个字符串开始的"."的位置就是每种转换的坐标位置。</p>
+<p>transData坐标给定的是通常使用的 x 和 y 轴坐标位置。transAxes坐标给定的是从 axes 左下角开始算起（白色区域）的坐标位置，使用的是宽度和长度的占比。transFigure坐标类似，给定的是从 figure 左下角开始算起（灰色区域）的坐标位置，使用的也是宽度和长度的占比。</p>
+<p>因此如果我们改变了轴的最大长度，只有transData坐标会收到影响，其他两个还是保持在相同位置：</p>
+<div class="highlight"><pre><span></span><code>ax.set_xlim(0, 2)ax.set_ylim(-6, 6)fig
+</code></pre></div>
+<p>这个变化可以通过动态改变轴的最大长度看的更加清楚：如果你在 notebook 执行这段代码，你可以将%matplotlib inline改为%matplotlib notebook，然后使用图表的菜单来交互式的改变图表。</p>
+<h3 id="_19"><strong>箭头和标注</strong><a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>除了刻度标签和文字标签，另一种常用的标注是箭头。</p>
+<p>在 Matplotlib 中绘制箭头通常比你想象的难得多。虽然有<code>plt.arrow()</code>函数，作者不建议使用它：这个函数绘制的箭头是一个 SVG 对象，因此在图表使用不同的比例的情况会产生问题，结果通常不能让用户满意。因此，作者建议使用<code>plt.annotate()</code>函数。这个函数会绘制一些文字以及一个箭头，并且箭头可以非常灵活的进行配置。</p>
+<p>下面我们提供一些参数来使用annotate函数：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlinefig, ax = plt.subplots()x = np.linspace(0, 20, 1000)ax.plot(x, np.cos(x))ax.axis(&#39;equal&#39;)ax.annotate(&#39;local maximum&#39;, xy=(6.28, 1), xytext=(10, 4),            arrowprops=dict(facecolor=&#39;black&#39;, shrink=0.05))ax.annotate(&#39;local minimum&#39;, xy=(5 * np.pi, -1), xytext=(2, -6),            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;,                            connectionstyle=&quot;angle3,angleA=0,angleB=-90&quot;));
+</code></pre></div>
+<p>箭头的样式是使用箭头属性字典值进行控制的，里面有很多可用的参数。这些参数在 Matplotlib 的在线文档中已经有了很详细的说明，因此在这里就不将这部分内容重复介绍一遍了。我们在前面出生率图上再使用一些参数进行更多的说明：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(figsize=(12, 4))births_by_date.plot(ax=ax)# 为图表添加标注ax.annotate(&quot;New Year&#39;s Day&quot;, xy=(&#39;2012-1-1&#39;, 4100),  xycoords=&#39;data&#39;,            xytext=(50, -30), textcoords=&#39;offset points&#39;,            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;,                            connectionstyle=&quot;arc3,rad=-0.2&quot;))ax.annotate(&quot;Independence Day&quot;, xy=(&#39;2012-7-4&#39;, 4250),  xycoords=&#39;data&#39;,            bbox=dict(boxstyle=&quot;round&quot;, fc=&quot;none&quot;, ec=&quot;gray&quot;),            xytext=(10, -40), textcoords=&#39;offset points&#39;, ha=&#39;center&#39;,            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;))ax.annotate(&#39;Labor Day&#39;, xy=(&#39;2012-9-4&#39;, 4850), xycoords=&#39;data&#39;, ha=&#39;center&#39;,            xytext=(0, -20), textcoords=&#39;offset points&#39;)ax.annotate(&#39;&#39;, xy=(&#39;2012-9-1&#39;, 4850), xytext=(&#39;2012-9-7&#39;, 4850),            xycoords=&#39;data&#39;, textcoords=&#39;data&#39;,            arrowprops={&#39;arrowstyle&#39;: &#39;|-|,widthA=0.2,widthB=0.2&#39;, })ax.annotate(&#39;Halloween&#39;, xy=(&#39;2012-10-31&#39;, 4600),  xycoords=&#39;data&#39;,            xytext=(-80, -40), textcoords=&#39;offset points&#39;,            arrowprops=dict(arrowstyle=&quot;fancy&quot;,                            fc=&quot;0.6&quot;, ec=&quot;none&quot;,                            connectionstyle=&quot;angle3,angleA=0,angleB=-90&quot;))ax.annotate(&#39;Thanksgiving&#39;, xy=(&#39;2012-11-25&#39;, 4500),  xycoords=&#39;data&#39;,            xytext=(-120, -60), textcoords=&#39;offset points&#39;,            bbox=dict(boxstyle=&quot;round4,pad=.5&quot;, fc=&quot;0.9&quot;),            arrowprops=dict(arrowstyle=&quot;-&gt;&quot;,                            connectionstyle=&quot;angle,angleA=0,angleB=80,rad=20&quot;))ax.annotate(&#39;Christmas&#39;, xy=(&#39;2012-12-25&#39;, 3850),  xycoords=&#39;data&#39;,             xytext=(-30, 0), textcoords=&#39;offset points&#39;,             size=13, ha=&#39;right&#39;, va=&quot;center&quot;,             bbox=dict(boxstyle=&quot;round&quot;, alpha=0.1),             arrowprops=dict(arrowstyle=&quot;wedge,tail_width=0.5&quot;, alpha=0.1));# 设置图表标题和坐标轴标记ax.set(title=&#39;USA births by day of year (1969-1988)&#39;,       ylabel=&#39;average daily births&#39;)# 设置月份坐标居中显示ax.xaxis.set_major_locator(mpl.dates.MonthLocator())ax.xaxis.set_minor_locator(mpl.dates.MonthLocator(bymonthday=15))ax.xaxis.set_major_formatter(plt.NullFormatter())ax.xaxis.set_minor_formatter(mpl.dates.DateFormatter(&#39;%h&#39;));ax.set_ylim(3600, 5400);
+</code></pre></div>
+<p>上图中箭头和文字框都非常详尽了：可以看出你几乎可以使用plt.annotate创建任何你想要的箭头样式。不幸的是，这意味着这种特性都需要手工进行调整，因此如果需要获得印刷质量的图像，这将是一个非常耗费时间的工作。最后，必须指出，上述这种多种样式混合的方式来展现数据肯定不是最佳实践，这里只是为了尽可能多的介绍可用的参数。</p>
+<p>更多关于 Matplotlib 的箭头和标注样式的讨论和例子可以访问 Matplotlib gallery，特别是标注演示[6]。</p>
+<h2 id="10"><strong>10.自定义刻度</strong><a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<p>Matplotlib 默认的刻度标志和格式被设计成能满足许多通用场景的需求，但是不会是所有图表的最佳选择。本节会介绍一些调整刻度位置和格式的例子来说明自定义刻度的使用。</p>
+<p>在介绍例子之前，我们应该加深对 Matplotlib 图表的对象层次的理解。Matplotlib 的设计目标是展示在图表中的所有内容都会表达成为 Python 的对象：例如，回忆前面我们介绍过figure指的是用来展示图表所有内容的方框。每个 Matplotlib 对象也被设计为其子对象的一个容器：例如figure对象中可以包含一个或多个axes对象，每个axes对象都依次包含着其他用来展示图表的内容对象。</p>
+<p>刻度也不例外。每个axes对象都有着属性xaxis和yaxis，表示 x 和 y 轴，其中包含着所有的属性用来指代轴的线、刻度和标签。</p>
+<h3 id="_20"><strong>主要的和次要的刻度</strong><a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>在每个坐标轴上，都有主要的刻度和次要的刻度概念。正如名字指代的，主要刻度通常是大的和更多用到的，而次要刻度通常是小的。默认 Matplotlib 很少使用次要刻度，但是在对数图表中我们可能会看到它们：</p>
+<p>在 Matplotlib 2.0 之后，当 axis 的跨度过大时，默认次要刻度将会不再展示，因此，下面的代码经过了修改，加上了 xlim 和 ylim 参数。</p>
+<div class="highlight"><pre><span></span><code>import matplotlib.pyplot as pltplt.style.use(&#39;classic&#39;)%matplotlib inlineimport numpy as npax = plt.axes(xscale=&#39;log&#39;, yscale=&#39;log&#39;, xlim=[10e-5, 10e5], ylim=[10e-5, 10e5])ax.grid();
+</code></pre></div>
+<p>我们看到每个主要刻度显示了一个大的标志和标签，而每个次要刻度显示了一个小的刻度标志没有标签。</p>
+<p>这些刻度属性，位置和标签，都可以使用每个轴的formatter和locator对象进行个性化设置。下面我们来查看一下 x 轴的相应对象：</p>
+<div class="highlight"><pre><span></span><code>print(ax.xaxis.get_major_locator())print(ax.xaxis.get_minor_locator())&lt;matplotlib.ticker.LogLocator object at 0x000001E8074AF108&gt;&lt;matplotlib.ticker.LogLocator object at 0x000001E8074AD908&gt;print(ax.xaxis.get_major_formatter())print(ax.xaxis.get_minor_formatter())&lt;matplotlib.ticker.LogFormatterSciNotation object at 0x000001E8074AEB88&gt;&lt;matplotlib.ticker.LogFormatterSciNotation object at 0x000001E8074ADB48&gt;
+</code></pre></div>
+<p>我们看到主要和次要刻度的位置都是使用LogLocator来设置的（对于对数图表来说那是理所当然的）。然而次要刻度的标签的格式是NullFormatter：这表示次要刻度不会显示标签。</p>
+<p>译者注：新版 Matplotlib 已经修改，可以看到 Formatter 都统一成为了 LogFormatterSciNotation，再根据图表实际情况选择是否展示标签。</p>
+<p>下面我们就可以开始介绍一些设置这些 locator 和 formatter 的例子了。</p>
+<h3 id="_21"><strong>隐藏刻度和标签</strong><a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>也许最常见的刻度/标签格式设置的操作是隐藏刻度或标签。这可以通过使用<code>plt.NullLocator()</code>和<code>plt.NullFormatter()</code>来设置，如下例：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes()ax.plot(np.random.rand(50))ax.yaxis.set_major_locator(plt.NullLocator())ax.xaxis.set_major_formatter(plt.NullFormatter())
+</code></pre></div>
+<p>注意上图中我们去除了 x 轴的标签（但是保留了刻度或网格线），y 轴的刻度和标签都被去除了。图表中没有刻度和标签在很多情况下很有用，例如，当你希望展示一个图像的网格。比方说，考虑下面的图表，包含着不同的头像，一个很常见的监督机器学习问题：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(5, 5, figsize=(5, 5))fig.subplots_adjust(hspace=0, wspace=0)# 从scikit-learn载入头像数据集from sklearn.datasets import fetch_olivetti_facesfaces = fetch_olivetti_faces().imagesfor i in range(5):    for j in range(5):        ax[i, j].xaxis.set_major_locator(plt.NullLocator())        ax[i, j].yaxis.set_major_locator(plt.NullLocator())        ax[i, j].imshow(faces[10 * i + j], cmap=&quot;bone&quot;)downloading Olivetti faces fromhttps://ndownloader.figshare.com/files/5976027to C:\Users\gdc\scikit_learn_data
+</code></pre></div>
+<p>注意上图中每张图像都有它自己的 axes，我们将每一个 axes 的 locator 都设置为 null 因为这些刻度值（像素值）在这里并没有任何实际意义。</p>
+<h3 id="_22"><strong>减少或增加刻度的数量</strong><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>默认设置的一个常见问题是当子图表较小时，刻度标签可能会粘在一起。我们可以从下面例子看到：</p>
+<div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(4, 4, sharex=True, sharey=True)
+</code></pre></div>
+<p>特别是 x 轴，标签的数字就快重叠在一起了，这让这些标签难以认清。我们可以通过<code>plt.MaxNLocator()</code>来修正这点，用它可以设置最大展示刻度的数量。Matplotlib 会自己计算按照这个最大数量计算的刻度位置：</p>
+<div class="highlight"><pre><span></span><code># 对x和y轴设置刻度最大数量for axi in ax.flat:    axi.xaxis.set_major_locator(plt.MaxNLocator(3))    axi.yaxis.set_major_locator(plt.MaxNLocator(3))fig
+</code></pre></div>
+<p>上图就清晰多了。如果你希望对于刻度位置进行更加精细的控制，你可以使用plt.MultipleLocator，我们会接下来讨论这个对象。</p>
+<h3 id="_23"><strong>复杂的刻度格式</strong><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>Matplotlib 的默认刻度格式只能在很多常见情况下工作良好，但是在特殊情况下你会希望能够更多的进行个性化。考虑下面的正弦和余弦图表：</p>
+<div class="highlight"><pre><span></span><code># 绘制正弦和余弦图表fig, ax = plt.subplots()x = np.linspace(0, 3 * np.pi, 1000)ax.plot(x, np.sin(x), lw=3, label=&#39;Sine&#39;)ax.plot(x, np.cos(x), lw=3, label=&#39;Cosine&#39;)# 设置网格、图例和轴极限ax.grid(True)ax.legend(frameon=False)ax.axis(&#39;equal&#39;)ax.set_xlim(0, 3 * np.pi);
+</code></pre></div>
+<p>这里有几个我们希望进行的改变。首先，如果刻度的间距和网格线是 的倍数会显得更加自然。我们可以通过MultipleLocator来设置它，这个对象用来设置刻度的配置。为了更直观，我们设置主要刻度为 位置，设置次要刻度为 位置：</p>
+<div class="highlight"><pre><span></span><code>ax.xaxis.set_major_locator(plt.MultipleLocator(np.pi / 2))ax.xaxis.set_minor_locator(plt.MultipleLocator(np.pi / 4))fig
+</code></pre></div>
+<p>但是上图看起来有点傻：我们可以看出刻度确实是 的倍数，但是使用了小数的展示让它们看起来很奇怪。要修正这些标签，我们需要修改刻度的 formatter。在这种情况中，没有內建的 formatter 可以给我们使用，因此我们使用<code>plt.FuncFormatter</code>，这个对象能够接受一个用户自定义的函数来提供对于刻度标签的精细控制：</p>
+<div class="highlight"><pre><span></span><code>def format_func(value, tick_number):    # N是pi/2的倍数    N = int(np.round(2 * value / np.pi))    if N == 0:        return &quot;0&quot; # 0点    elif N == 1:        return r&quot;$\frac{\pi}{2}$&quot; # pi/2    elif N == 2:        return r&quot;$\pi$&quot; # pi    elif N % 2 &gt; 0:        return r&quot;$\frac{{%d}\pi}{2}$&quot; %N # n*pi/2 n是奇数    else:        return r&quot;${0}\pi$&quot;.format(N // 2) # n*pi n是整数ax.xaxis.set_major_formatter(plt.FuncFormatter(format_func))fig
+</code></pre></div>
+<p>上图看起来好多了。注意到我们使用到了 Matplotlib 的 LaTeX 支持，使用美元符号将 LaTeX 字符串括起来。这是用来展示数学符号和公式的简便方法：在这个例子中<code>"$\pi$"</code>被渲染成希腊字母 。</p>
+<p><code>plt.FuncFomatter()</code>提供了对于图表刻度最高级的自定义和精细控制，并且当你需要创建需要印刷或出版的图表时非常方便。</p>
+<h3 id="formatter-locator"><strong>Formatter 和 Locator 总结</strong><a class="headerlink" href="#formatter-locator" title="Permanent link">&para;</a></h3>
+<p>我们已经介绍了一些 formatter 和 locator。在最后我们通过将內建的 locator 和 formatter 参数列出来对本节做一个总结。要获得更多相关内容，请参阅文档或 Matplotlib 的在线文档。下表中列出的对象在plt命名空间中都是有效的：</p>
+<p>Locator 对象</p>
+<p>描述</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+</tr>
+<tr>
+<td><code>NullLocator</code></td>
+</tr>
+<tr>
+<td><code>FixedLocator</code></td>
+</tr>
+<tr>
+<td><code>IndexLocator</code></td>
+</tr>
+<tr>
+<td><code>LinearLocator</code></td>
+</tr>
+<tr>
+<td><code>LogLocator</code></td>
+</tr>
+<tr>
+<td><code>MultipleLocator</code></td>
+</tr>
+<tr>
+<td><code>MaxNLocator</code></td>
+</tr>
+<tr>
+<td><code>AutoLocator</code></td>
+</tr>
+<tr>
+<td><code>AutoMinorLocator</code></td>
+</tr>
+</tbody>
+</table>
+<p>Formatter 对象</p>
+<p>描述</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+</tr>
+<tr>
+<td><code>NullFormatter</code></td>
+</tr>
+<tr>
+<td><code>IndexFormatter</code></td>
+</tr>
+<tr>
+<td><code>FixedFormatter</code></td>
+</tr>
+<tr>
+<td><code>FuncFormatter</code></td>
+</tr>
+<tr>
+<td><code>FormatStrFormatter</code></td>
+</tr>
+<tr>
+<td><code>ScalarFormatter</code></td>
+</tr>
+<tr>
+<td><code>LogFormatter</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-matplotlib"><strong>11.在 matplotlib 中创建三维图表</strong><a class="headerlink" href="#11-matplotlib" title="Permanent link">&para;</a></h2>
+<p>Matplotlib 最开始被设计为仅支持二维的图表。到 1.0 版本发布左右，一些三维图表的工具在二维展示的基础上被创建了出来，结果就是 Matplotlib 提供了一个方便的（同时也是有限的）的可用于三维数据可视化的一套工具。三维图表可以使用载入mplot3d工具包来激活，这个包会随着 Matplotlib 自动安装：</p>
+<div class="highlight"><pre><span></span><code>from mpl_toolkits import mplot3d
+</code></pre></div>
+<p>一旦模块被导入，三维 axes 就可以像其他普通 axes 一样通过关键字参数<code>projection='3d'</code>来创建：</p>
+<div class="highlight"><pre><span></span><code>%matplotlib inlineimport numpy as npimport matplotlib.pyplot as pltfig = plt.figure()ax = plt.axes(projection=&#39;3d&#39;)
+</code></pre></div>
+<p>三维 axes 激活后，我们可以在上面绘制不同的三维图表类型。三维图表在 notebook 中使用交互式图表展示会优于使用静态展示；回忆我们前面介绍过，你可以使用%matplotlib notebook而不是%matplotlib inline来激活交互式展示模式。</p>
+<h3 id="_24"><strong>三维的点和线</strong><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>三维图表中最基础的是使用(x, y, z)坐标定义的一根线或散点的集合。前面介绍过普通的二维图表，作为类比，使用<code>ax.plot3D</code>和a<code>x.scatter3D</code>函数可以创建三维折线和散点图。这两个函数的签名与二维的版本基本一致，你可以参考[简单折线图]和[简单散点图]来复习一下这部分的内容。下面我们绘制一个三维中的三角螺旋，在线的附近在绘制一些随机的点：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes(projection=&#39;3d&#39;)# 三维螺旋线的数据zline = np.linspace(0, 15, 1000)xline = np.sin(zline)yline = np.cos(zline)ax.plot3D(xline, yline, zline, &#39;gray&#39;)# 三维散点的数据zdata = 15 * np.random.random(100)xdata = np.sin(zdata) + 0.1 * np.random.randn(100)ydata = np.cos(zdata) + 0.1 * np.random.randn(100)ax.scatter3D(xdata, ydata, zdata, c=zdata, cmap=&#39;Greens&#39;);
+</code></pre></div>
+<p>注意默认情况下，图中的散点会有透明度的区别，用于体现在图中散点的深度。虽然三维效果在静态图像中难以显示，你可以使用交互式的视图来获得更佳的三维直观效果。</p>
+<h3 id="_25"><strong>三维轮廓图</strong><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>类似于我们在[密度和轮廓图]中介绍的内容，mplot3d也包含着能够创建三维浮雕图像的工具。就像二维的<code>ax.contour</code>图表，<code>ax.contour3D</code>要求输入数据的格式是二维普通网格上计算得到的 Z 轴的数据值。下面我们展示一个三维的正弦函数轮廓图：</p>
+<div class="highlight"><pre><span></span><code>def f(x, y):    return np.sin(np.sqrt(x ** 2 + y ** 2))x = np.linspace(-6, 6, 30)y = np.linspace(-6, 6, 30)X, Y = np.meshgrid(x, y)Z = f(X, Y)fig = plt.figure()ax = plt.axes(projection=&#39;3d&#39;)ax.contour3D(X, Y, Z, 50, cmap=&#39;binary&#39;)ax.set_xlabel(&#39;x&#39;)ax.set_ylabel(&#39;y&#39;)ax.set_zlabel(&#39;z&#39;);
+</code></pre></div>
+<p>有时候默认的视角角度不是最理想的，在这种情况下我们可以使用view_init函数来设置水平角和方位角。在下面的例子中，我们使用的是 60° 的水平角（即以 60° 俯视 x-y 平面）和 35° 的方位角（即将 z 轴逆时针旋转 35°）：</p>
+<div class="highlight"><pre><span></span><code>ax.view_init(60, 35)fig
+</code></pre></div>
+<p>同样，注意到当使用 Matplotlib 交互式展示时，这样的旋转可以通过鼠标点击和拖拽来实现。</p>
+<h3 id="_26"><strong>框线图和表面图</strong><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>使用网格数据生成的三维图表还有框线图和表面图。这两种图表将网格数据投射到特定的三维表面，能够使得结果图像非常直观和具有说服力。下面是一个框线图的例子：</p>
+<div class="highlight"><pre><span></span><code>fig = plt.figure()ax = plt.axes(projection=&#39;3d&#39;)ax.plot_wireframe(X, Y, Z, color=&#39;black&#39;)ax.set_title(&#39;wireframe&#39;);
+</code></pre></div>
+<p>表面图类似框线图，区别在于每个框线构成的多边形都使用颜色进行了填充。添加色图用于填充多边形能够让图形表面展示出来：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes(projection=&#39;3d&#39;)ax.plot_surface(X, Y, Z, rstride=1, cstride=1,                cmap=&#39;viridis&#39;, edgecolor=&#39;none&#39;)ax.set_title(&#39;surface&#39;);
+</code></pre></div>
+<p>注意虽然每个颜色填充的表面都是二维的，但是表面的边缘不需要是直线构成的。下面的例子使用surface3D绘制了一个部分极坐标网格，能够让我们切入到函数内部观察效果：</p>
+<div class="highlight"><pre><span></span><code>r = np.linspace(0, 6, 20)theta = np.linspace(-0.9 * np.pi, 0.8 * np.pi, 40)r, theta = np.meshgrid(r, theta)X = r * np.sin(theta)Y = r * np.cos(theta)Z = f(X, Y)ax = plt.axes(projection=&#39;3d&#39;)ax.plot_surface(X, Y, Z, rstride=1, cstride=1,                cmap=&#39;viridis&#39;, edgecolor=&#39;none&#39;);
+</code></pre></div>
+<h3 id="_27"><strong>表面三角剖分</strong><a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>在一些应用场合中，上面的这种均匀网格绘制的图表方式太过于局限和不方便。在这些情况下，三角剖分的图表可以派上用场。如果我们并不是使用笛卡尔坐标系或极坐标系的网格来绘制三维图表，而是使用一组随机的点来绘制三维图表呢？</p>
+<div class="highlight"><pre><span></span><code>theta = 2 * np.pi * np.random.random(1000)r = 6 * np.random.random(1000)x = np.ravel(r * np.sin(theta))y = np.ravel(r * np.cos(theta))z = f(x, y)
+</code></pre></div>
+<p>有了上面的数据之后，我们可以使用它们来绘制一张散点图表现出样本所在表面的情况：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes(projection=&#39;3d&#39;)ax.scatter(x, y, z, c=z, cmap=&#39;viridis&#39;, linewidth=0.5);
+</code></pre></div>
+<p>上图并未形象的表示出表面情况。这种情况下我们可以使用ax.plot_trisurf函数，它能首先根据我们的数据输入找到各点内在的三角函数形式，然后绘制表面（注意的是这里的 x，y，z 是一维的数组）：</p>
+<div class="highlight"><pre><span></span><code>ax = plt.axes(projection=&#39;3d&#39;)ax.plot_trisurf(x, y, z,                cmap=&#39;viridis&#39;, edgecolor=&#39;none&#39;);
+</code></pre></div>
+<p>上图的结果很显然没有使用网格绘制表面图那么清晰，但是对于我们并不是使用函数构建数据样本（数据样本通常来自真实世界的采样）的情况下，这能提供很大的帮助。例如我们下面会看到，能使用这种方法绘制一条三维的莫比乌斯环。</p>
+<h3 id="_28"><strong>例子：绘制莫比乌斯环</strong><a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>莫比乌斯环是使用一条纸条，一端翻折后与另一端粘起来形成的环形。在拓扑学中这是非常有趣的一个形状，因为它只有一个面。我们下面使用 Matplotlib 的三维工具绘制莫比乌斯环。创建莫比乌斯环的关键在于能参数化它：莫比乌斯环是一个二维的环状结构，因此我们需要两个特定的维度。一个我们称为 ，取值范围是 表示整个环状，还有一个称为 ，取值范围是 表示纸带的宽度：</p>
+<div class="highlight"><pre><span></span><code>theta = np.linspace(0, 2 * np.pi, 30)w = np.linspace(-0.25, 0.25, 8)w, theta = np.meshgrid(w, theta)
+</code></pre></div>
+<p>有了这两个参数之后，我们需要确定莫比乌斯环上*(x, y, z)* 坐标的位置。</p>
+<p>仔细思考一下，我们会发现在莫比乌斯环上有两个自转发生：一个是纸带绕环形中央位置的旋转（我们称为 ），另一个纸带绕着中间轴线的旋转（我们称为 ）。纸带中央位置旋转一整圈 时，纸带绕中间轴线旋转刚好半圈 ，我们将整个旋转均匀分布在纸带上时，就会有 。</p>
+<div class="highlight"><pre><span></span><code>phi = 0.5 * theta
+</code></pre></div>
+<p>现在我们已经有了所有需要获得三维坐标值的参数了。我们定义 为每个坐标点距离环形中间的位置，使用它来计算最终 三维坐标系的坐标值：</p>
+<p><code>y = np.ravel(r * np.sin(theta))z = np.ravel(w * np.sin(phi))</code></p>
+<div class="highlight"><pre><span></span><code># r是坐标点距离环形中心的距离值r = 1 + w * np.cos(phi)# 利用简单的三角函数知识算得x，y，z坐标值x = np.ravel(r * np.cos(theta))y = np.ravel(r * np.sin(theta))z = np.ravel(w * np.sin(phi))
+</code></pre></div>
+<p>最后，为了绘制对象，我们必须保证三角剖分是正确的。实现这个最好的方法是在底层的参数上面实现三角剖分，最后让 Matplotlib 将这个三角剖分投射到三维空间中形成莫比乌斯环。下面的代码最终绘制图形：</p>
+<div class="highlight"><pre><span></span><code># 在底层参数的基础上进行三角剖分from matplotlib.tri import Triangulationtri = Triangulation(np.ravel(w), np.ravel(theta))ax = plt.axes(projection=&#39;3d&#39;)ax.plot_trisurf(x, y, z, triangles=tri.triangles,                cmap=&#39;viridis&#39;, linewidths=0.2);ax.set_xlim(-1, 1); ax.set_ylim(-1, 1); ax.set_zlim(-1, 1);
+</code></pre></div>
+<p>结合这些技巧，能够为你提供在 Matplotlib 创建和展现大量三维对象和模式的能力。</p>
+<p><strong>参考资料</strong></p>
+<p>[1]PythonDataScienceHandbook:https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks<br />
+[2]Pythons数据科学:https://github.com/wangyingsm/Python-Data-Science-Handbook/tree/master/notebooks<br />
+[3]颜色代码:https://www.w3schools.com/colors/colors_names.asp<br />
+[4]秒差距:https://zh.wikipedia.org/wiki/%E7%A7%92%E5%B7%AE%E8%B7%9D<br />
+[5]有趣讨论:http://Matplotlib.org/1.4.1/users/colormaps.html<br />
+[6]标注示:http://matplotlib.org/examples/pylab_examples/annotation_demo2.html</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 hlx
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://space.bilibili.com/387119156" target="_blank" rel="noopener" title="Bilibili | 少年寥若晨星" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0s16.1 2.868 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0c8.8 0 16.1 2.868 21.9 8.603 5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1zm-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8 6.3-6.5 9.7-14.3 10.1-23.5V173.8zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5-9.6 0-17.5-3.2-23.6-9.5-6.1-6.3-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2 6.3-6.3 13.2-9.6 23.3-10 9.2.4 17 3.7 23.3 10zm191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.1 6.3-14 9.5-23.6 9.5-9.6 0-17.4-3.2-23.6-9.5-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2 6.3-6.3 14.1-9.6 23.3-10 9.2.4 17 3.7 23.3 10z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/a-hlx" target="_blank" rel="noopener" title="GitHub | a-hlx" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../mkdocs/javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
