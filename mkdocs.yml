@@ -160,8 +160,34 @@ nav:
     - BLOG/index.md
     - software:
       - 免费激活Typora: BLOG/software/免费激活Typora.md
+      - Obsidian介绍: BLOG/software/Obsidian介绍.md
     - Fun learning:
       - ChatGPT中文调教指南: BLOG/Fun learning/ChatGPT中文调教指南.md
+      - 免费域名注册eu.org: BLOG/Fun learning/永久免费域名注册eu.org.md
+    - 速查表:
+      - bash: BLOG/速查表\bash.md
+      - : BLOG/速查表\c.md
+      - : BLOG/速查表\cmd.md
+      - r: BLOG/速查表\docker.md
+      - ji: BLOG/速查表\emoji.md
+      - git: BLOG/速查表\git.md
+      - github-actions: BLOG/速查表\github-actions.md
+      - github: BLOG/速查表\github.md
+      - gitlab-ci: BLOG/速查表\gitlab-ci.md
+      - gitlab: BLOG/速查表\gitlab.md
+      - gmail: BLOG/速查表\gmail.md
+      - html-char: BLOG/速查表\html-char.md
+      - html: BLOG/速查表\html.md
+      - java: BLOG/速查表\java.md
+      - javascript: BLOG/速查表\javascript.md
+      - latex: BLOG/速查表\latex.md
+      - arkdown: BLOG/速查表\markdown.md
+      - atlab: BLOG/速查表\matlab.md
+      - ql: BLOG/速查表\mysql.md
+      - pychar: BLOG/速查表\pycharm.md
+      - python: BLOG/速查表\python.md
+      - pytorch: BLOG/速查表\pytorch.md
+      - h: BLOG/速查表\ssh.md  
   #   - 日语:
   #     - 笔记2/3: BLOG/Japanese/notes-2202-2203.md
   #     - 笔记4: BLOG/Japanese/notes-2204.md

@@ -1,18 +1,26 @@
-- 01.mysql安装: Foundation Course/MySQL/01.mysql安装.md
-- 02.数据类型: Foundation Course/MySQL/02.数据类型.md
-- 03.库和数据表: Foundation Course/MySQL/03.库和数据表.md
-- 04.表的增删改查: Foundation Course/MySQL/04.表的增删改查.md
-- 05.表的综合查询: Foundation Course/MySQL/05.表的综合查询.md
-- 06.索引: Foundation Course/MySQL/06.索引.md
-- 07.事务: Foundation Course/MySQL/07.事务.md
-- 08.mysql用户与权限管理: Foundation Course/MySQL/08.mysql用户与权限管理.md
-- 09.mysql优化: Foundation Course/MySQL/09.mysql优化.md
-- 10.mysql优化分析: Foundation Course/MySQL/10.mysql优化分析.md
-- 11.表分区: Foundation Course/MySQL/11.表分区.md
-- 12.mysql集群: Foundation Course/MySQL/12.mysql集群.md
-- 13.开发中比较少用的功能: Foundation Course/MySQL/13.开发中比较少用的功能.md
-- 14.数据库导入导出: Foundation Course/MySQL/14.数据库导入导出.md
-- 15.客户端和服务端安全传输数据: Foundation Course/MySQL/15.客户端和服务端安全传输数据.md
-- 常见问题: Foundation Course/MySQL/常见问题.md
-- 目录: Foundation Course/MySQL/目录.md
-- 获取路径.py: Foundation Course/MySQL/获取路径.py
+- bash: BLOG/速查表/bash.md
+- : BLOG/速查表/c.md
+- : BLOG/速查表/cmd.md
+- r: BLOG/速查表/docker.md
+- ji: BLOG/速查表/emoji.md
+- git: BLOG/速查表/git.md
+- github-actions: BLOG/速查表/github-actions.md
+- github: BLOG/速查表/github.md
+- gitlab-ci: BLOG/速查表/gitlab-ci.md
+- gitlab: BLOG/速查表/gitlab.md
+- gmail: BLOG/速查表/gmail.md
+- html-char: BLOG/速查表/html-char.md
+- html: BLOG/速查表/html.md
+- java: BLOG/速查表/java.md
+- javascript: BLOG/速查表/javascript.md
+- latex: BLOG/速查表/latex.md
+- arkdown: BLOG/速查表/markdown.md
+- atlab: BLOG/速查表/matlab.md
+- ql: BLOG/速查表/mysql.md
+- pychar: BLOG/速查表/pycharm.md
+- python: BLOG/速查表/python.md
+- pytorch: BLOG/速查表/pytorch.md
+- h: BLOG/速查表/ssh.md
+- vscode: BLOG/速查表/vscode.md
+- 获取路径.py: BLOG/速查表/获取路径.py
+- : BLOG/速查表/速查表.md
